@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!--<link rel="stylesheet" href="phorkie.css" />-->
+  <title>{% block title %}{% endblock %} - Phorkie</title>
+ </head>
+ <body>
+  <nav>
+   <ul>
+    <a href="/">New paste</a>
+    <a href="/list">List all</a>
+    <a href="/search">Search</a>
+   </ul>
+  </nav>
+  <article>{% block content %}{% endblock %}</article>
+ </body>
+</html>

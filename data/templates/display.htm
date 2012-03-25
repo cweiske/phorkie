@@ -1,0 +1,16 @@
+{% extends "base.htm" %}
+{% block title %}{{description}}{% endblock %}
+
+{% block content %}
+<h1>{{description}}</h1>
+<p><a href="{{links.edit}}">edit</a></p>
+{% for file in files %}
+<div>
+ <h2>{{file.filename}}</h2>
+ <p>
+  <a href="{{file.raw}}">raw</a>
+ </p>
+ <pre>{{file.content}}</pre>
+</div>
+{% endfor %}
+{% endblock %}

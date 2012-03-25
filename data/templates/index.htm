@@ -1,0 +1,25 @@
+
+<form method="post" action="/">
+ <p>
+  <label for="description">Description</label>
+  <input type="text" name="description" id="description" value="{{description}}"/>
+ </p>
+ <p>
+  <label for="filename_1">Filename</label>
+  <input type="text" name="file[1][name]" id="filename_1" value="{{ file[1]['name'] }}"/>
+ </p>
+ <p>
+  <label for="type_1">Type</label>
+  <select name="file[1][type]" id="type_1">
+   <option value="css">CSS</option>
+   <option value="php">PHP</option>
+   <option value="xml">XML</option>
+  </select>
+ </p>
+ <p>
+  <textarea name="file[1][content]" id="content_1">{{ file[1]['content'] }}</textarea>
+ </p>
+ <p>
+  <input type="submit" value="Go"/>
+ </p>
+</form>

@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+#RewriteCond %{REQUEST_FILENAME} -f
+
+RewriteRule ^([0-9]+)$ /display.php?id=$1
