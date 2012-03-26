@@ -72,6 +72,9 @@ class Repository
 
     public function getDescription()
     {
+        if (!is_readable($this->repoDir . '/.git/description')) {
+            return null;
+        }
         return file_get_contents($this->repoDir . '/.git/description');
     }
 
