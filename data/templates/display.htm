@@ -10,7 +10,7 @@
  <p>
   <a href="{{file.getLink('raw')}}">raw</a>
  </p>
- <pre>{{file.getContent}}</pre>
+ {{file.getHighlightedContent|raw}}
 </div>
 {% endfor %}
 {% endblock %}

@@ -35,3 +35,11 @@ Internal directory layout
 Search
 ======
 Use ``ack-grep``
+
+
+Install geshi
+=============
+::
+
+  $ pear channel-discover mediawiki.googlecode.com/svn
+  $ pear install mediawiki/geshi

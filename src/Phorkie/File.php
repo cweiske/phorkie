@@ -57,6 +57,19 @@ class File
         return file_get_contents($this->path);
     }
 
+    public function getHighlightedContent()
+    {
+        /**
+         * Yes, geshi needs to be in your include path
+         * We use the mediawiki geshi extension package.
+         */
+        require 'MediaWiki/geshi/geshi/geshi.php';
+        $geshi = new \GeSHi($this->getContent(), $this->getType());
+        $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+        $geshi->set_header_type(GESHI_HEADER_DIV);
+        return $geshi->parse_code();
+    }
+
     public function getMimeType()
     {
         $type = $this->getType();
