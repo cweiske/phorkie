@@ -13,7 +13,12 @@ class Repositories
      */
     public function createNew()
     {
-        $n = basename(end(glob($this->reposDir . '/*', GLOB_ONLYDIR))) + 1;
+        chdir($this->reposDir);
+        $dirs = glob('*', GLOB_ONLYDIR);
+        sort($dirs, SORT_NUMERIC);
+        $n = end($dirs) + 1;
+        unset($dirs);
+
         $dir = $this->reposDir . '/' . $n . '/'; 
         mkdir($dir, 0777);//FIXME
         $r = new Repository();
