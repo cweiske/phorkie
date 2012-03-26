@@ -14,6 +14,10 @@ $new->getVc()->getCommand('clone')
     ->addArgument($new->repoDir)
     ->execute();
 \copy($repo->repoDir . '/.git/description', $new->repoDir . '/.git/description');
+foreach (glob($new->repoDir . '/.git/hooks/*') as $hookfile) {
+    unlink($hookfile);
+}
+
 //FIXME: where to put fork source link?
 redirect($new->getLink('display'));
 ?>

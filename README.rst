@@ -54,3 +54,4 @@ TODO
 - sidebar: history
 - image upload
 - rst rendering
+- document how to keep disk usage low (block size)

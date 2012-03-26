@@ -18,6 +18,9 @@ if (isset($_POST['file'])) {
     $repo = $rs->createNew();
     $vc = $repo->getVc();
     $vc->initRepository();
+    foreach (glob($repo->repoDir . '/.git/hooks/*') as $hookfile) {
+        unlink($hookfile);
+    }
     file_put_contents($repo->repoDir . '.git/description', $_POST['description']);
 
     foreach ($_POST['file'] as $num => $arFile) {
