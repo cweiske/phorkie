@@ -43,3 +43,14 @@ Install geshi
 
   $ pear channel-discover mediawiki.googlecode.com/svn
   $ pear install mediawiki/geshi
+
+
+TODO
+====
+- edit
+- list all
+- search
+- OpenID-Login to get username+email as authorship information
+- sidebar: history
+- image upload
+- rst rendering
