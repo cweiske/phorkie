@@ -18,7 +18,7 @@ if (isset($_POST['file'])) {
     $n = count(glob($repoDir . '/*', GLOB_ONLYDIR));
     $dir = $repoDir . '/' . $n . '/'; 
     mkdir($dir, 0777);//FIXME
-    $vc = new VersionControl_Git($dir);
+    $vc = new \VersionControl_Git($dir);
     $vc->initRepository();
     file_put_contents($dir . '.git/description', $_POST['description']);
 
@@ -37,6 +37,7 @@ if (isset($_POST['file'])) {
     }
     $command = $vc->getCommand('commit')
         ->setOption('message', 'initial paste')
+        ->setOption('author', 'Anonymous <anonymous@phorkie>')
         ->execute();
     //redirect to phork
     redirect($n);
