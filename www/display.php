@@ -1,23 +1,14 @@
 <?php
+namespace Phorkie;
 /**
  * Display paste contents
- *
  */
 require_once 'www-header.php';
 
-if (!isset($_GET['id'])) {
-    errout(400, 'Paste ID missing');
-}
-if (!is_numeric($_GET['id'])) {
-    errout(400, 'Paste ID not numeric');
-}
-$id = (int)$_GET['id'];
-$repoDir = $GLOBALS['phorkie']['cfg']['repos'] . '/' . $id;
-if (!is_dir($repoDir)) {
-    errout(404, 'Paste not found');
-}
+$repo = new Repository();
+$repo->loadFromRequest();
 
-$files = glob($repoDir . '/*');
+/*
 $tplFiles = array();
 foreach ($files as $file) {
     $tplFile = array();
@@ -28,15 +19,19 @@ foreach ($files as $file) {
     $tplFile['raw'] = '/' . $id . '/raw/' . $tplFile['filename'];
     $tplFiles[] = $tplFile;
 }
+*/
 
 render(
     'display',
     array(
+        'repo' => $repo,
+        /*
         'description' => file_get_contents($repoDir . '/.git/description'),
         'files' => $tplFiles,
         'links' => array(
             'edit' => '/' . $id . '/edit'
         )
+        */
     )
 );
 ?>

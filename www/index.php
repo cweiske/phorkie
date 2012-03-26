@@ -1,4 +1,5 @@
 <?php
+namespace Phorkie;
 /**
  * Show paste creation form
  *

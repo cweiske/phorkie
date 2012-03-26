@@ -2,15 +2,15 @@
 {% block title %}{{description}}{% endblock %}
 
 {% block content %}
-<h1>{{description}}</h1>
-<p><a href="{{links.edit}}">edit</a></p>
-{% for file in files %}
+<h1>{{repo.getDescription}}</h1>
+<p><a href="{{repo.getLink('edit')}}">edit</a></p>
+{% for file in repo.getFiles %}
 <div>
- <h2>{{file.filename}}</h2>
+ <h2>{{file.getFilename}}</h2>
  <p>
-  <a href="{{file.raw}}">raw</a>
+  <a href="{{file.getLink('raw')}}">raw</a>
  </p>
- <pre>{{file.content}}</pre>
+ <pre>{{file.getContent}}</pre>
 </div>
 {% endfor %}
 {% endblock %}
