@@ -14,13 +14,11 @@ require_once 'www-header.php';
 
 if (isset($_POST['file'])) {
     //save
-    $repoDir = $GLOBALS['phorkie']['cfg']['repos'];
-    $n = count(glob($repoDir . '/*', GLOB_ONLYDIR));
-    $dir = $repoDir . '/' . $n . '/'; 
-    mkdir($dir, 0777);//FIXME
-    $vc = new \VersionControl_Git($dir);
+    $rs = new Repositories();
+    $repo = $rs->createNew();
+    $vc = $repo->getVc();
     $vc->initRepository();
-    file_put_contents($dir . '.git/description', $_POST['description']);
+    file_put_contents($repo->repoDir . '.git/description', $_POST['description']);
 
     foreach ($_POST['file'] as $num => $arFile) {
         if ($arFile['name'] != '') {
@@ -28,7 +26,7 @@ if (isset($_POST['file'])) {
         } else {
             $fname = 'phork' . $num . '.' . $arFile['type'];
         }
-        $fpath = $dir . $fname;
+        $fpath = $repo->repoDir . $fname;
         file_put_contents($fpath, $arFile['content']);
         //fixme: let the class do that when it is able to
         $command = $vc->getCommand('add')
@@ -40,7 +38,7 @@ if (isset($_POST['file'])) {
         ->setOption('author', 'Anonymous <anonymous@phorkie>')
         ->execute();
     //redirect to phork
-    redirect($n);
+    redirect($repo->getLink('display'));
 }
 
 $phork = array(

@@ -42,6 +42,11 @@ class Repository
         $this->repoDir = $repoDir;
     }
 
+    public function getVc()
+    {
+        return new \VersionControl_Git($this->repoDir);
+    }
+
     /**
      * Loads the list of files in this repository
      *
@@ -84,6 +89,7 @@ class Repository
      * @param string $type Link type. Supported are:
      *                     - "edit"
      *                     - "display"
+     *                     - "fork"
      *
      * @return string
      */
@@ -93,6 +99,8 @@ class Repository
             return '/' . $this->id . '/edit';
         } else if ($type == 'display') {
             return '/' . $this->id;
+        } else if ($type == 'fork') {
+            return '/' . $this->id . '/fork';
         }
         throw new Exception('Unknown type');
     }

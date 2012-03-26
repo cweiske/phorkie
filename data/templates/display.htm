@@ -3,7 +3,10 @@
 
 {% block content %}
 <h1>{{repo.getDescription}}</h1>
-<p><a href="{{repo.getLink('edit')}}">edit</a></p>
+<ul class="links">
+ <li><a href="{{repo.getLink('edit')}}">edit</a></li>
+ <li><a href="{{repo.getLink('fork')}}">fork</a></li>
+</ul>
 {% for file in repo.getFiles %}
 <div>
  <h2>{{file.getFilename}}</h2>

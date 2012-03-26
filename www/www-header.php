@@ -47,7 +47,7 @@ function render($tplname, $vars)
 }
 function redirect($target)
 {
-    header('Location: /' . $target);
+    header('Location: ' . $target);
     exit();
 }
 ?>
