@@ -57,6 +57,19 @@ class Repository
         return $arFiles;
     }
 
+    public function getFileByName($name)
+    {
+        $base = basename($name);
+        if ($base != $name) {
+            throw new Exception('No directories supported for now');
+        }
+        $path = $this->repoDir . '/' . $base;
+        if (!is_readable($path)) {
+            throw new Exception_Input('File does not exist');
+        }
+        return new File($path, $this);
+    }
+
     public function getDescription()
     {
         return file_get_contents($this->repoDir . '/.git/description');

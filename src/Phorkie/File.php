@@ -17,6 +17,15 @@ class File
      */
     public $repo;
 
+    public static $arMimeTypeMap = array(
+        'css'  => 'text/css',
+        'htm'  => 'text/html',
+        'html' => 'text/html',
+        'js'   => 'application/javascript',
+        'php'  => 'text/x-php',
+        'txt'  => 'text/plain',
+    );
+
     public function __construct($path, Repository $repo)
     {
         $this->path = $path;
@@ -46,6 +55,15 @@ class File
     public function getContent()
     {
         return file_get_contents($this->path);
+    }
+
+    public function getMimeType()
+    {
+        $type = $this->getType();
+        if (!isset(static::$arMimeTypeMap[$type])) {
+            return null;
+        }
+        return static::$arMimeTypeMap[$type];
     }
 
     /**

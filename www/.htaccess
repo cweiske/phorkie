@@ -3,3 +3,4 @@ RewriteBase /
 #RewriteCond %{REQUEST_FILENAME} -f
 
 RewriteRule ^([0-9]+)$ /display.php?id=$1
+RewriteRule ^([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2
