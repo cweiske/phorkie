@@ -9,7 +9,7 @@
 </ul>
 {% for file in repo.getFiles %}
 <div>
- <h2>{{file.getFilename}}</h2>
+ <h2 id="{{file.getFilename}}">{{file.getFilename}}<a class="anchorlink" href="#{{file.getFilename}}"></a></h2>
  <p>
   <a href="{{file.getLink('raw')}}">raw</a>
  </p>

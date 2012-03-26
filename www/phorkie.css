@@ -1,0 +1,16 @@
+/* show IDs for anchors */
+h1[id]:hover a.anchorlink:before,
+h2[id]:hover a.anchorlink:before,
+h3[id]:hover a.anchorlink:before,
+h4[id]:hover a.anchorlink:before,
+h5[id]:hover a.anchorlink:before,
+h6[id]:hover a.anchorlink:before {
+    content: "\00B6";/* pilcrow */
+    color: #888;
+    font-size: smaller;
+}
+a.anchorlink {
+    text-decoration: none;
+    margin-left: 0.5em;
+    font-size: smaller;
+}
