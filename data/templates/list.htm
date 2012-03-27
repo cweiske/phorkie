@@ -1,0 +1,25 @@
+{% extends "base.htm" %}
+{% block title %}List of all pastes{% endblock %}
+
+{% block content %}
+<ul class="list">
+{% for repo in repos %}
+ <li>
+  <h2><a href="{{repo.getLink('display')}}">{{repo.id}}</a></h2>
+  <p>{{repo.getDescription}}</p>
+ </li>
+{% endfor %}
+</ul>
+<ul class="pager">
+ {% if links.prev %}
+ <li class="prev">
+  <a href="{{links.prev}}">prev</a>
+ </li>
+ {% endif %}
+ {% if links.next %}
+ <li class="next">
+  <a href="{{links.next}}">next</a>
+ </li>
+ {% endif %}
+</ul>
+{% endblock %}

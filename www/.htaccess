@@ -5,3 +5,5 @@ RewriteBase /
 RewriteRule ^([0-9]+)$ /display.php?id=$1
 RewriteRule ^([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2
 RewriteRule ^([0-9]+)/fork$ /fork.php?id=$1
+RewriteRule ^list$ /list.php
+RewriteRule ^list/([0-9])+$ /list.php?page=$1

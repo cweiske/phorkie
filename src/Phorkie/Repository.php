@@ -42,6 +42,20 @@ class Repository
         $this->repoDir = $repoDir;
     }
 
+    public function loadById($id)
+    {
+        if (!is_numeric($id)) {
+            throw new Exception_Input('Paste ID not numeric');
+        }
+        $this->id = (int)$id;
+
+        $repoDir = $GLOBALS['phorkie']['cfg']['repos'] . '/' . $this->id;
+        if (!is_dir($repoDir)) {
+            throw new Exception_NotFound('Paste not found');
+        }
+        $this->repoDir = $repoDir;
+    }
+
     public function getVc()
     {
         return new \VersionControl_Git($this->repoDir);

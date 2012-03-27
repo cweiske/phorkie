@@ -27,6 +27,29 @@ class Repositories
         return $r;
     }
 
+    /**
+     * Get a list of repository objects
+     *
+     * @param integer $page    Page number, beginning with 0
+     * @param integer $perPage Number of repositories per page
+     *
+     * @return array Array of Repositories
+     */
+    public function getList($page = 0, $perPage = 10)
+    {
+        chdir($this->reposDir);
+        $dirs = glob('*', GLOB_ONLYDIR);
+        sort($dirs, SORT_NUMERIC);
+
+        $some = array_slice($dirs, $page * $perPage, $perPage);
+        $repos = array();
+        foreach ($some as $oneDir) {
+            $r = new Repository();
+            $r->loadById($oneDir);
+            $repos[] = $r;
+        }
+        return $repos;
+    }
 }
 
 ?>
