@@ -1,4 +1,9 @@
 /* show IDs for anchors */
+a.anchorlink:before {
+    font-size: smaller;
+    content: '_';
+    color: transparent;
+}
 h1[id]:hover a.anchorlink:before,
 h2[id]:hover a.anchorlink:before,
 h3[id]:hover a.anchorlink:before,
@@ -13,4 +18,27 @@ a.anchorlink {
     text-decoration: none;
     margin-left: 0.5em;
     font-size: smaller;
+}
+.navbar .brand {
+    /*float: right;*/
+    color: yellow;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+}
+
+.file {
+    margin-top: 2em;
+
+}
+.file .header {
+    padding: 1.0ex;
+    margin-bottom: 1em;
+    background-color: whiteSmoke;
+    border: 1px solid #EEE;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.file .code {
+    margin-left: 2em;
 }

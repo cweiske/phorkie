@@ -45,6 +45,7 @@ $twig = new \Twig_Environment(
 
 function render($tplname, $vars)
 {
+    $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
     echo $template->render($vars);
 }

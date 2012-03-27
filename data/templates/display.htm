@@ -3,17 +3,28 @@
 
 {% block content %}
 <h1>{{repo.getDescription}}</h1>
-<ul class="links">
- <li><a href="{{repo.getLink('edit')}}">edit</a></li>
- <li><a href="{{repo.getLink('fork')}}">fork</a></li>
-</ul>
+<div class="row-fluid">
+ <div class="span6">
+  <a class="btn" href="{{repo.getLink('edit')}}"><i class="icon-edit"></i> edit</a>
+ </div>
+ <div class="span6" style="text-align: right">
+  <a class="btn" href="{{repo.getLink('fork')}}"><i class="icon-share"></i> fork</a>
+ </div>
+</div>
+
 {% for file in repo.getFiles %}
-<div>
- <h2 id="{{file.getFilename}}">{{file.getFilename}}<a class="anchorlink" href="#{{file.getFilename}}"></a></h2>
- <p>
-  <a href="{{file.getLink('raw')}}">raw</a>
- </p>
- {{file.getHighlightedContent|raw}}
+<div class="file">
+ <div class="header">
+  <a class="btn btn-mini" href="{{file.getLink('raw')}}" style="float: right;">raw</a>
+  <h3 id="{{file.getFilename}}">{{file.getFilename}}<a class="anchorlink" href="#{{file.getFilename}}"></a></h3>
+ </div>
+ <div class="code">
+  {{file.getHighlightedContent|raw}}
+ </div>
 </div>
 {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+sidebar FIXME
 {% endblock %}

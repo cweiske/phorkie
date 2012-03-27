@@ -12,13 +12,21 @@
 </ul>
 <ul class="pager">
  {% if links.prev %}
- <li class="prev">
-  <a href="{{links.prev}}">prev</a>
+ <li class="previous">
+  <a href="{{links.prev}}">&larr; prev</a>
+ </li>
+ {% else %}
+ <li class="previous disabled">
+  <a href="#">&larr; prev</a>
  </li>
  {% endif %}
  {% if links.next %}
  <li class="next">
-  <a href="{{links.next}}">next</a>
+  <a href="{{links.next}}">next &rarr;</a>
+ </li>
+ {% else %}
+ <li class="next disabled">
+  <a href="#">next &rarr;</a>
  </li>
  {% endif %}
 </ul>
