@@ -45,3 +45,8 @@ a.anchorlink {
 ul.pager {
     margin-top: 2ex;
 }
+
+form textarea.content {
+    width: 100%;
+    box-sizing: border-box;
+}
