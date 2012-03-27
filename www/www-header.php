@@ -27,6 +27,9 @@ set_exception_handler(
 );
 
 require_once __DIR__ . '/../data/config.default.php';
+if (file_exists(__DIR__ . '/../data/config.php')) {
+    require_once __DIR__ . '/../data/config.php';
+}
 require_once 'VersionControl/Git.php';
 require_once 'Twig/Autoloader.php';
 \Twig_Autoloader::register();
