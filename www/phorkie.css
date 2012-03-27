@@ -42,3 +42,6 @@ a.anchorlink {
 .file .code {
     margin-left: 2em;
 }
+ul.pager {
+    margin-top: 2ex;
+}

@@ -1,5 +1,11 @@
 {% extends "base.htm" %}
-{% block title %}{{description}}{% endblock %}
+{% block title %}
+ {%if repo.getDescription %}
+  {{repo.getDescription}}
+ {%else%}
+  {{repo.id}}
+ {%endif%}
+{% endblock %}
 
 {% block content %}
 <h1>{{repo.getDescription}}</h1>

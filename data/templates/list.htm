@@ -2,14 +2,17 @@
 {% block title %}List of all pastes{% endblock %}
 
 {% block content %}
-<ul class="list">
+<ul class="nav nav-pills nav-stacked">
 {% for repo in repos %}
  <li>
-  <h2><a href="{{repo.getLink('display')}}">{{repo.id}}</a></h2>
-  <p>{{repo.getDescription}}</p>
+  <a href="{{repo.getLink('display')}}">
+   {{repo.id}}
+   {{repo.getDescription}}
+  </a>
  </li>
 {% endfor %}
 </ul>
+
 <ul class="pager">
  {% if links.prev %}
  <li class="previous">
