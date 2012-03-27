@@ -1,4 +1,7 @@
+{% extends "base.htm" %}
+{% block title %}New paste{% endblock %}
 
+{% block content %}
 <form method="post" action="/">
  <p>
   <label for="description">Description</label>
@@ -17,9 +20,10 @@
   </select>
  </p>
  <p>
-  <textarea name="file[1][content]" id="content_1">{{ file[1]['content'] }}</textarea>
+  <textarea name="file[1][content]" id="content_1" cols="80" rows="10">{{ file[1]['content'] }}</textarea>
  </p>
  <p>
   <input type="submit" value="Go"/>
  </p>
 </form>
+{% endblock %}
