@@ -50,3 +50,15 @@ form textarea.content {
     width: 100%;
     box-sizing: border-box;
 }
+form .allwidth {
+    box-sizing: border-box;
+}
+form .allwidth label {
+    width: 20%;
+    float: left;
+}
+form input#description {
+    box-sizing: border-box;
+    height: 2em;
+    width: 100%;
+}
