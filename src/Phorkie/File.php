@@ -24,6 +24,7 @@ class File
         'js'   => 'application/javascript',
         'php'  => 'text/x-php',
         'txt'  => 'text/plain',
+        'xml'  => 'text/xml',
     );
 
     public function __construct($path, Repository $repo)
