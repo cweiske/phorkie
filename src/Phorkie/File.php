@@ -59,13 +59,23 @@ class File
     }
 
     /**
+     * Get file extension without dot
+     *
+     * @return string
+     */
+    public function getExt()
+    {
+        return substr($this->path, strrpos($this->path, '.') + 1);
+    }
+
+    /**
      * Returns the type of the file, as used by Geshi
      *
      * @return string
      */
     public function getType()
     {
-        $ext = substr($this->path, strrpos($this->path, '.') + 1);
+        $ext = $this->getExt();
         if (isset(static::$arTypeMap[$ext])) {
             $ext = static::$arTypeMap[$ext];
         }
@@ -93,11 +103,11 @@ class File
 
     public function getMimeType()
     {
-        $type = $this->getType();
-        if (!isset(static::$arMimeTypeMap[$type])) {
+        $ext = $this->getExt();
+        if (!isset(static::$arMimeTypeMap[$ext])) {
             return null;
         }
-        return static::$arMimeTypeMap[$type];
+        return static::$arMimeTypeMap[$ext];
     }
 
     /**
