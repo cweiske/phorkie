@@ -21,10 +21,11 @@ if (isset($_POST['files'])) {
     foreach (glob($repo->repoDir . '/.git/hooks/*') as $hookfile) {
         unlink($hookfile);
     }
-    file_put_contents($repo->repoDir . '.git/description', $_POST['description']);
+    $repo->setDescription($_POST['description']);
 
     foreach ($_POST['files'] as $num => $arFile) {
         if ($arFile['name'] != '') {
+            //FIXME: fix file name from ..
             $fname = $arFile['name'];
         } else {
             $fname = 'phork' . $num . '.' . $arFile['type'];

@@ -82,11 +82,24 @@ class Repository
         if ($base != $name) {
             throw new Exception('No directories supported for now');
         }
+        if ($name == '') {
+            throw new Exception_Input('Empty file name given');
+        }
         $path = $this->repoDir . '/' . $base;
         if (!is_readable($path)) {
             throw new Exception_Input('File does not exist');
         }
         return new File($path, $this);
+    }
+
+    public function hasFile($name)
+    {
+        try {
+            $this->getFileByName($name);
+        } catch (Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     public function getDescription()
@@ -95,6 +108,11 @@ class Repository
             return null;
         }
         return file_get_contents($this->repoDir . '/.git/description');
+    }
+
+    public function setDescription($description)
+    {
+        file_put_contents($this->repoDir . '/.git/description', $description);
     }
 
     /**

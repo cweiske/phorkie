@@ -59,6 +59,16 @@ class File
     }
 
     /**
+     * Return the full path to the file
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
      * Get file extension without dot
      *
      * @return string

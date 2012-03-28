@@ -2,7 +2,8 @@
   <div class="row-fluid">
    <div class="span6">
     <label for="filename_1">Filename</label>
-    <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{ file.getFilename }}"/>
+    <input type="hidden" name="files[{{fileid}}][original_name]" value="{{file.getFilename}}"/>
+    <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}"/>
    </div>
    <div class="span6" style="text-align: right">
     <label for="type_{{fileid}}">Type</label>
@@ -14,6 +15,6 @@
     </select>
    </div>
   </div>
-  <textarea name="files[{{fileid}}][content]" id="content_1" cols="80" rows="10" class="content">{{ file.getContent }}</textarea>
+  <textarea name="files[{{fileid}}][content]" id="content_{{fileid}}" cols="80" rows="10" class="content">{{file.getContent}}</textarea>
  </div>
 
