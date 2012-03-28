@@ -1,19 +1,21 @@
 {% extends "base.htm" %}
-{% block title %}New paste{% endblock %}
+{% block title %}Edit paste{% endblock %}
 
 {% block content %}
 <form method="post" action="/">
  <div class="control-group well pastedata">
    <label for="description">Description</label>
-   <input type="text" name="description" id="description" value="{{description}}"/>
+   <input type="text" name="description" id="description" value="{{repo.getDescription}}"/>
  </div>
 
- {% include 'edit-file.htm' with {'file': file[1], 'fileid': 1} %}
+ {% for fileid, file in repo.getFiles %}
+  {% include 'edit-file.htm' with {'file': file, 'fileid': fileid} %}
+ {% endfor %}
 
  <div class="well" style="text-align: right">
   <button class="btn btn-primary" type="submit">
    <i class="icon-check icon-white"></i>
-   Create
+   Save
   </button>
  </div>
 

@@ -12,7 +12,7 @@ namespace Phorkie;
  */
 require_once 'www-header.php';
 
-if (isset($_POST['file'])) {
+if (isset($_POST['files'])) {
     //save
     $rs = new Repositories();
     $repo = $rs->createNew();
@@ -23,7 +23,7 @@ if (isset($_POST['file'])) {
     }
     file_put_contents($repo->repoDir . '.git/description', $_POST['description']);
 
-    foreach ($_POST['file'] as $num => $arFile) {
+    foreach ($_POST['files'] as $num => $arFile) {
         if ($arFile['name'] != '') {
             $fname = $arFile['name'];
         } else {
@@ -45,11 +45,7 @@ if (isset($_POST['file'])) {
 }
 
 $phork = array(
-    '1' => array(
-        'filename' => '',
-        'content' => '',
-        'type' => ''
-    )
+    '1' => new File(null, null)
 );
-render('index', array('file' => $phork, 'description' => ''));
+render('index', array('files' => $phork, 'description' => ''));
 ?>

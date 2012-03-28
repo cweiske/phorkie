@@ -42,7 +42,7 @@ class File
         'html' => 'xml',
     );
 
-    public function __construct($path, Repository $repo)
+    public function __construct($path, Repository $repo = null)
     {
         $this->path = $path;
         $this->repo = $repo;
