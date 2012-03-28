@@ -17,6 +17,11 @@ class File
      */
     public $repo;
 
+    /**
+     * Maps file extensions to MIME Types
+     *
+     * @var array
+     */
     public static $arMimeTypeMap = array(
         'css'  => 'text/css',
         'htm'  => 'text/html',
@@ -25,6 +30,16 @@ class File
         'php'  => 'text/x-php',
         'txt'  => 'text/plain',
         'xml'  => 'text/xml',
+    );
+
+    /**
+     * Maps file extensions to geshi types
+     *
+     * @var array
+     */
+    public static $arTypeMap = array(
+        'htm'  => 'xml',
+        'html' => 'xml',
     );
 
     public function __construct($path, Repository $repo)
@@ -44,13 +59,18 @@ class File
     }
 
     /**
-     * Returns the type of the file, as used internally by Phorkie
+     * Returns the type of the file, as used by Geshi
      *
      * @return string
      */
     public function getType()
     {
-        return substr($this->path, strrpos($this->path, '.') + 1);
+        $ext = substr($this->path, strrpos($this->path, '.') + 1);
+        if (isset(static::$arTypeMap[$ext])) {
+            $ext = static::$arTypeMap[$ext];
+        }
+
+        return $ext;
     }
 
     public function getContent()
