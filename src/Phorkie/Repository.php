@@ -76,7 +76,7 @@ class Repository
         return $arFiles;
     }
 
-    public function getFileByName($name)
+    public function getFileByName($name, $bHasToExist = true)
     {
         $base = basename($name);
         if ($base != $name) {
@@ -86,7 +86,7 @@ class Repository
             throw new Exception_Input('Empty file name given');
         }
         $path = $this->repoDir . '/' . $base;
-        if (!is_readable($path)) {
+        if ($bHasToExist && !is_readable($path)) {
             throw new Exception_Input('File does not exist');
         }
         return new File($path, $this);
