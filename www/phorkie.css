@@ -49,6 +49,7 @@ ul.pager {
 form textarea.content {
     width: 100%;
     box-sizing: border-box;
+    font-family: monospace;
 }
 form .allwidth {
     box-sizing: border-box;
