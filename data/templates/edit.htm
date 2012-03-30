@@ -12,11 +12,18 @@
   {% include 'edit-file.htm' with {'file': file, 'fileid': fileid} %}
  {% endfor %}
 
- <div class="well" style="text-align: right">
-  <button class="btn btn-primary" type="submit">
-   <i class="icon-check icon-white"></i>
-   Save
-  </button>
+ <div class="well">
+  <div class="row-fluid">
+   <div class="span6">
+    <a class="btn" href="{{repo.getLink('display')}}">Cancel</a>
+   </div>
+   <div class="span6" style="text-align: right">
+    <button class="btn btn-primary" type="submit">
+     <i class="icon-check icon-white"></i>
+     Save
+    </button>
+   </div>
+  </div>
  </div>
 
 </form>
