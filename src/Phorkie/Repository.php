@@ -102,6 +102,17 @@ class Repository
         return true;
     }
 
+    /**
+     * Permanently deletes the paste repository without any way to get
+     * it back.
+     *
+     * @return boolean True if all went well, false if not
+     */
+    public function delete()
+    {
+        return Tools::recursiveDelete($this->repoDir);
+    }
+
     public function getDescription()
     {
         if (!is_readable($this->repoDir . '/.git/description')) {
@@ -133,8 +144,12 @@ class Repository
             return '/' . $this->id;
         } else if ($type == 'fork') {
             return '/' . $this->id . '/fork';
+        } else if ($type == 'delete') {
+            return '/' . $this->id . '/delete';
+        } else if ($type == 'delete-confirm') {
+            return '/' . $this->id . '/delete/confirm';
         }
-        throw new Exception('Unknown type');
+        throw new Exception('Unknown link type');
     }
 
 }

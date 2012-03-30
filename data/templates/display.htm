@@ -34,6 +34,14 @@
  </div>
 </div>
 {% endfor %}
+
+<div class="row-fluid" style="margin-top: 5ex">
+ <div class="span12" style="text-align: right;">
+  <a class="btn btn-warning" href="{{repo.getLink('delete')}}">
+   <i class="icon-trash icon-white"></i> Delete
+  </a>
+ </div>
+</div>
 {% endblock %}
 
 {% block sidebar %}
