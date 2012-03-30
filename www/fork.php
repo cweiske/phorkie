@@ -4,6 +4,11 @@
  */
 namespace Phorkie;
 require_once 'www-header.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    throw new Exception_Input('Forking only possible via POST');
+}
+
 $repo = new Repository();
 $repo->loadFromRequest();
 

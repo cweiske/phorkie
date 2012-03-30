@@ -17,7 +17,9 @@
   <h3>Paste #{{repo.id}}</h3>
  </div>
  <div class="span4" style="text-align: right">
-  <a class="btn" href="{{repo.getLink('fork')}}"><i class="icon-share"></i> fork</a>
+  <form method="post" action="{{repo.getLink('fork')}}">
+    <button type="submit" class="btn"><i class="icon-share"></i> fork</button>
+  </form>
  </div>
 </div>
 
