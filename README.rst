@@ -55,3 +55,6 @@ TODO
 - rst rendering
 - document how to keep disk usage low (block size)
 - comments
+- when 2 people edit, merge changes
+- diff changes
+- configurable highlights
