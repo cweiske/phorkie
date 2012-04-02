@@ -8,7 +8,9 @@
    <input type="text" name="description" id="description" value="{{description}}"/>
  </div>
 
- {% include 'edit-file.htm' with {'file': file[1], 'fileid': 1} %}
+ {% include 'edit-file.htm' with {'file': file[1], 'fileid': 0} %}
+
+ {% include 'edit-add.htm' %}
 
  <div class="well" style="text-align: right">
   <button class="btn btn-primary" type="submit">

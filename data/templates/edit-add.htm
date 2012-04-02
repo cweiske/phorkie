@@ -1,0 +1,23 @@
+ <div class="well" style="text-align: center; display:none" id="add-button">
+    <a class="btn" href="#">
+     <i class="icon-plus"></i>
+     Add file
+    </a>
+ </div>
+
+ {% include 'edit-file.htm' with {'file': '', 'fileid': 'new'} %}
+
+<script type="application/javascript">
+$(document).ready(function() {
+    $('#add-button').show();
+    $('#filegroupnew').hide();
+    $('#add-button a').bind('click', function() {
+        $('#add-button').before("{% filter escape('js') %}
+            {% include 'edit-file.htm' with {'file': '', 'fileid': '###'} %}
+            {% endfilter %}"
+            .replace(/###/g, $('.filegroup').length)
+        );
+        return false;
+    });
+});
+</script>

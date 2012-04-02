@@ -12,16 +12,7 @@
   {% include 'edit-file.htm' with {'file': file, 'fileid': fileid} %}
  {% endfor %}
 
-
- <div class="well" style="text-align: center; display:none" id="add-button">
-    <a class="btn" href="#">
-     <i class="icon-plus"></i>
-     Add file
-    </a>
- </div>
-
- {% include 'edit-file.htm' with {'file': '', 'fileid': 'new'} %}
-
+ {% include 'edit-add.htm' %}
 
  <div class="well">
   <div class="row-fluid">
@@ -38,18 +29,4 @@
  </div>
 
 </form>
-<script type="application/javascript">
-$(document).ready(function() {
-    $('#add-button').show();
-    $('#filegroupnew').hide();
-    $('#add-button a').bind('click', function() {
-        $('#add-button').before("{% filter escape('js') %}
-            {% include 'edit-file.htm' with {'file': '', 'fileid': '###'} %}
-            {% endfilter %}"
-            .replace(/###/g, $('.filegroup').length)
-        );
-        return false;
-    });
-});
-</script>
 {% endblock %}
