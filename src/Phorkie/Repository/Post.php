@@ -29,7 +29,12 @@ class Repository_Post
         $this->repo->setDescription($postData['description']);
 
         $bChanged = false;
-        foreach ($postData['files'] as $num => $arFile) {
+        foreach ($postData['files'] as $arFile) {
+            if ($arFile['content'] == '' && $arFile['name'] == '') {
+                //empty (new) file
+                continue;
+            }
+
             $orignalName = $this->sanitizeFilename($arFile['original_name']);
             $name        = $this->sanitizeFilename($arFile['name']);
 
