@@ -104,7 +104,7 @@ class File
          * Yes, geshi needs to be in your include path
          * We use the mediawiki geshi extension package.
          */
-        require 'MediaWiki/geshi/geshi/geshi.php';
+        require_once 'MediaWiki/geshi/geshi/geshi.php';
         $geshi = new \GeSHi($this->getContent(), $this->getType());
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
         $geshi->set_header_type(GESHI_HEADER_DIV);
