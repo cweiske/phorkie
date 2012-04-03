@@ -87,9 +87,13 @@ class Repository_Post
         $repo = $rs->createNew();
         $vc = $repo->getVc();
         $vc->initRepository();
+
         foreach (glob($repo->repoDir . '/.git/hooks/*') as $hookfile) {
             unlink($hookfile);
         }
+
+        touch($repo->repoDir . '/.git/git-daemon-export-ok');
+
         return $repo;
     }
 

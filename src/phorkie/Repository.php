@@ -152,6 +152,14 @@ class Repository
         throw new Exception('Unknown link type');
     }
 
+    public function getCloneURL($public = true)
+    {
+        $var = $public ? 'public' : 'private';
+        if (isset($GLOBALS['phorkie']['cfg']['git'][$var])) {
+            return $GLOBALS['phorkie']['cfg']['git'][$var] . $this->id . '/.git';
+        }
+        return null;
+    }
 }
 
 ?>
