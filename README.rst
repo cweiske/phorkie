@@ -23,6 +23,13 @@ Dependencies
 phorkie stands on the shoulders of giants.
 
 
+Install VersionControl_Git
+==========================
+::
+
+  $ pear install versioncontrol_git-alpha
+
+
 Install GeSHi
 =============
 ::
