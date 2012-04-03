@@ -13,6 +13,9 @@ Features
 ========
 - every paste is a git repository
 - paste editing
+
+  - add new files
+  - delete existing files
 - multiple files in one paste
 - syntax highlighting with GeSHi
 - rST rendering

@@ -14,5 +14,18 @@
    </div>
   </div>
   <textarea name="files[{{fileid}}][content]" id="content_{{fileid}}" cols="80" rows="15" class="content">{{file.getContent}}</textarea>
+  <div class="row-fluid">
+   <div class="span9">
+    &nbsp;
+    <!--
+    <label for="upload_{{fileid}}" class="inline">Replace with file upload:</label>
+    <input type="file" name="files[{{fileid}}][upload]" id="upload_{{fileid}}" class="btn"/>
+    -->
+   </div>
+   <div class="span3" style="text-align: right">
+    <input type="checkbox" name="files[{{fileid}}][delete]" value="1" id="delete_{{fileid}}"/>
+    <label for="delete_{{fileid}}" class="inline">delete file</label>
+   </div>
+  </div>
  </div>
 

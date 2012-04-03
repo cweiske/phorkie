@@ -44,6 +44,7 @@ class Repository_Post
             }
 
             $bNew = false;
+            $bDelete = false;
             if (!isset($orignalName) || $orignalName == '') {
                 //new file
                 $bNew = true;
@@ -51,6 +52,8 @@ class Repository_Post
                 //unknown file
                 //FIXME: Show error message
                 continue;
+            } else if (isset($arFile['delete']) && $arFile['delete'] == 1) {
+                $bDelete = true;
             } else if ($orignalName != $name) {
                 //FIXME: what to do with overwrites?
                 $vc->getCommand('mv')
@@ -61,7 +64,12 @@ class Repository_Post
             }
 
             $file = $this->repo->getFileByName($name, false);
-            if ($bNew || $file->getContent() != $arFile['content']) {
+            if ($bDelete) {
+                $command = $vc->getCommand('rm')
+                    ->addArgument($file->getFilename())
+                    ->execute();
+                $bChanged = true;
+            } else if ($bNew || $file->getContent() != $arFile['content']) {
                 file_put_contents($file->getPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())

@@ -63,3 +63,7 @@ form input#description {
     height: 2em;
     width: 100%;
 }
+
+form label.inline {
+    display: inline;
+}
