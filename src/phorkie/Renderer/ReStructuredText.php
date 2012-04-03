@@ -22,8 +22,9 @@ class Renderer_ReStructuredText
         );
         $process = proc_open('rst2html', $descriptorspec, $pipes);
         if (!is_resource($process)) {
-            //FIXME: fallback to geshi
-            return $file->getContent();
+            return '<div class="alert alert-error">'
+                . 'Cannot open process to execute rst2html'
+                . '</div>';
         }
 
         fwrite($pipes[0], $file->getContent());
@@ -44,7 +45,7 @@ class Renderer_ReStructuredText
         if ($retval != 0) {
             $html = '<div class="alert">'
                 . 'rst2html encountered some error; return value ' . $retval . '<br/>'
-                . 'Error message:' . $errors
+                . 'Error message: ' . $errors
                 . '</div>'
                 . $html;
         }
