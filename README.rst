@@ -1,6 +1,63 @@
 ************************************
 phorkie - PHP and Git based pastebin
 ************************************
+Self-hosted pastebin software written in PHP.
+Pastes are editable, may have multiple files and are stored in git repositories.
+
+Homepage: http://sourceforge.net/p/phorkie/
+
+
+========
+Features
+========
+- every paste is a git repository
+- paste editing
+- multiple files in one paste
+- syntax highlighting with GeSHi
+- rST rendering
+
+
+============
+Dependencies
+============
+phorkie stands on the shoulders of giants.
+
+
+Install GeSHi
+=============
+::
+
+  $ pear channel-discover mediawiki.googlecode.com/svn
+  $ pear install mediawiki/geshi
+
+Note that this version of GeSHi is a bit outdated, but it's the fastest
+way to install it.
+
+
+Install Twig
+============
+::
+
+  $ pear channel-discover pear.twig-project.org
+  $ pear install twig/Twig
+
+
+=================
+Technical details
+=================
+
+TODO
+====
+- search
+- OpenID-Login to get username+email as authorship information
+- sidebar: history
+- image upload
+- document how to keep disk usage low (block size)
+- comments
+- when 2 people edit, merge changes
+- diff changes
+- configurable highlights
+
 
 URLs
 ====
@@ -37,30 +94,5 @@ Search
 Use ``ack-grep``
 
 
-Install geshi
-=============
-::
-
-  $ pear channel-discover mediawiki.googlecode.com/svn
-  $ pear install mediawiki/geshi
 
 
-TODO
-====
-- search
-- OpenID-Login to get username+email as authorship information
-- sidebar: history
-- image upload
-- document how to keep disk usage low (block size)
-- comments
-- when 2 people edit, merge changes
-- diff changes
-- configurable highlights
-
-
-Features
-========
-- every paste is a git repository
-- rST rendering
-- paste editing
-- multiple files
