@@ -6,6 +6,7 @@ Pastes are editable, may have multiple files and are stored in git repositories.
 
 Homepage: http://sourceforge.net/p/phorkie/
 
+.. contents:: Table of Contents
 
 ========
 Features
@@ -47,6 +48,29 @@ Install Twig
 
   $ pear channel-discover pear.twig-project.org
   $ pear install twig/Twig
+
+
+=====
+HowTo
+=====
+
+Make git repositories clonable
+==============================
+To make git repositories clonable, you need to install ``git-daemon``
+(``git-daemon-run`` package on Debian/Ubuntu).
+
+Now make the repositories available by symlinking the paste repository
+directory (``$GLOBALS['phorkie']['cfg']['repos']`` setting) into
+``/var/cache/git``, e.g.::
+
+  $ ln -s /home/user/www/paste/repos /var/cache/git/paste
+
+Edit your ``config.php`` and set the ``$GLOBALS['phorkie']['cfg']['git']['public']``
+setting to ``git://$yourhostname/git/paste/``.
+The rest will be appended automatically.
+
+
+You're on your own to setup writable repositories.
 
 
 =================
