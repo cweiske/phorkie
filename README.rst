@@ -1,5 +1,5 @@
 ************************************
-Phorkie - PHP and Git based pastebin
+phorkie - PHP and Git based pastebin
 ************************************
 
 URLs

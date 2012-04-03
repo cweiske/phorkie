@@ -1,5 +1,5 @@
 <?php
-namespace Phorkie;
+namespace phorkie;
 
 /**
  * Input from e.g. the URL is invalid, like a non-numeric string when one was

@@ -1,5 +1,5 @@
 <?php
-namespace Phorkie;
+namespace phorkie;
 
 /**
  * Something could not be found

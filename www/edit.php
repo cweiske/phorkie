@@ -1,5 +1,5 @@
 <?php
-namespace Phorkie;
+namespace phorkie;
 /**
  * Edit paste contents
  */

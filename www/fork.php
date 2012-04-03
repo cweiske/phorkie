@@ -2,7 +2,7 @@
 /**
  * Fork a repository
  */
-namespace Phorkie;
+namespace phorkie;
 require_once 'www-header.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

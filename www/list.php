@@ -2,7 +2,7 @@
 /**
  * Fork a repository
  */
-namespace Phorkie;
+namespace phorkie;
 require_once 'www-header.php';
 $rs = new Repositories();
 

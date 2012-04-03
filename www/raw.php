@@ -2,7 +2,7 @@
 /**
  * Displays a file
  */
-namespace Phorkie;
+namespace phorkie;
 require_once 'www-header.php';
 $repo = new Repository();
 $repo->loadFromRequest();
