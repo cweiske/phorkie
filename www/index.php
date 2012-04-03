@@ -20,5 +20,12 @@ if ($repopo->process($_POST)) {
 $phork = array(
     '1' => new File(null, null)
 );
-render('index', array('files' => $phork, 'description' => ''));
+render(
+    'index',
+    array(
+        'files' => $phork,
+        'description' => '',
+        'htmlhelper' => new HtmlHelper(),
+    )
+);
 ?>

@@ -17,6 +17,7 @@ render(
     'edit',
     array(
         'repo' => $repo,
+        'htmlhelper' => new HtmlHelper(),
     )
 );
 ?>

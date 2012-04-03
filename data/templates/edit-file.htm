@@ -9,9 +9,7 @@
     <label for="type_{{fileid}}">Type</label>
     <!-- fixme: preselect -->
     <select name="files[{{fileid}}][type]" id="type_{{fileid}}">
-     <option value="css">CSS</option>
-     <option value="php">PHP</option>
-     <option value="xml">XML</option>
+     {{htmlhelper.getLanguageOptions(file)|raw}}
     </select>
    </div>
   </div>
