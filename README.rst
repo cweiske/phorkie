@@ -47,14 +47,20 @@ Install geshi
 
 TODO
 ====
-- edit
 - search
 - OpenID-Login to get username+email as authorship information
 - sidebar: history
 - image upload
-- rst rendering
 - document how to keep disk usage low (block size)
 - comments
 - when 2 people edit, merge changes
 - diff changes
 - configurable highlights
+
+
+Features
+========
+- every paste is a git repository
+- rST rendering
+- paste editing
+- multiple files

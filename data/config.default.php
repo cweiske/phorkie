@@ -45,6 +45,12 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'text/x-php',
         'geshi' => 'php'
     ),
+    'rst' => array(
+        'title' => 'reStructuredText',
+        'mime'  => 'text/x-rst',
+        'geshi' => 'rst',
+        'renderer' => '\\phorkie\\Renderer_ReStructuredText',
+    ),
     'sh' => array(
         'title' => 'Shell script (Bash)',
         'mime'  => 'text/x-shellscript',

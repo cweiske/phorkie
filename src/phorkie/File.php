@@ -60,15 +60,14 @@ class File
 
     public function getHighlightedContent()
     {
-        /**
-         * Yes, geshi needs to be in your include path
-         * We use the mediawiki geshi extension package.
-         */
-        require_once 'MediaWiki/geshi/geshi/geshi.php';
-        $geshi = new \GeSHi($this->getContent(), $this->getGeshiType());
-        $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-        $geshi->set_header_type(GESHI_HEADER_DIV);
-        return $geshi->parse_code();
+        $ext = $this->getExt();
+        if (isset($GLOBALS['phorkie']['languages'][$ext]['renderer'])) {
+            $class = $GLOBALS['phorkie']['languages'][$ext]['renderer'];
+        } else {
+            $class = '\\phorkie\\Renderer_Geshi';
+        }
+        $rend = new $class();
+        return $rend->toHtml($this);
     }
 
     /**
@@ -86,21 +85,6 @@ class File
             return '/' . $this->repo->id . '/raw/' . $this->getFilename();
         }
         throw new Exception('Unknown type');
-    }
-
-    /**
-     * Returns the type of the file, as used by Geshi
-     *
-     * @return string
-     */
-    public function getGeshiType()
-    {
-        $ext = $this->getExt();
-        if (isset($GLOBALS['phorkie']['languages'][$ext]['geshi'])) {
-            $ext = $GLOBALS['phorkie']['languages'][$ext]['geshi'];
-        }
-
-        return $ext;
     }
 
     public function getMimeType()
