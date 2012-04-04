@@ -1,13 +1,11 @@
  <div class="well filegroup" id="filegroup{{fileid}}">
   <div class="row-fluid">
    <div class="span6">
-    <label for="filename_1">Filename</label>
     <input type="hidden" name="files[{{fileid}}][original_name]" value="{{file.getFilename}}"/>
-    <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}"/>
+    <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}" placeholder="Filename"/>
    </div>
-   <div class="span6" style="text-align: right">
-    <label for="type_{{fileid}}">Type</label>
-    <!-- fixme: preselect -->
+   <div class="span6 typeselect" style="text-align: right" id="typeselect_{{fileid}}">
+    <label for="type_{{fileid}}" class="inline">Type</label>
     <select name="files[{{fileid}}][type]" id="type_{{fileid}}">
      {{htmlhelper.getLanguageOptions(file)|raw}}
     </select>
