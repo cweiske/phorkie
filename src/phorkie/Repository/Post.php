@@ -48,6 +48,10 @@ class Repository_Post
             if (!isset($orignalName) || $orignalName == '') {
                 //new file
                 $bNew = true;
+                if (strpos($name, '.') === false) {
+                    //automatically append file extension if none is there
+                    $name .= '.' . $arFile['type'];
+                }
             } else if (!$this->repo->hasFile($orignalName)) {
                 //unknown file
                 //FIXME: Show error message
