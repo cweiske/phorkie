@@ -22,10 +22,12 @@
     <input type="file" name="files[{{fileid}}][upload]" id="upload_{{fileid}}" class="btn"/>
     -->
    </div>
+   {% if not newfile %}
    <div class="span3" style="text-align: right">
     <input type="checkbox" name="files[{{fileid}}][delete]" value="1" id="delete_{{fileid}}"/>
     <label for="delete_{{fileid}}" class="inline">delete file</label>
    </div>
+   {% endif %}
   </div>
  </div>
 

@@ -9,7 +9,7 @@
  </div>
 
  {% for fileid, file in repo.getFiles %}
-  {% include 'edit-file.htm' with {'file': file, 'fileid': fileid} %}
+  {% include 'edit-file.htm' with {'file': file, 'fileid': fileid, 'newfile': false} %}
  {% endfor %}
 
  {% include 'edit-add.htm' %}
