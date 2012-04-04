@@ -56,6 +56,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'text/x-shellscript',
         'geshi' => 'bash'
     ),
+    'sql' => array(
+        'title' => 'SQL',
+        'mime'  => 'text/x-sql',
+        'geshi' => 'sql'
+    ),
     'ts' => array(
         'title' => 'TypoScript',
         'mime'  => 'text/plain',/* TODO: correct type */
