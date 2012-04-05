@@ -21,8 +21,11 @@ a.anchorlink {
 }
 .navbar .brand {
     /*float: right;*/
-    color: yellow;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+    color: #DDA;
+    text-shadow: 0 0 30px rgba(255, 255, 255, .9);
+}
+.navbar .brand:hover {
+    color: #FFA;
 }
 
 .file {
