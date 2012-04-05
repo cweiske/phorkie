@@ -17,11 +17,8 @@
   <textarea name="files[{{fileid}}][content]" id="content_{{fileid}}" cols="80" rows="15" class="content">{{file.getContent}}</textarea>
   <div class="row-fluid">
    <div class="span9">
-    &nbsp;
-    <!--
-    <label for="upload_{{fileid}}" class="inline">Replace with file upload:</label>
+    <label for="upload_{{fileid}}" class="inline">Replace with upload:</label>
     <input type="file" name="files[{{fileid}}][upload]" id="upload_{{fileid}}" class="btn"/>
-    -->
    </div>
    {% if not newfile %}
    <div class="span3" style="text-align: right">

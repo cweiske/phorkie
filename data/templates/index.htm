@@ -2,7 +2,7 @@
 {% block title %}New paste{% endblock %}
 
 {% block content %}
-<form method="post" action="/">
+<form method="post" action="/" enctype="multipart/form-data">
  <div class="control-group well pastedata">
    <label for="description">Description</label>
    <input type="text" name="description" id="description" value="{{description}}"/>

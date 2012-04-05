@@ -29,8 +29,12 @@ class Repository_Post
         $this->repo->setDescription($postData['description']);
 
         $bChanged = false;
-        foreach ($postData['files'] as $arFile) {
-            if ($arFile['content'] == '' && $arFile['name'] == '') {
+        foreach ($postData['files'] as $num => $arFile) {
+            $bUpload = false;
+            if ($_FILES['files']['error'][$num]['upload'] == 0) {
+                //valid file upload
+                $bUpload = true;
+            } else if ($arFile['content'] == '' && $arFile['name'] == '') {
                 //empty (new) file
                 continue;
             }
@@ -39,8 +43,12 @@ class Repository_Post
             $name        = $this->sanitizeFilename($arFile['name']);
 
             if ($name == '') {
-                $name = $this->getNextNumberedFile('phork')
-                    . '.' . $arFile['type'];
+                if ($bUpload) {
+                    $name = $this->sanitizeFilename($_FILES['files']['name'][$num]['upload']);
+                } else {
+                    $name = $this->getNextNumberedFile('phork')
+                        . '.' . $arFile['type'];
+                }
             }
 
             $bNew = false;
@@ -70,6 +78,14 @@ class Repository_Post
             $file = $this->repo->getFileByName($name, false);
             if ($bDelete) {
                 $command = $vc->getCommand('rm')
+                    ->addArgument($file->getFilename())
+                    ->execute();
+                $bChanged = true;
+            } else if ($bUpload) {
+                move_uploaded_file(
+                    $_FILES['files']['tmp_name'][$num]['upload'], $file->getPath()
+                );
+                $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bChanged = true;
