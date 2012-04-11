@@ -1,5 +1,6 @@
 <?php
 $GLOBALS['phorkie']['cfg'] = array(
+    'debug'   => false,
     'gitdir'  => __DIR__ . '/../repos/git/',
     'workdir' => __DIR__ . '/../repos/work/',
     'tpl'     => __DIR__ . '/templates/',

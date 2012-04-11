@@ -21,7 +21,13 @@ set_exception_handler(
         } else {
             header('HTTP/1.0 500 Internal server error');
         }
-        render('exception', array('exception' => $e));
+        render(
+            'exception',
+            array(
+                'exception' => $e,
+                'debug'     => $GLOBALS['phorkie']['cfg']['debug']
+            )
+        );
         exit();
     }
 );
