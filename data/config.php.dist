@@ -1,5 +1,6 @@
 <?php
-//$GLOBALS['phorkie']['cfg']['repos'] = '/var/cache/git/paste/';
+//$GLOBALS['phorkie']['cfg']['gitdir']  = '/var/cache/git/paste/git/';
+//$GLOBALS['phorkie']['cfg']['workdir'] = '/var/cache/git/paste/work/';
 //$GLOBALS['phorkie']['cfg']['git']['public'] = 'git://bogo/git/paste/';
 //$GLOBALS['phorkie']['cfg']['git']['private'] = 'ssh://git@bogo:paste/';
 ?>

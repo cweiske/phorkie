@@ -1,8 +1,9 @@
 <?php
 $GLOBALS['phorkie']['cfg'] = array(
-    'repos' => __DIR__ . '/../repos/',
-    'tpl'   => __DIR__ . '/templates/',
-    'css'   => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
+    'gitdir'  => __DIR__ . '/../repos/git/',
+    'workdir' => __DIR__ . '/../repos/work/',
+    'tpl'     => __DIR__ . '/templates/',
+    'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
 );
 /**
  * Array of supported file types / languages.

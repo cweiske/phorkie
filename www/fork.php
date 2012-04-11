@@ -14,13 +14,18 @@ $repo->loadFromRequest();
 
 $rs = new Repositories();
 $new = $rs->createNew();
-$new->getVc()->getCommand('clone')
-    ->addArgument($repo->repoDir)
-    ->addArgument($new->repoDir)
+$vc = $new->getVc();
+\rmdir($new->gitDir);//VersionControl_Git wants an existing dir, git clone not
+$vc->getCommand('clone')
+    //this should be setOption, but it fails with a = between name and value
+    ->addArgument('--separate-git-dir')
+    ->addArgument($GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $new->id . '.git')
+    ->addArgument($repo->gitDir)
+    ->addArgument($new->workDir)
     ->execute();
-\copy($repo->repoDir . '/.git/description', $new->repoDir . '/.git/description');
-foreach (glob($new->repoDir . '/.git/hooks/*') as $hookfile) {
-    unlink($hookfile);
+\copy($repo->gitDir . '/description', $new->gitDir . '/description');
+foreach (\glob($new->gitDir . '/hooks/*') as $hookfile) {
+    \unlink($hookfile);
 }
 
 //FIXME: where to put fork source link?

@@ -12,11 +12,18 @@ class Repository
     public $id;
 
     /**
-     * Full path to the git repository
+     * Full path to the .git repository
      *
      * @var string
      */
-    public $repoDir;
+    public $gitDir;
+
+    /**
+     * Full path to the work tree directory
+     *
+     * @var string
+     */
+    public $workDir;
 
     /**
      * Load Repository data from GET-Request
@@ -34,12 +41,26 @@ class Repository
             throw new Exception_Input('Paste ID not numeric');
         }
         $this->id = (int)$_GET['id'];
+        $this->loadDirs();
+    }
 
-        $repoDir = $GLOBALS['phorkie']['cfg']['repos'] . '/' . $this->id;
-        if (!is_dir($repoDir)) {
-            throw new Exception_NotFound('Paste not found');
+    protected function loadDirs()
+    {
+        $gitDir = $GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $this->id . '.git';
+        if (!is_dir($gitDir)) {
+            throw new Exception_NotFound(
+                sprintf('Paste %d .git dir not found', $this->id)
+            );
         }
-        $this->repoDir = $repoDir;
+        $this->gitDir = $gitDir;
+
+        $workDir = $GLOBALS['phorkie']['cfg']['workdir'] . '/' . $this->id;
+        if (!is_dir($workDir)) {
+            throw new Exception_NotFound(
+                sprintf('Paste %d work dir not found', $this->id)
+            );
+        }
+        $this->workDir = $workDir;
     }
 
     public function loadById($id)
@@ -48,17 +69,12 @@ class Repository
             throw new Exception_Input('Paste ID not numeric');
         }
         $this->id = (int)$id;
-
-        $repoDir = $GLOBALS['phorkie']['cfg']['repos'] . '/' . $this->id;
-        if (!is_dir($repoDir)) {
-            throw new Exception_NotFound('Paste not found');
-        }
-        $this->repoDir = $repoDir;
+        $this->loadDirs();
     }
 
     public function getVc()
     {
-        return new \VersionControl_Git($this->repoDir);
+        return new \VersionControl_Git($this->gitDir);
     }
 
     /**
@@ -68,7 +84,7 @@ class Repository
      */
     public function getFiles()
     {
-        $files = glob($this->repoDir . '/*');
+        $files = glob($this->workDir . '/*');
         $arFiles = array();
         foreach ($files as $path) {
             $arFiles[] = new File($path, $this);
@@ -85,7 +101,7 @@ class Repository
         if ($name == '') {
             throw new Exception_Input('Empty file name given');
         }
-        $path = $this->repoDir . '/' . $base;
+        $path = $this->workDir . '/' . $base;
         if ($bHasToExist && !is_readable($path)) {
             throw new Exception_Input('File does not exist');
         }
@@ -110,20 +126,21 @@ class Repository
      */
     public function delete()
     {
-        return Tools::recursiveDelete($this->repoDir);
+        return Tools::recursiveDelete($this->workDir)
+            && Tools::recursiveDelete($this->gitDir);
     }
 
     public function getDescription()
     {
-        if (!is_readable($this->repoDir . '/.git/description')) {
+        if (!is_readable($this->gitDir . '/description')) {
             return null;
         }
-        return file_get_contents($this->repoDir . '/.git/description');
+        return file_get_contents($this->gitDir . '/description');
     }
 
     public function setDescription($description)
     {
-        file_put_contents($this->repoDir . '/.git/description', $description);
+        file_put_contents($this->gitDir . '/description', $description);
     }
 
     /**

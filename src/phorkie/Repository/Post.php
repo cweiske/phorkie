@@ -114,13 +114,19 @@ class Repository_Post
         $rs = new Repositories();
         $repo = $rs->createNew();
         $vc = $repo->getVc();
-        $vc->initRepository();
+        //$vc->initRepository();
+        $vc->getCommand('init')
+            //this should be setOption, but it fails with a = between name and value
+            ->addArgument('--separate-git-dir')
+            ->addArgument($GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $repo->id)
+            ->addArgument($repo->workDir)
+            ->execute();
 
-        foreach (glob($repo->repoDir . '/.git/hooks/*') as $hookfile) {
+        foreach (glob($repo->gitDir . '/hooks/*') as $hookfile) {
             unlink($hookfile);
         }
 
-        touch($repo->repoDir . '/.git/git-daemon-export-ok');
+        touch($repo->gitDir . '/git-daemon-export-ok');
 
         return $repo;
     }
@@ -130,7 +136,7 @@ class Repository_Post
         $num = -1;
         do {
             ++$num;
-            $files = glob($this->repo->repoDir . '/' . $prefix . $num . '.*');
+            $files = glob($this->repo->workDir . '/' . $prefix . $num . '.*');
         } while (count($files));
 
         return $prefix . $num;

@@ -5,7 +5,8 @@ class Repositories
 {
     public function __construct()
     {
-        $this->reposDir = $GLOBALS['phorkie']['cfg']['repos'];
+        $this->workDir = $GLOBALS['phorkie']['cfg']['workdir'];
+        $this->gitDir  = $GLOBALS['phorkie']['cfg']['gitdir'];
     }
 
     /**
@@ -13,17 +14,21 @@ class Repositories
      */
     public function createNew()
     {
-        chdir($this->reposDir);
-        $dirs = glob('*', GLOB_ONLYDIR);
+        chdir($this->gitDir);
+        $dirs = glob('*.git', GLOB_ONLYDIR);
+        array_walk($dirs, function ($dir) { return substr($dir, 0, -4); });
         sort($dirs, SORT_NUMERIC);
         $n = end($dirs) + 1;
-        unset($dirs);
 
-        $dir = $this->reposDir . '/' . $n . '/'; 
+        chdir($this->workDir);
+        $dir = $this->workDir . '/' . $n . '/';
         mkdir($dir, 0777);//FIXME
         $r = new Repository();
         $r->id = $n;
-        $r->repoDir = $dir;
+        $r->workDir = $dir;
+        $r->gitDir = $this->gitDir . '/' . $n . '.git/';
+        mkdir($r->gitDir, 0777);//FIXME
+
         return $r;
     }
 
@@ -37,15 +42,15 @@ class Repositories
      */
     public function getList($page = 0, $perPage = 10)
     {
-        chdir($this->reposDir);
-        $dirs = glob('*', GLOB_ONLYDIR);
+        chdir($this->gitDir);
+        $dirs = glob('*.git', GLOB_ONLYDIR);
         sort($dirs, SORT_NUMERIC);
 
         $some = array_slice($dirs, $page * $perPage, $perPage);
         $repos = array();
         foreach ($some as $oneDir) {
             $r = new Repository();
-            $r->loadById($oneDir);
+            $r->loadById(substr($oneDir, 0, -4));
             $repos[] = $r;
         }
         return $repos;
