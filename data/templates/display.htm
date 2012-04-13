@@ -8,61 +8,13 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{repo.getDescription}}</h1>
-<div class="row-fluid">
- <div class="span4">
-  <a class="btn" href="{{repo.getLink('edit')}}"><i class="icon-edit"></i> edit</a>
- </div>
- <div class="span4" style="text-align: center">
-  <h3>Paste #{{repo.id}}</h3>
- </div>
- <div class="span4" style="text-align: right">
-  <form method="post" action="{{repo.getLink('fork')}}">
-    <button type="submit" class="btn"><i class="icon-share"></i> fork</button>
-  </form>
- </div>
-</div>
-
-{% if repo.getCloneURL(true) or repo.getCloneURL(false) %}
-<div class="well">
- {% if repo.getCloneURL(true) %}
- <div class="row-fluid">
-  <div class="span3">Public clone URL</div>
-  <div class="span9">
-   <a href="{{repo.getCloneURL(true)}}">{{repo.getCloneURL(true)}}</a>
-  </div>
- </div>
- {% endif %}
- {% if repo.getCloneURL(false) %}
- <div class="row-fluid">
-  <div class="span3">Private clone URL</div>
-  <div class="span9">
-   <a href="{{repo.getCloneURL(false)}}">{{repo.getCloneURL(false)}}</a>
-  </div>
- </div>
- {% endif %}
-</div>
-{% endif %}
+ {% include 'display-head.htm' %}
 
 {% for file in repo.getFiles %}
-<div class="file">
- <div class="header">
-  <a class="btn btn-mini" href="{{file.getLink('raw')}}" style="float: right;">raw</a>
-  <h3 id="{{file.getFilename}}">{{file.getFilename}}<a class="anchorlink" href="#{{file.getFilename}}"></a></h3>
- </div>
- <div class="code">
-  {{file.getHighlightedContent|raw}}
- </div>
-</div>
+ {% include 'display-file.htm' %}
 {% endfor %}
 
-<div class="row-fluid" style="margin-top: 5ex">
- <div class="span12" style="text-align: right;">
-  <a class="btn" href="{{repo.getLink('delete')}}">
-   <i class="icon-trash"></i> Delete
-  </a>
- </div>
-</div>
+ {% include 'display-foot.htm' %}
 {% endblock %}
 
 {% block sidebar %}

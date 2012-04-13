@@ -1,0 +1,44 @@
+{% extends "base.htm" %}
+{% block title %}
+ Tool results: 
+ {%if repo.getDescription %}
+  {{repo.getDescription}}
+ {%else%}
+  {{repo.id}}
+ {%endif%}
+{% endblock %}
+
+{% block content %}
+<h1>Tool results:  {{repo.getDescription}}</h1>
+<div class="row-fluid repo-info">
+ <div class="span4">
+  <a class="btn" href="{{repo.getLink('edit')}}"><i class="icon-edit"></i> edit</a>
+  <a class="btn" href="{{repo.getLink('display')}}"><i class="icon-arrow-left"></i> back</a>
+ </div>
+ <div class="span4" style="text-align: center">
+  <h3>Paste #{{repo.id}}</h3>
+ </div>
+</div>
+
+ {% for line in toolres.annotations.general %}
+  <div class="alert {{line.getAlertLevel}}">
+   {{line.message}}
+  </div>
+ {% endfor %}
+
+ {% include 'display-file.htm' %}
+
+ {% for number,lineinfos in toolres.annotations if number != 'general' %}
+  {% for line in lineinfos %}
+   <div class="alert {{line.getAlertLevel}}">
+    Line #{{number}}: {{line.message}}
+   </div>
+  {% endfor %}
+ {% endfor %}
+
+ {% include 'display-foot.htm' %}
+{% endblock %}
+
+{% block sidebar %}
+sidebar FIXME
+{% endblock %}

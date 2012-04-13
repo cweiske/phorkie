@@ -6,6 +6,9 @@ $GLOBALS['phorkie']['cfg'] = array(
     'tpl'     => __DIR__ . '/templates/',
     'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
 );
+$GLOBALS['phorkie']['tools'] = array(
+    '\\phorkie\\Tool_Xmllint'
+);
 /**
  * Array of supported file types / languages.
  * Key is the file extension

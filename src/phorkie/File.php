@@ -75,14 +75,17 @@ class File
      *
      * @param string $type Link type. Supported are:
      *                     - "raw"
-     *                     - "display"
+     *                     - "tool"
+     * @param string $option
      *
      * @return string
      */
-    public function getLink($type)
+    public function getLink($type, $option = null)
     {
         if ($type == 'raw') {
             return '/' . $this->repo->id . '/raw/' . $this->getFilename();
+        } else if ($type == 'tool') {
+            return '/' . $this->repo->id . '/tool/' . $option . '/' . $this->getFilename();
         }
         throw new Exception('Unknown type');
     }
@@ -94,6 +97,15 @@ class File
             return null;
         }
         return $GLOBALS['phorkie']['languages'][$ext]['mime'];
+    }
+
+    /**
+     * @return array Array of Tool_Info objects
+     */
+    public function getToolInfos()
+    {
+        $tm = new Tool_Manager();
+        return $tm->getSuitable($this);
     }
 }
 

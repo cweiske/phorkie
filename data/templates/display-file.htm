@@ -1,0 +1,12 @@
+<div class="file">
+ <div class="header">
+  <a class="btn btn-mini" href="{{file.getLink('raw')}}" style="float: right;">raw</a>
+  {% for toolinfo in file.getToolInfos %}
+  <a class="btn btn-mini" href="{{toolinfo.getLink(file)}}" style="float: right;">{{toolinfo.getTitle}}</a>
+  {% endfor %}
+  <h3 id="{{file.getFilename}}">{{file.getFilename}}<a class="anchorlink" href="#{{file.getFilename}}"></a></h3>
+ </div>
+ <div class="code">
+  {{file.getHighlightedContent|raw}}
+ </div>
+</div>
