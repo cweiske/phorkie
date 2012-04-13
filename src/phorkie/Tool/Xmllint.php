@@ -27,8 +27,8 @@ class Tool_Xmllint
             if (substr($line, 0, $fpathlen) != $fpath) {
                 throw new Exception('xmllint does not behave as expected: ' . $line);
             }
-            list($line, $msg) = explode(':', substr($line, $fpathlen + 1), 2);
-            $res->annotations[$line][] = new Tool_Result_Line(
+            list($linenum, $msg) = explode(':', substr($line, $fpathlen + 1), 2);
+            $res->annotations[$linenum][] = new Tool_Result_Line(
                 $msg, 'error'
             );
         }
