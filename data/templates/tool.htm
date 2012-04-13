@@ -28,6 +28,7 @@
 
  {% include 'display-file.htm' %}
 
+ <div class="annotations">
  {% for number,lineinfos in toolres.annotations if number != 'general' %}
   {% for line in lineinfos %}
    <div class="alert {{line.getAlertLevel}}">
@@ -35,6 +36,7 @@
    </div>
   {% endfor %}
  {% endfor %}
+ </div>
 
  {% include 'display-foot.htm' %}
 {% endblock %}

@@ -48,6 +48,12 @@ h1 {
 .file .code {
     margin-left: 2em;
 }
+
+div.annotations div.alert {
+    margin-bottom: 1ex;
+}
+
+
 ul.pager {
     margin-top: 2ex;
 }
