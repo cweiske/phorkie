@@ -118,7 +118,7 @@ class Repository_Post
             //this should be setOption, but it fails with a = between name and value
             ->addArgument('--separate-git-dir')
             ->addArgument($GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $repo->id . '.git')
-            ->addArgument($repo->workDir);
+            ->addArgument($repo->workDir)
             ->execute();
 
         foreach (glob($repo->gitDir . '/hooks/*') as $hookfile) {
