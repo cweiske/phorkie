@@ -67,12 +67,17 @@ class Repository_Post
             } else if (isset($arFile['delete']) && $arFile['delete'] == 1) {
                 $bDelete = true;
             } else if ($orignalName != $name) {
-                //FIXME: what to do with overwrites?
-                $vc->getCommand('mv')
-                    ->addArgument($orignalName)
-                    ->addArgument($name)
-                    ->execute();
-                $bChanged = true;
+                if (strpos($name, '/') === false) {
+                    //ignore names with a slash in it, would be new directory
+                    //FIXME: what to do with overwrites?
+                    $vc->getCommand('mv')
+                        ->addArgument($orignalName)
+                        ->addArgument($name)
+                        ->execute();
+                    $bChanged = true;
+                } else {
+                    $name = $orignalName;
+                }
             }
 
             $file = $this->repo->getFileByName($name, false);
