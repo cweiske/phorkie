@@ -45,6 +45,9 @@ h1 {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+.file .header .btn-mini {
+    margin-left: 2px;
+}
 .file .code {
     margin-left: 2em;
 }
