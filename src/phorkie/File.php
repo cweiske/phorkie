@@ -58,7 +58,7 @@ class File
         return file_get_contents($this->path);
     }
 
-    public function getHighlightedContent()
+    public function getHighlightedContent(Tool_Result $res = null)
     {
         $ext = $this->getExt();
         if (isset($GLOBALS['phorkie']['languages'][$ext]['renderer'])) {
@@ -67,7 +67,7 @@ class File
             $class = '\\phorkie\\Renderer_Geshi';
         }
         $rend = new $class();
-        return $rend->toHtml($this);
+        return $rend->toHtml($this, $res);
     }
 
     /**

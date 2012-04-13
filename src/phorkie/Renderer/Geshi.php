@@ -6,11 +6,12 @@ class Renderer_Geshi
     /**
      * Converts the code to HTML
      *
-     * @param File $file File to render
+     * @param File        $file File to render
+     * @param Tool_Result $res  Tool result to integrate
      *
      * @return string HTML
      */
-    public function toHtml(File $file)
+    public function toHtml(File $file, Tool_Result $res = null)
     {
         /**
          * Yes, geshi needs to be in your include path
@@ -20,6 +21,12 @@ class Renderer_Geshi
         $geshi = new \GeSHi($file->getContent(), $this->getType($file));
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
         $geshi->set_header_type(GESHI_HEADER_DIV);
+
+        if ($res !== null) {
+            $geshi->highlight_lines_extra(array_keys($res->annotations));
+            $geshi->set_highlight_lines_extra_style('background-color: #F2DEDE');
+        }
+
         return $geshi->parse_code();
     }
 
