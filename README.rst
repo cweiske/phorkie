@@ -12,14 +12,22 @@ Homepage: http://sourceforge.net/p/phorkie/
 Features
 ========
 - every paste is a git repository
+
+  - repositories can be cloned
+  - clone url can be displayed
 - paste editing
 
   - add new files
   - delete existing files
+  - replace file with upload
 - multiple files in one paste
 - syntax highlighting with GeSHi
 - rST rendering
+- image upload + display
+- external tool support
 
+  - xmllint
+  - php syntax check
 
 ============
 Dependencies
@@ -85,7 +93,6 @@ TODO
 - search
 - OpenID-Login to get username+email as authorship information
 - sidebar: history
-- image upload
 - document how to keep disk usage low (block size)
 - comments
 - when 2 people edit, merge changes
