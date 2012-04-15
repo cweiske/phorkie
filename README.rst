@@ -124,10 +124,13 @@ Internal directory layout
 ::
 
   repos/
-    1/ - git repository for paste #1
-      .git/
+    work/
+      1/ - work directory for paste #1
+      2/ - work directory for paste #2
+    git/
+      1.git/ - git repository for paste #1
         description - Description for the repository
-    2/ - git repository for paste #2
+      2.git/ - git repository for paste #2
 
 
 Search
