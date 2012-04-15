@@ -94,7 +94,7 @@ class Repository_Post
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bChanged = true;
-            } else if ($bNew || $file->getContent() != $arFile['content']) {
+            } else if ($bNew || (isset($arFile['content']) && $file->getContent() != $arFile['content'])) {
                 file_put_contents($file->getPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())

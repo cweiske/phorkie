@@ -115,6 +115,22 @@ class File
         $tm = new Tool_Manager();
         return $tm->getSuitable($this);
     }
+
+    /**
+     * Tells if the file contains textual content and is editable.
+     *
+     * @return boolean
+     */
+    public function isText()
+    {
+        $ext = $this->getExt();
+        if (!isset($GLOBALS['phorkie']['languages'][$ext]['mime'])) {
+            return false;
+        }
+
+        $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
+        return substr($type, 0, 5) === 'text/';
+    }
 }
 
 ?>
