@@ -173,7 +173,7 @@ class Repository
     {
         $var = $public ? 'public' : 'private';
         if (isset($GLOBALS['phorkie']['cfg']['git'][$var])) {
-            return $GLOBALS['phorkie']['cfg']['git'][$var] . $this->id . '/.git';
+            return $GLOBALS['phorkie']['cfg']['git'][$var] . $this->id . '.git';
         }
         return null;
     }

@@ -66,7 +66,7 @@ Now make the repositories available by symlinking the paste repository
 directory (``$GLOBALS['phorkie']['cfg']['repos']`` setting) into
 ``/var/cache/git``, e.g.::
 
-  $ ln -s /home/user/www/paste/repos /var/cache/git/paste
+  $ ln -s /home/user/www/paste/repos/git /var/cache/git/paste
 
 Edit your ``config.php`` and set the ``$GLOBALS['phorkie']['cfg']['git']['public']``
 setting to ``git://$yourhostname/git/paste/``.
