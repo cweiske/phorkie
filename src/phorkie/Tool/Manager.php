@@ -8,7 +8,7 @@ class Tool_Manager
     {
         $ext = $file->getExt();
         $suitables = array();
-        foreach ($GLOBALS['phorkie']['tools'] as $class) {
+        foreach ($GLOBALS['phorkie']['tools'] as $class => $arSetup) {
             if (array_search($ext, $class::$arSupportedExtensions) !== false) {
                 $suitables[] = new Tool_Info($class);
             }

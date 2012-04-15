@@ -7,8 +7,8 @@ $GLOBALS['phorkie']['cfg'] = array(
     'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
 );
 $GLOBALS['phorkie']['tools'] = array(
-    '\\phorkie\\Tool_Xmllint',
-    '\\phorkie\\Tool_PHPlint',
+    '\\phorkie\\Tool_Xmllint' => true,
+    '\\phorkie\\Tool_PHPlint' => true,
 );
 /**
  * Array of supported file types / languages.
