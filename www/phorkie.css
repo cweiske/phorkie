@@ -51,6 +51,9 @@ h1 {
 .file .code {
     margin-left: 2em;
 }
+.file .image {
+    margin-bottom: 2ex;
+}
 
 div.annotations div.alert {
     margin-bottom: 1ex;
