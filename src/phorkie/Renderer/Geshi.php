@@ -27,7 +27,9 @@ class Renderer_Geshi
             $geshi->set_highlight_lines_extra_style('background-color: #F2DEDE');
         }
 
-        return $geshi->parse_code();
+        return '<div class="code">'
+            . $geshi->parse_code()
+            . '</div>';
     }
 
     /**
