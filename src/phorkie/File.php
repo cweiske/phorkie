@@ -58,14 +58,22 @@ class File
         return file_get_contents($this->path);
     }
 
-    public function getHighlightedContent(Tool_Result $res = null)
+    public function getRenderedContent(Tool_Result $res = null)
     {
-        $ext = $this->getExt();
+        $ext   = $this->getExt();
+        $class = '\\phorkie\\Renderer_Unknown';
+
         if (isset($GLOBALS['phorkie']['languages'][$ext]['renderer'])) {
             $class = $GLOBALS['phorkie']['languages'][$ext]['renderer'];
-        } else {
-            $class = '\\phorkie\\Renderer_Geshi';
+        } else if (isset($GLOBALS['phorkie']['languages'][$ext]['mime'])) {
+            $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
+            if (substr($type, 0, 5) == 'text/') {
+                $class = '\\phorkie\\Renderer_Geshi';
+            } else if (substr($type, 0, 6) == 'image/') {
+                $class = '\\phorkie\\Renderer_Image';
+            }
         }
+
         $rend = new $class();
         return $rend->toHtml($this, $res);
     }

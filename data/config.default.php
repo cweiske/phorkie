@@ -36,6 +36,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'geshi' => 'xml',
         'show'  => false
     ),
+    'jpg' => array(
+        'title' => 'JPEG image',
+        'mime'  => 'image/jpeg',
+        'show'  => false
+    ),
     'js' => array(
         'title' => 'Javascript',
         'mime'  => 'application/javascript',
@@ -50,6 +55,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'title' => 'PHP',
         'mime'  => 'text/x-php',
         'geshi' => 'php'
+    ),
+    'png' => array(
+        'title' => 'PNG image',
+        'mime'  => 'image/png',
+        'show'  => false
     ),
     'rst' => array(
         'title' => 'reStructuredText',
@@ -66,6 +76,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'title' => 'SQL',
         'mime'  => 'text/x-sql',
         'geshi' => 'sql'
+    ),
+    'svg' => array(
+        'title' => 'SVG image',
+        'mime'  => 'image/svg+xml',
+        'show'  => false
     ),
     'ts' => array(
         'title' => 'TypoScript',
