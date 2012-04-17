@@ -61,7 +61,11 @@ class File
     public function getContent()
     {
         if ($this->repo->hash) {
-            return $this->repo->getVc()->getCommand('show')
+            //quick hack until https://pear.php.net/bugs/bug.php?id=19385 is fixed
+            $cmd = new GitCommandBinary($this->repo->getVc());
+            $cmd->setSubCommand('show');
+            return //$this->repo->getVc()->getCommand('show')
+                $cmd
                 ->addArgument($this->repo->hash . ':' . $this->path)
                 ->execute();
         }
