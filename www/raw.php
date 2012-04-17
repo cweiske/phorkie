@@ -17,5 +17,5 @@ if ($mimetype === null) {
     $mimetype = 'text/plain';
 }
 header('Content-Type: ' . $mimetype);
-readfile($file->path);
+readfile($file->getFullPath());
 ?>

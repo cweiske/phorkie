@@ -88,14 +88,14 @@ class Repository_Post
                 $bChanged = true;
             } else if ($bUpload) {
                 move_uploaded_file(
-                    $_FILES['files']['tmp_name'][$num]['upload'], $file->getPath()
+                    $_FILES['files']['tmp_name'][$num]['upload'], $file->getFullPath()
                 );
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bChanged = true;
             } else if ($bNew || (isset($arFile['content']) && $file->getContent() != $arFile['content'])) {
-                file_put_contents($file->getPath(), $arFile['content']);
+                file_put_contents($file->getFullPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
                     ->execute();

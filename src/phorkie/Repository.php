@@ -49,6 +49,10 @@ class Repository
         if (!is_numeric($_GET['id'])) {
             throw new Exception_Input('Paste ID not numeric');
         }
+        if (isset($_GET['rev'])) {
+            $this->hash = $_GET['rev'];
+        }
+
         $this->id = (int)$_GET['id'];
         $this->loadDirs();
         $this->loadHash();
@@ -75,6 +79,7 @@ class Repository
 
     public function loadHash()
     {
+        return;
         if ($this->hash !== null) {
             return;
         }
@@ -114,10 +119,20 @@ class Repository
      */
     public function getFiles()
     {
-        $files = glob($this->workDir . '/*');
+        if ($this->hash === null) {
+            $hash = 'HEAD';
+        } else {
+            $hash = $this->hash;
+        }
+        $output = $this->getVc()->getCommand('ls-tree')
+            ->setOption('r')
+            ->setOption('name-only')
+            ->addArgument($hash)
+            ->execute();
+        $files = explode("\n", trim($output));
         $arFiles = array();
-        foreach ($files as $path) {
-            $arFiles[] = new File($path, $this);
+        foreach ($files as $name) {
+            $arFiles[] = new File($name, $this);
         }
         return $arFiles;
     }
@@ -131,11 +146,11 @@ class Repository
         if ($name == '') {
             throw new Exception_Input('Empty file name given');
         }
-        $path = $this->workDir . '/' . $base;
-        if ($bHasToExist && !is_readable($path)) {
+        $fullpath = $this->workDir . '/' . $base;
+        if ($bHasToExist && !is_readable($fullpath)) {
             throw new Exception_Input('File does not exist');
         }
-        return new File($path, $this);
+        return new File($base, $this);
     }
 
     public function hasFile($name)
@@ -177,12 +192,12 @@ class Repository
      * Get a link to the repository
      *
      * @param string $type Link type. Supported are:
-     *                     - "commit"
      *                     - "edit"
      *                     - "delete"
      *                     - "delete-confirm"
      *                     - "display"
      *                     - "fork"
+     *                     - "revision"
      * @param string $option
      *
      * @return string
@@ -199,8 +214,8 @@ class Repository
             return '/' . $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
             return '/' . $this->id . '/delete/confirm';
-        } else if ($type == 'commit') {
-            return '/' . $this->id . '/' . $option;
+        } else if ($type == 'revision') {
+            return '/' . $this->id . '/rev/' . $option;
         }
         throw new Exception('Unknown link type');
     }

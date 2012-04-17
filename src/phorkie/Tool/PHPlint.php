@@ -9,7 +9,7 @@ class Tool_PHPlint
 
     public function run(File $file)
     {
-        $fpath = $file->getPath();
+        $fpath = $file->getFullPath();
         $fpathlen = strlen($fpath);
 
         $res = new Tool_Result();

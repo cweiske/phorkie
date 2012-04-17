@@ -4,7 +4,7 @@ namespace phorkie;
 class File
 {
     /**
-     * Full path to the file
+     * Path to the file, relative to repository work directory
      *
      * @var string
      */
@@ -16,6 +16,11 @@ class File
      * @var string
      */
     public $repo;
+
+    /**
+     * Commit revision this file is at
+     */
+    public $hash;
 
     public function __construct($path, Repository $repo = null)
     {
@@ -30,7 +35,7 @@ class File
      */
     public function getFilename()
     {
-        return basename($this->path);
+        return $this->path;
     }
 
     /**
@@ -38,9 +43,9 @@ class File
      *
      * @return string
      */
-    public function getPath()
+    public function getFullPath()
     {
-        return $this->path;
+        return $this->repo->workDir . '/' . $this->path;
     }
 
     /**
@@ -55,7 +60,13 @@ class File
 
     public function getContent()
     {
-        return file_get_contents($this->path);
+        if ($this->repo->hash) {
+            return $this->repo->getVc()->getCommand('show')
+                ->addArgument($this->repo->hash . ':' . $this->path)
+                ->execute();
+        }
+
+        return file_get_contents($this->getFullPath());
     }
 
     public function getRenderedContent(Tool_Result $res = null)
