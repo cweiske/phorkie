@@ -20,7 +20,13 @@ class Repository_Commit
         require_once 'PEAR/Services/Libravatar.php';
 
         $s = new \Services_Libravatar();
-        return $s->url('cweiske@cweiske.de'/*$this->committerEmail*/, array('s' => 32));
+        return $s->url(
+            $this->committerEmail,
+            array(
+                'size'    => 32,
+                'default' => Tools::fullUrl('/phorkie/anonymous.png')
+            )
+        );
     }
 
     /**
