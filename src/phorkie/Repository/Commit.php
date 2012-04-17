@@ -16,6 +16,10 @@ class Repository_Commit
 
     public function getIconUrl()
     {
+        if ($this->committerEmail == 'anonymous@phorkie') {
+            return '/phorkie/anonymous.png';
+        }
+
         //workaround for https://pear.php.net/bugs/bug.php?id=19384
         require_once 'PEAR/Services/Libravatar.php';
 
