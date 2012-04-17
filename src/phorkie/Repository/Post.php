@@ -39,12 +39,12 @@ class Repository_Post
                 continue;
             }
 
-            $orignalName = $this->sanitizeFilename($arFile['original_name']);
-            $name        = $this->sanitizeFilename($arFile['name']);
+            $orignalName = Tools::sanitizeFilename($arFile['original_name']);
+            $name        = Tools::sanitizeFilename($arFile['name']);
 
             if ($name == '') {
                 if ($bUpload) {
-                    $name = $this->sanitizeFilename($_FILES['files']['name'][$num]['upload']);
+                    $name = Tools::sanitizeFilename($_FILES['files']['name'][$num]['upload']);
                 } else {
                     $name = $this->getNextNumberedFile('phork')
                         . '.' . $arFile['type'];
@@ -144,28 +144,6 @@ class Repository_Post
         } while (count($files));
 
         return $prefix . $num;
-    }
-
-    /**
-     * Removes malicious parts from a file name
-     *
-     * @param string $file File name from the user
-     *
-     * @return string Fixed and probably secure filename
-     */
-    public function sanitizeFilename($file)
-    {
-        $file = trim($file);
-        $file = str_replace(array('\\', '//'), '/', $file);
-        $file = str_replace('/../', '/', $file);
-        if (substr($file, 0, 3) == '../') {
-            $file = substr($file, 3);
-        }
-        if (substr($file, 0, 1) == '../') {
-            $file = substr($file, 1);
-        }
-
-        return $file;
     }
 }
 

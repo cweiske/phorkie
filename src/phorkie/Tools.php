@@ -37,6 +37,29 @@ class Tools
         }
         return $prot . '://' . $_SERVER['HTTP_HOST'] . $path;
     }
+
+    /**
+     * Removes malicious parts from a file name
+     *
+     * @param string $file File name from the user
+     *
+     * @return string Fixed and probably secure filename
+     */
+    public static function sanitizeFilename($file)
+    {
+        $file = trim($file);
+        $file = str_replace(array('\\', '//'), '/', $file);
+        $file = str_replace('/../', '/', $file);
+        if (substr($file, 0, 3) == '../') {
+            $file = substr($file, 3);
+        }
+        if (substr($file, 0, 1) == '../') {
+            $file = substr($file, 1);
+        }
+
+        return $file;
+    }
+
 }
 
 ?>
