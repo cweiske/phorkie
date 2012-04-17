@@ -1,12 +1,12 @@
 <h1>{{repo.getDescription}}</h1>
-<div class="row-fluid repo-info">
- <div class="span4">
+<div class="row repo-info">
+ <div class="span2">
   <a class="btn" href="{{repo.getLink('edit')}}"><i class="icon-edit"></i> edit</a>
  </div>
- <div class="span4" style="text-align: center">
+ <div class="span5" style="text-align: center">
   <h3>Paste #{{repo.id}}</h3>
  </div>
- <div class="span4" style="text-align: right">
+ <div class="span2" style="text-align: right">
   <form method="post" action="{{repo.getLink('fork')}}">
     <button type="submit" class="btn"><i class="icon-share"></i> fork</button>
   </form>
