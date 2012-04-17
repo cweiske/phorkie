@@ -59,6 +59,18 @@ div.annotations div.alert {
     margin-bottom: 1ex;
 }
 
+ul.history li {
+    padding-left: 2px;
+    padding-bottom: 1px;
+}
+ul.history li.active {
+    background-color: #EEE;
+    border-radius: 3px;
+}
+ul.history a.hash {
+    font-family: monospace;
+}
+
 
 ul.pager {
     margin-top: 2ex;

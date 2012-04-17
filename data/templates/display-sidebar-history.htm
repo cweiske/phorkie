@@ -1,0 +1,18 @@
+<h3>History</h3>
+
+<ul class="history unstyled">
+{% for commit in repo.getHistory %}
+ <li {% if commit.hash == repo.hash %}class="active"{%endif%}>
+  {% spaceless %}
+  {% for dot in commit.getDots %}
+  <img src="/phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
+  {% endfor %}
+  {% endspaceless %}
+  <a class="hash" href="{{repo.getLink('commit', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
+  <img src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20"/>
+  <span title="{{commit.committerTime|date('c')}}">{{commit.committerTime|date('Y-m-d')}}</span>
+ </li>
+{% else %}
+<p>No commits yet</p>
+{% endfor %}
+</ul>
