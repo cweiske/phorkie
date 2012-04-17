@@ -9,7 +9,7 @@ $repo = new Repository();
 $repo->loadFromRequest();
 
 render(
-    'display',
+    'revision',
     array(
         'repo' => $repo,
         'dh'   => new \Date_HumanDiff(),

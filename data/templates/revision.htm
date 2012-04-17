@@ -1,0 +1,22 @@
+{% extends "base.htm" %}
+{% block title %}
+ {%if repo.getDescription %}
+  {{repo.getDescription}}
+ {%else%}
+  {{repo.id}}
+ {%endif%}
+ - revision {{repo.hash}}
+{% endblock %}
+
+{% block content %}
+ {% include 'revision-head.htm' %}
+
+{% for file in repo.getFiles %}
+ {% include 'display-file.htm' %}
+{% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}
+ {% include 'display-sidebar-history.htm' %}
+{% endblock %}
