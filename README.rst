@@ -98,6 +98,10 @@ TODO
 - when 2 people edit, merge changes
 - diff changes
 - configurable highlights
+- tags
+- autotags for file types
+- Atom feed for new pastes
+- Atom feed for paste changes
 
 
 URLs
