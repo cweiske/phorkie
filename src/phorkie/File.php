@@ -123,6 +123,10 @@ class File
      */
     public function getToolInfos()
     {
+        if ($this->repo->hash !== null) {
+            return array();
+        }
+
         $tm = new Tool_Manager();
         return $tm->getSuitable($this);
     }
