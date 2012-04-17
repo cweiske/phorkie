@@ -28,6 +28,9 @@ Features
 
   - xmllint
   - php syntax check
+- history in the sidebar
+
+  - old files can be downloaded easily
 
 ============
 Dependencies
@@ -92,7 +95,6 @@ TODO
 ====
 - search
 - OpenID-Login to get username+email as authorship information
-- sidebar: history
 - document how to keep disk usage low (block size)
 - comments
 - when 2 people edit, merge changes
