@@ -10,7 +10,7 @@
   {% endspaceless %}
   <a class="hash" href="{{repo.getLink('commit', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
   <img src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20"/>
-  <span title="{{commit.committerTime|date('c')}}">{{commit.committerTime|date('Y-m-d')}}</span>
+  <span title="{{commit.committerTime|date('c')}}">{{dh.get(commit.committerTime)}}</span>
  </li>
 {% else %}
 <p>No commits yet</p>

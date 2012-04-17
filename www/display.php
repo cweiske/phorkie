@@ -12,6 +12,7 @@ render(
     'display',
     array(
         'repo' => $repo,
+        'dh'   => new \Date_HumanDiff(),
     )
 );
 ?>
