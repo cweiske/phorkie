@@ -17,5 +17,10 @@ if ($mimetype === null) {
     $mimetype = 'text/plain';
 }
 header('Content-Type: ' . $mimetype);
-readfile($file->getFullPath());
+if ($repo->hash === null) {
+    //IIRC readfile is not so memory-intensive for big files
+    readfile($file->getFullPath());
+} else {
+    echo $file->getContent();
+}
 ?>

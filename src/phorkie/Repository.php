@@ -119,6 +119,16 @@ class Repository
      */
     public function getFiles()
     {
+        $files = $this->getFilePaths();
+        $arFiles = array();
+        foreach ($files as $name) {
+            $arFiles[] = new File($name, $this);
+        }
+        return $arFiles;
+    }
+
+    protected function getFilePaths()
+    {
         if ($this->hash === null) {
             $hash = 'HEAD';
         } else {
@@ -129,28 +139,23 @@ class Repository
             ->setOption('name-only')
             ->addArgument($hash)
             ->execute();
-        $files = explode("\n", trim($output));
-        $arFiles = array();
-        foreach ($files as $name) {
-            $arFiles[] = new File($name, $this);
-        }
-        return $arFiles;
+        return explode("\n", trim($output));
     }
 
     public function getFileByName($name, $bHasToExist = true)
     {
-        $base = basename($name);
-        if ($base != $name) {
-            throw new Exception('No directories supported for now');
-        }
+        $name = Tools::sanitizeFilename($name);
         if ($name == '') {
             throw new Exception_Input('Empty file name given');
         }
-        $fullpath = $this->workDir . '/' . $base;
-        if ($bHasToExist && !is_readable($fullpath)) {
-            throw new Exception_Input('File does not exist');
+
+        if ($bHasToExist) {
+            $files = $this->getFilePaths();
+            if (array_search($name, $files) === false) {
+                throw new Exception_Input('File does not exist');
+            }
         }
-        return new File($base, $this);
+        return new File($name, $this);
     }
 
     public function hasFile($name)

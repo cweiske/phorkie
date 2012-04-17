@@ -102,7 +102,12 @@ class File
     public function getLink($type, $option = null)
     {
         if ($type == 'raw') {
-            return '/' . $this->repo->id . '/raw/' . $this->getFilename();
+            if ($this->repo->hash === null) {
+                return '/' . $this->repo->id . '/raw/' . $this->getFilename();
+            } else {
+                return '/' . $this->repo->id . '/rev-raw/' . $this->repo->hash
+                    . '/' . $this->getFilename();
+            }
         } else if ($type == 'tool') {
             return '/' . $this->repo->id . '/tool/' . $option . '/' . $this->getFilename();
         }

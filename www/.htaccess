@@ -9,6 +9,7 @@ RewriteRule ^([0-9]+)/edit$ /edit.php?id=$1
 RewriteRule ^([0-9]+)/fork$ /fork.php?id=$1
 RewriteRule ^([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2
 RewriteRule ^([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2
+RewriteRule ^([0-9]+)/rev-raw/(.+)/(.+)$ /raw.php?id=$1&rev=$2&file=$3
 RewriteRule ^([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3
 
 RewriteRule ^list$ /list.php
