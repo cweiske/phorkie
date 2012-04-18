@@ -44,8 +44,8 @@ class Repository_Commit
         $sum = $r + $g;
         if ($sum > 7) {
             $quot = ceil($sum / 7);
-            $r = int($r / $quot);
-            $g = int($g / $quot);
+            $r = intval($r / $quot);
+            $g = intval($g / $quot);
         }
         $string = str_repeat('g', $g) . str_repeat('r', $r) . str_repeat('n', 7 - $g - $r);
 
