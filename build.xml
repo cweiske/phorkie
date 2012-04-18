@@ -156,7 +156,7 @@ First release
        />
       <regexp
        pattern="(&lt;file name=&quot;www/(.+?)&quot;)"
-       replace="\1 install-as=&quot;SemanticScuttle/\2&quot;"
+       replace="\1 install-as=&quot;phorkie/\2&quot;"
        />
       <regexp
        pattern="(&lt;file name=&quot;src/(.+?)&quot;)"
