@@ -28,6 +28,14 @@ a.anchorlink {
     color: #FFA;
 }
 
+.footer {
+    margin-top: 36px;
+    margin-bottom: 0px;
+    border-top: 1px solid #DDD;
+    color: #999;
+    text-align: center;
+}
+
 h1 {
     margin-bottom: 0.5ex;
 }
