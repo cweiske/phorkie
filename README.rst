@@ -45,6 +45,13 @@ Install VersionControl_Git
   $ pear install versioncontrol_git-alpha
 
 
+Install Date_HumanDiff
+======================
+::
+
+  $ pear install https://github.com/downloads/cweiske/Date_HumanDiff/Date_HumanDiff-0.1.0.tgz
+
+
 Install GeSHi
 =============
 ::
