@@ -93,6 +93,7 @@ Technical details
 
 TODO
 ====
+- filters (xmllint --format, rapper)
 - search
 - OpenID-Login to get username+email as authorship information
 - document how to keep disk usage low (block size)
