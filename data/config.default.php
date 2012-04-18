@@ -1,12 +1,13 @@
 <?php
 $GLOBALS['phorkie']['cfg'] = array(
-    'debug'   => false,
-    'gitdir'  => __DIR__ . '/../repos/git/',
-    'workdir' => __DIR__ . '/../repos/work/',
-    'tpl'     => __DIR__ . '/templates/',
-    'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
-    'title'   => 'phorkie',
-    'topbar'  => '',
+    'debug'      => false,
+    'gitdir'     => __DIR__ . '/../repos/git/',
+    'workdir'    => __DIR__ . '/../repos/work/',
+    'tpl'        => __DIR__ . '/templates/',
+    'css'        => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
+    'title'      => 'phorkie',
+    'topbar'     => '',
+    'setupcheck' => true,
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,

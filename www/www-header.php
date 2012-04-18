@@ -21,6 +21,13 @@ set_exception_handler(
         } else {
             header('HTTP/1.0 500 Internal server error');
         }
+
+        if (!isset($GLOBALS['twig'])) {
+            echo '<h1>Exception</h1>';
+            echo '<p>' . $e->getMessage() . '</p>';
+            exit();
+        }
+
         render(
             'exception',
             array(
@@ -36,8 +43,9 @@ require_once __DIR__ . '/../data/config.default.php';
 if (file_exists(__DIR__ . '/../data/config.php')) {
     require_once __DIR__ . '/../data/config.php';
 }
-require_once 'VersionControl/Git.php';
-require_once 'Twig/Autoloader.php';
+if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
+    SetupCheck::run();
+}
 \Twig_Autoloader::register();
 
 $loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
