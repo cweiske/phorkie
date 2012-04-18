@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="phorkie" default="zip" basedir=".">
+  <!--
+    phorkie phing build file.
+    This script should provide a one-stop tool for all administrative
+    tasks around phorkie, like creating a release version,
+    tagging a release
+  -->
+  <property file="build.properties" />
+
+  <property name="version-m"  value="0.1" />
+  <property name="version"    value="0.1.0" />
+  <property name="stability"  value="alpha" />
+  <property name="releasenotes" value="
+First release
+" />
+  <property name="zipfile"     value="${phing.project.name}-${version}.zip" />
+  <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
+  <property name="distfile"    value="dist/${zipfile}" />
+  <property name="distpkgfile" value="dist/pear/${pkgfile}" />
+  <property name="sfproject"   value="phorkie" />
+  <property name="sffilepath"  value="p/ph/phorkie/" />
+
+  <fileset id="fs.zip" dir=".">
+   <include name="data/**"/>
+   <include name="src/**"/>
+   <include name="www/**"/>
+   <include name="LICENSE"/>
+   <include name="README.rst"/>
+   <exclude name="**/.gitignore/"/>
+   <exclude name="data/config.php"/>
+  </fileset>
+
+  <fileset id="fs.doc" dir=".">
+   <include name="README.rst"/>
+  </fileset>
+
+  <taskdef name="rST" classname="phing.tasks.ext.rSTTask" />
+  <taskdef name="d51pearpkg2" classname="phing.tasks.ext.d51PearPkg2Task" />
+
+  <target name="zip" depends="check"
+   description="Create zip file for release"
+   >
+    <!--
+      The release file is for end users, so it is safe to
+      remove anything developer-related.
+
+      Test your zip with: unzip -l phorkie-0.1.0.zip
+    -->
+    <echo msg="Creating distribution zip for phorkie ${version}"/>
+    <delete file="${distfile}" failonerror="false"/>
+    <zip destfile="${distfile}" prefix="${phing.project.name}-${version}/">
+     <fileset refid="fs.zip"/>
+    </zip>
+  </target>
+
+
+
+  <target name="package" depends="check"
+   description="Creates the pear package"
+  >
+   <d51pearpkg2 dir="." baseinstalldir="/">
+     <name>phorkie</name>
+     <summary>Self-hosted pastebin software</summary>
+     <description>
+      Self-hosted pastebin software written in PHP.
+      Pastes are editable, may have multiple files and are stored in git repositories.
+     </description>
+     <channel>phorkie.sourceforge.net</channel>
+
+     <lead user="cweiske" name="Christian Weiske" email="cweiske@cweiske.de" />
+     <license>AGPL</license>
+
+     <version   release="${version}"   api="${version}" />
+     <stability release="${stability}" api="${stability}" />
+
+     <notes>${releasenotes}</notes>
+
+     <dependencies>
+       <php minimum_version="5.2.0" />
+       <pear minimum_version="1.9.0" />
+
+       <package name="Date_HumanDiff"
+                channel="pear.php.net"
+                minimum_version="0.1.0"
+                />
+       <package name="VersionControl_Git"
+                channel="pear.php.net"
+                minimum_version="0.4.4"
+                />
+       <package name="geshi"
+                channel="mediawiki.googlecode.com/svn"
+                minimum_version="1.0.0"
+                />
+       <package name="Twig"
+                channel="pear.twig-project.org"
+                minimum_version="1.6.0"
+                />
+
+     </dependencies>
+
+     <!-- map directory (key) to role -->
+     <dirroles key="www">www</dirroles>
+     <dirroles key="data">data</dirroles>
+     <dirroles key="src">php</dirroles>
+
+     <!-- do not add the following files to the package.
+          copied from excludes above -->
+     <ignore>**/.gitignore</ignore>
+     <ignore>**/.svn</ignore>
+     <ignore>build*</ignore>
+     <ignore>data/config.php</ignore>
+     <ignore>dist/**</ignore>
+     <ignore>*.properties</ignore>
+     <ignore>*.tgz</ignore>
+
+     <replacement path="www/www-header.php"
+      type="pear-config" from="@data_dir@" to="data_dir"
+      />
+
+
+   </d51pearpkg2>
+
+   <!-- time to fix the package.xml file since the task does not
+        allow everything we need:
+        - strip the base directory names like src, data and www
+        - remove that dumb baseinstalldir from files
+        - md5sums are generated automatically when packaging
+   -->
+   <!-- yes, we need to generate a 2nd file and move it back -->
+   <copy file="package.xml" tofile="package2.xml" overwrite="true">
+    <filterchain>
+     <replaceregexp>
+      <!-- remove md5sums -->
+      <regexp
+       pattern="md5sum=&quot;[a-z0-9]{32}&quot; "
+       replace=""
+       />
+      <!-- remove baseinstalldir for files -->
+      <regexp
+       pattern="&lt;file baseinstalldir=&quot;/&quot;"
+       replace="&lt;file"
+       />
+      <!-- install-as for different directories -->
+      <regexp
+       pattern="(&lt;file name=&quot;data/(.+?)&quot;)"
+       replace="\1 install-as=&quot;\2&quot;"
+       />
+      <regexp
+       pattern="(&lt;file name=&quot;doc/(.+?)&quot;)"
+       replace="\1 install-as=&quot;\2&quot;"
+       />
+      <regexp
+       pattern="(&lt;file name=&quot;tests/(.+?)&quot;)"
+       replace="\1 install-as=&quot;\2&quot;"
+       />
+      <regexp
+       pattern="(&lt;file name=&quot;www/(.+?)&quot;)"
+       replace="\1 install-as=&quot;SemanticScuttle/\2&quot;"
+       />
+      <regexp
+       pattern="(&lt;file name=&quot;src/(.+?)&quot;)"
+       replace="\1 install-as=&quot;\2&quot;"
+       />
+     </replaceregexp>
+    </filterchain>
+   </copy>
+   <move file="package2.xml" tofile="package.xml" overwrite="true" />
+
+   <!-- package up -->
+   <exec command="pear package" passthru="true" />
+   <move file="${pkgfile}" todir="dist/pear/" />
+
+   <delete file="package.xml" failonerror="true" />
+  </target>
+
+
+  <target name="build-docs" description="render documentation">
+   <rST format="html" uptodate="true">
+    <fileset refid="fs.doc"/>
+    <mapper type="regexp" from="^(.+?).rst$" to="dist/docs/\1.html"/>
+   </rST>
+  </target>
+
+  <target name="clean-docs" description="delete rendered documentation files">
+   <delete dir="dist/docs" includeemptydirs="yes"/>
+  </target>
+
+
+  <target name="release" depends="check,zip,package,deploy-sf"
+   description="Release the version on sourceforge"
+   >
+   <!-- meta-target -->
+  </target>
+
+
+  <!--
+  /home/frs/project/p/ph/phorkie/phorkie/v0.1/
+  /home/frs/project/p/ph/phorkie/phorkie/v0.1/phorkie-v0.1.0.zip
+  /home/frs/project/p/ph/phorkie/phorkie/v0.1/phorkie-v0.1.1.zip
+  https://sourceforge.net/apps/trac/sourceforge/wiki/Release%20files%20for%20download
+  -->
+  <target name="deploy-sf" depends="check,zip"
+   description="Upload release to sourceforge"
+   >
+    <delete dir="dist/deploy-sf" /><!-- make empty -->
+    <mkdir dir="dist/deploy-sf" />
+    <mkdir dir="dist/deploy-sf/v${version-m}" />
+    <copy file="${distfile}" tofile="dist/deploy-sf/v${version-m}/${zipfile}"/>
+    <!-- test
+    <exec command="rsync -av dist/deploy-sf/ /tmp/test/" escape="false" />
+    -->
+    <exec
+     command="rsync -av -e ssh dist/deploy-sf/ ${sfuser},${sfproject}@frs.sourceforge.net:/home/frs/project/${sffilepath}/${sfproject}/"
+     escape="false" checkreturn="false"
+     />
+    <!-- rsync always returns code 23 on sourceforge releases, so we
+         can't check return values -->
+  </target>
+
+
+  <target name="check"
+   description="Check variables"
+   >
+    <fail unless="version" message="Version not defined!" />
+    <fail unless="sfuser" message="Sourceforge username not defined!" />
+    <fail unless="sfproject" message="Sourceforge project name not defined!" />
+    <fail unless="sffilepath" message="Sourceforge project file path not defined!" />
+
+    <mkdir dir="dist" />
+  </target>
+
+</project>
