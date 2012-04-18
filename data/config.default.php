@@ -6,6 +6,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'tpl'     => __DIR__ . '/templates/',
     'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
     'title'   => 'phorkie',
+    'topbar'  => '',
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,

@@ -53,6 +53,7 @@ function render($tplname, $vars)
 {
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
+    $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
     echo $template->render($vars);
