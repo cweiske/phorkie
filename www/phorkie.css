@@ -28,6 +28,9 @@ a.anchorlink {
     color: #FFA;
 }
 
+.navbar .container {
+    width: 940px;
+}
 .footer {
     margin-top: 36px;
     margin-bottom: 0px;
