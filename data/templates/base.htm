@@ -4,7 +4,7 @@
  <head>
   <link rel="stylesheet" href="{{css}}"/>
   <link rel="stylesheet" href="/phorkie.css" />
-  <title>{% block title %}{% endblock %} - phorkie</title>
+  <title>{% block title %}{% endblock %} - {{title}}</title>
   <script src="/jquery-1.7.2.min.js"></script>
   <script src="/phorkie.js"></script>
  </head>
@@ -13,7 +13,7 @@
    <div class="navbar-inner">
     <div class="container">
      <a class="brand" href="/">
-      phorkie
+      {{title}}
      </a>
      <ul class="nav">
       <li>

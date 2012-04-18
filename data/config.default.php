@@ -5,6 +5,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'workdir' => __DIR__ . '/../repos/work/',
     'tpl'     => __DIR__ . '/templates/',
     'css'     => 'http://twitter.github.com/bootstrap/assets/css/bootstrap.css',
+    'title'   => 'phorkie',
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
