@@ -20,9 +20,6 @@ class Repository_Commit
             return '/phorkie/anonymous.png';
         }
 
-        //workaround for https://pear.php.net/bugs/bug.php?id=19384
-        require_once 'PEAR/Services/Libravatar.php';
-
         $s = new \Services_Libravatar();
         return $s->url(
             $this->committerEmail,

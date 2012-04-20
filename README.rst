@@ -44,6 +44,12 @@ Install VersionControl_Git
 
   $ pear install versioncontrol_git-alpha
 
+Install Services_Libravatar
+==========================
+::
+
+  $ pear install services_libravatar-alpha
+
 
 Install Date_HumanDiff
 ======================
