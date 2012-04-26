@@ -4,9 +4,10 @@ namespace phorkie;
 class SetupCheck
 {
     protected $deps = array(
-        'pear.php.net/VersionControl_Git' => 'VersionControl_Git',
-        'pear.twig-project.org/Twig'      => 'Twig_Autoloader',
-        'pear.php.net/Date_HumanDiff'     => 'Date_HumanDiff',
+        'pear.php.net/VersionControl_Git'  => 'VersionControl_Git',
+        'pear.twig-project.org/Twig'       => 'Twig_Autoloader',
+        'pear.php.net/Date_HumanDiff'      => 'Date_HumanDiff',
+        'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
     );
 
     protected $writableDirs;
