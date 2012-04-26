@@ -26,6 +26,7 @@ class SetupCheck
         $sc = new self();
         $sc->checkDeps();
         $sc->checkDirs();
+        $sc->checkGit();
     }
 
     public function checkDeps()
@@ -46,6 +47,22 @@ class SetupCheck
             if (!is_writable($dir)) {
                 $this->fail($name . ' directory is not writable at ' . $dir);
             }
+        }
+    }
+
+    public function checkGit()
+    {
+        $line = exec('git --version', $lines, $retval);
+        if ($retval !== 0) {
+            $this->fail('Running git executable failed.');
+        }
+        if (!preg_match('#^git version ([0-9.]+)$#', $line, $matches)) {
+            $this->fail('git version output format unexpected: ' . $line);
+        }
+        if (version_compare($matches[1], '1.7.5') < 0) {
+            $this->fail(
+                'git version needs to be at least 1.7.5, got: ' . $matches[1]
+            );
         }
     }
 
