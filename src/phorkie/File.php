@@ -80,11 +80,11 @@ class File
 
         if (isset($GLOBALS['phorkie']['languages'][$ext]['renderer'])) {
             $class = $GLOBALS['phorkie']['languages'][$ext]['renderer'];
+        } else if ($this->isText()) {
+            $class = '\\phorkie\\Renderer_Geshi';
         } else if (isset($GLOBALS['phorkie']['languages'][$ext]['mime'])) {
             $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
-            if (substr($type, 0, 5) == 'text/') {
-                $class = '\\phorkie\\Renderer_Geshi';
-            } else if (substr($type, 0, 6) == 'image/') {
+            if (substr($type, 0, 6) == 'image/') {
                 $class = '\\phorkie\\Renderer_Image';
             }
         }
@@ -153,7 +153,8 @@ class File
         }
 
         $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
-        return substr($type, 0, 5) === 'text/';
+        return substr($type, 0, 5) === 'text/'
+            || $type == 'application/javascript';
     }
 }
 
