@@ -148,6 +148,13 @@ class File
     public function isText()
     {
         $ext = $this->getExt();
+        if ($ext == '') {
+            //no file extension? then consider the size
+            $size = filesize($this->getFullPath());
+            //files <= 4kiB are considered to be text
+            return $size <= 4096;
+        }
+
         if (!isset($GLOBALS['phorkie']['languages'][$ext]['mime'])) {
             return false;
         }
