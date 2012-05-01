@@ -34,7 +34,8 @@ class Search_Elasticsearch
                             'should' => array(
                                 (object)array(
                                     'query_string' => (object)array(
-                                        'query' => $term
+                                        'query' => $term,
+                                        'default_operator' => 'AND'
                                     ),
                                 ),
                                 (object)array(
@@ -42,7 +43,8 @@ class Search_Elasticsearch
                                         'type'         => 'file',
                                         'query' => (object)array(
                                             'query_string' => (object)array(
-                                                'query' => $term
+                                                'query' => $term,
+                                                'default_operator' => 'AND'
                                             )
                                         )
                                     )
