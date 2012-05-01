@@ -53,9 +53,13 @@ class Search_Elasticsearch
                 )
             )
         );
-        //FIXME: error handling
         $httpRes = $r->send();
         $jRes = json_decode($httpRes->getBody());
+        if (isset($jRes->error)) {
+            throw new Exception(
+                'Search exception: ' . $jRes->error, $jRes->status
+            );
+        }
 
         $sres = new Search_Result();
         $sres->results = $jRes->hits->total;
