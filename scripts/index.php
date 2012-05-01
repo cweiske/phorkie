@@ -26,7 +26,7 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
 
 //delete all repos
 $r = new \HTTP_Request2(
-    'http://localhost:9200/phorkie/repo/_query',
+    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/_query',
     \HTTP_Request2::METHOD_DELETE
 );
 $r->setBody(
@@ -38,7 +38,7 @@ $r->setBody(
 );
 $r->send();
 $r = new \HTTP_Request2(
-    'http://localhost:9200/phorkie/file/_query',
+    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/_query',
     \HTTP_Request2::METHOD_DELETE
 );
 $r->setBody(
@@ -52,7 +52,7 @@ $r->send();
 
 //create mapping
 $r = new \HTTP_Request2(
-    'http://localhost:9200/phorkie/file/_mapping',
+    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/_mapping',
     \HTTP_Request2::METHOD_PUT
 );
 $r->setBody(
@@ -74,8 +74,7 @@ $r->send();
 $rs = new Repositories();
 foreach ($rs->getList(0, 10000) as $repo) {
     $r = new \HTTP_Request2(
-        //FIXME: make configurable
-        'http://localhost:9200/phorkie/repo/' . $repo->id,
+        $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/' . $repo->id,
         \HTTP_Request2::METHOD_PUT
     );
     $r->setBody(
@@ -90,8 +89,7 @@ foreach ($rs->getList(0, 10000) as $repo) {
 
     foreach ($repo->getFiles() as $file) {
         $r = new \HTTP_Request2(
-            //FIXME: make configurable
-            'http://localhost:9200/phorkie/file/?parent=' . $repo->id,
+            $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/?parent=' . $repo->id,
             \HTTP_Request2::METHOD_POST
         );
         $r->setBody(

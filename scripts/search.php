@@ -25,7 +25,7 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
 }
 
 $r = new \HTTP_Request2(
-    'http://localhost:9200/phorkie/repo/_search',
+    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/_search',
     \HTTP_Request2::METHOD_GET
 );
 $r->setBody(
