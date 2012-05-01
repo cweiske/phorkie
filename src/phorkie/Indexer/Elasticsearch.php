@@ -32,6 +32,9 @@ class Indexer_Elasticsearch
         $r->send();
 
         //add files
+        //clean up before adding files; files might have been deleted
+        $this->deleteRepoFiles($repo);
+
         foreach ($repo->getFiles() as $file) {
             $r = new \HTTP_Request2(
                 $this->searchInstance . 'file/?parent=' . $repo->id,
@@ -59,6 +62,11 @@ class Indexer_Elasticsearch
         );
         $r->send();
 
+        $this->deleteRepoFiles($repo);
+    }
+
+    protected function deleteRepoFiles(Repository $repo)
+    {
         //delete files of that repository
         $r = new \HTTP_Request2(
             $this->searchInstance . 'file/_query',
@@ -67,7 +75,9 @@ class Indexer_Elasticsearch
         $r->setBody(
             json_encode(
                 (object)array(
-                    '_parent' => 'repo#' . $repo->id
+                    'field' => (object)array(
+                        '_parent' => $repo->id
+                    )
                 )
             )
         );
