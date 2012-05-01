@@ -133,10 +133,10 @@ URLs
   Display raw file contents
 ``/[0-9]/delete``
   Delete the paste
-``/search(/.+)?``
-  Search for term
+``/search(/[0-9]+)?q=..``
+  Search for term, with optional page
 ``/list(/[0-9])?``
-  List all pastes
+  List all pastes, with optional page
 
 
 Internal directory layout

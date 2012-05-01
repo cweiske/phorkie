@@ -4,12 +4,7 @@
 {% block content %}
 <ul class="nav nav-pills nav-stacked">
 {% for repo in repos %}
- <li>
-  <a href="{{repo.getLink('display')}}">
-   {{repo.id}}
-   {{repo.getDescription}}
-  </a>
- </li>
+ {% include 'repo-list.htm' %}
 {% endfor %}
 </ul>
 

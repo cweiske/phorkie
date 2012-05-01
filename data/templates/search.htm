@@ -1,0 +1,20 @@
+{% extends "base.htm" %}
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+{% if sres.results == 0 %}
+ <p>
+  Sorry, no results for "<tt>{{query}}</tt>".
+ </p>
+{% else %}
+ <p>
+  Found {{sres.results}} search results for "<tt>{{query}}</tt>":
+ </p>
+ <ul class="nav nav-pills nav-stacked">
+ {% for repo in sres.repos %}
+   {% include 'repo-list.htm' %}
+ {% endfor %}
+ </ul>
+{% endif %}
+
+{% endblock %}

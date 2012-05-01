@@ -14,3 +14,6 @@ RewriteRule ^([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3
 
 RewriteRule ^list$ /list.php
 RewriteRule ^list/([0-9]+)$ /list.php?page=$1
+
+RewriteRule ^search$ /search.php
+RewriteRule ^search/([0-9]+)$ /search.php?page=$1

@@ -24,7 +24,6 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
     SetupCheck::run();
 }
 
-//delete all repos
 $r = new \HTTP_Request2(
     'http://localhost:9200/phorkie/repo/_search',
     \HTTP_Request2::METHOD_GET
@@ -32,6 +31,8 @@ $r = new \HTTP_Request2(
 $r->setBody(
     json_encode(
         (object)array(
+            'from' => 0,
+            'size' => 2,
             'query' => (object)array(
                 'bool' => (object)array(
                     'should' => array(

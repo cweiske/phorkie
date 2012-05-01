@@ -3,5 +3,6 @@
 //$GLOBALS['phorkie']['cfg']['workdir'] = '/var/cache/git/paste/work/';
 //$GLOBALS['phorkie']['cfg']['git']['public'] = 'git://bogo/git/paste/';
 //$GLOBALS['phorkie']['cfg']['git']['private'] = 'ssh://git@bogo:paste/';
+//$GLOBALS['phorkie']['cfg']['elasticsearch'] = 'http://localhost:9020/phorkie/';
 //$GLOBALS['phorkie']['cfg']['setupcheck'] = false;
 ?>
