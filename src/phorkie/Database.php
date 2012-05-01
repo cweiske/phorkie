@@ -10,7 +10,7 @@ class Database
 
     public function getIndexer()
     {
-        //FIXME
+        return new Indexer_Elasticsearch();
     }
 
 }

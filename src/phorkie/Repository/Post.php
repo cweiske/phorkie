@@ -26,9 +26,15 @@ class Repository_Post
         }
 
         $vc = $this->repo->getVc();
-        $this->repo->setDescription($postData['description']);
+
 
         $bChanged = false;
+        $bCommit  = false;
+        if ($postData['description'] != $this->repo->getDescription()) {
+            $this->repo->setDescription($postData['description']);
+            $bChanged = true;
+        }
+
         foreach ($postData['files'] as $num => $arFile) {
             $bUpload = false;
             if ($_FILES['files']['error'][$num]['upload'] == 0) {
@@ -74,7 +80,7 @@ class Repository_Post
                         ->addArgument($orignalName)
                         ->addArgument($name)
                         ->execute();
-                    $bChanged = true;
+                    $bCommit = true;
                 } else {
                     $name = $orignalName;
                 }
@@ -85,7 +91,7 @@ class Repository_Post
                 $command = $vc->getCommand('rm')
                     ->addArgument($file->getFilename())
                     ->execute();
-                $bChanged = true;
+                $bCommit = true;
             } else if ($bUpload) {
                 move_uploaded_file(
                     $_FILES['files']['tmp_name'][$num]['upload'], $file->getFullPath()
@@ -93,22 +99,30 @@ class Repository_Post
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
                     ->execute();
-                $bChanged = true;
+                $bCommit = true;
             } else if ($bNew || (isset($arFile['content']) && $file->getContent() != $arFile['content'])) {
                 file_put_contents($file->getFullPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
                     ->execute();
-                $bChanged = true;
+                $bCommit = true;
             }
         }
 
-        if ($bChanged) {
+        if ($bCommit) {
             $vc->getCommand('commit')
                 ->setOption('message', '')
                 ->setOption('allow-empty-message')
                 ->setOption('author', 'Anonymous <anonymous@phorkie>')
                 ->execute();
+            $bChanged = true;
+        }
+
+        if ($bChanged) {
+            //FIXME: index changed files only
+            //also handle file deletions
+            $db = new Database();
+            $db->getIndexer()->updateRepo($this->repo);
         }
 
         return true;
