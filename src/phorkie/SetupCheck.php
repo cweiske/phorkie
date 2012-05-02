@@ -28,6 +28,7 @@ class SetupCheck
         $sc->checkDeps();
         $sc->checkDirs();
         $sc->checkGit();
+        $sc->checkDatabase();
     }
 
     public function checkDeps()
@@ -65,6 +66,12 @@ class SetupCheck
                 'git version needs to be at least 1.7.5, got: ' . $matches[1]
             );
         }
+    }
+
+    public function checkDatabase()
+    {
+        $dbs = new Database_Setup_Elasticsearch();
+        $dbs->setup();
     }
 
     public function fail($msg)
