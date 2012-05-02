@@ -18,3 +18,22 @@
 {% endif %}
 
 {% endblock %}
+
+{% block sidebar %}
+ <h3>Search tips</h3>
+ <dl>
+  <dt>Exclusion</dt>
+   <dd><tt>+foo -bar</tt></dd>
+  <dt>Logical OR</dt>
+   <dd><tt>foo OR bar</tt></dd>
+  <dt>Quoting</dt>
+   <dd><tt>"foo bar"</tt></dd>
+  <dt>Partial words</dt>
+   <dd><tt>foo*</tt></dd>
+  <dt>Particular fields only</dt>
+   <dd><tt>description:foo</tt></dd>
+   <dd><tt>name:foo.txt</tt></dd>
+   <dd><tt>extension:rst</tt></dd>
+   <dd><tt>content:Hello</tt></dd>
+ </dl>
+{% endblock %}
