@@ -15,6 +15,7 @@
    {% include 'repo-list.htm' %}
  {% endfor %}
  </ul>
+ {{pager.getLinks.all|raw}}
 {% endif %}
 
 {% endblock %}

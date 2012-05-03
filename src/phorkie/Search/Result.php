@@ -42,6 +42,11 @@ class Search_Result
     {
         return $this->perPage;
     }
+
+    public function getLink($query)
+    {
+        return '/search?q=' . urlencode($query);
+    }
 }
 
 ?>
