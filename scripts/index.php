@@ -73,6 +73,7 @@ $r->send();
 //FIXME: define schema
 $rs = new Repositories();
 foreach ($rs->getList(0, 10000) as $repo) {
+    echo 'Indexing ' . $repo->id . "\n";
     $r = new \HTTP_Request2(
         $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/' . $repo->id,
         \HTTP_Request2::METHOD_PUT
