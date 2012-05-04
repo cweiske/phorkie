@@ -26,21 +26,9 @@ $search = $db->getSearch();
 
 $sres = $search->search($query, $page, $perPage);
 
-//fix non-static factory method error
-error_reporting(error_reporting() & ~E_STRICT);
-$pager = \Pager::factory(
-    array(
-        'mode'        => 'Sliding',
-        'perPage'     => 10,
-        'delta'       => 2,
-        'totalItems'  => $sres->getResults(),
-        'currentPage' => $page + 1,
-        'urlVar'      => 'page',
-        'path'        => '/',
-        'fileName'    => $sres->getLink($query),
-    )
+$pager = new Html_Pager(
+    $sres->getResults(), $perPage, $page + 1, $sres->getLink($query)
 );
-
 render(
     'search',
     array(

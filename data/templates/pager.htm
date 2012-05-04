@@ -1,0 +1,48 @@
+{% set links = pager.getLinks() %}
+{% if pager.numPages > 1 %}
+<div class="pagination pagination-centered">
+<ul>
+ {% if links.first %}
+ <li>
+  {{links.first|raw}}
+ </li>
+ {% else %}
+ <li class="disabled"><a href="#">first</a></li>
+ {% endif %}
+ {% if links.back %}
+ <li>
+  {{links.back|raw}}
+ </li>
+ {% else %}
+ <li class="disabled"><a href="#">« prev</a></li>
+ {% endif %}
+
+ {% for page in links.pages %}
+  {% if page|length <= 3 %}
+ <li class="active">
+  <a href="#">{{page|raw}}</a>
+ </li>
+  {% else %}
+ <li>
+  {{page|raw}}
+ </li>
+  {% endif %}
+ {% endfor %}
+
+ {% if links.next %}
+ <li>
+  {{links.next|raw}}
+ </li>
+ {% else %}
+ <li class="disabled"><a href="#">next »</a></li>
+ {% endif %}
+ {% if links.last %}
+ <li>
+  {{links.last|raw}}
+ </li>
+ {% else %}
+ <li class="disabled"><a href="#">last</a></li>
+ {% endif %}
+</ul>
+</div>
+{% endif %}

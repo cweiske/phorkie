@@ -11,28 +11,21 @@ if (isset($_GET['page'])) {
     if (!is_numeric($_GET['page'])) {
         throw new Exception_Input('List page is not numeric');
     }
-    $page = (int)$_GET['page'];
+    $page = (int)$_GET['page'] - 1;
 }
 
 $perPage = 10;
-$repos = $rs->getList($page, $perPage);
+list($repos, $repoCount) = $rs->getList($page, $perPage);
 
-$links = array('prev' => null, 'next' => null);
-if ($page > 0) {
-    $links['prev'] = '/list/' . ($page - 1);
-    if ($page - 1 == 0) {
-        $links['prev'] = '/list';
-    }
-}
-if (count($repos) && count($repos) == $perPage) {
-    $links['next'] = '/list/' . ($page + 1);
-}
+$pager = new Html_Pager(
+    $repoCount, $perPage, $page + 1, '/list/%d'
+);
 
 render(
     'list',
     array(
         'repos' => $repos,
-        'links' => $links,
+        'pager' => $pager,
     )
 );
 ?>

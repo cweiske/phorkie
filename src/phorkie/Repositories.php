@@ -38,7 +38,7 @@ class Repositories
      * @param integer $page    Page number, beginning with 0
      * @param integer $perPage Number of repositories per page
      *
-     * @return array Array of Repositories
+     * @return array Array of Repositories first, number of repositories second
      */
     public function getList($page = 0, $perPage = 10)
     {
@@ -53,7 +53,7 @@ class Repositories
             $r->loadById(substr($oneDir, 0, -4));
             $repos[] = $r;
         }
-        return $repos;
+        return array($repos, count($dirs));
     }
 }
 

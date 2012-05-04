@@ -56,6 +56,7 @@ $twig = new \Twig_Environment(
         'debug' => true
     )
 );
+//$twig->addExtension(new \Twig_Extension_Debug());
 
 function render($tplname, $vars)
 {
