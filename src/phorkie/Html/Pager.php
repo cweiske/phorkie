@@ -10,6 +10,10 @@ class Html_Pager
      */
     public function __construct($itemCount, $perPage, $currentPage, $filename)
     {
+        $append = true;
+        if (strpos($filename, '%d') !== false) {
+            $append = false;
+        }
         //fix non-static factory method error
         error_reporting(error_reporting() & ~E_STRICT);
         $this->pager = \Pager::factory(
@@ -20,7 +24,7 @@ class Html_Pager
                 'totalItems'  => $itemCount,
                 'currentPage' => $currentPage,
                 'urlVar'      => 'page',
-                'append'      => false,
+                'append'      => $append,
                 'path'        => '/',
                 'fileName'    => $filename,
                 'separator'   => '###',
