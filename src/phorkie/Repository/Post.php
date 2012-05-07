@@ -122,7 +122,11 @@ class Repository_Post
             //FIXME: index changed files only
             //also handle file deletions
             $db = new Database();
-            $db->getIndexer()->updateRepo($this->repo);
+            if ($bNew) {
+                $db->getIndexer()->addRepo($this->repo);
+            } else {
+                $db->getIndexer()->updateRepo($this->repo);
+            }
         }
 
         return true;
