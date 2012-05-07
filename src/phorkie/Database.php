@@ -3,12 +3,14 @@ namespace phorkie;
 
 class Database
 {
+    public $adapter = null;
     public $prefix = '\phorkie\Database_Adapter_Null';
 
     public function __construct()
     {
         if ($GLOBALS['phorkie']['cfg']['elasticsearch'] != '') {
-            $this->prefix = '\phorkie\Database_Adapter_Elasticsearch';
+            $this->adapter = 'Elasticsearch';
+            $this->prefix  = '\phorkie\Database_Adapter_Elasticsearch';
         }
     }
     public function getSearch()

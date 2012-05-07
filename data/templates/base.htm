@@ -23,11 +23,13 @@
       <li>
        <a href="/list">List all</a>
       </li>
+      {% if db.adapter %}
       <li>
        <form class="navbar-search pull-left" action="/search" method="get">
         <input type="text" class="search-query" name="q" placeholder="Search" value="{{query}}"/>
        </form>
       </li>
+      {% endif %}
      </ul>
     </div>
    </div>
