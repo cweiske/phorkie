@@ -39,7 +39,6 @@ $db->getSetup()->setup();
 
 $rs = new Repositories();
 list($repos, $count) = $rs->getList(0, 10000);
-$idx = new Indexer_Elasticsearch();
 foreach ($repos as $repo) {
     echo 'Indexing ' . $repo->id . "\n";
     $idx->addRepo($repo, filectime($repo->gitDir));

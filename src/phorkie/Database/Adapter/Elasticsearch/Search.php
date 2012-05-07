@@ -1,7 +1,7 @@
 <?php
 namespace phorkie;
 
-class Search_Elasticsearch
+class Database_Adapter_Elasticsearch_Search
 {
     public function __construct()
     {

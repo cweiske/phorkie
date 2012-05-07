@@ -5,17 +5,17 @@ class Database
 {
     public function getSearch()
     {
-        return new Search_Elasticsearch();
+        return new Database_Adapter_Elasticsearch_Search();
     }
 
     public function getIndexer()
     {
-        return new Indexer_Elasticsearch();
+        return new Database_Adapter_Elasticsearch_Indexer();
     }
 
     public function getSetup()
     {
-        return new Database_Setup_Elasticsearch();
+        return new Database_Adapter_Elasticsearch_Setup();
     }
 }
 
