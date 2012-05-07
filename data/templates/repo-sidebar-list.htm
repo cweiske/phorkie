@@ -1,0 +1,7 @@
+ <li>
+  <a href="{{repo.getLink('display')}}">
+   {{repo.id}}
+   {{repo.getDescription}}
+  </a><br/>
+  &nbsp;&nbsp;&nbsp;<span title="{{repo.crdate|date('c')}}">{{dh.get(repo.crdate)}}</span>
+ </li>

@@ -20,12 +20,15 @@ if ($repopo->process($_POST)) {
 $phork = array(
     '1' => new File(null, null)
 );
+$db = new Database();
 render(
     'index',
     array(
-        'files' => $phork,
+        'files'       => $phork,
         'description' => '',
-        'htmlhelper' => new HtmlHelper(),
+        'htmlhelper'  => new HtmlHelper(),
+        'recents'     => $db->getSearch()->listAll(0, 5, 'crdate', 'desc'),
+        'dh'          => new \Date_HumanDiff(),
     )
 );
 ?>

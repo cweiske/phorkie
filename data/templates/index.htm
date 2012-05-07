@@ -26,3 +26,15 @@ $(document).ready(function() {
 });
 </script>
 {% endblock %}
+
+
+{% block sidebar %}
+ {% if recents.results %}
+ <h3>Recently created</h3>
+ <ul>
+ {% for repo in recents.repos %}
+   {% include 'repo-sidebar-list.htm' %}
+ {% endfor %}
+ </ul>
+ {% endif %}
+{% endblock %}
