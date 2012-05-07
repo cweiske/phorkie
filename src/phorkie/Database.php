@@ -3,19 +3,30 @@ namespace phorkie;
 
 class Database
 {
+    public $prefix = '\phorkie\Database_Adapter_Null';
+
+    public function __construct()
+    {
+        if ($GLOBALS['phorkie']['cfg']['elasticsearch'] != '') {
+            $this->prefix = '\phorkie\Database_Adapter_Elasticsearch';
+        }
+    }
     public function getSearch()
     {
-        return new Database_Adapter_Elasticsearch_Search();
+        $class = $this->prefix . '_Search';
+        return new $class();
     }
 
     public function getIndexer()
     {
-        return new Database_Adapter_Elasticsearch_Indexer();
+        $class = $this->prefix . '_Indexer';
+        return new $class();
     }
 
     public function getSetup()
     {
-        return new Database_Adapter_Elasticsearch_Setup();
+        $class = $this->prefix . '_Setup';
+        return new $class();
     }
 }
 
