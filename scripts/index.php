@@ -24,85 +24,24 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
     SetupCheck::run();
 }
 
-//delete all repos
-$r = new \HTTP_Request2(
-    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/_query',
-    \HTTP_Request2::METHOD_DELETE
-);
-$r->setBody(
-    json_encode(
-        (object)array(
-            'match_all' => (object)array()
-        )
-    )
-);
-$r->send();
-$r = new \HTTP_Request2(
-    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/_query',
-    \HTTP_Request2::METHOD_DELETE
-);
-$r->setBody(
-    json_encode(
-        (object)array(
-            'match_all' => (object)array()
-        )
-    )
-);
-$r->send();
+
+$db = new Database();
+$idx = $db->getIndexer();
+
+//cleanup
+echo "Deleting all index data\n";
+$idx->deleteAllRepos();
 
 //create mapping
-$r = new \HTTP_Request2(
-    $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/_mapping',
-    \HTTP_Request2::METHOD_PUT
-);
-$r->setBody(
-    json_encode(
-        (object)array(
-            'file' => (object)array(
-                '_parent' => (object)array(
-                    'type' => 'repo'
-                )
-            )
-        )
-    )
-);
-$r->send();
+echo "Index setup\n";
+$db->getSetup()->setup();
 
 
-
-//FIXME: define schema
 $rs = new Repositories();
-foreach ($rs->getList(0, 10000) as $repo) {
+list($repos, $count) = $rs->getList(0, 10000);
+$idx = new Indexer_Elasticsearch();
+foreach ($repos as $repo) {
     echo 'Indexing ' . $repo->id . "\n";
-    $r = new \HTTP_Request2(
-        $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/' . $repo->id,
-        \HTTP_Request2::METHOD_PUT
-    );
-    $r->setBody(
-        json_encode(
-            (object)array(
-                'id' => $repo->id,
-                'description' => $repo->getDescription(),
-            )
-        )
-    );
-    $res = $r->send();
-
-    foreach ($repo->getFiles() as $file) {
-        $r = new \HTTP_Request2(
-            $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'file/?parent=' . $repo->id,
-            \HTTP_Request2::METHOD_POST
-        );
-        $r->setBody(
-            json_encode(
-                (object)array(
-                    'name'      => $file->getFilename(),
-                    'extension' => $file->getExt(),
-                    'content'   => $file->isText() ? $file->getContent() : '',
-                )
-            )
-        );
-        $r->send();
-    }
+    $idx->addRepo($repo, filectime($repo->gitDir));
 }
 ?>

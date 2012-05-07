@@ -10,9 +10,15 @@ class Database_Setup_Elasticsearch
 
     public function setup()
     {
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
+            $this->searchInstance . 'repo/_mapping',
+            \HTTP_Request2::METHOD_DELETE
+        );
+        $r->send();
+
         //create mapping
         //mapping for repositories
-        $r = new \HTTP_Request2(
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
             $this->searchInstance . 'repo/_mapping',
             \HTTP_Request2::METHOD_PUT
         );
@@ -20,6 +26,10 @@ class Database_Setup_Elasticsearch
             json_encode(
                 (object)array(
                     'repo' => (object)array(
+                        '_timestamp' => (object)array(
+                            'enabled' => true,
+                            'path'    => 'tstamp',
+                        ),
                         'properties' => (object)array(
                             'id' => (object)array(
                                 'type' => 'long'
@@ -27,6 +37,14 @@ class Database_Setup_Elasticsearch
                             'description' => (object)array(
                                 'type'  => 'string',
                                 'boost' => 2.0
+                            ),
+                            'crdate' => (object)array(
+                                //creation date
+                                'type' => 'date',
+                            ),
+                            'tstamp' => (object)array(
+                                //modification date
+                                'type' => 'date',
                             )
                         )
                     )
@@ -36,7 +54,7 @@ class Database_Setup_Elasticsearch
         $r->send();
 
         //mapping for files
-        $r = new \HTTP_Request2(
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
             $this->searchInstance . 'file/_mapping',
             \HTTP_Request2::METHOD_PUT
         );

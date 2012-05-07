@@ -13,6 +13,10 @@ class Database
         return new Indexer_Elasticsearch();
     }
 
+    public function getSetup()
+    {
+        return new Database_Setup_Elasticsearch();
+    }
 }
 
 ?>

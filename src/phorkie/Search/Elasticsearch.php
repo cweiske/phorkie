@@ -20,7 +20,7 @@ class Search_Elasticsearch
      */
     public function search($term, $page = 0, $perPage = 10)
     {
-        $r = new \HTTP_Request2(
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
             $this->searchInstance . 'repo/_search',
             \HTTP_Request2::METHOD_GET
         );

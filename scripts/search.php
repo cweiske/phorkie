@@ -24,7 +24,7 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
     SetupCheck::run();
 }
 
-$r = new \HTTP_Request2(
+$r = new Database_Adapter_Elasticsearch_HTTPRequest(
     $GLOBALS['phorkie']['cfg']['elasticsearch'] . 'repo/_search',
     \HTTP_Request2::METHOD_GET
 );
