@@ -1,4 +1,4 @@
-<h1>{{repo.getDescription}}</h1>
+<h1>{{repo.getTitle}}</h1>
 <div class="row repo-info">
  <div class="span2">
    <a class="btn btn-primary" href="{{repo.getLink('display')}}">
@@ -6,9 +6,6 @@
    </a>
  </div>
  <div class="span5" style="text-align: center">
-  <h3>
-   Paste #{{repo.id}}
-  </h3>
   <p>
    revision <strong>{{repo.hash}}</strong>
   </p>

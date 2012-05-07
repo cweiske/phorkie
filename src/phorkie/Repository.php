@@ -180,6 +180,16 @@ class Repository
             && Tools::recursiveDelete($this->gitDir);
     }
 
+    public function getTitle()
+    {
+        $desc = $this->getDescription();
+        if (trim($desc) != '') {
+            return $desc;
+        }
+
+        return 'paste #' . $this->id;
+    }
+
     public function getDescription()
     {
         if (!is_readable($this->gitDir . '/description')) {
