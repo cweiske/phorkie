@@ -31,36 +31,26 @@ Features
 - history in the sidebar
 
   - old files can be downloaded easily
+- search across pastes: description, file names and file content
+
+  - options: quoting, logical and, or, not, partial words
+
 
 ============
 Dependencies
 ============
 phorkie stands on the shoulders of giants.
 
-
-Install VersionControl_Git
-==========================
 ::
 
   $ pear install versioncontrol_git-alpha
-
-Install Services_Libravatar
-==========================
-::
-
   $ pear install services_libravatar-alpha
-
-
-Install Date_HumanDiff
-======================
-::
-
+  $ pear install http_request2
+  $ pear install pager
   $ pear install https://github.com/downloads/cweiske/Date_HumanDiff/Date_HumanDiff-0.1.0.tgz
 
-
-Install GeSHi
-=============
-::
+  $ pear channel-discover pear.twig-project.org
+  $ pear install twig/Twig
 
   $ pear channel-discover mediawiki.googlecode.com/svn
   $ pear install mediawiki/geshi
@@ -69,12 +59,29 @@ Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
 
 
-Install Twig
-============
-::
+======
+Search
+======
 
-  $ pear channel-discover pear.twig-project.org
-  $ pear install twig/Twig
+phorkie makes use of an Elasticsearch__ installation if you have one.
+
+It is used to provide search capabilities and the list of recent pastes.
+
+__ http://www.elasticsearch.org/
+
+Setup
+=====
+Edit ``config.php``, setting the ``elasticsearch`` property to the HTTP URL
+of the index, e.g. ::
+
+  http://localhost:9200/phorkie/
+
+Run the index script to import all existing pastes into the index::
+
+  php scripts/index.php
+
+That's all. Open phorkie in your browser, and you'll notice the search box
+in the top menu.
 
 
 =====
@@ -107,7 +114,7 @@ Technical details
 TODO
 ====
 - OpenID-Login to get username+email as authorship information
-- filters (xmllint --format, rapper)
+- filters (``xmllint --format``, ``rapper``)
 - document how to keep disk usage low (block size)
 - comments
 - when 2 people edit, merge changes
