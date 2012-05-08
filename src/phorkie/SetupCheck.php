@@ -72,8 +72,8 @@ class SetupCheck
 
     public function checkDatabase()
     {
-        $dbs = new Database_Setup_Elasticsearch();
-        $dbs->setup();
+        $dbs = new Database();
+        $dbs->getSetup()->setup();
     }
 
     public function fail($msg)

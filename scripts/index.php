@@ -28,13 +28,9 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
 $db = new Database();
 $idx = $db->getIndexer();
 
-//cleanup
-echo "Deleting all index data\n";
-$idx->deleteAllRepos();
-
 //create mapping
-echo "Index setup\n";
-$db->getSetup()->setup();
+echo "Index reset\n";
+$db->getSetup()->reset();
 
 
 $rs = new Repositories();

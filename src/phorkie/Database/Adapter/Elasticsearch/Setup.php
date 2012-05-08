@@ -10,9 +10,26 @@ class Database_Adapter_Elasticsearch_Setup implements Database_ISetup
 
     public function setup()
     {
-        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
-            $this->searchInstance . 'repo/_mapping',
+        $r = new \HTTP_Request2(
+            $this->searchInstance . '/_mapping', \HTTP_Request2::METHOD_GET
+        );
+        $res = $r->send();
+        if ($res->getStatus() == 404) {
+            $this->reset();
+        }
+    }
+
+    public function reset()
+    {
+        $r = new \HTTP_Request2(
+            $this->searchInstance,
             \HTTP_Request2::METHOD_DELETE
+        );
+        $r->send();
+
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
+            $this->searchInstance,
+            \HTTP_Request2::METHOD_PUT
         );
         $r->send();
 
