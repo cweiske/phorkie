@@ -1,0 +1,12 @@
+2012-05-07  Christian Weiske  <cweiske@cweiske.de>
+
+	* Search via Elasticsearch
+	* Use title instead of paste ID
+
+2012-05-04  Christian Weiske  <cweiske@cweiske.de>
+
+	* Pager for listing results
+
+2012-04-19  Christian Weiske  <cweiske@cweiske.de>
+
+	* Release of version 0.1.0
