@@ -161,12 +161,3 @@ Internal directory layout
       1.git/ - git repository for paste #1
         description - Description for the repository
       2.git/ - git repository for paste #2
-
-
-Search
-======
-Use ``ack-grep``
-
-
-
-
