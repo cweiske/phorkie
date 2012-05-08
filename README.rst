@@ -106,16 +106,13 @@ Technical details
 
 TODO
 ====
-- filters (xmllint --format, rapper)
-- search
 - OpenID-Login to get username+email as authorship information
+- filters (xmllint --format, rapper)
 - document how to keep disk usage low (block size)
 - comments
 - when 2 people edit, merge changes
 - diff changes
 - configurable highlights
-- tags
-- autotags for file types
 - Atom feed for new pastes
 - Atom feed for paste changes
 
@@ -133,7 +130,7 @@ URLs
   Display raw file contents
 ``/[0-9]/delete``
   Delete the paste
-``/search(/[0-9]+)?q=..``
+``/search?q=..(&page=[0-9]+)?``
   Search for term, with optional page
 ``/list(/[0-9])?``
   List all pastes, with optional page
