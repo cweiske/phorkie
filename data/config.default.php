@@ -45,15 +45,15 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'image/jpeg',
         'show'  => false
     ),
-    'js' => array(
-        'title' => 'Javascript',
-        'mime'  => 'application/javascript',
-        'geshi' => 'javascript'
-    ),
     'ini' => array(
         'title' => 'Ini',
         'mime'  => 'text/ini',
         'geshi' => 'ini'
+    ),
+    'js' => array(
+        'title' => 'Javascript',
+        'mime'  => 'application/javascript',
+        'geshi' => 'javascript'
     ),
     'php' => array(
         'title' => 'PHP',
