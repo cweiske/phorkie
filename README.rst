@@ -128,8 +128,14 @@ URLs
   Edit the paste
 ``/[0-9]+/raw/(.+)``
   Display raw file contents
+``/[0-9]/tool/[a-zA-Z]+/(.+)``
+  Run a tool on the given file
+``/[0-9]/rev/[a-z0-9]+``
+  Show specific revision of the paste
 ``/[0-9]/delete``
   Delete the paste
+``/[0-9]/fork``
+  Create a fork of the paste
 ``/search?q=..(&page=[0-9]+)?``
   Search for term, with optional page
 ``/list(/[0-9])?``
