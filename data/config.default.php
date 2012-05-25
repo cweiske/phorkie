@@ -88,7 +88,7 @@ $GLOBALS['phorkie']['languages'] = array(
     ),
     'ts' => array(
         'title' => 'TypoScript',
-        'mime'  => 'text/plain',/* TODO: correct type */
+        'mime'  => 'text/x-typoscript',/* TODO: correct type */
         'geshi' => 'typoscript'
     ),
     'txt' => array(
