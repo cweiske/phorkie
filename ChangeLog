@@ -1,7 +1,10 @@
 2012-05-07  Christian Weiske  <cweiske@cweiske.de>
 
 	* Search via Elasticsearch
+	* Search tips in sidebar
+	* Automatic elasticsearch setup on startup
 	* Use title instead of paste ID
+	* Request #3: Show new pastes in sidebar of "new paste" page
 
 2012-05-04  Christian Weiske  <cweiske@cweiske.de>
 
