@@ -56,6 +56,8 @@ Installation
    $ cp data/config.php.dist data/config.php
    $ $EDITOR data/config.php
 
+   Look at ``config.default.php`` for values that you may adjust.
+
 5. Set your web server's document root to ``/path/to/phorkie-0.2.0/www/``
 
 6. Open phorkie in your web browser
@@ -106,6 +108,18 @@ Run the index script to import all existing pastes into the index::
 
 That's all. Open phorkie in your browser, and you'll notice the search box
 in the top menu.
+
+
+Reset
+=====
+In case something really went wrong and you need to reset the search
+index, run the following command::
+
+  $ curl -XDELETE http://localhost:9200/phorkie/
+  {"ok":true,"acknowledged"}
+
+Phorkie will automatically re-index everything when ``setupcheck`` is enabled
+in the configuration file.
 
 
 =====
