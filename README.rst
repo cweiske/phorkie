@@ -4,7 +4,7 @@ phorkie - PHP and Git based pastebin
 Self-hosted pastebin software written in PHP.
 Pastes are editable, may have multiple files and are stored in git repositories.
 
-Homepage: http://sourceforge.net/p/phorkie/
+Project page: http://sourceforge.net/p/phorkie/
 
 .. contents:: Table of Contents
 
@@ -37,6 +37,30 @@ Features
 
 
 ============
+Installation
+============
+1. Unzip the phorkie release file::
+
+   $ tar xjvf phorkie-0.2.0.tar.bz2
+
+2. Create the git directories::
+
+   $ mkdir -p repos/git repos/work
+   $ chmod og+w repos/git repos/work
+
+3. Install dependencies_
+
+4. Copy ``data/config.php.dist`` to ``data/config.php`` and adjust it
+   to your needs::
+
+   $ cp data/config.php.dist data/config.php
+   $ $EDITOR data/config.php
+
+5. Set your web server's document root to ``/path/to/phorkie-0.2.0/www/``
+
+6. Open phorkie in your web browser
+
+
 Dependencies
 ============
 phorkie stands on the shoulders of giants.
