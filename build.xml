@@ -14,7 +14,7 @@
   <property name="releasenotes" value="
 First release
 " />
-  <property name="zipfile"     value="${phing.project.name}-${version}.zip" />
+  <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
   <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
   <property name="distfile"    value="dist/${zipfile}" />
   <property name="distpkgfile" value="dist/pear/${pkgfile}" />
@@ -49,9 +49,11 @@ First release
     -->
     <echo msg="Creating distribution zip for phorkie ${version}"/>
     <delete file="${distfile}" failonerror="false"/>
-    <zip destfile="${distfile}" prefix="${phing.project.name}-${version}/">
+    <tar compression="bzip2" destfile="${distfile}"
+         prefix="${phing.project.name}-${version}/"
+    >
      <fileset refid="fs.zip"/>
-    </zip>
+    </tar>
   </target>
 
 
