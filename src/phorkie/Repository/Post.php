@@ -48,6 +48,11 @@ class Repository_Post
             $orignalName = Tools::sanitizeFilename($arFile['original_name']);
             $name        = Tools::sanitizeFilename($arFile['name']);
 
+            if ($arFile['type'] == '_auto_') {
+                //FIXME: upload
+                $arFile['type'] = $this->getType($arFile['content']);
+            }
+
             if ($name == '') {
                 if ($bUpload) {
                     $name = Tools::sanitizeFilename($_FILES['files']['name'][$num]['upload']);
@@ -162,6 +167,28 @@ class Repository_Post
         } while (count($files));
 
         return $prefix . $num;
+    }
+
+    protected function getType($content)
+    {
+        $tmp = tempnam(sys_get_temp_dir(), 'phorkie-autodetect-');
+        file_put_contents($tmp, $content);
+        $type = \MIME_Type_PlainDetect::autoDetect($tmp);
+        unlink($tmp);
+
+        return $this->findExtForType($type);
+    }
+
+    protected function findExtForType($type)
+    {
+        $ext = 'text/plain';
+        foreach ($GLOBALS['phorkie']['languages'] as $lext => $arLang) {
+            if ($arLang['mime'] == $type) {
+                $ext = $lext;
+                break;
+            }
+        }
+        return $ext;
     }
 }
 

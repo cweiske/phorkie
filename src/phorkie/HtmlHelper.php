@@ -5,7 +5,7 @@ class HtmlHelper
 {
     public function getLanguageOptions(File $file = null)
     {
-        $html = '';
+        $html = '<option value="_auto_">* automatic *</option>';
         $fileExt = null;
         if ($file !== null) {
             $fileExt = $file->getExt();
