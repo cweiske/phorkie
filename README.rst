@@ -73,13 +73,16 @@ phorkie stands on the shoulders of giants.
   $ pear install services_libravatar-alpha
   $ pear install http_request2
   $ pear install pager
-  $ pear install https://github.com/downloads/cweiske/Date_HumanDiff/Date_HumanDiff-0.1.0.tgz
+  $ pear install date_humandiff-alpha
 
   $ pear channel-discover pear.twig-project.org
   $ pear install twig/Twig
 
   $ pear channel-discover mediawiki.googlecode.com/svn
   $ pear install mediawiki/geshi
+
+  $ pear channel-discover zustellzentrum.cweiske.de
+  $ pear install zz/mime_type_plaindetect-alpha
 
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
