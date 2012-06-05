@@ -176,6 +176,9 @@ class Repository
      */
     public function delete()
     {
+        $db = new Database();
+        $db->getIndexer()->deleteRepo($this);
+
         return Tools::recursiveDelete($this->workDir)
             && Tools::recursiveDelete($this->gitDir);
     }
