@@ -1,3 +1,7 @@
+2012-06-05  Christian Weiske  <cweiske@cweiske.de>
+
+	* Implement request #9: autodetect file type
+
 2012-05-25  Christian Weiske  <cweiske@cweiske.de>
 
 	* Release of version 0.2.0
