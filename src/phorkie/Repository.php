@@ -282,7 +282,9 @@ class Repository
             $arLineParts = explode(' ', trim($arOutput[$current + 4]));
             $commit->filesChanged = $arLineParts[0];
             $commit->linesAdded   = $arLineParts[3];
-            $commit->linesDeleted = $arLineParts[5];
+            if (isset($arLineParts[5])) {
+                $commit->linesDeleted = $arLineParts[5];
+            }
 
             $current += 6;
 
