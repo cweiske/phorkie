@@ -20,6 +20,9 @@ class Repository_Post
         if (!isset($postData['files'])) {
             return false;
         }
+        if (!$this->hasContent($postData)) {
+            return false;
+        }
 
         if (!$this->repo) {
             $this->repo = $this->createRepo();
@@ -135,6 +138,19 @@ class Repository_Post
         }
 
         return true;
+    }
+
+    protected function hasContent($postData)
+    {
+        foreach ($postData['files'] as $num => $arFile) {
+            if ($_FILES['files']['error'][$num]['upload'] == 0) {
+                return true;
+            }
+            if ($arFile['content'] != '') {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function createRepo()
