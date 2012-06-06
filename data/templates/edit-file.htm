@@ -7,31 +7,40 @@
   </p>
   {% endif %}
   <div class="row-fluid">
-   <div class="span6">
-    <input type="hidden" name="files[{{fileid}}][original_name]" value="{{file.getFilename}}"/>
-    <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}" placeholder="Filename (optional)" class="filename" onchange="filenameChange(this, {{fileid}})" onkeyup="filenameChange(this, {{fileid}})"/>
+   <div class="span1">
+    <a class="btn additional-btn" href="#" onclick="toggleAdditional(this); return false;" style="display:none">
+     <i class="icon-chevron-up"></i>
+    </a>
    </div>
-   <div class="span6 typeselect" style="text-align: right" id="typeselect_{{fileid}}">
-    <label for="type_{{fileid}}" class="inline">Type</label>
-    <select name="files[{{fileid}}][type]" id="type_{{fileid}}">
-     {{htmlhelper.getLanguageOptions(file)|raw}}
-    </select>
-   </div>
-   <div class="span6" style="display:none; text-align: right" id="typetext_{{fileid}}">
-    <p class="muted">Type determined from filename</p>
-   </div>
-  </div>
-  <div class="row-fluid">
-   <div class="span9">
-    <label for="upload_{{fileid}}" class="inline">Replace with upload:</label>
-    <input type="file" name="files[{{fileid}}][upload]" id="upload_{{fileid}}" class="btn"/>
-   </div>
-   {% if not newfile %}
-   <div class="span3" style="text-align: right">
-    <input type="checkbox" name="files[{{fileid}}][delete]" value="1" id="delete_{{fileid}}"/>
-    <label for="delete_{{fileid}}" class="inline">delete file</label>
-   </div>
-   {% endif %}
-  </div>
+   <div class="span11 additional">
+    <div class="row-fluid">
+     <div class="span6">
+      <input type="hidden" name="files[{{fileid}}][original_name]" value="{{file.getFilename}}"/>
+      <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}" placeholder="Filename (optional)" class="filename" onchange="filenameChange(this, {{fileid}})" onkeyup="filenameChange(this, {{fileid}})"/>
+     </div>
+     <div class="span6 typeselect" style="text-align: right" id="typeselect_{{fileid}}">
+      <label for="type_{{fileid}}" class="inline">Type</label>
+      <select name="files[{{fileid}}][type]" id="type_{{fileid}}">
+       {{htmlhelper.getLanguageOptions(file)|raw}}
+      </select>
+     </div>
+     <div class="span6" style="display:none; text-align: right" id="typetext_{{fileid}}">
+      <p class="muted">Type determined from filename</p>
+     </div>
+    </div>
+    <div class="row-fluid">
+     <div class="span9">
+      <label for="upload_{{fileid}}" class="inline">Replace with upload:</label>
+      <input type="file" name="files[{{fileid}}][upload]" id="upload_{{fileid}}" class="btn"/>
+     </div>
+     {% if not newfile %}
+     <div class="span3" style="text-align: right">
+      <input type="checkbox" name="files[{{fileid}}][delete]" value="1" id="delete_{{fileid}}"/>
+      <label for="delete_{{fileid}}" class="inline">delete file</label>
+     </div>
+     {% endif %}
+    </div>
+   </div><!-- /span12 -->
+  </div><!-- /row-fluid -->
  </div>
 

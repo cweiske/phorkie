@@ -17,6 +17,12 @@ $(document).ready(function() {
             {% endfilter %}"
             .replace(/###/g, $('.filegroup').length)
         );
+        toggleAdditional($('.filegroup:visible .additional-btn:last')[0], 0);
+
+        $('html, body').animate({
+            scrollTop: $('.filegroup:visible:last').offset().top
+        });
+        $('.filegroup:visible:last textarea').focus();
         return false;
     });
 });

@@ -9,6 +9,13 @@ function filenameChange(elem, id) {
         $('#typetext_' + id).hide();
     }
 }
+
+function initEdit()
+{
+    initFilenames();
+    initAdditionals();
+    $('.filegroup:visible:last textarea').focus();
+}
 function initFilenames()
 {
     $('input.filename').each(
@@ -23,4 +30,24 @@ function initFilenames()
             }
         }
     );
+}
+function initAdditionals()
+{
+    $('a.additional-btn').each(
+        function(num, elem) {
+            toggleAdditional(elem, 0);
+            $(elem).show();
+        }
+    );
+}
+
+function toggleAdditional(elem, time)
+{
+    if (undefined == time) {
+        time = 'fast';
+    }
+    var jt = jQuery(elem);
+    jt.children('i').toggleClass('icon-chevron-down')
+        .toggleClass('icon-chevron-up');
+    jt.parents('.row-fluid').children('.additional').toggle(time);
 }
