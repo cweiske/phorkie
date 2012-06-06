@@ -2,6 +2,7 @@
 
 	* Hide additional file fields by default, button to toggle their
 	  visibility
+	* Fix bug #10: error when nothing submitted
 
 2012-06-05  Christian Weiske  <cweiske@cweiske.de>
 
