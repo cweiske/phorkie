@@ -65,6 +65,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'image/png',
         'show'  => false
     ),
+    'rb' => array(
+        'title' => 'Ruby/Rails',
+        'mime'  => 'text/x-ruby', /* Is this an acceptable mime type? */
+        'geshi' => 'rails'
+    ),
     'rst' => array(
         'title' => 'reStructuredText',
         'mime'  => 'text/x-rst',
