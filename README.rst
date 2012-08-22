@@ -202,3 +202,27 @@ Internal directory layout
       1.git/ - git repository for paste #1
         description - Description for the repository
       2.git/ - git repository for paste #2
+
+nginx rewrites
+==============
+If you use nginx, place the following lines into your ``server`` block:
+
+::
+
+  if (!-e $request_uri) {
+    rewrite ^/([0-9]+)$ /display.php?id=$1;
+    rewrite ^/([0-9]+)/delete$ /delete.php?id=$1;
+    rewrite ^/([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1;
+    rewrite ^/([0-9]+)/edit$ /edit.php?id=$1;
+    rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
+    rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
+    rewrite ^/([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2;
+    rewrite ^/([0-9]+)/rev-raw/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
+    rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
+
+    rewrite ^/list$ /list.php;
+    rewrite ^/list/([0-9]+)$ /list.php?page=$1;
+
+    rewrite ^/search$ /search.php;
+    rewrite ^/search/([0-9]+)$ /search.php?page=$1;
+  }
