@@ -197,7 +197,7 @@ class Repository_Post
 
     protected function findExtForType($type)
     {
-        $ext = 'text/plain';
+        $ext = 'txt';
         foreach ($GLOBALS['phorkie']['languages'] as $lext => $arLang) {
             if ($arLang['mime'] == $type) {
                 $ext = $lext;
