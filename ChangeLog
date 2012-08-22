@@ -1,3 +1,8 @@
+2012-08-22  Stephen Lang  <info@skl.me>
+
+	* Added nginx rewrite rules to README
+	* Fixed bug where autodetect fails, wrong default set.
+
 2012-06-06  Christian Weiske  <cweiske@cweiske.de>
 
 	* Hide additional file fields by default, button to toggle their
