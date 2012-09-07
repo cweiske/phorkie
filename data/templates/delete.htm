@@ -3,6 +3,10 @@
 Confirm deletion of repository #{{repo.id}}
 {% endblock %}
 
+{% block meta %}
+<meta name="robots" content="noindex"/>
+{% endblock %}
+
 {% block content %}
 <h1>Delete paste #{{repo.id}}?</h1>
 <div class="well" style="margin-top: 5ex;">

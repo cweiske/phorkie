@@ -1,3 +1,7 @@
+2012-09-08  Christian Weiske  <cweiske@cweiske.de>
+
+	* Fix bug #11: do not index edit, delete and tool pages
+
 2012-08-22  Stephen Lang  <info@skl.me>
 
 	* Added nginx rewrite rules to README

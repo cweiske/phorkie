@@ -1,6 +1,10 @@
 {% extends "base.htm" %}
 {% block title %}Edit paste{% endblock %}
 
+{% block meta %}
+<meta name="robots" content="noindex"/>
+{% endblock %}
+
 {% block content %}
 <form method="post" action="{{repo.getLink('edit')}}" enctype="multipart/form-data">
  <div class="control-group well pastedata">

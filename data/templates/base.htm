@@ -8,6 +8,7 @@
   <title>{% block title %}{% endblock %} - {{title}}</title>
   <script src="/jquery-1.7.2.min.js"></script>
   <script src="/phorkie.js"></script>
+  {% block meta %}{% endblock %}
  </head>
  <body>
   {{topbar|raw}}

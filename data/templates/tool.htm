@@ -3,6 +3,10 @@
  Tool results: {{repo.getTitle}}
 {% endblock %}
 
+{% block meta %}
+<meta name="robots" content="noindex"/>
+{% endblock %}
+
 {% block content %}
 <h1>Tool results:  {{repo.getTitle}}</h1>
 <div class="row-fluid repo-info">
