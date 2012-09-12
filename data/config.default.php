@@ -9,7 +9,8 @@ $GLOBALS['phorkie']['cfg'] = array(
     'topbar'        => '',
     'setupcheck'    => true,
     'elasticsearch' => null,
-);
+    'geshi'         => 'MediaWiki/geshi/geshi/geshi.php'
+	);
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
     '\\phorkie\\Tool_PHPlint' => true,
@@ -54,6 +55,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'title' => 'Javascript',
         'mime'  => 'application/javascript',
         'geshi' => 'javascript'
+    ),
+    'pl' => array(
+        'title' => 'Perl',
+        'mime'  => 'application/x-perl',
+        'geshi' => 'pl'
     ),
     'php' => array(
         'title' => 'PHP',
