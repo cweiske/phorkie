@@ -15,6 +15,17 @@ $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
     '\\phorkie\\Tool_PHPlint' => true,
 );
+$GLOBALS['phorkie']['auth'] = array(
+    'method' => 'null',
+    'google' => array(
+        'path'         => 'google-api-php-client/',
+        'appname'      => '__APPNAME__',
+        'clientid'     => '__CLIENTID__',
+        'clientsecret' => '__CLIENTSECRET__',
+        'redirecturi'  => '__REDIRECTURI__',
+        'logouturi'    => '__LOGOUTURI__'
+    )
+);
 /**
  * Array of supported file types / languages.
  * Key is the file extension

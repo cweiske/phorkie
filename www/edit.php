@@ -4,6 +4,7 @@ namespace phorkie;
  * Edit paste contents
  */
 require_once 'www-header.php';
+if ($GLOBALS['phorkie']['auth']['method'] == "google") { require_once 'secure.php'; }
 
 $repo = new Repository();
 $repo->loadFromRequest();

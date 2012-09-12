@@ -2,6 +2,7 @@ RewriteEngine On
 RewriteBase /
 #RewriteCond %{REQUEST_FILENAME} -f
 
+RewriteRule ^$ /list.php
 RewriteRule ^([0-9]+)$ /display.php?id=$1
 RewriteRule ^([0-9]+)/delete$ /delete.php?id=$1
 RewriteRule ^([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1
@@ -17,3 +18,6 @@ RewriteRule ^list/([0-9]+)$ /list.php?page=$1
 
 RewriteRule ^search$ /search.php
 RewriteRule ^search/([0-9]+)$ /search.php?page=$1
+
+RewriteRule ^auth$ /auth.php
+RewriteRule ^new$ /new.php

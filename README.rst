@@ -147,6 +147,20 @@ The rest will be appended automatically.
 
 You're on your own to setup writable repositories.
 
+Enable authentication for adds/changes/deletes
+==============================================
+1. Download and extract:
+
+   $ tar xzvf http://google-api-php-client.googlecode.com/files/google-api-php-client-0.5.0.tar.gz
+
+2. Create your Google Authentication api keys:
+
+   https://code.google.com/apis/console/#access
+
+3. Edit data/config.default.php
+   a. change method to 'google'
+   b. update the google section with your keys and secrets
+
 
 =================
 Technical details
@@ -169,7 +183,7 @@ URLs
 ====
 
 ``/``
-  Index page. Shows form for new paste
+  Index page. Currently mapped to /list
 ``/[0-9]+``
   Display page for paste
 ``/[0-9]/edit``
@@ -188,7 +202,8 @@ URLs
   Search for term, with optional page
 ``/list(/[0-9])?``
   List all pastes, with optional page
-
+``/new``
+  Shows form for new paste
 
 Internal directory layout
 =========================
@@ -220,6 +235,8 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/rev-raw/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
     rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
 
+    rewrite ^/$ /list.php;
+    rewrite ^/new$ /new.php;
     rewrite ^/list$ /list.php;
     rewrite ^/list/([0-9]+)$ /list.php?page=$1;
 
