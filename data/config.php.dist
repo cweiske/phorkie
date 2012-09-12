@@ -1,5 +1,6 @@
 <?php
 //date_default_timezone_set('Antarctica/South_Pole');
+//$GLOBALS['phorkie']['cfg']['geshi']  = 'MediaWiki/geshi/geshi/geshi.php'; // OR '/usr/local/src/geshi/geshi/geshi.php'
 //$GLOBALS['phorkie']['cfg']['gitdir']  = '/var/cache/git/paste/git/';
 //$GLOBALS['phorkie']['cfg']['workdir'] = '/var/cache/git/paste/work/';
 //$GLOBALS['phorkie']['cfg']['git']['public'] = 'git://bogo/git/paste/';
