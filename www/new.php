@@ -23,7 +23,7 @@ $phork = array(
 );
 $db = new Database();
 render(
-    'index',
+    'new',
     array(
         'files'       => $phork,
         'description' => '',
