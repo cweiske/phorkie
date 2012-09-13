@@ -10,7 +10,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'setupcheck'    => true,
     'elasticsearch' => null,
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php'
-	);
+);
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
     '\\phorkie\\Tool_PHPlint' => true,
@@ -97,15 +97,15 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'image/svg+xml',
         'show'  => false
     ),
-    'ts' => array(
-        'title' => 'TypoScript',
-        'mime'  => 'text/x-typoscript',/* TODO: correct type */
-        'geshi' => 'typoscript'
-    ),
     'txt' => array(
         'title' => 'Text (plain)',
         'mime'  => 'text/plain',
         'geshi' => 'txt'
+    ),
+    'ts' => array(
+        'title' => 'TypoScript',
+        'mime'  => 'text/x-typoscript',/* TODO: correct type */
+        'geshi' => 'typoscript'
     ),
     'xml' => array(
         'title' => 'XML',
