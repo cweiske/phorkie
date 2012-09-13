@@ -149,17 +149,17 @@ You're on your own to setup writable repositories.
 
 Enable authentication for adds/changes/deletes
 ==============================================
-1. Download and extract:
+1. Download and extract ::
 
    $ tar xzvf http://google-api-php-client.googlecode.com/files/google-api-php-client-0.5.0.tar.gz
 
-2. Create your Google Authentication api keys:
+2. Create your Google Authentication api keys ::
 
    https://code.google.com/apis/console/#access
 
 3. Edit data/config.default.php
-   a. change method to 'google'
-   b. update the google section with your keys and secrets
+ - change auth ``method`` to ``google``
+ - update the google section with your keys and secrets
 
 
 =================
