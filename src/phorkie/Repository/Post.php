@@ -121,7 +121,7 @@ class Repository_Post
             $vc->getCommand('commit')
                 ->setOption('message', '')
                 ->setOption('allow-empty-message')
-                ->setOption('author', 'Anonymous <anonymous@phorkie>')
+                ->setOption('author', $_SESSION['name'].' <'.$_SESSION['email'].'>')
                 ->execute();
             $bChanged = true;
         }

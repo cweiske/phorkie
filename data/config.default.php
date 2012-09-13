@@ -9,10 +9,22 @@ $GLOBALS['phorkie']['cfg'] = array(
     'topbar'        => '',
     'setupcheck'    => true,
     'elasticsearch' => null,
-);
+    'geshi'         => 'MediaWiki/geshi/geshi/geshi.php'
+	);
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
     '\\phorkie\\Tool_PHPlint' => true,
+);
+$GLOBALS['phorkie']['auth'] = array(
+    'method' => 'null',
+    'google' => array(
+        'path'         => 'google-api-php-client/',
+        'appname'      => '__APPNAME__',
+        'clientid'     => '__CLIENTID__',
+        'clientsecret' => '__CLIENTSECRET__',
+        'redirecturi'  => '__REDIRECTURI__',
+        'logouturi'    => '__LOGOUTURI__'
+    )
 );
 /**
  * Array of supported file types / languages.
@@ -54,6 +66,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'title' => 'Javascript',
         'mime'  => 'application/javascript',
         'geshi' => 'javascript'
+    ),
+    'pl' => array(
+        'title' => 'Perl',
+        'mime'  => 'application/x-perl',
+        'geshi' => 'pl'
     ),
     'php' => array(
         'title' => 'PHP',

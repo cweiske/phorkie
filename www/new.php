@@ -11,6 +11,7 @@ namespace phorkie;
  * Creates and redirects to display page
  */
 require_once 'www-header.php';
+if ($GLOBALS['phorkie']['auth']['method'] == "google") { require_once 'secure.php'; }
 
 $repopo = new Repository_Post();
 if ($repopo->process($_POST)) {
@@ -22,7 +23,7 @@ $phork = array(
 );
 $db = new Database();
 render(
-    'index',
+    'new',
     array(
         'files'       => $phork,
         'description' => '',
