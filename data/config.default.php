@@ -55,6 +55,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'application/javascript',
         'geshi' => 'javascript'
     ),
+    'pl' => array(
+        'title' => 'Perl',
+        'mime'  => 'application/x-perl',
+        'geshi' => 'pl'
+    ),
     'php' => array(
         'title' => 'PHP',
         'mime'  => 'text/x-php',
@@ -91,15 +96,15 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'image/svg+xml',
         'show'  => false
     ),
-    'ts' => array(
-        'title' => 'TypoScript',
-        'mime'  => 'text/x-typoscript',/* TODO: correct type */
-        'geshi' => 'typoscript'
-    ),
     'txt' => array(
         'title' => 'Text (plain)',
         'mime'  => 'text/plain',
         'geshi' => 'txt'
+    ),
+    'ts' => array(
+        'title' => 'TypoScript',
+        'mime'  => 'text/x-typoscript',/* TODO: correct type */
+        'geshi' => 'typoscript'
     ),
     'xml' => array(
         'title' => 'XML',
