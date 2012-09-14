@@ -169,7 +169,7 @@ URLs
 ====
 
 ``/``
-  Index page. Shows form for new paste
+  Index page.
 ``/[0-9]+``
   Display page for paste
 ``/[0-9]/edit``
@@ -188,7 +188,8 @@ URLs
   Search for term, with optional page
 ``/list(/[0-9])?``
   List all pastes, with optional page
-
+``/new``
+  Shows form for new paste
 
 Internal directory layout
 =========================
@@ -220,6 +221,7 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/rev-raw/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
     rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
 
+    rewrite ^/new$ /new.php;
     rewrite ^/list$ /list.php;
     rewrite ^/list/([0-9]+)$ /list.php?page=$1;
 
