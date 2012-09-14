@@ -10,7 +10,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'setupcheck'    => true,
     'elasticsearch' => null,
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
-    'index'         => 'new'
+    'index'         => 'new'//"new" or "list"
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
