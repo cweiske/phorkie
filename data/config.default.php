@@ -9,7 +9,8 @@ $GLOBALS['phorkie']['cfg'] = array(
     'topbar'        => '',
     'setupcheck'    => true,
     'elasticsearch' => null,
-    'geshi'         => 'MediaWiki/geshi/geshi/geshi.php'
+    'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
+    'index'         => 'list'
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
