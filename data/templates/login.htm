@@ -1,0 +1,44 @@
+{% extends "base.htm" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<!-- Simple OpenID Selector -->
+<link rel="stylesheet" href="css/openid.css" />
+
+<style type="text/css">
+/* Basic page formatting. */
+</style>
+
+<form method="post" action="/auth" id="openid_form">
+  <input id="start" name="start" type="hidden" value="submit" />
+  <input id="sreg" name="sreg" type="hidden" value="on" />
+  <input id="ax" name="ax" type="hidden" value="on" />
+
+<fieldset>
+  <legend>Sign-in</legend>
+  <div id="openid_choice" style="display: block; ">
+    <p>Please choose your account provider</p>
+    <div id="openid_btns">
+      <a title="Google" href="/auth?identifier=https://www.google.com/accounts/o8/id&ax=on&sreg=on&start=submit" class="google openid_large_btn"></a>
+      <a title="Yahoo" href="/auth?identifier=http://yahoo.com&ax=on&sreg=on&start=submit" class="yahoo openid_large_btn"></a>
+    </div>
+    <div id="openid_input_area">
+      <p>or enter your OpenID URL.</p>
+      <input class="" id="identifier" type="text" name="identifier" value="http://">
+      <input class="btn" id="openid_submit" type="submit" value="Sign-In">
+    </div>
+  </div>
+</fieldset>
+{% endblock %}
+
+{% block sidebar %}
+ {% if recents.results %}
+ <h3>Recently created</h3>
+ <ul>
+ {% for repo in recents.repos %}
+   {% include 'repo-sidebar-list.htm' %}
+ {% endfor %}
+ </ul>
+ {% endif %}
+{% endblock %}

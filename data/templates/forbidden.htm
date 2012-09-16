@@ -1,0 +1,21 @@
+{% extends "base.htm" %}
+{% block title %}Access Denied{% endblock %}
+
+{% block content %}
+
+<fieldset>
+  <legend>Access Denied</legend>
+  <img src="images/access_denied.png">
+</fieldset>
+{% endblock %}
+
+{% block sidebar %}
+ {% if recents.results %}
+ <h3>Recently created</h3>
+ <ul>
+ {% for repo in recents.repos %}
+   {% include 'repo-sidebar-list.htm' %}
+ {% endfor %}
+ </ul>
+ {% endif %}
+{% endblock %}

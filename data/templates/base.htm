@@ -25,6 +25,14 @@
       <li>
        <a href="/list">List all</a>
       </li>
+      {% if identity %}
+      <li>
+       <a href="#">{{name}} ({{email}})</a>
+      </li>
+      <li>
+       <a href="/auth?logout">Logout</a>
+      </li>
+      {% endif %}
       {% if db.adapter %}
       <li>
        <form class="navbar-search pull-left" action="/search" method="get">

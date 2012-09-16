@@ -1,9 +1,12 @@
 <?php
 /**
- * Fork a repository
+ * List a repository
  */
 namespace phorkie;
 require_once 'www-header.php';
+if ($GLOBALS['phorkie']['auth']['secure'] == 2) {
+    require_once 'secure.php';
+}
 $rs = new Repositories();
 
 $page = 0;

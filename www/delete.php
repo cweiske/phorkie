@@ -4,6 +4,9 @@ namespace phorkie;
  * Delete paste or ask for deletion
  */
 require_once 'www-header.php';
+if ($GLOBALS['phorkie']['auth']['secure'] > 0) {
+    require_once 'secure.php';
+}
 
 $repo = new Repository();
 $repo->loadFromRequest();

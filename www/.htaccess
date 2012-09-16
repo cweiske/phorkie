@@ -19,3 +19,7 @@ RewriteRule ^list/([0-9]+)$ /list.php?page=$1
 
 RewriteRule ^search$ /search.php
 RewriteRule ^search/([0-9]+)$ /search.php?page=$1
+
+RewriteRule ^auth$ /auth.php
+RewriteRule ^login$ /login.php
+RewriteRule ^forbidden$ /forbidden.php

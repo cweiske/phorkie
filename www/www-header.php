@@ -1,5 +1,6 @@
 <?php
 namespace phorkie;
+session_start();
 set_include_path(
     __DIR__ . '/../src/'
     . PATH_SEPARATOR . get_include_path()
@@ -63,6 +64,9 @@ function render($tplname, $vars)
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
     $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];
+    $vars['identity'] = $_SESSION['identity'];
+    $vars['name'] = $_SESSION['name'];
+    $vars['email'] = $_SESSION['email'];
     $vars['db'] = new Database();
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
