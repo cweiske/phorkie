@@ -1,0 +1,15 @@
+{% extends "base.htm" %}
+{% block title %}User Preferences{% endblock %}
+
+{% block content %}
+
+<form method="post" action="/user" id="user_form">
+<fieldset>
+  <legend>User Profile</legend>
+   <p>Please update your git preferences for <code>{{ identity }}</code></p>
+   <label for='name'>Name:</label><input class="" id="name" type="text" name="name" width="35" value="{{ name }}"><br/>
+   <label for='email'>Email:</label><input class="" id="email" type="text" name="email" width="35" value="{{ email }}"><br/>
+   <input class="btn" id="submit" type="submit" value="Update">
+</fieldset>
+</form>
+{% endblock %}
