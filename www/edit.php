@@ -12,7 +12,7 @@ $repo = new Repository();
 $repo->loadFromRequest();
 
 $repopo = new Repository_Post($repo);
-if ($repopo->process($_POST)) {
+if ($repopo->process($_POST, $_SESSION)) {
     redirect($repo->getLink('display'));
 }
 

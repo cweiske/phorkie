@@ -16,7 +16,7 @@ if ($GLOBALS['phorkie']['auth']['secure'] > 0) {
 }
 
 $repopo = new Repository_Post();
-if ($repopo->process($_POST)) {
+if ($repopo->process($_POST, $_SESSION)) {
     redirect($repopo->repo->getLink('display'));
 }
 

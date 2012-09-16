@@ -15,7 +15,7 @@ class Repository_Post
      *
      * @return boolean True if the post was successful
      */
-    public function process($postData)
+    public function process($postData, $sessionData)
     {
         if (!isset($postData['files'])) {
             return false;
@@ -117,11 +117,17 @@ class Repository_Post
             }
         }
 
+        $commitmsg = "phorkie commit";
+        if (isset($sessionData['identity'])) {
+            $commitmsg .= " from ".$sessionData['identity'];
+        } else {
+            $commitmsg .= " by ".$sessionData['ipaddr'];
+        }
+
         if ($bCommit) {
             $vc->getCommand('commit')
-                ->setOption('message', '')
-                ->setOption('allow-empty-message')
-                ->setOption('author', 'Anonymous <anonymous@phorkie>')
+                ->setOption('message', $commitmsg)
+                ->setOption('author', $sessionData['name'].' <'.$sessionData['email'].'>')
                 ->execute();
             $bChanged = true;
         }

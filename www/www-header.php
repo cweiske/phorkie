@@ -47,6 +47,12 @@ if (file_exists(__DIR__ . '/../data/config.php')) {
 if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
     SetupCheck::run();
 }
+
+// Set/Get git commit session variables
+$_SESSION['ipaddr'] = $_SERVER['REMOTE_ADDR'];
+if (!isset($_SESSION['name']))  { $_SESSION['name']  = $GLOBALS['phorkie']['auth']['anonymousName'];  }
+if (!isset($_SESSION['email'])) { $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail']; }
+
 \Twig_Autoloader::register();
 
 $loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
