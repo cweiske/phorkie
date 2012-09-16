@@ -3,12 +3,7 @@
 
 {% block content %}
 
-<!-- Simple OpenID Selector -->
 <link rel="stylesheet" href="css/openid.css" />
-
-<style type="text/css">
-/* Basic page formatting. */
-</style>
 
 <form method="post" action="/auth" id="openid_form">
   <input id="start" name="start" type="hidden" value="submit" />
@@ -30,15 +25,6 @@
     </div>
   </div>
 </fieldset>
-{% endblock %}
 
-{% block sidebar %}
- {% if recents.results %}
- <h3>Recently created</h3>
- <ul>
- {% for repo in recents.repos %}
-   {% include 'repo-sidebar-list.htm' %}
- {% endfor %}
- </ul>
- {% endif %}
+</form>
 {% endblock %}
