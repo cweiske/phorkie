@@ -200,33 +200,6 @@ if (isset($_POST['start'])) {
         }
     }
 
-    $contents = "<div class='openid_results'>
-    <p>
-    <table>
-    <tr colspan=2><td><b>Results</b></td></tr>
-    <tr><td>User Supplied Identifier:</td><td>$usid</td></tr>
-    <tr><td>Claimed Identifier:</td><td>$id</td></tr>
-    <tr><td>Mode:</td><td>$mode</td></tr>
-    $status\n
-    <tr colspan=2><td><p><br><b>Message Contents</b></td></tr>";
-
-    foreach ($message->getArrayFormat() as $key => $value) {
-        $contents .= "<tr><td align=left>$key</td><td>$value</td></tr>\n";
-    }
-
-    if (isset($oauthData) && count($oauthData)) {
-        $contents .= "<tr colspan=2>";
-        $contents .= "    <td><p><br><b>OAuth Access token/secret</b></td>";
-        $contents .= "</tr>";
-
-        foreach ($oauthData as $key => $value) {
-            $contents .= "<tr><td align=left>$key</td><td>$value</td></tr>\n";
-        }
-    }
-
-    $contents .= "</table>";
-    $contents .= "</div>";
-
     $openid = $message->getArrayFormat();
     if ($GLOBALS['phorkie']['auth']['secure'] > 0 &&
         $GLOBALS['phorkie']['auth']['userlist']) {
