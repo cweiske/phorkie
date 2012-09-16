@@ -64,9 +64,11 @@ function render($tplname, $vars)
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
     $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];
-    $vars['identity'] = $_SESSION['identity'];
-    $vars['name'] = $_SESSION['name'];
-    $vars['email'] = $_SESSION['email'];
+    if (isset($_SESSION['identity'])) {
+        $vars['identity'] = $_SESSION['identity'];
+        $vars['name'] = $_SESSION['name'];
+        $vars['email'] = $_SESSION['email'];
+    }
     $vars['db'] = new Database();
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
