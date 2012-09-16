@@ -32,6 +32,12 @@ class Repository
      */
     public $hash;
 
+    /**
+     * Commit message of the last (or current) revision
+     *
+     * @var string
+     */
+    public $message;
 
 
     /**
@@ -56,6 +62,7 @@ class Repository
         $this->id = (int)$_GET['id'];
         $this->loadDirs();
         $this->loadHash();
+        $this->loadMessage();
     }
 
     protected function loadDirs()
@@ -95,6 +102,23 @@ class Repository
             );
         }
         $this->hash = $output;
+    }
+
+    public function loadMessage()
+    {
+        $rev = (isset($this->hash)) ? $this->hash : 'HEAD';
+        $output = $this->getVc()->getCommand('log')
+            ->setOption('oneline')
+            ->addArgument('-1')
+            ->addArgument($rev)
+            ->execute();
+        $output = trim($output);
+        if (strpos($output, ' ') > 0) {
+            $output = substr($output, strpos($output, ' '), strlen($output));
+            $this->message = trim($output);
+        } else {
+            $this->message = "This commit message intentionally left blank.";
+		}
     }
 
     public function loadById($id)
