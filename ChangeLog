@@ -1,3 +1,7 @@
+2012-09-16  Christian Weiske  <cweiske@cweiske.de>
+
+	* Implement request #12: DOAP documents for all pastes
+
 2012-09-08  Christian Weiske  <cweiske@cweiske.de>
 
 	* Fix bug #11: do not index edit, delete and tool pages

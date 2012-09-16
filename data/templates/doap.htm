@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns="http://usefulinc.com/ns/doap#">
+ <Project rdf:about="{{link}}">
+  <name>{{repo.getTitle}}</name>
+  <homepage rdf:resource="{{link}}" />
+  <created>{{date}}</created>
+  {% if repo.getCloneURL(true) %}
+  <repository>
+   <GitRepository>
+    <location rdf:resource="{{repo.getCloneURL(true)}}" />
+    <browse rdf:resource="{{link}}" />
+   </GitRepository>
+  </repository>
+  {%endif %}
+ </Project>
+</rdf:RDF>
