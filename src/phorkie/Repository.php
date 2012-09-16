@@ -118,7 +118,7 @@ class Repository
             $this->message = trim($output);
         } else {
             $this->message = "This commit message intentionally left blank.";
-		}
+        }
     }
 
     public function loadById($id)

@@ -190,6 +190,15 @@ URLs
   List all pastes, with optional page
 ``/new``
   Shows form for new paste
+``/login``
+  Login page for protecting site
+``/auth``
+  Authentication callback url
+``/forbidden``
+  Access denied page
+``/user``
+  Edit logged-in user information
+
 
 Internal directory layout
 =========================
@@ -227,4 +236,9 @@ If you use nginx, place the following lines into your ``server`` block:
 
     rewrite ^/search$ /search.php;
     rewrite ^/search/([0-9]+)$ /search.php?page=$1;
+
+    rewrite ^/login$ /login.php;
+    rewrite ^/auth$ /auth.php;
+    rewrite ^/forbidden$ /forbidden.php;
+    rewrite ^/user$ /user.php;
   }
