@@ -4,6 +4,7 @@ namespace phorkie;
  * Show an access denied error
  */
 
+header('HTTP/1.0 403 Forbidden');
 render(
     'forbidden',
     array(
