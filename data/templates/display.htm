@@ -3,6 +3,10 @@
  {{repo.getTitle}}
 {% endblock %}
 
+{% block meta %}
+<link rel="meta" title="DOAP" type="application/rdf+xml" href="{{repo.getLink('doap')}}"/>
+{% endblock %}
+
 {% block content %}
  {% include 'display-head.htm' %}
 

@@ -252,6 +252,8 @@ class Repository
             return '/' . $this->id;
         } else if ($type == 'fork') {
             return '/' . $this->id . '/fork';
+        } else if ($type == 'doap') {
+            return '/' . $this->id . '/doap';
         } else if ($type == 'delete') {
             return '/' . $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
