@@ -5,7 +5,7 @@
 namespace phorkie;
 require_once 'www-header.php';
 if (!isset($_SESSION['identity'])) {
-    require_once 'secure.php';
+    include_once 'secure.php';
 }
 
 if (isset($_POST['name'])) {

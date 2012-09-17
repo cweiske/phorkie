@@ -104,6 +104,11 @@ class Repository
         $this->hash = $output;
     }
 
+	/**
+     * Populates $this->message
+     *
+     * @return void
+     */
     public function loadMessage()
     {
         $rev = (isset($this->hash)) ? $this->hash : 'HEAD';

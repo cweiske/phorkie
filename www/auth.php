@@ -27,7 +27,7 @@ if (isset($_REQUEST['logout'])) {
     session_destroy();
     $redirect = 'http://' . $_SERVER['HTTP_HOST'];
     header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-	exit;
+    exit;
 }
 
 if (!count($_GET) && !count($_POST)) {
@@ -59,9 +59,7 @@ try {
     exit;
 }
 
-if (!empty($_POST['disable_associations'])
-    || !empty($_SESSION['disable_associations'])) {
-
+if (!empty($_POST['disable_associations']) || !empty($_SESSION['disable_associations'])) {
     $o->disableAssociations();
     $_SESSION['disable_associations'] = true;
 }
@@ -159,8 +157,7 @@ if (isset($_POST['start'])) {
     $mode    = $message->get('openid.mode');
 
     try {
-        $result = $o->verify(new Net_URL2($returnTo . '?' . $queryString),
-                                          $message);
+        $result = $o->verify(new Net_URL2($returnTo . '?' . $queryString), $message);
 
         if ($result->success()) {
             $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
@@ -202,7 +199,7 @@ if (isset($_POST['start'])) {
 
     $openid = $message->getArrayFormat();
 
-	$email = (isset($openid['openid.ext1.value.email'])) ? $openid['openid.ext1.value.email'] : null;
+    $email = (isset($openid['openid.ext1.value.email'])) ? $openid['openid.ext1.value.email'] : null;
     $email = (isset($openid['openid.ext2.value.email']) && !isset($email)) ? $openid['openid.ext2.value.email'] : $email;
     $email = (isset($openid['openid.sreg.email']) && !isset($email)) ? $openid['openid.sreg.email'] : $email;
     $email = (isset($openid['openid.ax.value.email']) && !isset($email)) ? $openid['openid.ax.value.email'] : $email;

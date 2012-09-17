@@ -12,7 +12,7 @@ namespace phorkie;
  */
 require_once 'www-header.php';
 if ($GLOBALS['phorkie']['auth']['secure'] > 0) {
-    require_once 'secure.php';
+    include_once 'secure.php';
 }
 
 $repopo = new Repository_Post();

@@ -50,8 +50,12 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
 
 // Set/Get git commit session variables
 $_SESSION['ipaddr'] = $_SERVER['REMOTE_ADDR'];
-if (!isset($_SESSION['name']))  { $_SESSION['name']  = $GLOBALS['phorkie']['auth']['anonymousName'];  }
-if (!isset($_SESSION['email'])) { $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail']; }
+if (!isset($_SESSION['name'])) {
+    $_SESSION['name'] = $GLOBALS['phorkie']['auth']['anonymousName'];
+}
+if (!isset($_SESSION['email'])) {
+    $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail'];
+}
 
 \Twig_Autoloader::register();
 

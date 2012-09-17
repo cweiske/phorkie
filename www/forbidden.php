@@ -1,6 +1,6 @@
 <?php
 /**
- * Access Denied
+ * Access Denied page
  */
 namespace phorkie;
 require_once 'www-header.php';
