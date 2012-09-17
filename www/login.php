@@ -197,16 +197,32 @@ if (isset($_POST['start'])) {
 
     $openid = $message->getArrayFormat();
 
-    $email = (isset($openid['openid.ext1.value.email'])) ? $openid['openid.ext1.value.email'] : null;
-    $email = (isset($openid['openid.ext2.value.email']) && !isset($email)) ? $openid['openid.ext2.value.email'] : $email;
-    $email = (isset($openid['openid.sreg.email']) && !isset($email)) ? $openid['openid.sreg.email'] : $email;
-    $email = (isset($openid['openid.ax.value.email']) && !isset($email)) ? $openid['openid.ax.value.email'] : $email;
-    $_SESSION['email'] = (isset($email)) ? $email : $GLOBALS['phorkie']['auth']['anonymousEmail'];
+    $email = isset($openid['openid.ext1.value.email'])
+        ? $openid['openid.ext1.value.email']
+        : null;
+    $email = isset($openid['openid.ext2.value.email']) && !isset($email)
+        ? $openid['openid.ext2.value.email']
+        : $email;
+    $email = isset($openid['openid.sreg.email']) && !isset($email)
+        ? $openid['openid.sreg.email']
+        : $email;
+    $email = isset($openid['openid.ax.value.email']) && !isset($email)
+        ? $openid['openid.ax.value.email']
+        : $email;
+    $_SESSION['email'] = isset($email)
+        ? $email
+        : $GLOBALS['phorkie']['auth']['anonymousEmail'];
 
-    $name = (isset($openid['openid.ext1.value.firstname']) && isset($openid['openid.ext1.value.lastname'])) ? $openid['openid.ext1.value.firstname']." ".$openid['openid.ext1.value.lastname'] : null;
-    $name = (isset($openid['openid.sreg.fullname']) && !isset($name)) ? $openid['openid.sreg.fullname'] : $name;
-    $_SESSION['name'] = (isset($name)) ? $name : $_SERVER['REMOTE_ADDR'];
+    $name = isset($openid['openid.ext1.value.firstname'])
+        && isset($openid['openid.ext1.value.lastname'])
+        ? $openid['openid.ext1.value.firstname'] . ' '
+        . $openid['openid.ext1.value.lastname']
+        : null;
+    $name = isset($openid['openid.sreg.fullname']) && !isset($name)
+        ? $openid['openid.sreg.fullname']
+        : $name;
 
+    $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
     $_SESSION['identity'] = $openid['openid.identity'];
 
     $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SESSION['REQUEST_URI'];
