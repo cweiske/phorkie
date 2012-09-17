@@ -83,11 +83,6 @@ if (isset($_POST['start'])) {
         exit;
     }
 
-    // checkid_immediate
-    if (!empty($_POST['checkid_immediate'])) {
-        $authRequest->setMode('checkid_immediate');
-    }
-
     // SREG
     $sreg = new \OpenID_Extension_SREG11(\OpenID_Extension::REQUEST);
     $sreg->set('required', 'email,fullname');
@@ -102,36 +97,10 @@ if (isset($_POST['start'])) {
     $ax->set('required', 'email,firstname,lastname');
     $authRequest->addExtension($ax);
 
-    // UI
-    if (!empty($_POST['ui'])) {
-        $ui = new \OpenID_Extension_UI(\OpenID_Extension::REQUEST);
-        $ui->set('mode', 'popup');
-        $ui->set('language', 'en-US');
-        $authRequest->addExtension($ui);
-    }
-
-    // OAuth
-    if (!empty($_POST['oauth'])) {
-        $oauth = new \OpenID_Extension_OAuth(\OpenID_Extension::REQUEST);
-        $oauth->set('consumer', $_POST['oauth_consumer_key']);
-        $_SESSION['OAuth_consumer_key']    = $_POST['oauth_consumer_key'];
-        $_SESSION['OAuth_consumer_secret'] = $_POST['oauth_consumer_secret'];
-
-        $oauth->set('scope', $_POST['oauth_scope']);
-        $_SESSION['OAuth_scope'] = $_POST['oauth_scope'];
-
-        $_SESSION['OAuth_access_token_url']    = $_POST['oauth_access_token_url'];
-        $_SESSION['OAuth_access_token_method'] = $_POST['oauth_access_token_method'];
-
-        $authRequest->addExtension($oauth);
-    }
-    
     $url = $authRequest->getAuthorizeURL();
     
-    if (empty($_POST['debug'])) {
-        header("Location: $url");
-        exit;
-    }
+    header("Location: $url");
+    exit;
     
 } else {
     if (isset($_SESSION['openid_url'])) {
