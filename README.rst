@@ -182,6 +182,8 @@ URLs
   Show specific revision of the paste
 ``/[0-9]/delete``
   Delete the paste
+``/[0-9]/doap``
+  Show DOAP document for paste
 ``/[0-9]/fork``
   Create a fork of the paste
 ``/search?q=..(&page=[0-9]+)?``
@@ -214,6 +216,7 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)$ /display.php?id=$1;
     rewrite ^/([0-9]+)/delete$ /delete.php?id=$1;
     rewrite ^/([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1;
+    rewrite ^/([0-9]+)/doap$ /doap.php?id=$1;
     rewrite ^/([0-9]+)/edit$ /edit.php?id=$1;
     rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
     rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
