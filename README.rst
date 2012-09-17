@@ -194,8 +194,6 @@ URLs
   Login page for protecting site
 ``/auth``
   Authentication callback url
-``/forbidden``
-  Access denied page
 ``/user``
   Edit logged-in user information
 
@@ -239,6 +237,5 @@ If you use nginx, place the following lines into your ``server`` block:
 
     rewrite ^/login$ /login.php;
     rewrite ^/auth$ /auth.php;
-    rewrite ^/forbidden$ /forbidden.php;
     rewrite ^/user$ /user.php;
   }

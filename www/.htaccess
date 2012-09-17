@@ -23,5 +23,4 @@ RewriteRule ^search/([0-9]+)$ /search.php?page=$1
 
 RewriteRule ^auth$ /auth.php
 RewriteRule ^login$ /login.php
-RewriteRule ^forbidden$ /forbidden.php
 RewriteRule ^user$ /user.php
