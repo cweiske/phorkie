@@ -40,7 +40,7 @@ if (!count($_GET) && !count($_POST)) {
 }
 
 // Hackaround Non-Javascript Login Page
-if (!count($_POST) && isset($_GET['start'])) {
+if (!count($_POST) && isset($_GET['openid_url'])) {
     $_POST = $_GET;
 }
 
@@ -70,7 +70,7 @@ if (!empty($_POST['disable_associations']) || !empty($_SESSION['disable_associat
 $log = new \OpenID_Observer_Log;
 \OpenID::attach($log);
 
-if (isset($_POST['start'])) {
+if (isset($_POST['openid_url'])) {
 
     $_SESSION['openid_url'] = $openid_url;
     try {
