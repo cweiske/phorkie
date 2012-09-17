@@ -15,12 +15,12 @@
   <div id="openid_choice" style="display: block; ">
     <p>Please choose your account provider</p>
     <div id="openid_btns">
-      <a title="Google" href="/auth?identifier=https://www.google.com/accounts/o8/id&ax=on&sreg=on&start=submit" class="google openid_large_btn"></a>
-      <a title="Yahoo" href="/auth?identifier=http://yahoo.com&ax=on&sreg=on&start=submit" class="yahoo openid_large_btn"></a>
+      <a title="Google" href="/auth?openid_url=https://www.google.com/accounts/o8/id&start=submit" class="google openid_large_btn"></a>
+      <a title="Yahoo" href="/auth?openid_url=http://yahoo.com&start=submit" class="yahoo openid_large_btn"></a>
     </div>
     <div id="openid_input_area">
       <p>or enter your OpenID URL.</p>
-      <input class="" id="identifier" type="text" name="identifier" value="http://">
+      <input class="" id="openid_url" type="text" name="openid_url" value="http://">
       <input class="btn" id="openid_submit" type="submit" value="Sign-In">
     </div>
   </div>

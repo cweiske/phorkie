@@ -25,7 +25,7 @@ body {
   background-color: #FFFCC9;
   float: left;
 }
-#identifier {
+#openid_url {
   margin: 0px !important;
   width: 250px;
   background: #FFF url(/images/openid-inputicon.gif) no-repeat scroll 0 50%;

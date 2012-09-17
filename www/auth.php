@@ -41,16 +41,16 @@ if (!count($_POST) && isset($_GET['start'])) {
     $_POST = $_GET;
 }
 
-if (isset($_POST['identifier'])) {
-    $identifier = $_POST['identifier'];
-} else if (isset($_SESSION['identifier'])) {
-    $identifier = $_SESSION['identifier'];
+if (isset($_POST['openid_url'])) {
+    $openid_url = $_POST['openid_url'];
+} else if (isset($_SESSION['openid_url'])) {
+    $openid_url = $_SESSION['openid_url'];
 } else {
-    $identifier = null;
+    $openid_url = null;
 }
 
 try {
-    $o = new OpenID_RelyingParty($returnTo, $realm, $identifier);
+    $o = new OpenID_RelyingParty($returnTo, $realm, $openid_url);
 } catch (OpenID_Exception $e) {
     $contents  = "<div class='openid_results'>\n";
     $contents .= "<pre>" . $e->getMessage() . "</pre>\n";
@@ -69,7 +69,7 @@ OpenID::attach($log);
 
 if (isset($_POST['start'])) {
 
-    $_SESSION['identifier'] = $identifier;
+    $_SESSION['openid_url'] = $openid_url;
     try {
         $authRequest = $o->prepare();
     } catch (OpenID_Exception $e) {
@@ -86,23 +86,19 @@ if (isset($_POST['start'])) {
     }
 
     // SREG
-    if (!empty($_POST['sreg'])) {
-        $sreg = new OpenID_Extension_SREG11(OpenID_Extension::REQUEST);
-        $sreg->set('required', 'email,firstname,lastname,nickname');
-        $sreg->set('optional', 'gender,dob');
-        $authRequest->addExtension($sreg);
-    }
+    $sreg = new OpenID_Extension_SREG11(OpenID_Extension::REQUEST);
+    $sreg->set('required', 'email,firstname,lastname,nickname');
+    $sreg->set('optional', 'gender,dob');
+    $authRequest->addExtension($sreg);
 
     // AX
-    if (!empty($_POST['ax'])) {
-        $ax = new OpenID_Extension_AX(OpenID_Extension::REQUEST);
-        $ax->set('type.email', 'http://axschema.org/contact/email');
-        $ax->set('type.firstname', 'http://axschema.org/namePerson/first');
-        $ax->set('type.lastname', 'http://axschema.org/namePerson/last');
-        $ax->set('mode', 'fetch_request');
-        $ax->set('required', 'email,firstname,lastname');
-        $authRequest->addExtension($ax);
-    }
+    $ax = new OpenID_Extension_AX(OpenID_Extension::REQUEST);
+    $ax->set('type.email', 'http://axschema.org/contact/email');
+    $ax->set('type.firstname', 'http://axschema.org/namePerson/first');
+    $ax->set('type.lastname', 'http://axschema.org/namePerson/last');
+    $ax->set('mode', 'fetch_request');
+    $ax->set('required', 'email,firstname,lastname');
+    $authRequest->addExtension($ax);
 
     // UI
     if (!empty($_POST['ui'])) {
@@ -136,9 +132,9 @@ if (isset($_POST['start'])) {
     }
     
 } else {
-    if (isset($_SESSION['identifier'])) {
-        $usid = $_SESSION['identifier'];
-        unset($_SESSION['identifier']);
+    if (isset($_SESSION['openid_url'])) {
+        $usid = $_SESSION['openid_url'];
+        unset($_SESSION['openid_url']);
     } else {
         $usid = null;
     }
