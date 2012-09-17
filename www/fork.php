@@ -4,9 +4,6 @@
  */
 namespace phorkie;
 require_once 'www-header.php';
-if ($GLOBALS['phorkie']['auth']['secure'] > 0) {
-    include_once 'secure.php';
-}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     throw new Exception_Input('Forking only possible via POST');

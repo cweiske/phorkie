@@ -10,10 +10,8 @@ namespace phorkie;
  *
  * Creates and redirects to display page
  */
+$pageRequiresLogin = true;
 require_once 'www-header.php';
-if ($GLOBALS['phorkie']['auth']['secure'] > 0) {
-    include_once 'secure.php';
-}
 
 $repopo = new Repository_Post();
 if ($repopo->process($_POST, $_SESSION)) {

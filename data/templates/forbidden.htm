@@ -3,23 +3,13 @@
 
 {% block content %}
 
-<fieldset>
-  <legend>Access Denied</legend>
-  <img src="/images/access_denied.png" align='left'>
-  <p>We're sorry, your identity is not authorized:</p>
-  <p><code>{{ identity }}</code></p>
-  <p>If you feel this message is in error, please notify the site admin
-    and include your identity.</p>
-</fieldset>
+<img src="/images/access_denied.png" align='left' alt="acces denied"/>
+<h2>Access Denied</h2>
+<p>
+ We're sorry; but you are not allowed to access this page.
+</p>
+<p>
+ You may <a href="/login">log in</a> if you want.
+</p>
 {% endblock %}
 
-{% block sidebar %}
- {% if recents.results %}
- <h3>Recently created</h3>
- <ul>
- {% for repo in recents.repos %}
-   {% include 'repo-sidebar-list.htm' %}
- {% endfor %}
- </ul>
- {% endif %}
-{% endblock %}

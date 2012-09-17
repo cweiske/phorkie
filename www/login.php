@@ -18,6 +18,7 @@ set_include_path(
     . PATH_SEPARATOR . get_include_path()
 );
 
+$pageRequiresLogin = false;
 require_once 'www-header.php';
 require_once 'openid/config.php';
 

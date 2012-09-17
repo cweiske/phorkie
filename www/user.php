@@ -4,9 +4,6 @@
  */
 namespace phorkie;
 require_once 'www-header.php';
-if (!isset($_SESSION['identity'])) {
-    include_once 'secure.php';
-}
 
 if (isset($_POST['name'])) {
     $_SESSION['name'] = substr(filter_var($_POST['name'], FILTER_SANITIZE_STRING), 0, 35);

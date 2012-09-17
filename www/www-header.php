@@ -72,6 +72,8 @@ $twig = new \Twig_Environment(
 );
 //$twig->addExtension(new \Twig_Extension_Debug());
 
+require __DIR__ . '/www-security.php';
+
 function render($tplname, $vars = array())
 {
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
