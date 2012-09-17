@@ -1,42 +1,18 @@
 <?php
-/**
- * OpenID 
- * 
- * PHP Version 5.2.0+
- * 
- * @category  Auth
- * @package   OpenID
- * @author    Bill Shupp <hostmaster@shupp.org> 
- * @copyright 2009 Bill Shupp
- * @license   http://www.opensource.org/licenses/bsd-license.php FreeBSD
- * @link      http://github.com/shupp/openid
- */
 namespace phorkie;
-// A tool for testing Relying Party functionality
-set_include_path(
-    __DIR__ . '/../../src/'
-    . PATH_SEPARATOR . get_include_path()
-);
-
 $pageRequiresLogin = false;
 require_once 'www-header.php';
-require_once 'openid/config.php';
-
 
 if (isset($_REQUEST['logout'])) {
     unset($_SESSION);
     session_destroy();
-    $redirect = 'http://' . $_SERVER['HTTP_HOST'];
-    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-    exit;
+    header('Location: ' . Tools::fullUrl('/'));
+    exit();
 }
 
 if (!count($_GET) && !count($_POST)) {
-    render(
-        'login',
-        null
-    );
-    exit;
+    render('login');
+    exit();
 }
 
 // Hackaround Non-Javascript Login Page
@@ -51,6 +27,9 @@ if (isset($_POST['openid_url'])) {
 } else {
     $openid_url = null;
 }
+
+$realm    = Tools::fullUrl('/');
+$returnTo = Tools::fullUrl('/login');
 
 try {
     $o = new \OpenID_RelyingParty($returnTo, $realm, $openid_url);
