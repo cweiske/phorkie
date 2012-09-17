@@ -72,7 +72,7 @@ $twig = new \Twig_Environment(
 );
 //$twig->addExtension(new \Twig_Extension_Debug());
 
-function render($tplname, $vars)
+function render($tplname, $vars = array())
 {
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
