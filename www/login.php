@@ -90,8 +90,7 @@ if (isset($_POST['start'])) {
 
     // SREG
     $sreg = new \OpenID_Extension_SREG11(\OpenID_Extension::REQUEST);
-    $sreg->set('required', 'email,firstname,lastname,nickname');
-    $sreg->set('optional', 'gender,dob');
+    $sreg->set('required', 'email,fullname');
     $authRequest->addExtension($sreg);
 
     // AX
@@ -205,8 +204,7 @@ if (isset($_POST['start'])) {
     $_SESSION['email'] = (isset($email)) ? $email : $GLOBALS['phorkie']['auth']['anonymousEmail'];
 
     $name = (isset($openid['openid.ext1.value.firstname']) && isset($openid['openid.ext1.value.lastname'])) ? $openid['openid.ext1.value.firstname']." ".$openid['openid.ext1.value.lastname'] : null;
-    $name = (isset($openid['openid.sreg.firstname']) && isset($openid['openid.sreg.lastname']) && !isset($name)) ? $openid['openid.sreg.firstname']." ".$openid['openid.sreg.lastname'] : $name;
-    $name = (isset($openid['openid.sreg.nickname']) && !isset($name)) ? $openid['openid.sreg.nickname'] : $name;
+    $name = (isset($openid['openid.sreg.fullname']) && !isset($name)) ? $openid['openid.sreg.fullname'] : $name;
     $_SESSION['name'] = (isset($name)) ? $name : $_SERVER['REMOTE_ADDR'];
 
     $_SESSION['identity'] = $openid['openid.identity'];
