@@ -102,101 +102,75 @@ if (isset($_POST['start'])) {
     header("Location: $url");
     exit;
     
-} else {
-    if (isset($_SESSION['openid_url'])) {
-        $usid = $_SESSION['openid_url'];
-        unset($_SESSION['openid_url']);
-    } else {
-        $usid = null;
-    }
-
-    unset($_SESSION['disable_associations']);
-
-    if (!count($_POST)) {
-        list(, $queryString) = explode('?', $_SERVER['REQUEST_URI']);
-    } else {
-        // I hate php sometimes
-        $queryString = file_get_contents('php://input');
-    }
-
-    $message = new \OpenID_Message($queryString, \OpenID_Message::FORMAT_HTTP);
-    $id      = $message->get('openid.claimed_id');
-    $mode    = $message->get('openid.mode');
-
-    try {
-        $result = $o->verify(new \Net_URL2($returnTo . '?' . $queryString), $message);
-
-        if ($result->success()) {
-            $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
-            $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
-        } else {
-            $status  = "<tr><td>Status:</td><td><font color='red'>FAIL!";
-            $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
-        }
-    } catch (OpenID_Exception $e) {
-        $status  = "<tr><td>Status:</td><td><font color='red'>EXCEPTION!";
-        $status .= " ({$e->getMessage()} : {$e->getCode()})</font></td></tr>";
-    }
-
-    // OAuth hyprid fetching access token
-    if (isset($_SESSION['OAuth_consumer_key'],
-              $_SESSION['OAuth_consumer_secret'],
-              $_SESSION['OAuth_access_token_url'],
-              $_SESSION['OAuth_access_token_method'])) {
-
-        try {
-            $oauth = new \OpenID_Extension_OAuth(\OpenID_Extension::RESPONSE,
-                                                $message);
-
-            // Fix line lengths.
-            $consumerKey    = $_SESSION['OAuth_consumer_key'];
-            $consumerSecret = $_SESSION['OAuth_consumer_key'];
-            $tokenURL       = $_SESSION['OAuth_access_token_url'];
-            $tokenMethod    = $_SESSION['OAuth_access_token_method'];
-
-            $oauthData = $oauth->getAccessToken($consumerKey,
-                                                $consumerSecret,
-                                                $tokenURL,
-                                                array(),
-                                                $tokenMethod);
-
-        } catch (Exception $e) {
-        }
-    }
-
-    $openid = $message->getArrayFormat();
-
-    $email = isset($openid['openid.ext1.value.email'])
-        ? $openid['openid.ext1.value.email']
-        : null;
-    $email = isset($openid['openid.ext2.value.email']) && !isset($email)
-        ? $openid['openid.ext2.value.email']
-        : $email;
-    $email = isset($openid['openid.sreg.email']) && !isset($email)
-        ? $openid['openid.sreg.email']
-        : $email;
-    $email = isset($openid['openid.ax.value.email']) && !isset($email)
-        ? $openid['openid.ax.value.email']
-        : $email;
-    $_SESSION['email'] = isset($email)
-        ? $email
-        : $GLOBALS['phorkie']['auth']['anonymousEmail'];
-
-    $name = isset($openid['openid.ext1.value.firstname'])
-        && isset($openid['openid.ext1.value.lastname'])
-        ? $openid['openid.ext1.value.firstname'] . ' '
-        . $openid['openid.ext1.value.lastname']
-        : null;
-    $name = isset($openid['openid.sreg.fullname']) && !isset($name)
-        ? $openid['openid.sreg.fullname']
-        : $name;
-
-    $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
-    $_SESSION['identity'] = $openid['openid.identity'];
-
-    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SESSION['REQUEST_URI'];
-    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-    exit;
 }
 
+if (isset($_SESSION['openid_url'])) {
+    $usid = $_SESSION['openid_url'];
+    unset($_SESSION['openid_url']);
+} else {
+    $usid = null;
+}
+
+unset($_SESSION['disable_associations']);
+
+if (!count($_POST)) {
+    list(, $queryString) = explode('?', $_SERVER['REQUEST_URI']);
+} else {
+    // I hate php sometimes
+    $queryString = file_get_contents('php://input');
+}
+
+$message = new \OpenID_Message($queryString, \OpenID_Message::FORMAT_HTTP);
+$id      = $message->get('openid.claimed_id');
+$mode    = $message->get('openid.mode');
+
+try {
+    $result = $o->verify(new \Net_URL2($returnTo . '?' . $queryString), $message);
+
+    if ($result->success()) {
+        $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
+        $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
+    } else {
+        $status  = "<tr><td>Status:</td><td><font color='red'>FAIL!";
+        $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
+    }
+} catch (OpenID_Exception $e) {
+    $status  = "<tr><td>Status:</td><td><font color='red'>EXCEPTION!";
+    $status .= " ({$e->getMessage()} : {$e->getCode()})</font></td></tr>";
+  }
+
+
+$openid = $message->getArrayFormat();
+
+$email = isset($openid['openid.ext1.value.email'])
+    ? $openid['openid.ext1.value.email']
+    : null;
+$email = isset($openid['openid.ext2.value.email']) && !isset($email)
+    ? $openid['openid.ext2.value.email']
+    : $email;
+$email = isset($openid['openid.sreg.email']) && !isset($email)
+    ? $openid['openid.sreg.email']
+    : $email;
+$email = isset($openid['openid.ax.value.email']) && !isset($email)
+    ? $openid['openid.ax.value.email']
+    : $email;
+$_SESSION['email'] = isset($email)
+    ? $email
+    : $GLOBALS['phorkie']['auth']['anonymousEmail'];
+
+$name = isset($openid['openid.ext1.value.firstname'])
+    && isset($openid['openid.ext1.value.lastname'])
+    ? $openid['openid.ext1.value.firstname'] . ' '
+    . $openid['openid.ext1.value.lastname']
+    : null;
+$name = isset($openid['openid.sreg.fullname']) && !isset($name)
+    ? $openid['openid.sreg.fullname']
+    : $name;
+
+$_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
+$_SESSION['identity'] = $openid['openid.identity'];
+
+$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SESSION['REQUEST_URI'];
+header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+exit;
 ?>
