@@ -201,15 +201,6 @@ if (isset($_POST['start'])) {
     }
 
     $openid = $message->getArrayFormat();
-    if ($GLOBALS['phorkie']['auth']['secure'] > 0 &&
-        $GLOBALS['phorkie']['auth']['userlist']) {
-        if (!in_array($openid['openid.identity'], $GLOBALS['phorkie']['users'])) {
-            $redirect = 'http://' . $_SERVER['HTTP_HOST'] . "/forbidden";
-            header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-            exit;
-        }
-    }
-    // include_once 'openid/wrapper.php';
 
 	$email = (isset($openid['openid.ext1.value.email'])) ? $openid['openid.ext1.value.email'] : null;
     $email = (isset($openid['openid.ext2.value.email']) && !isset($email)) ? $openid['openid.ext2.value.email'] : $email;
