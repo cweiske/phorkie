@@ -72,7 +72,9 @@ $twig = new \Twig_Environment(
 );
 //$twig->addExtension(new \Twig_Extension_Debug());
 
-require __DIR__ . '/www-security.php';
+if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
+    require __DIR__ . '/www-security.php';
+}
 
 function render($tplname, $vars = array())
 {
