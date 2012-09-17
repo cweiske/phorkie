@@ -192,8 +192,6 @@ URLs
   Shows form for new paste
 ``/login``
   Login page for protecting site
-``/auth``
-  Authentication callback url
 ``/user``
   Edit logged-in user information
 
@@ -236,6 +234,5 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/search/([0-9]+)$ /search.php?page=$1;
 
     rewrite ^/login$ /login.php;
-    rewrite ^/auth$ /auth.php;
     rewrite ^/user$ /user.php;
   }

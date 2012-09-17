@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="css/openid.css" />
 
-<form method="post" action="/auth" id="openid_form">
+<form method="post" action="/login" id="openid_form">
   <input id="start" name="start" type="hidden" value="submit" />
   <input id="sreg" name="sreg" type="hidden" value="on" />
   <input id="ax" name="ax" type="hidden" value="on" />
@@ -15,8 +15,8 @@
   <div id="openid_choice" style="display: block; ">
     <p>Please choose your account provider</p>
     <div id="openid_btns">
-      <a title="Google" href="/auth?openid_url=https://www.google.com/accounts/o8/id&start=submit" class="google openid_large_btn"></a>
-      <a title="Yahoo" href="/auth?openid_url=http://yahoo.com&start=submit" class="yahoo openid_large_btn"></a>
+      <a title="Google" href="/login?openid_url=https://www.google.com/accounts/o8/id&start=submit" class="google openid_large_btn"></a>
+      <a title="Yahoo" href="/login?openid_url=http://yahoo.com&start=submit" class="yahoo openid_large_btn"></a>
     </div>
     <div id="openid_input_area">
       <p>or enter your OpenID URL.</p>

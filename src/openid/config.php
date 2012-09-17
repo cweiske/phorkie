@@ -41,7 +41,7 @@ $returnTo = $base . dirname($_SERVER['PHP_SELF']);
 if ($returnTo[strlen($returnTo) - 1] != '/') {
     $returnTo .= '/';
 }
-$returnTo .= 'auth';
+$returnTo .= 'login';
 
 // SQL storage example
 // $storeOptions = array(
