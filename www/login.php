@@ -52,7 +52,7 @@ if (isset($_POST['openid_url'])) {
 }
 
 try {
-    $o = new OpenID_RelyingParty($returnTo, $realm, $openid_url);
+    $o = new \OpenID_RelyingParty($returnTo, $realm, $openid_url);
 } catch (OpenID_Exception $e) {
     $contents  = "<div class='openid_results'>\n";
     $contents .= "<pre>" . $e->getMessage() . "</pre>\n";
@@ -66,8 +66,8 @@ if (!empty($_POST['disable_associations']) || !empty($_SESSION['disable_associat
     $_SESSION['disable_associations'] = true;
 }
 
-$log = new OpenID_Observer_Log;
-OpenID::attach($log);
+$log = new \OpenID_Observer_Log;
+\OpenID::attach($log);
 
 if (isset($_POST['start'])) {
 
@@ -88,13 +88,13 @@ if (isset($_POST['start'])) {
     }
 
     // SREG
-    $sreg = new OpenID_Extension_SREG11(OpenID_Extension::REQUEST);
+    $sreg = new \OpenID_Extension_SREG11(\OpenID_Extension::REQUEST);
     $sreg->set('required', 'email,firstname,lastname,nickname');
     $sreg->set('optional', 'gender,dob');
     $authRequest->addExtension($sreg);
 
     // AX
-    $ax = new OpenID_Extension_AX(OpenID_Extension::REQUEST);
+    $ax = new \OpenID_Extension_AX(\OpenID_Extension::REQUEST);
     $ax->set('type.email', 'http://axschema.org/contact/email');
     $ax->set('type.firstname', 'http://axschema.org/namePerson/first');
     $ax->set('type.lastname', 'http://axschema.org/namePerson/last');
@@ -104,7 +104,7 @@ if (isset($_POST['start'])) {
 
     // UI
     if (!empty($_POST['ui'])) {
-        $ui = new OpenID_Extension_UI(OpenID_Extension::REQUEST);
+        $ui = new \OpenID_Extension_UI(\OpenID_Extension::REQUEST);
         $ui->set('mode', 'popup');
         $ui->set('language', 'en-US');
         $authRequest->addExtension($ui);
@@ -112,7 +112,7 @@ if (isset($_POST['start'])) {
 
     // OAuth
     if (!empty($_POST['oauth'])) {
-        $oauth = new OpenID_Extension_OAuth(OpenID_Extension::REQUEST);
+        $oauth = new \OpenID_Extension_OAuth(\OpenID_Extension::REQUEST);
         $oauth->set('consumer', $_POST['oauth_consumer_key']);
         $_SESSION['OAuth_consumer_key']    = $_POST['oauth_consumer_key'];
         $_SESSION['OAuth_consumer_secret'] = $_POST['oauth_consumer_secret'];
@@ -150,12 +150,12 @@ if (isset($_POST['start'])) {
         $queryString = file_get_contents('php://input');
     }
 
-    $message = new OpenID_Message($queryString, OpenID_Message::FORMAT_HTTP);
+    $message = new \OpenID_Message($queryString, \OpenID_Message::FORMAT_HTTP);
     $id      = $message->get('openid.claimed_id');
     $mode    = $message->get('openid.mode');
 
     try {
-        $result = $o->verify(new Net_URL2($returnTo . '?' . $queryString), $message);
+        $result = $o->verify(new \Net_URL2($returnTo . '?' . $queryString), $message);
 
         if ($result->success()) {
             $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
@@ -176,7 +176,7 @@ if (isset($_POST['start'])) {
               $_SESSION['OAuth_access_token_method'])) {
 
         try {
-            $oauth = new OpenID_Extension_OAuth(OpenID_Extension::RESPONSE,
+            $oauth = new \OpenID_Extension_OAuth(\OpenID_Extension::RESPONSE,
                                                 $message);
 
             // Fix line lengths.
