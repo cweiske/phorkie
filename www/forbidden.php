@@ -5,7 +5,10 @@ namespace phorkie;
  */
 
 render(
-    'forbidden'
+    'forbidden',
+    array(
+        'identity' => isset($_SESSION['identity']) ? $_SESSION['identity'] : null
+    )
 );
 exit();
 ?>

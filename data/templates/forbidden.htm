@@ -5,11 +5,21 @@
 
 <img src="/images/access_denied.png" align='left' alt="acces denied"/>
 <h2>Access Denied</h2>
+{% if identity %}
 <p>
- We're sorry; but you are not allowed to access this page.
+ You are logged in with the following OpenID:
 </p>
 <p>
- You may <a href="/login">log in</a> if you want.
+ <code>{{identity}}</code>
 </p>
+<p>
+ Unfortunately, your OpenID is not unlocked.
+ Contact the site administrator to get access.
+</p>
+{% else %}
+<p>
+ We're sorry; but you have to <a href="/login">log in</a> to access this page.
+</p>
+{% endif %}
 {% endblock %}
 
