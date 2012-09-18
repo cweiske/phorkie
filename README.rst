@@ -84,6 +84,9 @@ phorkie stands on the shoulders of giants.
   $ pear channel-discover zustellzentrum.cweiske.de
   $ pear install zz/mime_type_plaindetect-alpha
 
+  $ pear channel-discover pear.michelf.ca
+  $ pear install michelf/Markdown
+
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
 
