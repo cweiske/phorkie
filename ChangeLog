@@ -1,3 +1,7 @@
+2012-09-17  Justin J. Novack <jnovack@gmail.com>
+
+	* Add OpenID authentication
+
 2012-09-16  Christian Weiske  <cweiske@cweiske.de>
 
 	* Implement request #12: DOAP documents for all pastes

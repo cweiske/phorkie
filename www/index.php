@@ -1,5 +1,13 @@
 <?php
+/**
+ * Jump to the index as per the configuration
+ */
 namespace phorkie;
+$secureAtLevel = false;
 require_once 'www-header.php';
-require_once $GLOBALS['phorkie']['cfg']['index'].".php";
+
+header(
+    'Location: '
+    . Tools::fullUrl('/' . $GLOBALS['phorkie']['cfg']['index'])
+);
 ?>

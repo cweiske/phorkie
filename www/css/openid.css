@@ -1,0 +1,64 @@
+body {
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#openid_form {
+  width: 470px;	
+}
+#openid_form legend {
+  font-weight: bold;
+}
+#openid_choice {
+  display: none;
+}
+#openid_input_area {
+  clear: both;
+}
+#openid_btns {
+  height: 66px;
+  margin-bottom: 10px;
+}
+#openid_btns br {
+  clear: both;
+}
+#openid_highlight {
+  padding: 3px;
+  background-color: #FFFCC9;
+  float: left;
+}
+#openid_url {
+  margin: 0px !important;
+  width: 250px;
+  background: #FFF url(/images/openid-inputicon.gif) no-repeat scroll 0 50%;
+  padding-left:18px;
+}
+.openid_large_btn {
+  width: 100px;
+  height: 60px;
+  border: 1px solid #DDD;
+  margin: 3px;
+  float: left;
+}
+.openid_small_btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #DDD;
+  margin: 3px;
+  float: left;
+}
+.google {
+  background: #FFF url(/images/google.gif) no-repeat center center;
+}
+.yahoo {
+  background: #FFF url(/images/yahoo.gif) no-repeat center center;
+}
+
+a.openid_large_btn:hover {
+  outline: none;
+  border: 1px solid #030303;
+}
+a.openid_large_btn:focus {
+  -moz-outline-style: none;
+}
+.openid_selected {
+  border: 4px solid #DDD;
+}	

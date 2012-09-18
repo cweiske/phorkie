@@ -1,8 +1,9 @@
 <?php
 namespace phorkie;
 /**
- * Display paste contents
+ * Display historic paste contents
  */
+$secureAtLevel = '0';
 require_once 'www-header.php';
 
 $repo = new Repository();

@@ -1,8 +1,9 @@
 <?php
 /**
- * Fork a repository
+ * List a repository
  */
 namespace phorkie;
+$secureAtLevel = '0';
 require_once 'www-header.php';
 $rs = new Repositories();
 
