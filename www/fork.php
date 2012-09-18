@@ -3,7 +3,7 @@
  * Fork a repository
  */
 namespace phorkie;
-$pageRequiresLogin = '1';
+$secureAtLevel = '1';
 require_once 'www-header.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

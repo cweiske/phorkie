@@ -3,7 +3,7 @@
  * Edit user information
  */
 namespace phorkie;
-$pageRequiresLogin = '1';
+$secureAtLevel = '1';
 require_once 'www-header.php';
 
 if (isset($_POST['name'])) {
