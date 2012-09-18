@@ -1,3 +1,7 @@
+2012-09-18  Justin J. Novack  <jnovack@gmail.com>
+
+	* Add Markdown as a known file-type.
+
 2012-09-16  Christian Weiske  <cweiske@cweiske.de>
 
 	* Implement request #12: DOAP documents for all pastes

@@ -57,6 +57,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'application/javascript',
         'geshi' => 'javascript'
     ),
+    'md' => array(
+        'title' => 'Markdown',
+        'mime'  => 'text/x-markdown',
+        'renderer' => '\\phorkie\\Renderer_Markdown'
+    ),
     'pl' => array(
         'title' => 'Perl',
         'mime'  => 'application/x-perl',
