@@ -17,8 +17,8 @@ if ($GLOBALS['phorkie']['auth']['securityLevel'] == 0) {
 $logged_in = false;
 if (!isset($_SESSION['identity'])) {
     //not logged in 
-} else if ($GLOBALS['phorkie']['auth']['userlist']) {
-    if (in_array($_SESSION['identity'], $GLOBALS['phorkie']['users'])) {
+} else if ($GLOBALS['phorkie']['auth']['listedUsersOnly']) {
+    if (in_array($_SESSION['identity'], $GLOBALS['phorkie']['auth']['users'])) {
         $logged_in = true;
     }
 } else {

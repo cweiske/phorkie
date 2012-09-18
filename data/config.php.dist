@@ -5,7 +5,10 @@
 //$GLOBALS['phorkie']['cfg']['git']['private'] = 'ssh://git@bogo:paste/';
 //$GLOBALS['phorkie']['cfg']['elasticsearch'] = 'http://localhost:9200/phorkie/';
 //$GLOBALS['phorkie']['cfg']['setupcheck'] = false;
-//$GLOBALS['phorkie']['users'] = array(
+
+//$GLOBALS['phorkie']['auth']['securityLevel'] = 0;
+//$GLOBALS['phorkie']['auth']['listedUsersOnly'] = false;
+//$GLOBALS['phorkie']['auth']['users'] = array(
 //    'https://www.google.com/accounts/o8/id?id=ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 //    'http://anonymous.phorkie.openid'
 //);
