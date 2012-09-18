@@ -1,3 +1,7 @@
+2012-09-19  Christian Weiske  <cweiske@cweiske.de>
+
+	* Implement request #12: add link rel="vcs-git"
+
 2012-09-18  Justin J. Novack  <jnovack@gmail.com>
 
 	* Add Markdown as a known file-type.
