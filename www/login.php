@@ -59,13 +59,14 @@ if (isset($_POST['openid_url'])) {
     $sreg->set('required', 'email,fullname');
     $authRequest->addExtension($sreg);
 
-    // AX
+    // AX, http://stackoverflow.com/a/7657061/282601
     $ax = new \OpenID_Extension_AX(\OpenID_Extension::REQUEST);
     $ax->set('type.email', 'http://axschema.org/contact/email');
     $ax->set('type.firstname', 'http://axschema.org/namePerson/first');
     $ax->set('type.lastname', 'http://axschema.org/namePerson/last');
+    $ax->set('type.fullname', 'http://axschema.org/namePerson');
     $ax->set('mode', 'fetch_request');
-    $ax->set('required', 'email,firstname,lastname');
+    $ax->set('required', 'email,firstname,lastname,fullname');
     $authRequest->addExtension($ax);
 
     $url = $authRequest->getAuthorizeURL();
@@ -139,6 +140,12 @@ $name = isset($openid['openid.ext1.value.firstname'])
     : null;
 $name = isset($openid['openid.sreg.fullname']) && !isset($name)
     ? $openid['openid.sreg.fullname']
+    : $name;
+$name = isset($openid['openid.ax.value.fullname'])
+    && isset($openid['openid.ax.type.fullname'])
+    && $openid['openid.ax.type.fullname'] == 'http://axschema.org/namePerson'
+    && !isset($name)
+    ? $openid['openid.ax.value.fullname']
     : $name;
 
 $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
