@@ -1,5 +1,7 @@
 <?php
 namespace phorkie;
+session_start();
+
 set_include_path(
     __DIR__ . '/../src/'
     . PATH_SEPARATOR . get_include_path()
@@ -46,6 +48,16 @@ if (file_exists(__DIR__ . '/../data/config.php')) {
 if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
     SetupCheck::run();
 }
+
+// Set/Get git commit session variables
+$_SESSION['ipaddr'] = $_SERVER['REMOTE_ADDR'];
+if (!isset($_SESSION['name'])) {
+    $_SESSION['name'] = $GLOBALS['phorkie']['auth']['anonymousName'];
+}
+if (!isset($_SESSION['email'])) {
+    $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail'];
+}
+
 \Twig_Autoloader::register();
 
 $loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
@@ -58,11 +70,20 @@ $twig = new \Twig_Environment(
 );
 //$twig->addExtension(new \Twig_Extension_Debug());
 
-function render($tplname, $vars)
+if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
+    require __DIR__ . '/www-security.php';
+}
+
+function render($tplname, $vars = array())
 {
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
     $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];
+    if (isset($_SESSION['identity'])) {
+        $vars['identity'] = $_SESSION['identity'];
+        $vars['name'] = $_SESSION['name'];
+        $vars['email'] = $_SESSION['email'];
+    }
     $vars['db'] = new Database();
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');

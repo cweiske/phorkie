@@ -3,6 +3,7 @@
  * Fork a repository
  */
 namespace phorkie;
+$reqWritePermissions = true;
 require_once 'www-header.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

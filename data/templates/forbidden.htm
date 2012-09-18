@@ -1,0 +1,24 @@
+{% extends "base.htm" %}
+{% block title %}Access Denied{% endblock %}
+
+{% block content %}
+
+<h2>Access Denied</h2>
+{% if identity %}
+<p>
+ You are logged in with the following OpenID:
+</p>
+<p>
+ <code>{{identity}}</code>
+</p>
+<p>
+ Unfortunately, your OpenID is not unlocked.
+ Contact the site administrator to get access.
+</p>
+{% else %}
+<p>
+ We're sorry; but you have to <a href="/login">log in</a> to access this page.
+</p>
+{% endif %}
+{% endblock %}
+

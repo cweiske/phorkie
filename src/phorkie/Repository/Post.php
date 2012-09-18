@@ -15,7 +15,7 @@ class Repository_Post
      *
      * @return boolean True if the post was successful
      */
-    public function process($postData)
+    public function process($postData, $sessionData)
     {
         if (!isset($postData['files'])) {
             return false;
@@ -117,11 +117,23 @@ class Repository_Post
             }
         }
 
+        $commitmsg = "phorkie commit";
+
+        if (isset($sessionData['identity'])) {
+            $notes = $sessionData['identity'];
+        } else {
+            $notes = $sessionData['ipaddr'];
+        }
+
         if ($bCommit) {
             $vc->getCommand('commit')
-                ->setOption('message', '')
-                ->setOption('allow-empty-message')
-                ->setOption('author', 'Anonymous <anonymous@phorkie>')
+                ->setOption('message', $commitmsg)
+                ->setOption('author', $sessionData['name'].' <'.$sessionData['email'].'>')
+                ->execute();
+            //FIXME: git needs ref BEFORE add. ideally VersionControl_Git needs to be updated
+            $vc->getCommand('notes --ref=identity add')
+				->setOption('force')
+                ->setOption('message', "$notes")
                 ->execute();
             $bChanged = true;
         }

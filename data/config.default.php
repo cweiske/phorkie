@@ -12,6 +12,15 @@ $GLOBALS['phorkie']['cfg'] = array(
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
     'index'         => 'new'//"new" or "list"
 );
+$GLOBALS['phorkie']['auth'] = array(
+    // 0 = public, no authentication, 1 = protect adds/edits/deletes,
+    // 2 = require authentication
+    'securityLevel'   => 0,
+    'listedUsersOnly' => false,
+    'users'           => array(),             // Array of OpenIDs that may login
+    'anonymousName'   => 'Anonymous',         // Email for non-authenticated commits
+    'anonymousEmail'  => 'anonymous@phorkie', // Email for non-authenticated commits
+);
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
     '\\phorkie\\Tool_PHPlint' => true,
