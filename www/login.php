@@ -77,7 +77,7 @@ if (isset($_POST['openid_url'])) {
     $authRequest->addExtension($ax);
 
     $url = $authRequest->getAuthorizeURL();
-    
+
     header("Location: $url");
     exit;
     
@@ -116,7 +116,7 @@ try {
 } catch (OpenID_Exception $e) {
     $status  = "<tr><td>Status:</td><td><font color='red'>EXCEPTION!";
     $status .= " ({$e->getMessage()} : {$e->getCode()})</font></td></tr>";
-  }
+}
 
 
 $openid = $message->getArrayFormat();
@@ -149,7 +149,11 @@ $name = isset($openid['openid.sreg.fullname']) && !isset($name)
 $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
 $_SESSION['identity'] = $openid['openid.identity'];
 
-$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SESSION['REQUEST_URI'];
+if (isset($_SESSION['REQUEST_URI'])) {
+    $redirect = Tools::fullUrl($_SESSION['REQUEST_URI']);
+} else {
+    $redirect = Tools::fullUrl('/');
+}
 header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 exit;
 ?>
