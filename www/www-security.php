@@ -44,5 +44,6 @@ if ($pageRequiresLogin >= $GLOBALS['phorkie']['auth']['secure']) {
 // 1 / 2 / true   = return
 // 1 / 2 / false  = block
 
+$_SESSION['REQUEST_URI'] = $_SERVER['REQUEST_URI'];
 require 'forbidden.php';
 ?>
