@@ -32,6 +32,10 @@
       <li>
        <a href="/login?logout">Logout</a>
       </li>
+      {% else %}
+      <li>
+       <a href="/login">Login</a>
+      </li>
       {% endif %}
       {% if db.adapter %}
       <li>
