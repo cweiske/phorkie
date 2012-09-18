@@ -118,16 +118,22 @@ class Repository_Post
         }
 
         $commitmsg = "phorkie commit";
+
         if (isset($sessionData['identity'])) {
-            $commitmsg .= " from ".$sessionData['identity'];
+            $notes = $sessionData['identity'];
         } else {
-            $commitmsg .= " by ".$sessionData['ipaddr'];
+            $notes = $sessionData['ipaddr'];
         }
 
         if ($bCommit) {
             $vc->getCommand('commit')
                 ->setOption('message', $commitmsg)
                 ->setOption('author', $sessionData['name'].' <'.$sessionData['email'].'>')
+                ->execute();
+            //FIXME: git needs ref BEFORE add. ideally VersionControl_Git needs to be updated
+            $vc->getCommand('notes --ref=identity add')
+				->setOption('force')
+                ->setOption('message', "$notes")
                 ->execute();
             $bChanged = true;
         }
