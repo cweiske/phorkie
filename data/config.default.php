@@ -17,9 +17,9 @@ $GLOBALS['phorkie']['auth'] = array(
     // 2 = require authentication
     'securityLevel'   => 0,
     'listedUsersOnly' => false,
-    'users' => array(),                      // Array of OpenIDs that may login
-    'anonymousName'  => 'Anonymous',         // Email for non-authenticated commits
-    'anonymousEmail' => 'anonymous@phorkie', // Email for non-authenticated commits
+    'users'           => array(),             // Array of OpenIDs that may login
+    'anonymousName'   => 'Anonymous',         // Email for non-authenticated commits
+    'anonymousEmail'  => 'anonymous@phorkie', // Email for non-authenticated commits
 );
 $GLOBALS['phorkie']['tools'] = array(
     '\\phorkie\\Tool_Xmllint' => true,
