@@ -13,7 +13,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'index'         => 'new'//"new" or "list"
 );
 $GLOBALS['phorkie']['auth'] = array(
-    'secure'         => 0,                   // 0 = public, no authentication, 1 = protect adds/edits/deletes, 2 = use authentication
+    'securityLevel'  => 0,                   // 0 = public, no authentication, 1 = protect adds/edits/deletes, 2 = require authentication
     'userlist'       => false,               // true = user must be explicitly defined, false = anyone allowed, but they must authenticate
     'anonymousName'  => 'Anonymous',         // Email for non-authenticated commits
     'anonymousEmail' => 'anonymous@phorkie'  // Email for non-authenticated commits

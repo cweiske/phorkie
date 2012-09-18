@@ -4,12 +4,12 @@ namespace phorkie;
  * security levels + login requirement:
  */
 
-if (!isset($GLOBALS['phorkie']['auth']['secure'])) {
+if (!isset($GLOBALS['phorkie']['auth']['securityLevel'])) {
     //not set? highest level of security
-    $GLOBALS['phorkie']['auth']['secure'] = 2;
+    $GLOBALS['phorkie']['auth']['securityLevel'] = 2;
 }
 
-if ($GLOBALS['phorkie']['auth']['secure'] == 0) {
+if ($GLOBALS['phorkie']['auth']['securityLevel'] == 0) {
     //everyone may do everything
     return;
 }
@@ -26,7 +26,7 @@ if (!isset($_SESSION['identity'])) {
     $logged_in = true;
 }
 
-if ($secureAtLevel >= $GLOBALS['phorkie']['auth']['secure']) {
+if ($secureAtLevel >= $GLOBALS['phorkie']['auth']['securityLevel']) {
     if ($logged_in) {
         return;
     }
