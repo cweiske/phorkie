@@ -34,11 +34,7 @@ $returnTo = Tools::fullUrl('/login');
 try {
     $o = new \OpenID_RelyingParty($returnTo, $realm, $openid_url);
 } catch (OpenID_Exception $e) {
-    $contents  = "<div class='openid_results'>\n";
-    $contents .= "<pre>" . $e->getMessage() . "</pre>\n";
-    $contents .= "</div class='openid_results'>";
-    include_once 'openid/wrapper.php';
-    exit;
+    throw new Exception($e->getMessage());
 }
 
 if (!empty($_POST['disable_associations']) || !empty($_SESSION['disable_associations'])) {
@@ -55,11 +51,7 @@ if (isset($_POST['openid_url'])) {
     try {
         $authRequest = $o->prepare();
     } catch (OpenID_Exception $e) {
-        $contents  = "<div class='openid_results'>\n";
-        $contents .= "<pre>" . $e->getMessage() . "</pre>\n";
-        $contents .= "</div class='openid_results'>";
-        include_once 'openid/wrapper.php';
-        exit;
+        throw new Exception($e->getMessage());
     }
 
     // SREG
