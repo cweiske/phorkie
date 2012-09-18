@@ -4,7 +4,7 @@ namespace phorkie;
  * Display DOAP of the paste.
  * Contains a machine-readable project description with Git URL.
  */
-$pageRequiresLogin = false;
+$pageRequiresLogin = '0';
 require_once 'www-header.php';
 
 $repo = new Repository();

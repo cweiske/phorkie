@@ -3,7 +3,7 @@ namespace phorkie;
 /**
  * Display paste contents
  */
-$pageRequiresLogin = false;
+$pageRequiresLogin = '0';
 require_once 'www-header.php';
 
 $repo = new Repository();

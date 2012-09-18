@@ -26,15 +26,23 @@ if (!isset($_SESSION['identity'])) {
     $logged_in = true;
 }
 
-if ($logged_in) {
-    //logged in? all fine
-    return;
-} else if ($GLOBALS['phorkie']['auth']['secure'] == 2) {
-    //not logged in and security level 2 => error
-    require 'forbidden.php';
-} else if (isset($pageRequiresLogin) && !$pageRequiresLogin) {
+if ($pageRequiresLogin >= $GLOBALS['phorkie']['auth']['secure']) {
+    if ($logged_in) {
+        return;
+    }
+} else {
     return;
 }
+
+// p / G / log_in = disp
+// 0 / 1 / true   = return
+// 0 / 1 / false  = block
+// 0 / 2 / true   = return
+// 0 / 2 / false  = return
+// 1 / 1 / true   = return
+// 1 / 1 / false  = block
+// 1 / 2 / true   = return
+// 1 / 2 / false  = block
 
 require 'forbidden.php';
 ?>

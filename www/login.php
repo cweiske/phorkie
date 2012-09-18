@@ -1,6 +1,5 @@
 <?php
 namespace phorkie;
-$pageRequiresLogin = false;
 $noSecurityCheck = true;
 require_once 'www-header.php';
 
