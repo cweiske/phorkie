@@ -122,7 +122,10 @@ $email = isset($openid['openid.ext2.value.email']) && !isset($email)
 $email = isset($openid['openid.sreg.email']) && !isset($email)
     ? $openid['openid.sreg.email']
     : $email;
-$email = isset($openid['openid.ax.value.email']) && !isset($email)
+$email = isset($openid['openid.ax.value.email'])
+    && isset($openid['openid.ax.type.email'])
+    && $openid['openid.ax.type.email'] == 'http://axschema.org/contact/email'
+    && !isset($email)
     ? $openid['openid.ax.value.email']
     : $email;
 $_SESSION['email'] = isset($email)
