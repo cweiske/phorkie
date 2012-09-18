@@ -26,7 +26,7 @@ if (!isset($_SESSION['identity'])) {
     $logged_in = true;
 }
 
-if ($secureAtLevel >= $GLOBALS['phorkie']['auth']['securityLevel']) {
+if ($securityLevel >= $GLOBALS['phorkie']['auth']['securityLevel']) {
     if ($logged_in) {
         return;
     }

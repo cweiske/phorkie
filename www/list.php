@@ -3,7 +3,7 @@
  * List a repository
  */
 namespace phorkie;
-$secureAtLevel = '0';
+$securityLevel = '0';
 require_once 'www-header.php';
 $rs = new Repositories();
 
