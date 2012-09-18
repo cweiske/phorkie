@@ -3,7 +3,7 @@ namespace phorkie;
 /**
  * Search for a search term
  */
-$secureAtLevel = '0';
+$reqWritePermissions = false;
 require_once 'www-header.php';
 
 if (!isset($_GET['q']) || $_GET['q'] == '') {

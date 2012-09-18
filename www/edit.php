@@ -3,8 +3,9 @@ namespace phorkie;
 /**
  * Edit paste contents
  */
-$secureAtLevel = '1';
+$reqWritePermissions = true;
 require_once 'www-header.php';
+
 $repo = new Repository();
 $repo->loadFromRequest();
 

@@ -10,7 +10,7 @@ namespace phorkie;
  *
  * Creates and redirects to display page
  */
-$secureAtLevel = '1';
+$reqWritePermissions = true;
 require_once 'www-header.php';
 
 $repopo = new Repository_Post();

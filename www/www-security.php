@@ -26,23 +26,19 @@ if (!isset($_SESSION['identity'])) {
     $logged_in = true;
 }
 
-if ($secureAtLevel >= $GLOBALS['phorkie']['auth']['securityLevel']) {
-    if ($logged_in) {
-        return;
-    }
-} else {
+if ($logged_in) {
+    //you may do everything if you're logged in
     return;
 }
 
-// p / G / log_in = disp
-// 0 / 1 / true   = return
-// 0 / 1 / false  = block
-// 0 / 2 / true   = return
-// 0 / 2 / false  = return
-// 1 / 1 / true   = return
-// 1 / 1 / false  = block
-// 1 / 2 / true   = return
-// 1 / 2 / false  = block
+if (!isset($reqWritePermissions)) {
+    $reqWritePermissions = true;
+}
+if ($GLOBALS['phorkie']['auth']['securityLevel'] == 1
+    && !$reqWritePermissions
+) {
+    return;
+}
 
 $_SESSION['REQUEST_URI'] = $_SERVER['REQUEST_URI'];
 require 'forbidden.php';

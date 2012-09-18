@@ -3,7 +3,7 @@
  * Jump to the index as per the configuration
  */
 namespace phorkie;
-$secureAtLevel = false;
+$reqWritePermissions = false;
 require_once 'www-header.php';
 
 header(
