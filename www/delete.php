@@ -3,7 +3,7 @@ namespace phorkie;
 /**
  * Delete paste or ask for deletion
  */
-$securityLevel = '1';
+$secureAtLevel = '1';
 require_once 'www-header.php';
 
 $repo = new Repository();
