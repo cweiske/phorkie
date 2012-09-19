@@ -118,6 +118,9 @@ class File
         throw new Exception('Unknown type');
     }
 
+    /**
+     * @return string Mime type of file
+     */
     public function getMimeType()
     {
         $ext = $this->getExt();

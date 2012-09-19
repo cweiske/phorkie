@@ -11,6 +11,7 @@ class SetupCheck
         'pear.php.net/Pager'               => 'Pager',
         'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
         'zustellzentrum.cweiske.de/MIME_Type_PlainDetect' => 'MIME_Type_PlainDetect',
+        'pear.michelf.ca/Markdown'         => 'Markdown',
     );
 
     protected $writableDirs;

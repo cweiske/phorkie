@@ -4,6 +4,13 @@ namespace phorkie;
 
 class Tools
 {
+    /**
+     * Delete an entire directory structure
+     *
+     * @param string $path Path to delete
+     *
+     * @return bool
+     */
     public static function recursiveDelete($path)
     {
         if (!is_dir($path) || is_link($path)) {
