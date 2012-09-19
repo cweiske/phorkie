@@ -62,7 +62,8 @@ Installation
 Dependencies
 ============
 phorkie stands on the shoulders of giants.  Git will need to be a
-minimum version of v1.7.4.
+minimum version of v1.7.5.
+
 ::
   $ pear install versioncontrol_git-alpha
   $ pear install services_libravatar-alpha
