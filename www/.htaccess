@@ -21,3 +21,6 @@ RewriteRule ^list/([0-9]+)$ /list.php?page=$1
 
 RewriteRule ^search$ /search.php
 RewriteRule ^search/([0-9]+)$ /search.php?page=$1
+
+RewriteRule ^login$ /login.php
+RewriteRule ^user$ /user.php

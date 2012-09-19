@@ -10,10 +10,11 @@ namespace phorkie;
  *
  * Creates and redirects to display page
  */
+$reqWritePermissions = true;
 require_once 'www-header.php';
 
 $repopo = new Repository_Post();
-if ($repopo->process($_POST)) {
+if ($repopo->process($_POST, $_SESSION)) {
     redirect($repopo->repo->getLink('display'));
 }
 

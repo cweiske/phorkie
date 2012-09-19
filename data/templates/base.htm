@@ -4,10 +4,10 @@
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="{{css}}"/>
-  <link rel="stylesheet" href="/phorkie.css" />
+  <link rel="stylesheet" href="/css/phorkie.css" />
   <title>{% block title %}{% endblock %} - {{title}}</title>
-  <script src="/jquery-1.7.2.min.js"></script>
-  <script src="/phorkie.js"></script>
+  <script src="/js/jquery-1.7.2.min.js"></script>
+  <script src="/js/phorkie.js"></script>
   {% block meta %}{% endblock %}
  </head>
  <body>
@@ -27,9 +27,23 @@
       </li>
       {% if db.adapter %}
       <li>
-       <form class="navbar-search pull-left" action="/search" method="get">
+       <form class="navbar-search" action="/search" method="get">
         <input type="text" class="search-query" name="q" placeholder="Search" value="{{query}}"/>
        </form>
+      </li>
+      {% endif %}
+     </ul>
+     <ul class="nav pull-right">
+      {% if identity %}
+      <li>
+       <a href="/user">{{name}} ({{email}})</a>
+      </li>
+      <li>
+       <a href="/login?logout">Logout</a>
+      </li>
+      {% else %}
+      <li>
+       <a href="/login">Login</a>
       </li>
       {% endif %}
      </ul>
@@ -53,7 +67,7 @@
    <a href="//sf.net/p/phorkie/">phorkie</a>,
    the self-hosted, git-based pastebin software is available under the
    <a href="https://sf.net/p/phorkie/">
-    <acronym title="GNU Affero General Public License">AGPL</acronym></a>.
+    <abbr title="GNU Affero General Public License">AGPL</abbr></a>.
   </div>
 
  </body>

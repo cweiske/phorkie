@@ -1,9 +1,11 @@
 <?php
+namespace phorkie;
 /**
  * Displays a file
  */
-namespace phorkie;
+$reqWritePermissions = false;
 require_once 'www-header.php';
+
 $repo = new Repository();
 $repo->loadFromRequest();
 

@@ -84,6 +84,9 @@ phorkie stands on the shoulders of giants.
   $ pear channel-discover zustellzentrum.cweiske.de
   $ pear install zz/mime_type_plaindetect-alpha
 
+  $ pear channel-discover pear.michelf.ca
+  $ pear install michelf/Markdown
+
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
 
@@ -192,6 +195,11 @@ URLs
   List all pastes, with optional page
 ``/new``
   Shows form for new paste
+``/login``
+  Login page for protecting site
+``/user``
+  Edit logged-in user information
+
 
 Internal directory layout
 =========================
@@ -230,4 +238,7 @@ If you use nginx, place the following lines into your ``server`` block:
 
     rewrite ^/search$ /search.php;
     rewrite ^/search/([0-9]+)$ /search.php?page=$1;
+
+    rewrite ^/login$ /login.php;
+    rewrite ^/user$ /user.php;
   }
