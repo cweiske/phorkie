@@ -104,7 +104,7 @@ class Repository
         $this->hash = $output;
     }
 
-	/**
+    /**
      * Populates $this->message
      *
      * @return void

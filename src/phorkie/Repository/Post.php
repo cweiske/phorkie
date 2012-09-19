@@ -130,7 +130,8 @@ class Repository_Post
                 ->setOption('message', $commitmsg)
                 ->setOption('author', $sessionData['name'].' <'.$sessionData['email'].'>')
                 ->execute();
-            //FIXME: git needs ref BEFORE add. ideally VersionControl_Git needs to be updated
+            //FIXME: git needs ref BEFORE add
+            //quick hack until http://pear.php.net/bugs/bug.php?id=19605 is fixed
             $vc->getCommand('notes --ref=identity add')
 				->setOption('force')
                 ->setOption('message', "$notes")
