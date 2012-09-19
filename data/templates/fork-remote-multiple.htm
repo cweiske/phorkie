@@ -1,0 +1,27 @@
+<form method="post" action="/fork-remote" enctype="multipart/form-data" class="well form-inline form-horizontal">
+ <div class="control-group">
+  <p>
+   The URL you provided contains links to several Git repositories.
+   Select one of them.
+  </p>
+  <select size="{{urlselsize}}" name="remote_url" id="sel-remote_url" style="width:100%">
+  {% for grouptitle, groupurls in urls %}
+   {% if groupurls|length == 1 %}
+    <option value="{{groupurls.0}}">{{grouptitle}}</option>
+   {% else %}
+   <optgroup label="{{grouptitle}}">
+    {% for url in groupurls %} 
+    <option value="{{url}}">{{url}}</option>
+    {% endfor %}
+   </optgroup>
+   {% endif %}
+  {% endfor %}
+ </select>
+ </div>
+ <div style="text-align: right">
+  <button type="submit" class="btn btn-primary">
+   <i class="icon-share icon-white"></i> Fork
+  </button>
+ </div>
+
+</form>
