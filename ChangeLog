@@ -1,3 +1,7 @@
+2012-09-19  Christian Weiske  <cweiske@bogo>
+
+	* Implement request #13: remote forking support
+
 2012-09-19  Christian Weiske  <cweiske@cweiske.de>
 
 	* Implement request #12: add link rel="vcs-git"
