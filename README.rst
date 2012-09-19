@@ -11,28 +11,24 @@ Project page: http://sourceforge.net/p/phorkie/
 ========
 Features
 ========
-- every paste is a git repository
-
+  - every paste is a git repository
   - repositories can be cloned
   - clone url can be displayed
-- paste editing
-
+  - openid authentication
+  - paste editing
   - add new files
   - delete existing files
   - replace file with upload
-- multiple files in one paste
-- syntax highlighting with GeSHi
-- rST rendering
-- image upload + display
-- external tool support
-
+  - multiple files in one paste
+  - syntax highlighting with GeSHi
+  - rST and Markdown rendering
+  - image upload + display
+  - external tool support
   - xmllint
   - php syntax check
-- history in the sidebar
-
+  - history in the sidebar
   - old files can be downloaded easily
-- search across pastes: description, file names and file content
-
+  - search across pastes: description, file names and file content
   - options: quoting, logical and, or, not, partial words
 
 
@@ -58,17 +54,16 @@ Installation
 
    Look at ``config.default.php`` for values that you may adjust.
 
-5. Set your web server's document root to ``/path/to/phorkie-0.2.0/www/``
+5. Set your web server's document root to ``/path/to/phorkie/www/``
 
 6. Open phorkie in your web browser
 
 
 Dependencies
 ============
-phorkie stands on the shoulders of giants.
-
+phorkie stands on the shoulders of giants.  Git will need to be a
+minimum version of v1.7.4.
 ::
-
   $ pear install versioncontrol_git-alpha
   $ pear install services_libravatar-alpha
   $ pear install http_request2
@@ -86,16 +81,16 @@ phorkie stands on the shoulders of giants.
 
   $ pear channel-discover pear.michelf.ca
   $ pear install michelf/Markdown
-
+  
 Note that this version of GeSHi is a bit outdated, but it's the fastest
-way to install it.
-
+way to install it.  If you install it manually be sure to update the
+path in ``data/config.default.php``.
 
 ======
 Search
 ======
 
-phorkie makes use of an Elasticsearch__ installation if you have one.
+phorkie makes use of an Elasticsearch__ installation, if you have one.
 
 It is used to provide search capabilities and the list of recent pastes.
 
@@ -147,8 +142,20 @@ Edit your ``config.php`` and set the ``$GLOBALS['phorkie']['cfg']['git']['public
 setting to ``git://$yourhostname/git/paste/``.
 The rest will be appended automatically.
 
-
 You're on your own to setup writable repositories.
+
+Protect your site with OpenID
+=============================
+You have the option of enabling OpenID authentication to help secure your
+pastes on phorkie.  Set the ``$GLOBALS['phorkie']['auth']`` values in the
+``data/config.default.php`` file as desired.  
+
+There are two different types of security you can apply.  First, you can
+restrict to one of three ``securityLevels``; completely open (0), protection
+of write-enabled functions such as add, edit, etc. (1), and full site
+protection.  Additionally, you can restrict your site to ``listedUsersOnly``.
+You will need to add the individual OpenIDs identity urls to the
+``$GLOBALS['phorkie']['auth']['users']`` variable.
 
 
 =================
@@ -157,7 +164,6 @@ Technical details
 
 TODO
 ====
-- OpenID-Login to get username+email as authorship information
 - filters (``xmllint --format``, ``rapper``)
 - document how to keep disk usage low (block size)
 - comments
