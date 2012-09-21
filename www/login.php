@@ -42,9 +42,6 @@ if (!empty($_POST['disable_associations']) || !empty($_SESSION['disable_associat
     $_SESSION['disable_associations'] = true;
 }
 
-$log = new \OpenID_Observer_Log;
-\OpenID::attach($log);
-
 if (isset($_POST['openid_url'])) {
 
     $_SESSION['openid_url'] = $openid_url;
