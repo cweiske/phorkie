@@ -18,6 +18,7 @@ $(document).ready(function() {
             .replace(/###/g, $('.filegroup').length)
         );
         toggleAdditional($('.filegroup:visible .additional-btn:last')[0], 0);
+        jQuery($('.filegroup:visible .additional-btn:last')[0]).show();
 
         $('html, body').animate({
             scrollTop: $('.filegroup:visible:last').offset().top
