@@ -22,7 +22,15 @@ class ForkRemote
 
     public function parse()
     {
-        $scheme = parse_url($this->url, PHP_URL_SCHEME);
+        $arUrl = parse_url($this->url);
+        $scheme = $arUrl['scheme'] ?: '';
+        if ($scheme == 'https' && isset($arUrl['host'])
+            && $arUrl['host'] == 'gist.github.com'
+        ) {
+            $scheme = 'git';
+            $this->url = 'git://gist.github.com/'. ltrim($arUrl['path'], '/') . '.git';
+        }
+
         switch ($scheme) {
         case 'git':
             //clearly a git url
