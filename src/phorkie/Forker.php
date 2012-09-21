@@ -37,6 +37,10 @@ class Forker
         foreach (\glob($new->gitDir . '/hooks/*') as $hookfile) {
             \unlink($hookfile);
         }
+
+        $db = new Database();
+        $db->getIndexer()->addRepo($new);
+
         return $new;
     }
 }
