@@ -179,6 +179,21 @@ You will need to add the individual OpenID urls to the
 ``$GLOBALS['phorkie']['auth']['users']`` variable.
 
 
+Get information about paste editors
+===================================
+Phorkie stores the user's OpenID or IP address (when not logged in) when
+a paste is edited.
+It is possible to get this information for each single commit::
+
+    // IP / OpenID for the latest commit
+    $ git notes --ref=identity show
+    127.0.0.1
+
+    // show IP / OpenID for a given commit
+    $ git notes --ref=identity show 29f82a
+    http://cweiske.de/
+
+
 =================
 Technical details
 =================
