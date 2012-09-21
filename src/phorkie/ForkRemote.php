@@ -22,13 +22,15 @@ class ForkRemote
 
     public function parse()
     {
-        $arUrl = parse_url($this->url);
+        $arUrl  = parse_url($this->url);
         $scheme = $arUrl['scheme'] ?: '';
+
         if ($scheme == 'https' && isset($arUrl['host'])
             && $arUrl['host'] == 'gist.github.com'
         ) {
-            $scheme = 'git';
-            $this->url = 'git://gist.github.com/'. ltrim($arUrl['path'], '/') . '.git';
+            $this->arGitUrls[][] = 'git://gist.github.com/'
+                . ltrim($arUrl['path'], '/') . '.git';
+            return true;
         }
 
         switch ($scheme) {
@@ -111,6 +113,22 @@ class ForkRemote
     public function getGitUrls()
     {
         return $this->arGitUrls;
+    }
+
+    /**
+     * Get the URL from which the git URL was derived, often
+     * the HTTP URL.
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 
     public function isSupported($url)

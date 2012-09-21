@@ -14,8 +14,11 @@ if (isset($_POST['remote_url'])) {
         //no url found
         $error = 'No git:// clone URL found';
     } else if (false !== ($gitUrl = $fr->getUniqueGitUrl())) {
+        if (isset($_POST['orig_url'])) {
+            $fr->setUrl($_POST['orig_url']);
+        }
         $forker = new Forker();
-        $new    = $forker->forkRemote($gitUrl);
+        $new    = $forker->forkRemote($gitUrl, $fr->getUrl());
         redirect($new->getLink('display'));
     } else {
         //multiple urls found

@@ -10,12 +10,12 @@ class Forker
         return $new;
     }
 
-    public function forkRemote($url)
+    public function forkRemote($cloneUrl, $originalUrl)
     {
-        $new = $this->fork($url);
+        $new = $this->fork($cloneUrl);
         file_put_contents(
             $new->gitDir . '/description',
-            'Fork of ' . $url
+            'Fork of ' . $originalUrl
         );
         return $new;
     }
