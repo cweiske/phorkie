@@ -28,7 +28,7 @@ class Renderer_Geshi
         }
 
         return '<div class="code">'
-            . $geshi->parse_code()
+            . str_replace('&nbsp;', '&#160;', $geshi->parse_code())
             . '</div>';
     }
 

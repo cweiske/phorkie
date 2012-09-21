@@ -1,0 +1,17 @@
+{% extends "base.htm" %}
+{% block title %}Fork remote paste{% endblock %}
+
+{% block content %}
+ {% include 'fork-remote-new.htm' %}
+
+ {% if error %}
+  <div class="alert alert-error">
+   {{error}}
+  </div>
+ {% endif %}
+
+ {% if urls %}
+  {% include 'fork-remote-multiple.htm' %}
+ {% endif %}
+
+{% endblock %}

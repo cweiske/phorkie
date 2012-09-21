@@ -13,6 +13,7 @@ RewriteRule ^([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2
 RewriteRule ^([0-9]+)/rev-raw/(.+)/(.+)$ /raw.php?id=$1&rev=$2&file=$3
 RewriteRule ^([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3
 
+RewriteRule ^fork-remote$ /fork-remote.php
 RewriteRule ^new$ /new.php
 
 RewriteRule ^list$ /list.php

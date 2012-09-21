@@ -310,6 +310,13 @@ class Repository
             $commit->committerName  = $arOutput[$current + 2];
             $commit->committerEmail = $arOutput[$current + 3];
 
+            if (substr($arOutput[$current + 4], 0, 1) != ' ') {
+                //commit without changed lines
+                $arCommits[] = $commit;
+                $current += 4;
+                continue;
+            }
+
             $arLineParts = explode(' ', trim($arOutput[$current + 4]));
             $commit->filesChanged = $arLineParts[0];
             $commit->linesAdded   = $arLineParts[3];
