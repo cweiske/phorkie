@@ -11,24 +11,29 @@ Project page: http://sourceforge.net/p/phorkie/
 ========
 Features
 ========
-  - every paste is a git repository
+- every paste is a git repository
+
   - repositories can be cloned
   - clone url can be displayed
-  - openid authentication
-  - paste editing
+- paste editing
+
   - add new files
   - delete existing files
   - replace file with upload
-  - multiple files in one paste
-  - syntax highlighting with GeSHi
-  - rST and Markdown rendering
-  - image upload + display
-  - external tool support
+- OpenID authentication
+- multiple files in one paste
+- syntax highlighting with GeSHi
+- rST and Markdown rendering
+- image upload + display
+- external tool support
+
   - xmllint
   - php syntax check
-  - history in the sidebar
+- history in the sidebar
+
   - old files can be downloaded easily
-  - search across pastes: description, file names and file content
+- search across pastes: description, file names and file content
+
   - options: quoting, logical and, or, not, partial words
 
 
@@ -37,7 +42,7 @@ Installation
 ============
 1. Unzip the phorkie release file::
 
-   $ tar xjvf phorkie-0.2.0.tar.bz2
+   $ tar xjvf phorkie-0.3.0.tar.bz2
 
 2. Create the git directories::
 
@@ -61,10 +66,17 @@ Installation
 
 Dependencies
 ============
-phorkie stands on the shoulders of giants.  Git will need to be a
-minimum version of v1.7.5.
+phorkie stands on the shoulders of giants.
+
+It requires the following programs to be installed
+on your machine:
+
+- Git v1.7.5 or later
+- PHP v5.3.0 or later
+- PEAR v1.9.2 or later
 
 ::
+
   $ pear install versioncontrol_git-alpha
   $ pear install services_libravatar-alpha
   $ pear install http_request2
@@ -82,10 +94,11 @@ minimum version of v1.7.5.
 
   $ pear channel-discover pear.michelf.ca
   $ pear install michelf/Markdown
-  
+
 Note that this version of GeSHi is a bit outdated, but it's the fastest
-way to install it.  If you install it manually be sure to update the
-path in ``data/config.default.php``.
+way to install it.
+If you install it manually be sure to update the
+path from ``data/config.default.php``.
 
 ======
 Search
@@ -133,7 +146,7 @@ Make git repositories clonable
 To make git repositories clonable, you need to install ``git-daemon``
 (``git-daemon-run`` package on Debian/Ubuntu).
 
-Now make the repositories available by symlinking the paste repository
+Make the repositories available by symlinking the paste repository
 directory (``$GLOBALS['phorkie']['cfg']['repos']`` setting) into
 ``/var/cache/git``, e.g.::
 
@@ -143,19 +156,26 @@ Edit your ``config.php`` and set the ``$GLOBALS['phorkie']['cfg']['git']['public
 setting to ``git://$yourhostname/git/paste/``.
 The rest will be appended automatically.
 
+
 You're on your own to setup writable repositories.
+
 
 Protect your site with OpenID
 =============================
 You have the option of enabling OpenID authentication to help secure your
-pastes on phorkie.  Set the ``$GLOBALS['phorkie']['auth']`` values in the
+pastes on phorkie.
+Set the ``$GLOBALS['phorkie']['auth']`` values in the
 ``data/config.php`` file as desired.  
 
-There are two different types of security you can apply.  First, you can
-restrict to one of three ``securityLevels``; completely open (0), protection
-of write-enabled functions such as add, edit, etc. (1), and full site
-protection.  Additionally, you can restrict your site to ``listedUsersOnly``.
-You will need to add the individual OpenIDs identity urls to the
+There are two different types of security you can apply.
+First, you can restrict to one of three ``securityLevels``:
+
+- completely open (``0``)
+- protection of write-enabled functions such as add, edit, etc. (``1``)
+- full site protection (``2``)
+
+Additionally, you can restrict your site to ``listedUsersOnly``.
+You will need to add the individual OpenID urls to the
 ``$GLOBALS['phorkie']['auth']['users']`` variable.
 
 
