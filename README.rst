@@ -165,7 +165,7 @@ Protect your site with OpenID
 You have the option of enabling OpenID authentication to help secure your
 pastes on phorkie.
 Set the ``$GLOBALS['phorkie']['auth']`` values in the
-``data/config.php`` file as desired.  
+``data/config.php`` file as desired.
 
 There are two different types of security you can apply.
 First, you can restrict to one of three ``securityLevels``:
