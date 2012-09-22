@@ -15,16 +15,17 @@ Features
 
   - repositories can be cloned
   - clone url can be displayed
+  - remote pastes can be forked (rel="vcs-git" and gist.github.com)
 - paste editing
 
   - add new files
   - delete existing files
   - replace file with upload
-- OpenID authentication
 - multiple files in one paste
 - syntax highlighting with GeSHi
 - rST and Markdown rendering
 - image upload + display
+- OpenID authentication
 - external tool support
 
   - xmllint
