@@ -101,6 +101,7 @@ way to install it.
 If you install it manually be sure to update the
 path from ``data/config.default.php``.
 
+
 ======
 Search
 ======
@@ -136,6 +137,10 @@ index, run the following command::
 
 Phorkie will automatically re-index everything when ``setupcheck`` is enabled
 in the configuration file.
+
+You may also manually run the reindexer with::
+
+  $ php scripts/index.php
 
 
 =====
