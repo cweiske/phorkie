@@ -112,6 +112,7 @@ It is used to provide search capabilities and the list of recent pastes.
 
 __ http://www.elasticsearch.org/
 
+
 Setup
 =====
 Edit ``config.php``, setting the ``elasticsearch`` property to the HTTP URL
