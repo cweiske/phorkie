@@ -7,6 +7,7 @@ class Forker
     {
         $new = $this->fork($repo->gitDir);
         \copy($repo->gitDir . '/description', $new->gitDir . '/description');
+        $this->index($new);
         return $new;
     }
 
@@ -17,6 +18,7 @@ class Forker
             $new->gitDir . '/description',
             'Fork of ' . $originalUrl
         );
+        $this->index($new);
         return $new;
     }
 
@@ -38,10 +40,13 @@ class Forker
             \unlink($hookfile);
         }
 
-        $db = new Database();
-        $db->getIndexer()->addRepo($new);
-
         return $new;
+    }
+
+    protected function index($repo)
+    {
+        $db = new Database();
+        $db->getIndexer()->addRepo($repo);
     }
 }
 
