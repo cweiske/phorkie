@@ -138,7 +138,7 @@ index, run the following command::
 Phorkie will automatically re-index everything when ``setupcheck`` is enabled
 in the configuration file.
 
-You may also manually run the reindexer with::
+You may also manually run the reindexing script with::
 
   $ php scripts/index.php
 
