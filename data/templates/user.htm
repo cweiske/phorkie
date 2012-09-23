@@ -1,6 +1,10 @@
 {% extends "base.htm" %}
 {% block title %}User Preferences{% endblock %}
 
+{% block meta %}
+<meta name="robots" content="noindex"/>
+{% endblock %}
+
 {% block content %}
 
 <form method="post" action="/user" id="user_form">

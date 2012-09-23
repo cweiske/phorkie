@@ -1,6 +1,10 @@
 {% extends "base.htm" %}
 {% block title %}Search results{% endblock %}
 
+{% block meta %}
+<meta name="robots" content="noindex"/>
+{% endblock %}
+
 {% block content %}
 {% if sres.results == 0 %}
  <p>
