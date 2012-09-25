@@ -3,13 +3,12 @@
 
 {% block content %}
 <form method="post" action="/new" enctype="multipart/form-data">
- <div class="control-group well pastedata">
+ <div class="control-group pastedata">
    <label for="description">Description</label>
    <input type="text" name="description" id="description" value="{{description}}"/>
  </div>
 
  {% include 'edit-file.htm' with {'file': file[1], 'fileid': 0, 'newfile': true} %}
-
  {% include 'edit-add.htm' %}
 
  <div class="row-fluid formbuttons">

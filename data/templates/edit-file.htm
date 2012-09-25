@@ -1,4 +1,4 @@
- <div class="well filegroup" id="filegroup{{fileid}}">
+ <div class="filegroup" id="filegroup{{fileid}}">
   {% if not file or file.isText %}
   <textarea name="files[{{fileid}}][content]" id="content_{{fileid}}" cols="80" rows="15" class="content">{{file.getContent}}</textarea>
   {% else %}
@@ -6,7 +6,7 @@
    Binary files cannot be edited.
   </p>
   {% endif %}
-  <div class="row-fluid">
+  <div class="row-fluid content-details">
    <div class="span1">
     <a class="btn additional-btn" href="#" onclick="toggleAdditional(this); return false;" style="display:none" title="Show additional options">
      <i class="icon-chevron-up"></i>

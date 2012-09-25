@@ -7,7 +7,7 @@
 
 {% block content %}
 <form method="post" action="{{repo.getLink('edit')}}" enctype="multipart/form-data">
- <div class="control-group well pastedata">
+ <div class="control-group pastedata">
    <label for="description">Description</label>
    <input type="text" name="description" id="description" value="{{repo.getDescription}}"/>
  </div>

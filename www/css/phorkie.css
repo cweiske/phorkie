@@ -44,10 +44,17 @@ h1 {
 }
 
 .repo-info {
-    margin-bottom: 2em;
+    margin-bottom: 2ex;
 }
+.repo-info form {
+    margin-bottom: 0px;
+}
+.urlinfo {
+    padding-bottom: 0px;
+}
+
 .file .header {
-    padding: 1.0ex;
+    padding: 0ex 0ex 0ex 1ex;
     margin-bottom: 1em;
     background-color: whiteSmoke;
     border: 1px solid #EEE;
@@ -55,6 +62,10 @@ h1 {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+}
+.file .header h3 {
+    margin: 0px;
+    font-size: 1.2em;
 }
 .file .header .btn-mini {
     margin-left: 2px;
@@ -87,10 +98,33 @@ ul.pager {
     margin-top: 2ex;
 }
 
+.pastedata label {
+    display: block;
+    float: left;
+    width: 100px;
+    margin-top: 4px;
+}
+.pastedata input {
+    display: block;
+    margin-left: 110px;
+    width: 590px !important;
+}
+.formbuttons {
+    margin-top: 2ex;
+}
+
 form textarea.content {
     width: 100%;
     box-sizing: border-box;
     font-family: monospace;
+    margin-bottom: 0px;
+    margin-top: 2ex;
+}
+.content-details {
+    margin-top: 12px;
+}
+.content-details .additional-btn {
+    margin-top: -12px;
 }
 form .allwidth {
     box-sizing: border-box;

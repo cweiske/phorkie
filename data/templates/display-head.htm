@@ -11,7 +11,7 @@
 </div>
 
 {% if repo.getCloneURL(true) or repo.getCloneURL(false) %}
-<div class="well">
+<div class="urlinfo well well-small">
  {% if repo.getCloneURL(true) %}
  <div class="row-fluid">
   <div class="span3">Public clone URL</div>
