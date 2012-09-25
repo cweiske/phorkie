@@ -12,11 +12,17 @@
 
  {% include 'edit-add.htm' %}
 
- <div class="well" style="text-align: right">
-  <button class="btn btn-primary" type="submit">
-   <i class="icon-check icon-white"></i>
-   Create
-  </button>
+ <div class="row-fluid formbuttons">
+  <div class="span4"></div>
+  <div class="span4" style="text-align: center">
+   {% include 'edit-add-button.htm' %}
+  </div>
+  <div class="span4" style="text-align: right">
+   <button class="btn btn-primary" type="submit">
+    <i class="icon-check icon-white"></i>
+    Create
+   </button>
+  </div>
  </div>
 
 </form>

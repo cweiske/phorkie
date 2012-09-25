@@ -1,18 +1,11 @@
- <div class="well" style="text-align: center; display:none" id="add-button">
-    <a class="btn" href="#">
-     <i class="icon-plus"></i>
-     Add file
-    </a>
- </div>
-
- {% include 'edit-file.htm' with {'file': null, 'fileid': 'new', 'newfile': true} %}
+{% include 'edit-file.htm' with {'file': null, 'fileid': 'new', 'newfile': true} %}
 
 <script type="application/javascript">
 $(document).ready(function() {
     $('#add-button').show();
     $('#filegroupnew').hide();
-    $('#add-button a').bind('click', function() {
-        $('#add-button').before("{% filter escape('js') %}
+    $('#add-button').bind('click', function() {
+        $('.filegroup:last').before("{% filter escape('js') %}
             {% include 'edit-file.htm' with {'file': null, 'fileid': '###', 'newfile': true} %}
             {% endfilter %}"
             .replace(/###/g, $('.filegroup').length)
