@@ -120,6 +120,7 @@ of the index, e.g. ::
 
   http://localhost:9200/phorkie/
 
+You must use a search namespace with Elasticsearch such as ``phorkie/``.
 Run the index script to import all existing pastes into the index::
 
   php scripts/index.php
