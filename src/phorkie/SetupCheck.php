@@ -11,11 +11,10 @@ class SetupCheck
         'pear.php.net/Pager'               => 'Pager',
         'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
         'zustellzentrum.cweiske.de/MIME_Type_PlainDetect' => 'MIME_Type_PlainDetect',
-        'pear.michelf.ca/Markdown'         => 'Markdown',
     );
 
     protected $writableDirs;
-
+    protected $elasticsearch;
 
     public function __construct()
     {
@@ -24,6 +23,7 @@ class SetupCheck
             'gitdir' => $cfg['gitdir'],
             'workdir' => $cfg['workdir'],
         );
+        $this->elasticsearch = $cfg['elasticsearch'];
     }
 
     public static function run()
@@ -32,7 +32,9 @@ class SetupCheck
         $sc->checkDeps();
         $sc->checkDirs();
         $sc->checkGit();
-        $sc->checkDatabase();
+        if ($this->elasticsearch != '') {
+            $sc->checkDatabase();
+        }
     }
 
     public function checkDeps()
@@ -74,6 +76,11 @@ class SetupCheck
 
     public function checkDatabase()
     {
+        $es = parse_url($this->elasticsearch);
+        if (!preg_match("#/.+/#", $es['path'], $matches)) {
+            $this->fail('Improper elasticsearch url.  Elasticsearch requires a'
+                       . ' search domain to store your data. (e.g. http://localhost:9200/phorkie/)');
+        }
         $dbs = new Database();
         $dbs->getSetup()->setup();
     }
