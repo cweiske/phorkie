@@ -44,7 +44,9 @@ class Repository_Commit
             $r = intval($r / $quot);
             $g = intval($g / $quot);
         }
-        $string = str_repeat('g', $g) . str_repeat('r', $r) . str_repeat('n', 7 - $g - $r);
+        $string = str_repeat('g', $g)
+            . str_repeat('r', $r)
+            . str_repeat('n', 7 - $g - $r);
 
         return str_split($string);
     }

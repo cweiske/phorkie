@@ -16,7 +16,12 @@ class Repositories
     {
         chdir($this->gitDir);
         $dirs = glob('*.git', GLOB_ONLYDIR);
-        array_walk($dirs, function ($dir) { return substr($dir, 0, -4); });
+        array_walk(
+            $dirs,
+            function ($dir) {
+                return substr($dir, 0, -4);
+            }
+        );
         sort($dirs, SORT_NUMERIC);
         $n = end($dirs) + 1;
 

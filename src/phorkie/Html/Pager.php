@@ -6,7 +6,12 @@ class Html_Pager
     protected $pager;
 
     /**
+     * Create a new pager
+     *
+     * @param integer $itemCount   Number of items in total
+     * @param integer $perPage     Number of items on one page
      * @param integer $currentPage Current page, beginning with 1
+     * @param string  $filename    URL the page number shall be appended
      */
     public function __construct($itemCount, $perPage, $currentPage, $filename)
     {

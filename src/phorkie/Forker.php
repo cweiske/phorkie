@@ -28,11 +28,16 @@ class Forker
         $rs = new Repositories();
         $new = $rs->createNew();
         $vc = $new->getVc();
-        \rmdir($new->gitDir);//VersionControl_Git wants an existing dir, git clone not
+
+        //VersionControl_Git wants an existing dir, git clone not
+        \rmdir($new->gitDir);
+
         $vc->getCommand('clone')
             //this should be setOption, but it fails with a = between name and value
             ->addArgument('--separate-git-dir')
-            ->addArgument($GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $new->id . '.git')
+            ->addArgument(
+                $GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $new->id . '.git'
+            )
             ->addArgument($pathOrUrl)
             ->addArgument($new->workDir)
             ->execute();

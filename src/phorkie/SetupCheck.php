@@ -80,8 +80,11 @@ class SetupCheck
 
         $es = parse_url($this->elasticsearch);
         if (!preg_match("#/.+/#", $es['path'], $matches)) {
-            $this->fail('Improper elasticsearch url.  Elasticsearch requires a'
-                       . ' search domain to store your data. (e.g. http://localhost:9200/phorkie/)');
+            $this->fail(
+                'Improper elasticsearch url.  Elasticsearch requires a'
+                . ' search domain to store your data.'
+                . ' (e.g. http://localhost:9200/phorkie/)'
+            );
         }
         $dbs = new Database();
         $dbs->getSetup()->setup();

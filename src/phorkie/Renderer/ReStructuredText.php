@@ -44,7 +44,8 @@ class Renderer_ReStructuredText
 
         if ($retval != 0) {
             $html = '<div class="alert">'
-                . 'rst2html encountered some error; return value ' . $retval . '<br/>'
+                . 'rst2html encountered some error; return value '
+                . $retval . '<br/>'
                 . 'Error message: ' . $errors
                 . '</div>'
                 . $html;

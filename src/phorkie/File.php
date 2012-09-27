@@ -64,8 +64,7 @@ class File
             //quick hack until https://pear.php.net/bugs/bug.php?id=19385 is fixed
             $cmd = new GitCommandBinary($this->repo->getVc());
             $cmd->setSubCommand('show');
-            return //$this->repo->getVc()->getCommand('show')
-                $cmd
+            return $cmd
                 ->addArgument($this->repo->hash . ':' . $this->path)
                 ->execute();
         }
@@ -96,10 +95,10 @@ class File
     /**
      * Get a link to the file
      *
-     * @param string $type Link type. Supported are:
-     *                     - "raw"
-     *                     - "tool"
-     * @param string $option
+     * @param string $type   Link type. Supported are:
+     *                       - "raw"
+     *                       - "tool"
+     * @param string $option Additional option, e.g. tool name
      *
      * @return string
      */
@@ -113,7 +112,9 @@ class File
                     . '/' . $this->getFilename();
             }
         } else if ($type == 'tool') {
-            return '/' . $this->repo->id . '/tool/' . $option . '/' . $this->getFilename();
+            return '/' . $this->repo->id
+                . '/tool/' . $option
+                . '/' . $this->getFilename();
         }
         throw new Exception('Unknown type');
     }

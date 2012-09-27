@@ -238,14 +238,14 @@ class Repository
     /**
      * Get a link to the repository
      *
-     * @param string $type Link type. Supported are:
-     *                     - "edit"
-     *                     - "delete"
-     *                     - "delete-confirm"
-     *                     - "display"
-     *                     - "fork"
-     *                     - "revision"
-     * @param string $option
+     * @param string $type   Link type. Supported are:
+     *                       - "edit"
+     *                       - "delete"
+     *                       - "delete-confirm"
+     *                       - "display"
+     *                       - "fork"
+     *                       - "revision"
+     * @param string $option Additional link option, e.g. revision number
      *
      * @return string
      */
