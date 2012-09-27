@@ -32,9 +32,7 @@ class SetupCheck
         $sc->checkDeps();
         $sc->checkDirs();
         $sc->checkGit();
-        if ($this->elasticsearch != '') {
-            $sc->checkDatabase();
-        }
+        $sc->checkDatabase();
     }
 
     public function checkDeps()
@@ -76,6 +74,10 @@ class SetupCheck
 
     public function checkDatabase()
     {
+        if ($this->elasticsearch != '') {
+            return;
+        }
+
         $es = parse_url($this->elasticsearch);
         if (!preg_match("#/.+/#", $es['path'], $matches)) {
             $this->fail('Improper elasticsearch url.  Elasticsearch requires a'
