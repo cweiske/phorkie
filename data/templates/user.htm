@@ -7,14 +7,19 @@
 
 {% block content %}
 
-<form method="post" action="/user" id="user_form">
-<fieldset>
-  <legend>User Profile</legend>
-   <p>Please update your git preferences.</p>
-   <p><label>OpenID:</label><code>{{ identity }}</code></p>
-   <label for='name'>Name:</label><input class="" id="name" type="text" name="name" width="35" value="{{ name }}"><br/>
-   <label for='email'>Email:</label><input class="" id="email" type="text" name="email" width="35" value="{{ email }}"><br/>
-   <input class="btn" id="submit" type="submit" value="Update">
-</fieldset>
-</form>
+<h3>User Profile</h3>
+<dl>
+ <dt>OpenID</dt>
+ <dd><code>{{ identity }}</code>
+
+ <dt>Name</dt>
+ <dd><code>{{ name }}</code></dd>
+
+ <dt>Email</dt>
+ <dd><code>{{ email }}</code></dd>
+</dl>
+
+<p>
+ You may change this data with your OpenID provider.
+</p>
 {% endblock %}
