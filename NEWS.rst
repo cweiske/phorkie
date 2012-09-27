@@ -3,6 +3,7 @@ Version 0.3.0 - 2012-09-27
 
 * Fix bug #10: error when nothing submitted [cweiske]
 * Fix bug #11: do not index edit, delete and tool pages [cweiske]
+* Fix bug #22: Edited pastes not in "recently created" [cweiske]
 * Implement request #5: Add OpenID authentication [jnovack]
 * Implement request #9: autodetect file type [cweiske]
 * Implement request #12: DOAP and rel="vcs-git" support [cweiske]

@@ -1,3 +1,7 @@
+2012-09-27  Christian Weiske  <cweiske@bogo>
+
+	* Fix bug #22: Edited pastes not in "recently created"
+
 2012-09-27  Christian Weiske  <cweiske@cweiske.de>
 
 	* Release of version 0.3.0
