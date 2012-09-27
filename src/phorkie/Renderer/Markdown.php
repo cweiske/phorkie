@@ -15,8 +15,9 @@ class Renderer_Markdown
     {
         /**
          */
-        require_once 'markdown.php';
-        $markdown = \markdown($file->getContent());
+        require_once 'Markdown.php';
+        $md = new \Markdown;
+        $markdown = $md->parse($file->getContent());
 
         return '<div class="markdown">'
             . $markdown
