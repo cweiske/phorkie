@@ -89,6 +89,7 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
             $this->searchInstance . 'repo/_query',
             \HTTP_Request2::METHOD_DELETE
         );
+        $r->allow404 = true;
         $r->setBody(
             json_encode(
                 (object)array(
@@ -101,6 +102,7 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
             $this->searchInstance . 'file/_query',
             \HTTP_Request2::METHOD_DELETE
         );
+        $r->allow404 = true;
         $r->setBody(
             json_encode(
                 (object)array(
@@ -118,6 +120,7 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
             $this->searchInstance . 'repo/' . $repo->id,
             \HTTP_Request2::METHOD_DELETE
         );
+        $r->allow404 = true;
         $r->send();
 
         $this->deleteRepoFiles($repo);
@@ -130,6 +133,7 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
             $this->searchInstance . 'file/_query',
             \HTTP_Request2::METHOD_DELETE
         );
+        $r->allow404 = true;
         $r->setBody(
             json_encode(
                 (object)array(
