@@ -1,7 +1,12 @@
+2012-09-28  Christian Weiske  <cweiske@bogo>
+
+	* Check for OpenID package in SetupCheck
+
 2012-09-28  Christian Weiske  <cweiske@cweiske.de>
 
 	* Fix bug #23: "work dir not found" on failed remote fork
 	* Fix bug #20: elasticsearch error on deletion
+	* Release version 0.3.0
 
 2012-09-27  Christian Weiske  <cweiske@bogo>
 
