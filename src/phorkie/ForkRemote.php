@@ -17,7 +17,7 @@ class ForkRemote
 
     public function __construct($url)
     {
-        $this->url = $url;
+        $this->url = trim($url);
     }
 
     public function parse()
