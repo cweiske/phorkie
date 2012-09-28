@@ -1,6 +1,12 @@
+Version 0.3.1 - 2012-09-27
+--------------------------
+* Check for OpenID package in SetupCheck
+* Fix bug #24: setupcheck: verify geshi installation
+* Fix bug #25: setupcheck: verify markdown
+
+
 Version 0.3.0 - 2012-09-27
 --------------------------
-
 * Fix bug #10: error when nothing submitted [cweiske]
 * Fix bug #11: do not index edit, delete and tool pages [cweiske]
 * Fix bug #20: elasticsearch error on deletion [cweiske]
