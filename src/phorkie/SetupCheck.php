@@ -8,6 +8,7 @@ class SetupCheck
         'pear.twig-project.org/Twig'       => 'Twig_Autoloader',
         'pear.php.net/Date_HumanDiff'      => 'Date_HumanDiff',
         'pear.php.net/HTTP_Request2'       => 'HTTP_Request2',
+        'pear.php.net/OpenID'              => 'OpenID',
         'pear.php.net/Pager'               => 'Pager',
         'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
         'zustellzentrum.cweiske.de/MIME_Type_PlainDetect' => 'MIME_Type_PlainDetect',
