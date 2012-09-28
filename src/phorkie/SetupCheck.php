@@ -74,7 +74,7 @@ class SetupCheck
 
     public function checkDatabase()
     {
-        if ($this->elasticsearch != '') {
+        if ($this->elasticsearch == '') {
             return;
         }
 
