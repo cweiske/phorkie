@@ -1,3 +1,8 @@
+2012-09-28  Christian Weiske  <cweiske@cweiske.de>
+
+	* Fix bug #23: "work dir not found" on failed remote fork
+	* Fix bug #20: elasticsearch error on deletion
+
 2012-09-27  Christian Weiske  <cweiske@bogo>
 
 	* Fix bug #22: Edited pastes not in "recently created"
