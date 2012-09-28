@@ -43,6 +43,18 @@ class SetupCheck
                 $this->fail('PEAR package not installed: ' . $package);
             }
         }
+
+        $geshi = stream_resolve_include_path(
+            $GLOBALS['phorkie']['cfg']['geshi']
+        );
+        if ($geshi === false) {
+            $this->fail('GeSHi not available');
+        }
+
+        $markdown = stream_resolve_include_path('markdown.php');
+        if ($markdown === false) {
+            $this->fail('Markdown renderer not available');
+        }
     }
 
     public function checkDirs()

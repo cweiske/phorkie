@@ -1,6 +1,8 @@
-2012-09-28  Christian Weiske  <cweiske@bogo>
+2012-09-28  Christian Weiske  <cweiske@cweiske.de>
 
 	* Check for OpenID package in SetupCheck
+	* Fix bug #24: setupcheck: verify geshi installation
+	* Fix bug #25: setupcheck: verify markdown
 
 2012-09-28  Christian Weiske  <cweiske@cweiske.de>
 
