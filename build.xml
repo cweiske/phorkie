@@ -8,11 +8,24 @@
   -->
   <property file="build.properties" />
 
-  <property name="version-m"  value="0.2" />
-  <property name="version"    value="0.2.0" />
+  <property name="version-m"  value="0.3" />
+  <property name="version"    value="0.3.0" />
   <property name="stability"  value="alpha" />
   <property name="releasenotes" value="
-First release
+Version 0.3.0 - 2012-09-27
+--------------------------
+
+* Fix bug #10: error when nothing submitted [cweiske]
+* Fix bug #11: do not index edit, delete and tool pages [cweiske]
+* Fix bug #22: Edited pastes not in 'recently created' [cweiske]
+* Implement request #5: Add OpenID authentication [jnovack]
+* Implement request #9: autodetect file type [cweiske]
+* Implement request #12: DOAP and rel='vcs-git' support [cweiske]
+* Implement request #13: remote forking support [cweiske]
+* Hide additional file fields by default, button to toggle their visibility
+  [cweiske]
+* Markdown support [jnovack]
+* Added nginx rewrite rules to README [skl]
 " />
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
   <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
@@ -23,16 +36,22 @@ First release
 
   <fileset id="fs.zip" dir=".">
    <include name="data/**"/>
+   <include name="scripts/**"/>
    <include name="src/**"/>
    <include name="www/**"/>
+
+   <include name="ChangeLog"/>
    <include name="LICENSE"/>
+   <include name="NEWS.rst"/>
    <include name="README.rst"/>
+
    <exclude name="**/.gitignore/"/>
    <exclude name="data/config.php"/>
   </fileset>
 
   <fileset id="fs.doc" dir=".">
    <include name="README.rst"/>
+   <include name="NEWS.rst"/>
   </fileset>
 
   <taskdef name="rST" classname="phing.tasks.ext.rSTTask" />
@@ -79,16 +98,20 @@ First release
      <notes>${releasenotes}</notes>
 
      <dependencies>
-       <php minimum_version="5.2.0" />
+       <php minimum_version="5.3.0" />
        <pear minimum_version="1.9.0" />
 
        <package name="Date_HumanDiff"
                 channel="pear.php.net"
-                minimum_version="0.1.0"
+                minimum_version="0.4.0"
                 />
        <package name="HTTP_Request2"
                 channel="pear.php.net"
                 minimum_version="2.1.0"
+                />
+       <package name="OpenID"
+                channel="pear.php.net"
+                minimum_version="0.3.3"
                 />
        <package name="Pager"
                 channel="pear.php.net"
@@ -96,15 +119,24 @@ First release
                 />
        <package name="Services_Libravatar"
                 channel="pear.php.net"
-                minimum_version="0.2.1"
+                minimum_version="0.2.2"
                 />
        <package name="VersionControl_Git"
                 channel="pear.php.net"
                 minimum_version="0.4.4"
                 />
+
        <package name="geshi"
                 channel="mediawiki.googlecode.com/svn"
                 minimum_version="1.0.0"
+                />
+       <package name="Markdown"
+                channel="pear.michelf.ca"
+                minimum_version="0.0.2"
+                />
+       <package name="MIME_Type_PlainDetect"
+                channel="zustellzentrum.cweiske.de"
+                minimum_version="0.0.2"
                 />
        <package name="Twig"
                 channel="pear.twig-project.org"
@@ -114,14 +146,14 @@ First release
      </dependencies>
 
      <!-- map directory (key) to role -->
-     <dirroles key="www">www</dirroles>
      <dirroles key="data">data</dirroles>
+     <dirroles key="scripts">data</dirroles>
      <dirroles key="src">php</dirroles>
+     <dirroles key="www">www</dirroles>
 
      <!-- do not add the following files to the package.
           copied from excludes above -->
      <ignore>**/.gitignore</ignore>
-     <ignore>**/.svn</ignore>
      <ignore>build*</ignore>
      <ignore>data/config.php</ignore>
      <ignore>dist/**</ignore>
