@@ -141,6 +141,7 @@ class Repository_Post
                 ->execute();
             //FIXME: git needs ref BEFORE add
             //quick hack until http://pear.php.net/bugs/bug.php?id=19605 is fixed
+            //also waiting for https://pear.php.net/bugs/bug.php?id=19623
             $vc->getCommand('notes --ref=identity add')
                 ->setOption('force')
                 ->setOption('message', "$notes")
