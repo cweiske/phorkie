@@ -13,6 +13,9 @@ class Tools
      */
     public static function recursiveDelete($path)
     {
+        if (!file_exists($path)) {
+            return true;
+        }
         if (!is_dir($path) || is_link($path)) {
             return unlink($path);
         }
