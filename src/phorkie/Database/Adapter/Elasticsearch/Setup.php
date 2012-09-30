@@ -59,8 +59,12 @@ class Database_Adapter_Elasticsearch_Setup implements Database_ISetup
                                 //creation date
                                 'type' => 'date',
                             ),
-                            'tstamp' => (object)array(
+                            'modate' => (object)array(
                                 //modification date
+                                'type' => 'date',
+                            ),
+                            'tstamp' => (object)array(
+                                //last indexed date
                                 'type' => 'date',
                             )
                         )

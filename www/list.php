@@ -22,11 +22,14 @@ $pager = new Html_Pager(
     $repoCount, $perPage, $page + 1, '/list/%d'
 );
 
+$db = new Database();
 render(
     'list',
     array(
-        'repos' => $repos,
-        'pager' => $pager,
+        'repos'   => $repos,
+        'pager'   => $pager,
+        'recents' => $db->getSearch()->listAll(0, 5, 'modate', 'desc'),
+        'dh'      => new \Date_HumanDiff(),
     )
 );
 ?>

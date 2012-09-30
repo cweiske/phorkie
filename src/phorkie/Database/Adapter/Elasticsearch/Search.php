@@ -6,6 +6,7 @@ class Database_Adapter_Elasticsearch_Search implements Database_ISearch
     protected static $sortMap = array(
         'id' => array('id', 'asc'),
         'crdate' => array('crdate', 'desc'),
+        'modate' => array('modate', 'desc'),
         'tstamp' => array('tstamp', 'desc'),
     );
 
@@ -22,7 +23,8 @@ class Database_Adapter_Elasticsearch_Search implements Database_ISearch
      * @param string  $sort    Sort order. Allowed values:
      *                         - id     - repository id
      *                         - crdate - creation date
-     *                         - tstamp - modification date
+     *                         - modate - modification date
+     *                         - tstamp - last index date
      *
      * @return Search_Result Search result object
      */
@@ -64,6 +66,7 @@ class Database_Adapter_Elasticsearch_Search implements Database_ISearch
             $r = new Repository();
             $r->loadById($hit->_source->id);
             $r->crdate = strtotime($hit->_source->crdate);
+            $r->modate = strtotime($hit->_source->modate);
             $sres->repos[] = $r;
         }
 
