@@ -66,6 +66,12 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'application/javascript',
         'geshi' => 'javascript'
     ),
+    'json' => array(
+        'title' => 'Javascript',
+        'mime'  => 'application/javascript',
+        'geshi' => 'javascript',
+        'show'  => false
+    ),
     'md' => array(
         'title' => 'Markdown',
         'mime'  => 'text/x-markdown',
