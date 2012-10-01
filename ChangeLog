@@ -1,6 +1,7 @@
 2012-10-01  Christian Weiske  <cweiske@cweiske.de>
 
 	* Fix bug #27: render .json files
+	* Fix bug #31: forked pastes cannot be remote forked
 
 2012-09-28  Christian Weiske  <cweiske@cweiske.de>
 

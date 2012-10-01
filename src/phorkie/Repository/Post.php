@@ -190,11 +190,8 @@ class Repository_Post
             ->addArgument($repo->workDir)
             ->execute();
 
-        foreach (glob($repo->gitDir . '/hooks/*') as $hookfile) {
-            unlink($hookfile);
-        }
-
-        touch($repo->gitDir . '/git-daemon-export-ok');
+        $rs = new Repository_Setup($repo);
+        $rs->afterInit();
 
         return $repo;
     }

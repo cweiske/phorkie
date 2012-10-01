@@ -48,9 +48,8 @@ class Forker
             throw $e;
         }
 
-        foreach (\glob($new->gitDir . '/hooks/*') as $hookfile) {
-            \unlink($hookfile);
-        }
+        $rs = new Repository_Setup($new);
+        $rs->afterInit();
 
         return $new;
     }
