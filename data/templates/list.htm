@@ -11,3 +11,14 @@
  {% include 'pager.htm' %}
 
 {% endblock %}
+
+{% block sidebar %}
+ {% if recents.results %}
+  <h3>Recently updated</h3>
+  <ul>
+  {% for repo in recents.repos %}
+   {% include 'repo-sidebar-list.htm' %}
+  {% endfor %}
+  </ul>
+ {% endif %}
+{% endblock %}

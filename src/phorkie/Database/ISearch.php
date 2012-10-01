@@ -13,7 +13,8 @@ interface Database_ISearch
      * @param string  $sort    Sort order. Allowed values:
      *                         - id     - repository id
      *                         - crdate - creation date
-     *                         - tstamp - modification date
+     *                         - modate - modification date
+     *                         - tstamp - last index date
      *
      * @return Search_Result Search result object
      */

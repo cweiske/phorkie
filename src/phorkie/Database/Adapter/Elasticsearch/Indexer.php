@@ -9,15 +9,18 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
     }
 
 
-    public function addRepo(Repository $repo, $crdate = null)
+    public function addRepo(Repository $repo, $crdate = null, $modate = null)
     {
         if ($crdate == null) {
             $crdate = time();
         }
-        $this->updateRepo($repo, $crdate);
+        if ($modate == null) {
+            $modate = time();
+        }
+        $this->updateRepo($repo, $crdate, $modate);
     }
 
-    public function updateRepo(Repository $repo, $crdate = null)
+    public function updateRepo(Repository $repo, $crdate = null, $modate = null)
     {
         //add repository
         $r = new Database_Adapter_Elasticsearch_HTTPRequest(
@@ -34,6 +37,12 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
         }
         if ($crdate !== null) {
             $repoData['crdate'] = gmdate('c', $crdate);
+        }
+        if ($modate == null) {
+            $modate = $this->getMoDate($repo);
+        }
+        if ($modate !== null) {
+            $repoData['modate'] = gmdate('c', $modate);
         }
 
         $r->setBody(json_encode((object)$repoData));
@@ -81,6 +90,28 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
         }
 
         return strtotime($json->_source->crdate);
+    }
+
+    /**
+     * When updating the repository, we don't have a modification date.
+     * We need to keep it, but elasticsearch does not have a simple way
+     * to update some fields only (without using a custom script).
+     *
+     * @return integer Unix timestamp
+     */
+    protected function getMoDate(Repository $repo)
+    {
+        $r = new Database_Adapter_Elasticsearch_HTTPRequest(
+            $this->searchInstance . 'repo/' . $repo->id,
+            \HTTP_Request2::METHOD_GET
+        );
+        $json = json_decode($r->send()->getBody());
+
+        if (!isset($json->_source->modate)) {
+            return null;
+        }
+
+        return strtotime($json->_source->modate);
     }
 
     public function deleteAllRepos()

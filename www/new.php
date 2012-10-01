@@ -28,7 +28,7 @@ render(
         'files'       => $phork,
         'description' => '',
         'htmlhelper'  => new HtmlHelper(),
-        'recents'     => $db->getSearch()->listAll(0, 5, 'crdate', 'desc'),
+        'recents'     => $db->getSearch()->listAll(0, 5, 'modate', 'desc'),
         'dh'          => new \Date_HumanDiff(),
     )
 );

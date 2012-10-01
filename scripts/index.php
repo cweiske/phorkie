@@ -37,6 +37,8 @@ $rs = new Repositories();
 list($repos, $count) = $rs->getList(0, 10000);
 foreach ($repos as $repo) {
     echo 'Indexing ' . $repo->id . "\n";
-    $idx->addRepo($repo, filectime($repo->gitDir));
+    $commits = $repo->getHistory();
+    $first = count($commits)-1;
+    $idx->addRepo($repo, $commits[$first]->committerTime, $commits[0]->committerTime);
 }
 ?>
