@@ -44,11 +44,15 @@
        <a href="/user">{{name}}</a>
       </li>
       <li>
-       <a href="/login?logout">Logout</a>
+       <form class="navbar-form" action="/login?logout" method="get">
+        <button class="btn btn-inverse">Logout</button>
+       </form>
       </li>
       {% else %}
       <li>
-       <a href="/login">Login</a>
+       <form class="navbar-form" action="/login" method="get">
+        <button class="btn btn-inverse">Login</button>
+       </form>
       </li>
       {% endif %}
      </ul>
