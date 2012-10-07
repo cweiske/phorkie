@@ -2,10 +2,12 @@
 {% block title %}New paste{% endblock %}
 
 {% block content %}
-<form method="post" action="/new" enctype="multipart/form-data">
- <div class="control-group pastedata">
-   <label for="description">Description</label>
+<form method="post" action="/new" enctype="multipart/form-data" class="form-horizontal">
+ <div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
    <input type="text" name="description" id="description" value="{{description}}"/>
+  </div>
  </div>
 
  {% include 'edit-file.htm' with {'file': file[1], 'fileid': 0, 'newfile': true} %}
