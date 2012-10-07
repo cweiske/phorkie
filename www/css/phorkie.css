@@ -108,17 +108,6 @@ ul.pager {
     margin-top: 2ex;
 }
 
-.pastedata label {
-    display: block;
-    float: left;
-    width: 100px;
-    margin-top: 4px;
-}
-.pastedata input {
-    display: block;
-    margin-left: 110px;
-    width: 590px !important;
-}
 .formbuttons {
     margin-top: 2ex;
 }
@@ -151,6 +140,15 @@ form input#description {
 
 form label.inline {
     display: inline;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+    width: 8em;
+}
+
+.form-horizontal .controls {
+    margin-left: 8em;
 }
 
 .btn [class^="icon-"], .btn [class*=" icon-"] {
