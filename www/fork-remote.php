@@ -9,20 +9,24 @@ require_once 'www-header.php';
 $error = null;
 $urls  = null;
 if (isset($_POST['remote_url'])) {
-    $fr = new ForkRemote($_POST['remote_url']);
-    if (false === $fr->parse()) {
-        //no url found
+    if (is_null($_POST['remote_url'])) {
         $error = 'No git:// clone URL found';
-    } else if (false !== ($gitUrl = $fr->getUniqueGitUrl())) {
-        if (isset($_POST['orig_url'])) {
-            $fr->setUrl($_POST['orig_url']);
-        }
-        $forker = new Forker();
-        $new    = $forker->forkRemote($gitUrl, $fr->getUrl());
-        redirect($new->getLink('display'));
     } else {
-        //multiple urls found
-        $urls = $fr->getGitUrls();
+        $fr = new ForkRemote($_POST['remote_url']);
+        if (false === $fr->parse()) {
+            //no url found
+            $error = 'No git:// clone URL found';
+        } else if (false !== ($gitUrl = $fr->getUniqueGitUrl())) {
+            if (isset($_POST['orig_url'])) {
+                $fr->setUrl($_POST['orig_url']);
+            }
+            $forker = new Forker();
+            $new    = $forker->forkRemote($gitUrl, $fr->getUrl());
+            redirect($new->getLink('display'));
+        } else {
+            //multiple urls found
+            $urls = $fr->getGitUrls();
+        }
     }
 }
 
