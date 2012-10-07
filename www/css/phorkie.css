@@ -142,3 +142,7 @@ form input#description {
 form label.inline {
     display: inline;
 }
+
+.btn [class^="icon-"], .btn [class*=" icon-"] {
+    line-height: 1.1em;
+}
