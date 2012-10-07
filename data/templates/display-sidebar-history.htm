@@ -1,8 +1,8 @@
-<h3>History</h3>
+<h4>History</h4>
 
 <ul class="history unstyled">
 {% for commit in repo.getHistory %}
- <li {% if commit.hash == repo.hash or (repo.hash == '' and loop.first) %}class="active"{%endif%}>
+ <li class="row-fluid {% if commit.hash == repo.hash or (repo.hash == '' and loop.first) %}active{%endif%}">
   {% spaceless %}
   {% for dot in commit.getDots %}
   <img src="/phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
@@ -10,7 +10,10 @@
   {% endspaceless %}
   <a class="hash" href="{{repo.getLink('revision', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
   <img src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20"/>
-  <span title="{{commit.committerTime|date('c')}}">{{dh.get(commit.committerTime)}}</span>
+  <span class="nobr" title="{{commit.committerTime|date('c')}}">
+   <span class="indent visible-tablet"></span>
+   {{dh.get(commit.committerTime)}}
+  </span>
  </li>
 {% else %}
 <p>No commits yet</p>

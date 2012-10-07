@@ -156,3 +156,11 @@ form label.inline {
 .btn [class^="icon-"], .btn [class*=" icon-"] {
     line-height: 1.1em;
 }
+
+.indent {
+    margin-left: 10px;
+}
+
+.nobr {
+    white-space:nowrap;
+}

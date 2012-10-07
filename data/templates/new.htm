@@ -38,8 +38,8 @@ $(document).ready(function() {
 
 {% block sidebar %}
  {% if recents.results %}
- <h3>Recently updated</h3>
- <ul>
+ <h4>Recently updated</h4>
+ <ul class="unstyled">
  {% for repo in recents.repos %}
    {% include 'repo-sidebar-list.htm' %}
  {% endfor %}
