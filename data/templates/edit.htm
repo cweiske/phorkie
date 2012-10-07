@@ -6,10 +6,12 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="{{repo.getLink('edit')}}" enctype="multipart/form-data">
- <div class="control-group pastedata">
-   <label for="description">Description</label>
+<form method="post" action="{{repo.getLink('edit')}}" enctype="multipart/form-data" class="form-horizontal">
+ <div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
    <input type="text" name="description" id="description" value="{{repo.getDescription}}"/>
+  </div>
  </div>
 
  {% for fileid, file in repo.getFiles %}
@@ -39,4 +41,8 @@ $(document).ready(function() {
     initEdit();
 });
 </script>
+{% endblock %}
+
+{% block sidebar %}
+ {% include 'display-sidebar-history.htm' %}
 {% endblock %}

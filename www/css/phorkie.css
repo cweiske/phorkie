@@ -19,18 +19,28 @@ a.anchorlink {
     margin-left: 0.5em;
     font-size: smaller;
 }
-.navbar .brand {
+.navbar li a.brand {
     /*float: right;*/
+    margin-left: -14px;
     color: #DDA;
     text-shadow: 0 0 30px rgba(255, 255, 255, .9);
 }
-.navbar .brand:hover {
+.navbar li a.brand:hover {
     color: #FFA;
 }
 
-.navbar .container {
-    width: 940px;
+@media (min-width: 980px) and (max-width: 1199px) {
+    .navbar .container {
+        width: 940px;
+    }
 }
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .navbar .container {
+        width: 724px;
+    }
+}
+
 .footer {
     margin-top: 36px;
     margin-bottom: 0px;
@@ -98,17 +108,6 @@ ul.pager {
     margin-top: 2ex;
 }
 
-.pastedata label {
-    display: block;
-    float: left;
-    width: 100px;
-    margin-top: 4px;
-}
-.pastedata input {
-    display: block;
-    margin-left: 110px;
-    width: 590px !important;
-}
 .formbuttons {
     margin-top: 2ex;
 }
@@ -141,4 +140,25 @@ form input#description {
 
 form label.inline {
     display: inline;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+    width: 8em;
+}
+
+.form-horizontal .controls {
+    margin-left: 8em;
+}
+
+.btn [class^="icon-"], .btn [class*=" icon-"] {
+    line-height: 1.1em;
+}
+
+.indent {
+    margin-left: 10px;
+}
+
+.nobr {
+    white-space:nowrap;
 }

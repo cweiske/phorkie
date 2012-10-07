@@ -1,12 +1,15 @@
-<form method="post" action="/fork-remote" enctype="multipart/form-data" class="well form-inline">
+<form method="post" action="/fork-remote" enctype="multipart/form-data" class="well form-horizontal">
  <p>
   <strong>Copy a paste from a remote server:</strong>
   Just paste the website or git clone URL.
  </p>
-
- <label for="remote-url">Remote paste URL</label>
- <input type="text" name="remote_url" id="remote-url" value="{{remote_url}}" class="span4"/>
- <button type="submit" class="btn btn-primary" style="float: right; display: block">
-  <i class="icon-share icon-white"></i> Fork remote paste
- </button>
+ <div class="control-group">
+  <label class="control-label" for="remote-url">Remote URL</label>
+  <div class="controls">
+   <input type="text" name="remote_url" id="remote-url" value="{{remote_url}}" class="span4 inline" placeholder="git://"/>
+   <button type="submit" class="btn btn-primary" style="float: right; display: block">
+    <i class="icon-share icon-white"></i> Fork Remote
+   </button>
+  </div>
+ </div>
 </form>
