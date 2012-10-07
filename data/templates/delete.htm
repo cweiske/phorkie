@@ -21,9 +21,9 @@ Confirm deletion of repository #{{repo.id}}
   <div class="span6">
    <a class="btn" href="{{repo.getLink('display')}}">Cancel</a>
   </div>
-  <div class="span6" style="text-align: right">
+  <div class="span6">
    <form method="post" action="{{repo.getLink('delete-confirm')}}" style="margin: 0px">
-    <button class="btn btn-danger" type="submit">
+    <button class="btn btn-danger pull-right" type="submit">
      <i class="icon-trash icon-white"></i>
      Permanently delete
     </button>
