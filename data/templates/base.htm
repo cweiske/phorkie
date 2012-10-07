@@ -31,8 +31,8 @@
        <a href="/list">List all</a>
       </li>
       {% if db.adapter %}
-      <li>
-       <form class="navbar-search" action="/search" method="get">
+      <li class="nav-collapse">
+       <form class="span4 pull-right navbar-form" action="/search" method="get">
         <input type="text" class="search-query" name="q" placeholder="Search" value="{{query}}"/>
        </form>
       </li>
@@ -43,6 +43,17 @@
       <li>
        <a href="/user">{{name}}</a>
       </li>
+      {% endif %}
+      {% if db.adapter %}
+      <li>
+       <button class="btn btn-navbar btn-inverse pull-right" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+       </button>
+      </li>
+      {% endif %}
+      {% if identity %}
       <li>
        <a href="/login?logout">Logout</a>
       </li>
