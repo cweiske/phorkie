@@ -22,6 +22,11 @@ class ForkRemote
 
     public function parse()
     {
+        if ($this->url == '') {
+            $this->error = 'Empty fork URL';
+            return false;
+        }
+
         $arUrl  = parse_url($this->url);
         $scheme = isset($arUrl['scheme']) ? $arUrl['scheme'] : '';
 
