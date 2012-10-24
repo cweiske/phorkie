@@ -12,7 +12,7 @@ if (isset($_POST['remote_url'])) {
     $fr = new ForkRemote($_POST['remote_url']);
     if (false === $fr->parse()) {
         //no url found
-        $error = 'No git:// clone URL found';
+        $error = $fr->error;
     } else if (false !== ($gitUrl = $fr->getUniqueGitUrl())) {
         if (isset($_POST['orig_url'])) {
             $fr->setUrl($_POST['orig_url']);

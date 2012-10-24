@@ -3,6 +3,11 @@ namespace phorkie;
 
 class ForkRemote
 {
+    /**
+     * Contains error message when parse() failed
+     */
+    public $error;
+
     protected $url;
 
     /**
@@ -90,7 +95,12 @@ class ForkRemote
             }
         }
 
-        return $count > 0;
+        if ($count > 0) {
+            return true;
+        }
+
+        $this->error = 'No git:// clone URL found';
+        return false;
     }
 
     /**
