@@ -1,8 +1,5 @@
 {% extends "base.htm" %}
-{% block title %}
- {{repo.getTitle}}
- - revision {{repo.hash}}
-{% endblock %}
+{% block title %}{{repo.getTitle}} - revision {{repo.hash}}{% endblock %}
 
 {% block content %}
  {% include 'revision-head.htm' %}
