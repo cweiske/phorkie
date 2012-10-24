@@ -259,35 +259,42 @@ class Repository
     /**
      * Get a link to the repository
      *
-     * @param string $type   Link type. Supported are:
-     *                       - "edit"
-     *                       - "delete"
-     *                       - "delete-confirm"
-     *                       - "display"
-     *                       - "fork"
-     *                       - "revision"
-     * @param string $option Additional link option, e.g. revision number
+     * @param string  $type   Link type. Supported are:
+     *                        - "edit"
+     *                        - "delete"
+     *                        - "delete-confirm"
+     *                        - "display"
+     *                        - "fork"
+     *                        - "revision"
+     * @param string  $option Additional link option, e.g. revision number
+     * @param boolean $full   Return full URL or normal relative
      *
      * @return string
      */
-    public function getLink($type, $option = null)
+    public function getLink($type, $option = null, $full = false)
     {
         if ($type == 'edit') {
-            return '/' . $this->id . '/edit';
+            $link = '/' . $this->id . '/edit';
         } else if ($type == 'display') {
-            return '/' . $this->id;
+            $link = '/' . $this->id;
         } else if ($type == 'fork') {
-            return '/' . $this->id . '/fork';
+            $link = '/' . $this->id . '/fork';
         } else if ($type == 'doap') {
-            return '/' . $this->id . '/doap';
+            $link = '/' . $this->id . '/doap';
         } else if ($type == 'delete') {
-            return '/' . $this->id . '/delete';
+            $link = '/' . $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
-            return '/' . $this->id . '/delete/confirm';
+            $link = '/' . $this->id . '/delete/confirm';
         } else if ($type == 'revision') {
-            return '/' . $this->id . '/rev/' . $option;
+            $link = '/' . $this->id . '/rev/' . $option;
+        } else {
+            throw new Exception('Unknown link type');
         }
-        throw new Exception('Unknown link type');
+
+        if ($full) {
+            $link = Tools::fullUrl($link);
+        }
+        return $link;
     }
 
     public function getCloneURL($public = true)
