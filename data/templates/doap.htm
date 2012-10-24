@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns="http://usefulinc.com/ns/doap#">
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns="http://usefulinc.com/ns/doap#">
  <Project rdf:about="{{link}}">
   <name>{{repo.getTitle}}</name>
   <homepage rdf:resource="{{link}}" />
   <created>{{date}}</created>
+  {% set owner = repo.getOwner() %}
+  <maintainer>
+   <foaf:Person>
+    <foaf:name>{{owner.name}}</foaf:name>
+    <foaf:mbox rdf:resource="mailto:{{owner.email}}"/>
+   </foaf:Person>
+  </maintainer>
   {% if repo.getCloneURL(true) %}
   <repository>
    <GitRepository>
