@@ -1,6 +1,7 @@
 2012-10-24  Christian Weiske  <cweiske@cweiske.de>
 
 	* Implement request #35: Store owner of paste
+	* Fix bug #33: do not index login page
 
 2012-10-24  Justin J. Novack  <jnovack@gmail.com>
 
