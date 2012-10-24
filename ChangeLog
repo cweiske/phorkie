@@ -1,3 +1,11 @@
+2012-10-24  Christian Weiske  <cweiske@cweiske.de>
+
+	* Implement request #35: Store owner of paste
+
+2012-10-24  Justin J. Novack  <jnovack@gmail.com>
+
+	* Local bootstrap, responsive design
+
 2012-10-01  Christian Weiske  <cweiske@cweiske.de>
 
 	* Fix bug #27: render .json files
