@@ -283,6 +283,7 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
 
     rewrite ^/new$ /new.php;
+    rewrite ^/feed/new$ /feed-new.php;
     rewrite ^/list$ /list.php;
     rewrite ^/list/([0-9]+)$ /list.php?page=$1;
 

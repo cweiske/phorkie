@@ -1,6 +1,10 @@
 {% extends "base.htm" %}
 {% block title %}List of all pastes{% endblock %}
 
+{% block meta %}
+ <link rel="alternate" type="application/atom+xml" title="New pastes" href="feed/new" />
+{% endblock %}
+
 {% block content %}
 <div style="height: 1em"></div>
 <ul class="nav nav-pills nav-stacked">
