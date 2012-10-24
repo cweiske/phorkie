@@ -24,6 +24,18 @@ class Repository_Setup
             unlink($hookfile);
         }
         touch($this->repo->gitDir . '/git-daemon-export-ok');
+
+        $vc = $this->repo->getVc();
+
+        //keep track of owner
+        $vc->getCommand('config')
+            ->addArgument('owner.name')
+            ->addArgument($_SESSION['name'])
+            ->execute();
+        $vc->getCommand('config')
+            ->addArgument('owner.email')
+            ->addArgument($_SESSION['email'])
+            ->execute();
     }
 
 }
