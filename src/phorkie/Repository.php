@@ -236,6 +236,27 @@ class Repository
     }
 
     /**
+     * @return array Array with keys "email" and "name"
+     */
+    public function getOwner()
+    {
+        try {
+            $name = $this->getVc()->getCommand('config')
+                ->addArgument('owner.name')->execute();
+        } catch (\VersionControl_Git_Exception $e) {
+            $name = $GLOBALS['phorkie']['auth']['anonymousName'];
+        }
+        try {
+            $email = $this->getVc()->getCommand('config')
+                ->addArgument('owner.email')->execute();
+        } catch (\VersionControl_Git_Exception $e) {
+            $email = $GLOBALS['phorkie']['auth']['anonymousEmail'];
+        }
+
+        return array('name' => trim($name), 'email' => trim($email));
+    }
+
+    /**
      * Get a link to the repository
      *
      * @param string $type   Link type. Supported are:

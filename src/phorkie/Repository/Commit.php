@@ -16,18 +16,8 @@ class Repository_Commit
 
     public function getIconUrl()
     {
-        if ($this->committerEmail == 'anonymous@phorkie') {
-            return '/phorkie/anonymous.png';
-        }
-
-        $s = new \Services_Libravatar();
-        return $s->url(
-            $this->committerEmail,
-            array(
-                'size'    => 32,
-                'default' => Tools::fullUrl('/phorkie/anonymous.png')
-            )
-        );
+        $hh = new HtmlHelper();
+        return $hh->getIconUrl($this->committerEmail);
     }
 
     /**

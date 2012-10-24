@@ -14,6 +14,7 @@ render(
     array(
         'repo' => $repo,
         'dh'   => new \Date_HumanDiff(),
+        'htmlhelper' => new HtmlHelper(),
     )
 );
 ?>
