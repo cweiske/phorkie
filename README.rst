@@ -284,6 +284,7 @@ If you use nginx, place the following lines into your ``server`` block:
 
     rewrite ^/new$ /new.php;
     rewrite ^/feed/new$ /feed-new.php;
+    rewrite ^/feed/updated$ /feed-updated.php;
     rewrite ^/list$ /list.php;
     rewrite ^/list/([0-9]+)$ /list.php?page=$1;
 

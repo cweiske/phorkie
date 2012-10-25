@@ -17,6 +17,7 @@ RewriteRule ^fork-remote$ /fork-remote.php
 RewriteRule ^new$ /new.php
 
 RewriteRule ^feed/new$ /feed-new.php
+RewriteRule ^feed/updated$ /feed-updated.php
 
 RewriteRule ^list$ /list.php
 RewriteRule ^list/([0-9]+)$ /list.php?page=$1

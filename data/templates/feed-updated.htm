@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>{{title}}: Updated pastes</title>
+ <link href="{{url}}"/>
+ <link rel="self" href="{{feedurl}}"/>
+ <id>{{url}}</id>
+{% set repo = pastes.repos.0 %}
+ <updated>{{repo.modate|date('c')}}</updated>
+
+{% for repo in pastes.repos %}
+ <entry>
+  <id>{{repo.getLink('display', null, true)}}</id>
+  <title>{{repo.getTitle}}</title>
+  <published>{{repo.crdate|date('c')}}</published>
+  <updated>{{repo.modate|date('c')}}</updated>
+  <link rel="alternate" type="text/html" href="{{repo.getLink('display', null, true)}}" />
+  <author>
+   {% set owner=repo.getOwner() %}
+   <name>{{owner.name}}</name>
+   <email>{{owner.email}}</email>
+  </author>
+ </entry>
+{% endfor %}
+</feed>
