@@ -156,7 +156,12 @@ class Repository_Post
             if ($bNew) {
                 $db->getIndexer()->addRepo($this->repo);
             } else {
-                $db->getIndexer()->updateRepo($this->repo);
+                $commits = $this->repo->getHistory();
+                $db->getIndexer()->updateRepo(
+                    $this->repo,
+                    $commits[count($commits)-1]->committerTime,
+                    $commits[0]->committerTime
+                );
             }
         }
 
