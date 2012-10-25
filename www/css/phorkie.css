@@ -155,6 +155,10 @@ form label.inline {
     line-height: 1.1em;
 }
 
+.content-padding-fix {
+    height: 1em;
+}
+
 .indent {
     margin-left: 10px;
 }
