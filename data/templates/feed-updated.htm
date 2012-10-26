@@ -12,13 +12,24 @@
   <id>{{repo.getLink('display', null, true)}}</id>
   <title>{{repo.getTitle}}</title>
   <published>{{repo.crdate|date('c')}}</published>
-  <updated>{{repo.modate|date('c')}}</updated>
+  {% set commit = repo.getHistory().0 %}
+  <updated>{{commit.committerTime|date('c')}}</updated>
   <link rel="alternate" type="text/html" href="{{repo.getLink('display', null, true)}}" />
   <author>
-   {% set owner=repo.getOwner() %}
-   <name>{{owner.name}}</name>
-   <email>{{owner.email}}</email>
+   <name>{{commit.committerName}}</name>
+   <email>{{commit.committerEmail}}</email>
   </author>
+  <summary>{% spaceless %}
+   {% if commit.filesChanged %}
+     {{ntext(commit.filesChanged, "%d file", "%d files")}} changed{% if commit.linesAdded %},{% endif %}
+   {% endif %}
+   {% if commit.linesAdded %}
+     {{ntext(commit.linesAdded, "%d line", "%d lines")}} added{% if commit.linesDeleted %},{% endif %}
+   {% endif %}
+   {% if commit.linesDeleted %}
+     {{ntext(commit.linesDeleted, "%d line", "%d lines")}} deleted
+   {% endif %}
+  {% endspaceless %}</summary>
  </entry>
 {% endfor %}
 </feed>

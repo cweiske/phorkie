@@ -68,6 +68,14 @@ $twig = new \Twig_Environment(
         'debug' => true
     )
 );
+$twig->addFunction('ntext', new \Twig_Function_Function('\phorkie\ntext'));
+function ntext($value, $singular, $plural)
+{
+    if (abs($value) == 1) {
+        return sprintf($singular, $value);
+    }
+    return sprintf($plural, $value);
+}
 //$twig->addExtension(new \Twig_Extension_Debug());
 
 if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
