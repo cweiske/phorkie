@@ -100,10 +100,12 @@ try {
         $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
         $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
     } else {
+        throw new Exception('Error logging in');
         $status  = "<tr><td>Status:</td><td><font color='red'>FAIL!";
         $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
     }
 } catch (OpenID_Exception $e) {
+    throw new Exception('Error logging in');
     $status  = "<tr><td>Status:</td><td><font color='red'>EXCEPTION!";
     $status .= " ({$e->getMessage()} : {$e->getCode()})</font></td></tr>";
 }
