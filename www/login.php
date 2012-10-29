@@ -11,7 +11,13 @@ if (isset($_REQUEST['logout'])) {
 }
 
 if (!count($_GET) && !count($_POST)) {
-    render('login');
+    render(
+        'login',
+        array(
+            'openid' => isset($_COOKIE['lastopenid'])
+                ? $_COOKIE['lastopenid'] : 'http://'
+        )
+    );
     exit();
 }
 
@@ -149,6 +155,8 @@ $name = isset($openid['openid.ax.value.fullname'])
 
 $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
 $_SESSION['identity'] = $openid['openid.identity'];
+
+setcookie('lastopenid', $_SESSION['identity'], time() + 84600 * 60, '/login');
 
 if (isset($_SESSION['REQUEST_URI'])) {
     $redirect = Tools::fullUrl($_SESSION['REQUEST_URI']);
