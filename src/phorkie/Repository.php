@@ -359,6 +359,14 @@ class Repository
 
         return $arCommits;
     }
+
+    /**
+     * @return Repository_ConnectionInfo
+     */
+    public function getConnectionInfo()
+    {
+        return new Repository_ConnectionInfo($this);
+    }
 }
 
 ?>
