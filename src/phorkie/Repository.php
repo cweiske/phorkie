@@ -65,6 +65,16 @@ class Repository
         $this->loadMessage();
     }
 
+    public function loadById($id)
+    {
+        if (!is_numeric($id)) {
+            throw new Exception_Input('Paste ID not numeric');
+        }
+        $this->id = (int)$id;
+        $this->loadDirs();
+        $this->loadHash();
+    }
+
     protected function loadDirs()
     {
         $gitDir = $GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $this->id . '.git';
@@ -124,16 +134,6 @@ class Repository
         } else {
             $this->message = "This commit message intentionally left blank.";
         }
-    }
-
-    public function loadById($id)
-    {
-        if (!is_numeric($id)) {
-            throw new Exception_Input('Paste ID not numeric');
-        }
-        $this->id = (int)$id;
-        $this->loadDirs();
-        $this->loadHash();
     }
 
     public function getVc()
