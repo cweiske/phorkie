@@ -1,3 +1,6 @@
+# http://serverfault.com/questions/57243/apache-mod-rewrite-fails-when-file-by-same-name-exists
+Options -MultiViews
+
 RewriteEngine On
 RewriteBase /
 #RewriteCond %{REQUEST_FILENAME} -f
