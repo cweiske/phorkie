@@ -6,7 +6,7 @@ require_once 'www-header.php';
 if (isset($_REQUEST['logout'])) {
     unset($_SESSION);
     session_destroy();
-    header('Location: ' . Tools::fullUrl('/'));
+    header('Location: ' . Tools::fullUrl());
     exit();
 }
 
@@ -34,8 +34,8 @@ if (isset($_POST['openid_url'])) {
     $openid_url = null;
 }
 
-$realm    = Tools::fullUrl('/');
-$returnTo = Tools::fullUrl('/login');
+$realm    = Tools::fullUrl();
+$returnTo = Tools::fullUrl('login');
 
 try {
     $o = new \OpenID_RelyingParty($returnTo, $realm, $openid_url);
@@ -158,11 +158,11 @@ $_SESSION['identity'] = $openid['openid.identity'];
 
 setcookie('lastopenid', $_SESSION['identity'], time() + 84600 * 60, '/login');
 
+$url = '';
 if (isset($_SESSION['REQUEST_URI'])) {
-    $redirect = Tools::fullUrl($_SESSION['REQUEST_URI']);
-} else {
-    $redirect = Tools::fullUrl('/');
+    $url = substr($_SESSION['REQUEST_URI'], 1);
 }
+$redirect = Tools::fullUrl($url);
 header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 exit;
 ?>

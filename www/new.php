@@ -15,7 +15,7 @@ require_once 'www-header.php';
 
 $repopo = new Repository_Post();
 if ($repopo->process($_POST, $_SESSION)) {
-    redirect($repopo->repo->getLink('display'));
+    redirect($repopo->repo->getLink('display', null, true));
 }
 
 $phork = array(

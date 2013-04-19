@@ -11,7 +11,7 @@ $repo->loadFromRequest();
 
 $repopo = new Repository_Post($repo);
 if ($repopo->process($_POST, $_SESSION)) {
-    redirect($repo->getLink('display'));
+    redirect($repo->getLink('display', null, true));
 }
 
 render(

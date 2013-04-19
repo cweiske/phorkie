@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
 <html>
- <head>
+  <head>
+  <base href="{{baseurl}}" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/css/font-awesome.css"/>
-  <link rel="stylesheet" href="/css/phorkie.css"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/font-awesome.css"/>
+  <link rel="stylesheet" href="css/phorkie.css"/>
   {% if css %}
   <link rel="stylesheet" href="{{css}}"/>
   {% endif %}
   <title>{% block title %}{% endblock %} - {{title}}</title>
-  <script src="/js/jquery.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/phorkie.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/phorkie.js"></script>
   {% block meta %}{% endblock %}
  </head>
  <body>
@@ -22,17 +23,17 @@
     <div class="container">
      <ul class="nav">
       <li>
-       <a class="brand" href="/">{{title}}</a>
+       <a class="brand" href="{{baseurl}}">{{title}}</a>
       </li>
       <li>
-       <a href="/new">New paste</a>
+       <a href="new">New paste</a>
       </li>
       <li>
-       <a href="/list">List all</a>
+       <a href="list">List all</a>
       </li>
       {% if db.adapter %}
       <li class="nav-collapse">
-       <form class="span4 pull-right navbar-form" action="/search" method="get">
+       <form class="span4 pull-right navbar-form" action="search" method="get">
         <input type="text" class="search-query" name="q" placeholder="Search" value="{{query}}"/>
        </form>
       </li>
@@ -41,7 +42,7 @@
      <ul class="nav pull-right">
       {% if identity %}
       <li>
-       <a href="/user">{{name}}</a>
+       <a href="user">{{name}}</a>
       </li>
       {% endif %}
       {% if db.adapter %}
@@ -55,11 +56,11 @@
       {% endif %}
       {% if identity %}
       <li>
-       <a href="/login?logout">Logout</a>
+       <a href="login?logout">Logout</a>
       </li>
       {% else %}
       <li>
-       <a href="/login">Login</a>
+       <a href="login">Login</a>
       </li>
       {% endif %}
      </ul>

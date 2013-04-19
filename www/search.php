@@ -7,7 +7,7 @@ $reqWritePermissions = false;
 require_once 'www-header.php';
 
 if (!isset($_GET['q']) || $_GET['q'] == '') {
-    header('Location: ' . Tools::fullUrl('/list'));
+    header('Location: ' . Tools::fullUrl('list'));
     exit();
 }
 $query = $_GET['q'];

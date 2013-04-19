@@ -106,13 +106,13 @@ class File
     {
         if ($type == 'raw') {
             if ($this->repo->hash === null) {
-                return '/' . $this->repo->id . '/raw/' . $this->getFilename();
+                return $this->repo->id . '/raw/' . $this->getFilename();
             } else {
-                return '/' . $this->repo->id . '/rev-raw/' . $this->repo->hash
+                return $this->repo->id . '/rev-raw/' . $this->repo->hash
                     . '/' . $this->getFilename();
             }
         } else if ($type == 'tool') {
-            return '/' . $this->repo->id
+            return $this->repo->id
                 . '/tool/' . $option
                 . '/' . $this->getFilename();
         }

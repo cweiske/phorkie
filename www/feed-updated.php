@@ -12,8 +12,8 @@ render(
     'feed-updated',
     array(
         'pastes'  => $db->getSearch()->listAll(0, 10, 'modate', 'desc'),
-        'url'     => Tools::fullUrl('/'),
-        'feedurl' => Tools::fullUrl('/feed/updated'),
+        'url'     => Tools::fullUrl(),
+        'feedurl' => Tools::fullUrl('feed/updated'),
     )
 );
 ?>

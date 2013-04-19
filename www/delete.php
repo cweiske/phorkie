@@ -14,7 +14,7 @@ if (isset($_GET['confirm']) && $_GET['confirm'] == 1) {
         throw new Exception_Input('Deleting only possible via POST');
     }
     $repo->delete();
-    redirect('/');
+    redirect(Tools::fullUrl());
 }
 
 render(

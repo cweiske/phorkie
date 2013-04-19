@@ -5,7 +5,7 @@
  <li class="row-fluid {% if commit.hash == repo.hash or (repo.hash == '' and loop.first) %}active{%endif%}">
   {% spaceless %}
   {% for dot in commit.getDots %}
-  <img src="/phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
+  <img src="phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
   {% endfor %}
   {% endspaceless %}
   <a class="hash" href="{{repo.getLink('revision', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>

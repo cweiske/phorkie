@@ -19,7 +19,7 @@ $perPage = 10;
 list($repos, $repoCount) = $rs->getList($page, $perPage);
 
 $pager = new Html_Pager(
-    $repoCount, $perPage, $page + 1, '/list/%d'
+    $repoCount, $perPage, $page + 1, 'list/%d'
 );
 
 $db = new Database();

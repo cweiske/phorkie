@@ -12,8 +12,8 @@ render(
     'feed-new',
     array(
         'pastes'  => $db->getSearch()->listAll(0, 10, 'crdate', 'desc'),
-        'url'     => Tools::fullUrl('/'),
-        'feedurl' => Tools::fullUrl('/feed/new'),
+        'url'     => Tools::fullUrl(),
+        'feedurl' => Tools::fullUrl('feed/new'),
     )
 );
 ?>

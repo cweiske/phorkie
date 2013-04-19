@@ -17,5 +17,5 @@ $forker = new Forker();
 $new    = $forker->forkLocal($repo);
 
 //FIXME: where to put fork source link?
-redirect($new->getLink('display'));
+redirect($new->getLink('display', null, true));
 ?>

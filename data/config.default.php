@@ -4,6 +4,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'gitdir'        => __DIR__ . '/../repos/git/',
     'workdir'       => __DIR__ . '/../repos/work/',
     'tpl'           => __DIR__ . '/templates/',
+    'baseurl'       => '/',
     'css'           => '',
     'title'         => 'phorkie',
     'topbar'        => '',

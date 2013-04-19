@@ -6,7 +6,7 @@ class HtmlHelper
     public function getIconUrl($email, $size = 32)
     {
         if ($email == 'anonymous@phorkie') {
-            return '/phorkie/anonymous.png';
+            return 'phorkie/anonymous.png';
         }
 
         $s = new \Services_Libravatar();
@@ -14,7 +14,7 @@ class HtmlHelper
             $email,
             array(
                 'size'    => $size,
-                'default' => Tools::fullUrl('/phorkie/anonymous.png')
+                'default' => Tools::fullUrl('phorkie/anonymous.png')
             )
         );
     }

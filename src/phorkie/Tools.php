@@ -38,14 +38,14 @@ class Tools
      *
      * @return string Full URL
      */
-    public static function fullUrl($path)
+    public static function fullUrl($path = '')
     {
         if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) {
             $prot = 'https';
         } else {
             $prot = 'http';
         }
-        return $prot . '://' . $_SERVER['HTTP_HOST'] . $path;
+        return $prot . '://' . $_SERVER['HTTP_HOST'] . $GLOBALS['phorkie']['cfg']['baseurl'] . $path;
     }
 
     /**

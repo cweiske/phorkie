@@ -8,6 +8,6 @@ require_once 'www-header.php';
 
 header(
     'Location: '
-    . Tools::fullUrl('/' . $GLOBALS['phorkie']['cfg']['index'])
+    . Tools::fullUrl($GLOBALS['phorkie']['cfg']['index'])
 );
 ?>

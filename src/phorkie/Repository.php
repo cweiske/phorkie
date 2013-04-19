@@ -274,19 +274,19 @@ class Repository
     public function getLink($type, $option = null, $full = false)
     {
         if ($type == 'edit') {
-            $link = '/' . $this->id . '/edit';
+            $link = $this->id . '/edit';
         } else if ($type == 'display') {
-            $link = '/' . $this->id;
+            $link = $this->id;
         } else if ($type == 'fork') {
-            $link = '/' . $this->id . '/fork';
+            $link = $this->id . '/fork';
         } else if ($type == 'doap') {
-            $link = '/' . $this->id . '/doap';
+            $link = $this->id . '/doap';
         } else if ($type == 'delete') {
-            $link = '/' . $this->id . '/delete';
+            $link = $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
-            $link = '/' . $this->id . '/delete/confirm';
+            $link = $this->id . '/delete/confirm';
         } else if ($type == 'revision') {
-            $link = '/' . $this->id . '/rev/' . $option;
+            $link = $this->id . '/rev/' . $option;
         } else {
             throw new Exception('Unknown link type');
         }

@@ -45,7 +45,7 @@ class Search_Result
 
     public function getLink($query)
     {
-        return '/search?q=' . urlencode($query);
+        return 'search?q=' . urlencode($query);
     }
 }
 

@@ -30,7 +30,7 @@ class Html_Pager
                 'currentPage' => $currentPage,
                 'urlVar'      => 'page',
                 'append'      => $append,
-                'path'        => '/',
+                'path'        => '',
                 'fileName'    => $filename,
                 'separator'   => '###',
                 'spacesBeforeSeparator' => 0,

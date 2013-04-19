@@ -84,6 +84,10 @@ if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
 
 function render($tplname, $vars = array())
 {
+    $vars['baseurl'] = '/';
+    if (!empty($GLOBALS['phorkie']['cfg']['baseurl'])) {
+        $vars['baseurl'] = $GLOBALS['phorkie']['cfg']['baseurl'];
+    }
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
     $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];

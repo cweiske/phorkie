@@ -1,4 +1,5 @@
 <?php
+//$GLOBALS['phorkie']['cfg']['baseurl']  = '/';
 //$GLOBALS['phorkie']['cfg']['gitdir']  = '/var/cache/git/paste/git/';
 //$GLOBALS['phorkie']['cfg']['workdir'] = '/var/cache/git/paste/work/';
 //$GLOBALS['phorkie']['cfg']['git']['public'] = 'git://bogo/git/paste/';

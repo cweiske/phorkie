@@ -19,7 +19,7 @@ if (isset($_POST['remote_url'])) {
         }
         $forker = new Forker();
         $new    = $forker->forkRemote($gitUrl, $fr->getUrl());
-        redirect($new->getLink('display'));
+        redirect($new->getLink('display', null, true));
     } else {
         //multiple urls found
         $urls = $fr->getGitUrls();

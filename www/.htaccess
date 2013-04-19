@@ -2,28 +2,28 @@ RewriteEngine On
 RewriteBase /
 #RewriteCond %{REQUEST_FILENAME} -f
 
-RewriteRule ^([0-9]+)$ /display.php?id=$1
-RewriteRule ^([0-9]+)/delete$ /delete.php?id=$1
-RewriteRule ^([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1
-RewriteRule ^([0-9]+)/doap$ /doap.php?id=$1
-RewriteRule ^([0-9]+)/edit$ /edit.php?id=$1
-RewriteRule ^([0-9]+)/fork$ /fork.php?id=$1
-RewriteRule ^([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2
-RewriteRule ^([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2
-RewriteRule ^([0-9]+)/rev-raw/(.+)/(.+)$ /raw.php?id=$1&rev=$2&file=$3
-RewriteRule ^([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3
+RewriteRule ^([0-9]+)$ display.php?id=$1
+RewriteRule ^([0-9]+)/delete$ delete.php?id=$1
+RewriteRule ^([0-9]+)/delete/confirm$ delete.php?id=$1&confirm=1
+RewriteRule ^([0-9]+)/doap$ doap.php?id=$1
+RewriteRule ^([0-9]+)/edit$ edit.php?id=$1
+RewriteRule ^([0-9]+)/fork$ fork.php?id=$1
+RewriteRule ^([0-9]+)/raw/(.+)$ raw.php?id=$1&file=$2
+RewriteRule ^([0-9]+)/rev/(.+)$ revision.php?id=$1&rev=$2
+RewriteRule ^([0-9]+)/rev-raw/(.+)/(.+)$ raw.php?id=$1&rev=$2&file=$3
+RewriteRule ^([0-9]+)/tool/([^/]+)/(.+)$ tool.php?id=$1&tool=$2&file=$3
 
-RewriteRule ^fork-remote$ /fork-remote.php
-RewriteRule ^new$ /new.php
+RewriteRule ^fork-remote$ fork-remote.php
+RewriteRule ^new$ new.php
 
-RewriteRule ^feed/new$ /feed-new.php
-RewriteRule ^feed/updated$ /feed-updated.php
+RewriteRule ^feed/new$ feed-new.php
+RewriteRule ^feed/updated$ feed-updated.php
 
-RewriteRule ^list$ /list.php
-RewriteRule ^list/([0-9]+)$ /list.php?page=$1
+RewriteRule ^list$ list.php
+RewriteRule ^list/([0-9]+)$ list.php?page=$1
 
-RewriteRule ^search$ /search.php
-RewriteRule ^search/([0-9]+)$ /search.php?page=$1
+RewriteRule ^search$ search.php
+RewriteRule ^search/([0-9]+)$ search.php?page=$1
 
-RewriteRule ^login$ /login.php
-RewriteRule ^user$ /user.php
+RewriteRule ^login$ login.php
+RewriteRule ^user$ user.php

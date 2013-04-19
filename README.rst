@@ -61,6 +61,12 @@ Installation
    Look at ``config.default.php`` for values that you may adjust.
 
 5. Set your web server's document root to ``/path/to/phorkie/www/``
+   Alternatively, you can add a symlink to the ``www`` folder into your
+   web server's existing document root tree (being careful to keep
+   main phorkie folder outside the document root for security purposes)
+   and ensure you set the ``baseurl`` config option appropriately. You
+   must also set the ``RewriteBase`` in the ``.htaccess`` file or adjust
+   the nginx configuration accordingly.
 
 6. Open phorkie in your web browser
 
