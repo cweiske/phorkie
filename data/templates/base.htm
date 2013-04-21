@@ -10,6 +10,9 @@
   {% if css %}
   <link rel="stylesheet" href="{{css}}"/>
   {% endif %}
+  {% if iconpng %}
+  <link rel="shortcut icon" href="{{iconpng}}" type="image/png"/>
+  {% endif %}
   <title>{% block title %}{% endblock %} - {{title}}</title>
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>

@@ -6,6 +6,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'tpl'           => __DIR__ . '/templates/',
     'baseurl'       => '/',
     'css'           => '',
+    'iconpng'       => '',
     'title'         => 'phorkie',
     'topbar'        => '',
     'setupcheck'    => true,

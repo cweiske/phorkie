@@ -89,6 +89,7 @@ function render($tplname, $vars = array())
         $vars['baseurl'] = $GLOBALS['phorkie']['cfg']['baseurl'];
     }
     $vars['css'] = $GLOBALS['phorkie']['cfg']['css'];
+    $vars['iconpng'] = $GLOBALS['phorkie']['cfg']['iconpng'];
     $vars['title'] = $GLOBALS['phorkie']['cfg']['title'];
     $vars['topbar'] = $GLOBALS['phorkie']['cfg']['topbar'];
     if (isset($_SESSION['identity'])) {
