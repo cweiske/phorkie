@@ -20,7 +20,7 @@ if (isset($_GET['page'])) {
     //PEAR Pager begins at 1
     $page = (int)$_GET['page'] - 1;
 }
-$perPage = 10;
+$perPage = $GLOBALS['phorkie']['cfg']['perPage'];
 
 $db     = new Database();
 $search = $db->getSearch();

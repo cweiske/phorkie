@@ -12,7 +12,8 @@ $GLOBALS['phorkie']['cfg'] = array(
     'setupcheck'    => true,
     'elasticsearch' => null,
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
-    'index'         => 'new'//"new" or "list"
+    'index'         => 'new',//"new" or "list"
+    'perPage'       => 10,
 );
 $GLOBALS['phorkie']['auth'] = array(
     // 0 = public, no authentication, 1 = protect adds/edits/deletes,

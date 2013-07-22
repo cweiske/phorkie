@@ -15,7 +15,7 @@ if (isset($_GET['page'])) {
     $page = (int)$_GET['page'] - 1;
 }
 
-$perPage = 10;
+$perPage = $GLOBALS['phorkie']['cfg']['perPage'];
 list($repos, $repoCount) = $rs->getList($page, $perPage);
 
 $pager = new Html_Pager(
