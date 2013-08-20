@@ -10,16 +10,21 @@
 <h3>User profile</h3>
 <dl>
  <dt>OpenID</dt>
- <dd><code>{{ identity }}</code>
+ <dd><code>{{ identity }}</code></dd>
 
  <dt>Name</dt>
  <dd><code>{{ name }}</code></dd>
 
  <dt>Email</dt>
  <dd><code>{{ email }}</code></dd>
+
+ <dt>Avatar image</dt>
+ <dd><img class="avatar-large" src="{{htmlhelper.getIconUrl(email, 92)}}"></dd>
 </dl>
 
 <p>
  You may change this data with your OpenID provider.
+ The avatar image is loaded from <a href="http://libravatar.org/">libravatar.org</a>,
+ or perhaps from your own avatar server.
 </p>
 {% endblock %}

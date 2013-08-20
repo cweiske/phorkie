@@ -1,8 +1,8 @@
 {% set owner = repo.getOwner %}
 <div class="well well-small vcard">
  <img src="{{htmlhelper.getIconUrl(owner.email, 48)}}" alt="{{owner.name}}"
-      width="48" height="48" class="photo"
-      style="float: left; padding-right: 1ex;"/>
+      width="48" height="48" class="photo avatar-small pull-left"
+      style="margin-right: 1em;" />
  <span class="fn">{{owner.name}}</span>
  <br/><span class="muted">owner</span>
  <span class="clearfix"/>

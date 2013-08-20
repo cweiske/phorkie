@@ -166,3 +166,13 @@ form label.inline {
 .nobr {
     white-space:nowrap;
 }
+
+.avatar-large {
+    border-radius: 5px;
+}
+.avatar-small {
+    border-radius: 3px;
+}
+.avatar-tiny {
+    border-radius: 2px;
+}

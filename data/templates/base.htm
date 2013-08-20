@@ -45,7 +45,7 @@
      <ul class="nav pull-right">
       {% if identity %}
       <li>
-       <a href="user">{{name}}</a>
+       <a href="user"><img class="avatar-tiny" src="{{htmlhelper.getIconUrl(email, 20)}}" width="20" height="20" /> {{name}}</a>
       </li>
       {% endif %}
       {% if db.adapter %}

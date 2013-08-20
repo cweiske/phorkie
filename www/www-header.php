@@ -98,6 +98,9 @@ function render($tplname, $vars = array())
         $vars['email'] = $_SESSION['email'];
     }
     $vars['db'] = new Database();
+    if (!isset($vars['htmlhelper'])) {
+        $vars['htmlhelper'] = new HtmlHelper();
+    }
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
     echo $template->render($vars);
