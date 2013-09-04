@@ -165,7 +165,9 @@ class File
 
         $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
         return substr($type, 0, 5) === 'text/'
-            || $type == 'application/javascript';
+            || $type == 'application/javascript'
+            || substr($type, -4) == '+xml'
+            || substr($type, -5) == '+json';
     }
 }
 
