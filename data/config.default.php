@@ -131,6 +131,11 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'text/x-typoscript',/* TODO: correct type */
         'geshi' => 'typoscript'
     ),
+    'wsdl' => array(
+        'title' => 'WSDL',
+        'mime'  => 'application/wsdl+xml',
+        'geshi' => 'xml'
+    ),
     'xml' => array(
         'title' => 'XML',
         'mime'  => 'text/xml',
