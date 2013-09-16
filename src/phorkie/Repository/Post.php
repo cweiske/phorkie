@@ -134,6 +134,7 @@ class Repository_Post
             $vc->getCommand('commit')
                 ->setOption('message', '')
                 ->setOption('allow-empty-message')
+                ->setOption('no-edit')
                 ->setOption(
                     'author',
                     $sessionData['name'] . ' <' . $sessionData['email'] . '>'

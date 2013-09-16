@@ -1,3 +1,7 @@
+2013-09-16  Elan Ruusamäe  <glen@pld-linux.org>
+
+	* Disable editor on commit with --no-edit
+
 2013-08-20  Justin J. Novack  <jnovack@gmail.com>
 
 	* Add perPage settings into config
