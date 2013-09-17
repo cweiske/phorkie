@@ -8,6 +8,10 @@ class Forker
         $new = $this->fork($repo->gitDir);
         \copy($repo->gitDir . '/description', $new->gitDir . '/description');
         $this->index($new);
+
+        $not = new Notificator();
+        $not->create($new);
+
         return $new;
     }
 
@@ -19,6 +23,10 @@ class Forker
             'Fork of ' . $originalUrl
         );
         $this->index($new);
+
+        $not = new Notificator();
+        $not->create($new);
+
         return $new;
     }
 

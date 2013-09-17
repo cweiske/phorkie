@@ -36,6 +36,7 @@ Features
 - search across pastes: description, file names and file content
 
   - options: quoting, logical and, or, not, partial words
+- webhook support - get notified when pastes are created, edited or deleted
 
 
 ============
@@ -206,6 +207,37 @@ It is possible to get this information for each single commit::
     // show IP / OpenID for a given commit
     $ git notes --ref=identity show 29f82a
     http://cweiske.de/
+
+
+Notifications via webhooks
+==========================
+Depending on how you use phorkie, it might be nice to notify some other service
+when pastes are added or updated.
+Phorkie contains a simply mechanism to post data to a given URL which
+you can then use as needed.
+
+The data are json-encoded POSTed to the URLs contained in the
+``$GLOBALS['phorkie']['cfg']['webhooks']`` setting array, with
+a MIME type of ``application/vnd.phorkie.webhook+json``::
+
+  {
+      'event': 'create',
+      'author': {
+          'name':'Anonymous',
+          'email': 'anonymous@phorkie',
+      },
+      'repository': {
+          'name': 'webhooktest',
+          'url': 'http://example.org/33',
+          'description': 'webhooktest',
+          'owner': {
+              'name': 'Anonymous',
+              'email': 'anonymous@phorkie',
+          }
+      }
+  }
+
+The event may be ``create``, ``edit`` or ``delete``.
 
 
 =================

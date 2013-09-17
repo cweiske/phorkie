@@ -14,6 +14,10 @@ $GLOBALS['phorkie']['cfg'] = array(
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
     'index'         => 'new',//"new" or "list"
     'perPage'       => 10,
+    'webhooks'      => array(
+        /* array of urls that get called when
+           a paste is created, edited or deleted */
+    )
 );
 $GLOBALS['phorkie']['auth'] = array(
     // 0 = public, no authentication, 1 = protect adds/edits/deletes,

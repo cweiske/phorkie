@@ -1,3 +1,7 @@
+2013-09-17  Christian Weiske  <cweiske@cweiske.de>
+
+	* Add webhook support
+
 2013-09-16  Elan Ruusamäe  <glen@pld-linux.org>
 
 	* Disable editor on commit with --no-edit

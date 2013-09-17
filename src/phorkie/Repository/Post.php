@@ -154,8 +154,10 @@ class Repository_Post
             //FIXME: index changed files only
             //also handle file deletions
             $db = new Database();
+            $not = new Notificator();
             if ($bNew) {
                 $db->getIndexer()->addRepo($this->repo);
+                $not->create($this->repo);
             } else {
                 $commits = $this->repo->getHistory();
                 $db->getIndexer()->updateRepo(
@@ -163,6 +165,7 @@ class Repository_Post
                     $commits[count($commits)-1]->committerTime,
                     $commits[0]->committerTime
                 );
+                $not->edit($this->repo);
             }
         }
 
