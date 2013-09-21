@@ -102,6 +102,10 @@ on your machine:
 
   $ pear channel-discover pear.michelf.ca
   $ pear install michelf/Markdown
+  
+  $ pear config-set preferred_state alpha
+  $ pear install OpenID
+  $ pear config-set preferred_state stable
 
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
