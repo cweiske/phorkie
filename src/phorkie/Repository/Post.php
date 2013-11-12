@@ -178,7 +178,15 @@ class Repository_Post
             if ($_FILES['files']['error'][$num]['upload'] == 0) {
                 return true;
             }
-            if ($arFile['content'] != '') {
+            if (isset($arFile['content']) && $arFile['content'] != '') {
+                return true;
+            }
+            if (isset($arFile['name']) && $arFile['name'] != '') {
+                //binary files do not have content
+                return true;
+            }
+            if (isset($arFile['delete']) && $arFile['delete'] != '') {
+                //binary files do not have content
                 return true;
             }
         }
