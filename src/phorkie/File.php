@@ -55,7 +55,7 @@ class File
      */
     public function getExt()
     {
-        return substr($this->path, strrpos($this->path, '.') + 1);
+        return strtolower(substr($this->path, strrpos($this->path, '.') + 1));
     }
 
     public function getContent()
