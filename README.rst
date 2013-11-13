@@ -90,6 +90,7 @@ on your machine:
   $ pear install http_request2
   $ pear install pager
   $ pear install date_humandiff-alpha
+  $ pear install openid-alpha
 
   $ pear channel-discover pear.twig-project.org
   $ pear install twig/Twig
