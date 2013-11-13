@@ -116,6 +116,10 @@ class Repository_Post
                     && $file->getContent() != $arFile['content']
                 )
             ) {
+                $dir = dirname($file->getFullPath());
+                if (!is_dir($dir)) {
+                    mkdir($dir, 0777, true);
+                }
                 file_put_contents($file->getFullPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
                     ->addArgument($file->getFilename())
