@@ -146,4 +146,7 @@ $GLOBALS['phorkie']['languages'] = array(
         'geshi' => 'xml'
     ),
 );
+
+//needed for UTF-8 characters in file names
+setlocale(LC_CTYPE, 'en_US.UTF_8');
 ?>

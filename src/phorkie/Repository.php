@@ -156,6 +156,36 @@ class Repository
         return $arFiles;
     }
 
+    /**
+     * Decodes unicode characters in git filenames
+     * They begin and end with double quote characters, and may contain
+     * backslash + 3 letter octal code numbers representing the character.
+     *
+     * For example,
+     * > "t\303\244st.txt"
+     * means
+     * > täst.txt
+     *
+     * On the shell, you can pipe them into "printf" and have them decoded.
+     *
+     * @param string Encoded git file name
+     *
+     * @return string Decoded file name
+     */
+    protected function decodeFileName($name)
+    {
+        $name = substr($name, 1, -1);
+        $name = str_replace('\"', '"', $name);
+        $name = preg_replace_callback(
+            '#\\\\[0-7]{3}#',
+            function ($ar) {
+                return chr(octdec(substr($ar[0], 1)));
+            },
+            $name
+        );
+        return $name;
+    }
+
     protected function getFilePaths()
     {
         if ($this->hash === null) {
@@ -168,7 +198,13 @@ class Repository
             ->setOption('name-only')
             ->addArgument($hash)
             ->execute();
-        return explode("\n", trim($output));
+        $files = explode("\n", trim($output));
+        foreach ($files as &$file) {
+            if ($file{0} == '"') {
+                $file = $this->decodeFileName($file);
+            }
+        }
+        return $files;
     }
 
     public function getFileByName($name, $bHasToExist = true)
