@@ -2,7 +2,7 @@
   {% if not file or file.isText %}
   <textarea name="files[{{fileid}}][content]" id="content_{{fileid}}" cols="80" rows="15" class="content">{{file.getContent}}</textarea>
   {% else %}
-  <p style="text-align: center">
+  <p style="text-align: center" class="alert alert-warning">
    Binary files cannot be edited.
   </p>
   {% endif %}
