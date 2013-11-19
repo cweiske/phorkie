@@ -18,8 +18,12 @@ if (isset($_POST['remote_url'])) {
             $fr->setUrl($_POST['orig_url']);
         }
         $forker = new Forker();
-        $new    = $forker->forkRemote($gitUrl, $fr->getUrl());
-        redirect($new->getLink('display', null, true));
+        try {
+            $new = $forker->forkRemote($gitUrl, $fr->getUrl());
+            redirect($new->getLink('display', null, true));
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+        }
     } else {
         //multiple urls found
         $urls = $fr->getGitUrls();
