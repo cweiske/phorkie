@@ -72,6 +72,8 @@ class ForkRemote
         libxml_use_internal_errors(true);
         $sx = simplexml_import_dom(\DomDocument::loadHtmlFile($url));
         $elems = $sx->xpath('//*[@rel="vcs-git"]');
+        $titles = $sx->xpath('/html/head/title');
+        $pageTitle = $this->cleanPageTitle((string) reset($titles));
 
         $count = $anonymous = 0;
         foreach ($elems as $elem) {
@@ -85,6 +87,8 @@ class ForkRemote
             } else if ($str != '') {
                 //<a href=".." rel="vcs-git">title</a>
                 $title = $str;
+            } else if ($pageTitle != '') {
+                $title = $pageTitle;
             } else {
                 $title = 'Unnamed repository #' . ++$anonymous;
             }
@@ -107,7 +111,7 @@ class ForkRemote
      * Iterate through all git urls and return one if there is only
      * one supported one.
      *
-     * @return mixed Boolean false or string
+     * @return mixed Boolean false or array with keys "url" and "title"
      */
     public function getUniqueGitUrl()
     {
@@ -115,7 +119,7 @@ class ForkRemote
         foreach ($this->arGitUrls as $title => $arUrls) {
             foreach ($arUrls as $url) {
                 $nFound++;
-                $uniqueUrl = $url;
+                $uniqueUrl = array('url' => $url, 'title' => $title);
             }
         }
 
@@ -151,6 +155,23 @@ class ForkRemote
         $scheme = parse_url($url, PHP_URL_SCHEME);
         return $scheme == 'git'
             || $scheme == 'http' || $scheme == 'https';
+    }
+
+    /**
+     * Remove application names from HTML page titles
+     *
+     * @param string $title HTML page title
+     *
+     * @return string Cleaned HTML page title
+     */
+    protected function cleanPageTitle($title)
+    {
+        $title = trim($title);
+        if (substr($title, -9) == '- phorkie') {
+            $title = trim(substr($title, 0, -9));
+        }
+
+        return $title;
     }
 }
 

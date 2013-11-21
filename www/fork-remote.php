@@ -19,7 +19,9 @@ if (isset($_POST['remote_url'])) {
         }
         $forker = new Forker();
         try {
-            $new = $forker->forkRemote($gitUrl, $fr->getUrl());
+            $new = $forker->forkRemote(
+                $gitUrl['url'], $fr->getUrl(), $gitUrl['title']
+            );
             redirect($new->getLink('display', null, true));
         } catch (\Exception $e) {
             $error = $e->getMessage();

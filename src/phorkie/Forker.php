@@ -15,13 +15,13 @@ class Forker
         return $new;
     }
 
-    public function forkRemote($cloneUrl, $originalUrl)
+    public function forkRemote($cloneUrl, $originalUrl, $title = null)
     {
+        if ($title === null) {
+            $title = 'Fork of ' . $originalUrl;
+        }
         $new = $this->fork($cloneUrl);
-        file_put_contents(
-            $new->gitDir . '/description',
-            'Fork of ' . $originalUrl
-        );
+        file_put_contents($new->gitDir . '/description', $title);
         $this->index($new);
 
         $not = new Notificator();
