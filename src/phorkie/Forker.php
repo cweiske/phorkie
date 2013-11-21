@@ -6,7 +6,14 @@ class Forker
     public function forkLocal($repo)
     {
         $new = $this->fork($repo->gitDir);
+
         \copy($repo->gitDir . '/description', $new->gitDir . '/description');
+        $new->getVc()
+            ->getCommand('config')
+            ->addArgument('remote.origin.title')
+            ->addArgument(file_get_contents($repo->gitDir . '/description'))
+            ->execute();
+
         $this->index($new);
 
         $not = new Notificator();
@@ -17,11 +24,26 @@ class Forker
 
     public function forkRemote($cloneUrl, $originalUrl, $title = null)
     {
+        $new = $this->fork($cloneUrl);
+
+        $new->getVc()
+            ->getCommand('config')
+            ->addArgument('remote.origin.title')
+            ->addArgument($title)
+            ->execute();
+        if ($originalUrl != $cloneUrl) {
+            $new->getVc()
+                ->getCommand('config')
+                ->addArgument('remote.origin.homepage')
+                ->addArgument($originalUrl)
+                ->execute();
+        }
+
         if ($title === null) {
             $title = 'Fork of ' . $originalUrl;
         }
-        $new = $this->fork($cloneUrl);
         file_put_contents($new->gitDir . '/description', $title);
+
         $this->index($new);
 
         $not = new Notificator();
