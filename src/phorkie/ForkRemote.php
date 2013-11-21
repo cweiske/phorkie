@@ -148,7 +148,9 @@ class ForkRemote
 
     public function isSupported($url)
     {
-        return parse_url($url, PHP_URL_SCHEME) == 'git';
+        $scheme = parse_url($url, PHP_URL_SCHEME);
+        return $scheme == 'git'
+            || $scheme == 'http' || $scheme == 'https';
     }
 }
 
