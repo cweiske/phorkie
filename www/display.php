@@ -9,6 +9,12 @@ require_once 'www-header.php';
 $repo = new Repository();
 $repo->loadFromRequest();
 
+header('X-Pingback: ' . $repo->getLink('linkback', null, true));
+header(
+    'Link: <' . $repo->getLink('linkback', null, true) . '>;'
+    . 'rel="http://webmention.org/"'
+);
+
 render(
     'display',
     array(

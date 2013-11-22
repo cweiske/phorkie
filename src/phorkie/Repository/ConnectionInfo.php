@@ -18,6 +18,11 @@ class Repository_ConnectionInfo
         return $this->getOrigin() !== null;
     }
 
+    public function hasForks()
+    {
+        return count($this->getForks()) > 0;
+    }
+
 
     public function getOrigin()
     {
@@ -36,7 +41,18 @@ class Repository_ConnectionInfo
         return new Repository_Remote($name, $this->arConfig['remote ' . $name]);
     }
 
+    public function getForks()
+    {
+        $arForks = array();
+        foreach ($this->arConfig as $name => $data) {
+            if (substr($name, 0, 12) != 'remote fork-') {
+                continue;
+            }
+            $arForks[substr($name, 7)] = new Repository_Remote(
+                substr($name, 7), $data
+            );
+        }
+        return $arForks;
+    }
 }
-
-
 ?>

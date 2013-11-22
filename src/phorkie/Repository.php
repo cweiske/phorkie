@@ -144,7 +144,7 @@ class Repository
     /**
      * Loads the list of files in this repository
      *
-     * @return File[] Array of files
+     * @return File[] Array of file objects
      */
     public function getFiles()
     {
@@ -186,6 +186,11 @@ class Repository
         return $name;
     }
 
+    /**
+     * Return array with all file paths in this repository
+     *
+     * @return array
+     */
     protected function getFilePaths()
     {
         if ($this->hash === null) {
@@ -328,6 +333,8 @@ class Repository
             $link = $this->id . '/delete/confirm';
         } else if ($type == 'revision') {
             $link = $this->id . '/rev/' . $option;
+        } else if ($type == 'linkback') {
+            $link = $this->id . '/linkback';
         } else {
             throw new Exception('Unknown link type');
         }

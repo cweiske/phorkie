@@ -13,6 +13,11 @@ class Repository_Remote
     }
 
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function getTitle()
     {
         if (isset($this->arConfig['title'])) {
@@ -38,10 +43,13 @@ class Repository_Remote
             }
         }
 
-        return $this->arConfig['url'];
+        if (isset($this->arConfig['url'])) {
+            return $this->arConfig['url'];
+        }
+        return null;
     }
 
-    public function getWebURL()
+    public function getWebURL($full = false)
     {
         if (isset($this->arConfig['homepage'])) {
             return $this->arConfig['homepage'];
@@ -50,7 +58,7 @@ class Repository_Remote
         if ($this->isLocal()) {
             $local = $this->getLocalRepository();
             if ($local !== null) {
-                return $local->getLink('display');
+                return $local->getLink('display', null, $full);
             }
         }
 

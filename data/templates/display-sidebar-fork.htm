@@ -1,7 +1,7 @@
 {% set conns = repo.getConnectionInfo() %}
 {% if conns.isFork() %}
  {% set origin = conns.getOrigin() %}
- <h4>Fork of</h4>
+ <h4 id="parent">Fork of</h4>
  <p>
   {% set webpage = origin.getWebURL() %}
   {% if webpage %}
@@ -9,6 +9,26 @@
   {% else %}
    {{origin.getTitle()}}
   {% endif %}
-  (<a href="{{origin.getCloneUrl()}}">clone URL</a>)
+  <a href="{{origin.getCloneUrl()}}" title="Clone URL"><i class="icon-globe"></i></a>
  </p>
+{% endif %}
+{% if conns.hasForks() %}
+ <h4 id="forks">Forks</h4>
+ <ul>
+  {% for remote in conns.getForks %}
+  <li>
+   {% set webpage = remote.getWebURL() %}
+   {% if webpage %}
+    <a href="{{webpage}}">{{remote.getTitle()}}</a>
+   {% else %}
+    {{remote.getTitle()}}
+   {% endif %}
+
+   {% set cloneUrl = remote.getCloneUrl() %}
+   {% if cloneUrl %}
+   <a href="{{cloneUrl}}" title="Clone URL"><i class="icon-globe"></i></a>
+   {% endif %}
+  </li>
+  {% endfor %}
+ </ul>
 {% endif %}

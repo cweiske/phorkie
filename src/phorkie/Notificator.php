@@ -6,6 +6,21 @@ namespace phorkie;
  */
 class Notificator
 {
+    protected $notificators = array();
+
+    public function __construct()
+    {
+        $this->loadNotificators();
+    }
+
+    protected function loadNotificators()
+    {
+        foreach ($GLOBALS['phorkie']['cfg']['notificator'] as $type => $config) {
+            $class = '\\phorkie\\Notificator_' . ucfirst($type);
+            $this->notificators[] = new $class($config);
+        }
+    }
+
     /**
      * A repository has been created
      */
@@ -31,40 +46,12 @@ class Notificator
     }
 
     /**
-     * Call webhook URLs with our payload
+     * Call all notificator plugins
      */
     protected function send($event, Repository $repo)
     {
-        if (count($GLOBALS['phorkie']['cfg']['webhooks']) == 0) {
-            return;
-        }
-        
-        /* slightly inspired by
-           https://help.github.com/articles/post-receive-hooks */
-        $payload = (object) array(
-            'event'  => $event,
-            'author' => array(
-                'name'  => $_SESSION['name'],
-                'email' => $_SESSION['email']
-            ),
-            'repository' => array(
-                'name'        => $repo->getTitle(),
-                'url'         => $repo->getLink('display', null, true),
-                'description' => $repo->getDescription(),
-                'owner'       => $repo->getOwner()
-            )
-        );
-        foreach ($GLOBALS['phorkie']['cfg']['webhooks'] as $url) {
-            $req = new \HTTP_Request2($url);
-            $req->setMethod(\HTTP_Request2::METHOD_POST)
-                ->setHeader('Content-Type: application/vnd.phorkie.webhook+json')
-                ->setBody(json_encode($payload));
-            try {
-                $response = $req->send();
-                //FIXME log response codes != 200
-            } catch (HTTP_Request2_Exception $e) {
-                //FIXME log exceptions
-            }
+        foreach ($this->notificators as $notificator) {
+            $notificator->send($event, $repo);
         }
     }
 }
