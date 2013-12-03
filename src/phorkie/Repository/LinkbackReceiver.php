@@ -11,11 +11,22 @@ class Repository_LinkbackReceiver
         $this->repo = $repo;
     }
 
+    /**
+     * Stores the linkback as remote fork in the paste repository.
+     *
+     * @param string $target     Target URI that should be linked in $source
+     * @param string $source     Linkback source URI that should link to target
+     * @param string $sourceBody Content of $source URI
+     * @param object $res        HTTP response from fetching $source
+     *
+     * @return void
+     *
+     * @throws SPb\Exception When storing the linkback fatally failed
+     */
     public function storeLinkback(
         $target, $source, $sourceBody, \HTTP_Request2_Response $res
     ) {
         //FIXME: deleted
-        //FIXME: updated
         //FIXME: cleanuptask
 
         $hp = new HtmlParser();
@@ -30,35 +41,34 @@ class Repository_LinkbackReceiver
         $ci = $this->repo->getConnectionInfo();
         $forks = $ci->getForks();
 
-        $remoteCloneUrl = $remoteTitle = null;
-        $arRemoteCloneUrls = array();
-        $arGitUrls = $hp->getGitUrls();
-        foreach ($arGitUrls as $remoteTitle => $arUrls) {
-            foreach ($arUrls as $remoteCloneUrl) {
-                $arRemoteCloneUrls[$remoteCloneUrl] = $remoteTitle;
-            }
-        }
+        $arRemoteCloneUrls = $this->localizeGitUrls($hp->getGitUrls());
 
+        $remoteCloneUrl = $remoteTitle = null;
+        if (count($arRemoteCloneUrls)) {
+            reset($arRemoteCloneUrls);
+            list($remoteCloneUrl, $remoteTitle) = each($arRemoteCloneUrls);
+        }
         $remoteid = 'fork-' . uniqid();
         //check if we already know this remote
         foreach ($forks as $remote) {
-            if (isset($arRemoteCloneUrls[$remote->getCloneUrl()])
-                || $source == $remote->getWebURL(true)
-            ) {
+            if (isset($arRemoteCloneUrls[$remote->getCloneUrl()])) {
+                $remoteTitle = $arRemoteCloneUrls[$remote->getCloneUrl()];
+                $remoteid = $remote->getName();
+                break;
+            } else if ($source == $remote->getWebURL(true)) {
                 $remoteid = $remote->getName();
                 break;
             }
         }
 
-        if ($this->isLocalWebUrl($source)) {
-            //convert both web and clone url to local urls
-        }
-
         $vc = $this->repo->getVc();
-        $vc->getCommand('config')
-            ->addArgument('remote.' . $remoteid . '.homepage')
-            ->addArgument($source)
-            ->execute();
+        if (!$this->isLocalWebUrl($source)) {
+            //only add remote homepage; we can calculate local ones ourselves
+            $vc->getCommand('config')
+                ->addArgument('remote.' . $remoteid . '.homepage')
+                ->addArgument($source)
+                ->execute();
+        }
         if ($remoteTitle !== null) {
             $vc->getCommand('config')
                 ->addArgument('remote.' . $remoteid . '.title')
@@ -73,6 +83,11 @@ class Repository_LinkbackReceiver
         }
     }
 
+    /**
+     * Check if the given full URL is the URL of a local repository
+     *
+     * @return Repository
+     */
     protected function isLocalWebUrl($url)
     {
         $base = Tools::fullUrl();
@@ -82,7 +97,61 @@ class Repository_LinkbackReceiver
         }
 
         $remainder = substr($url, strlen($base));
-        //FIXME: check if it exists
+        if (!is_numeric($remainder)) {
+            return false;
+        }
+        try {
+            $repo = new Repository();
+            $repo->loadById($remainder);
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Convert an array of git urls to local URLs if possible and serialize them
+     * into a simple array.
+     *
+     * @param array $arGitUrls Array of array of urls. Main key is the title of
+     *                         the URL array.
+     *
+     * @return array Key is the git clone URL, value the title of the remote
+     */
+    protected function localizeGitUrls($arGitUrls)
+    {
+        $pub = $GLOBALS['phorkie']['cfg']['git']['public'];
+        $pri = $GLOBALS['phorkie']['cfg']['git']['private'];
+
+        $arRemoteCloneUrls = array();
+        foreach ($arGitUrls as $remoteTitle => $arUrls) {
+            foreach ($arUrls as $remoteCloneUrl) {
+                if (substr($remoteCloneUrl, 0, strlen($pub)) == $pub
+                    && substr($remoteCloneUrl, -4) == '.git'
+                ) {
+                    $id = substr($remoteCloneUrl, strlen($pub), -4);
+                    $repo = new Repository();
+                    try {
+                        $repo->loadById($id);
+                        $arRemoteCloneUrls[$repo->gitDir] = $remoteTitle;
+                    } catch (Exception $e) {
+                    }
+                } else if (substr($remoteCloneUrl, 0, strlen($pri)) == $pri
+                    && substr($remoteCloneUrl, -4) == '.git'
+                ) {
+                    $id = substr($remoteCloneUrl, strlen($pri), -4);
+                    $repo = new Repository();
+                    try {
+                        $repo->loadById($id);
+                        $arRemoteCloneUrls[$repo->gitDir] = $remoteTitle;
+                    } catch (Exception $e) {
+                    }
+                } else {
+                    $arRemoteCloneUrls[$remoteCloneUrl] = $remoteTitle;
+                }
+            }
+        }
+        return $arRemoteCloneUrls;
     }
 }
 ?>

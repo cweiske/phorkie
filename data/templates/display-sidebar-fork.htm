@@ -3,13 +3,14 @@
  {% set origin = conns.getOrigin() %}
  <h4 id="parent">Fork of</h4>
  <p>
+  <a href="{{origin.getCloneUrl()}}" title="Clone URL"><i class="icon-{% if origin.isLocal() %}home{% else %}globe{% endif %}"></i></a>
+
   {% set webpage = origin.getWebURL() %}
   {% if webpage %}
    <a href="{{webpage}}">{{origin.getTitle()}}</a>
   {% else %}
    {{origin.getTitle()}}
   {% endif %}
-  <a href="{{origin.getCloneUrl()}}" title="Clone URL"><i class="icon-globe"></i></a>
  </p>
 {% endif %}
 {% if conns.hasForks() %}
@@ -17,16 +18,16 @@
  <ul>
   {% for remote in conns.getForks %}
   <li>
+   {% set cloneUrl = remote.getCloneUrl() %}
+   {% if cloneUrl %}
+   <a href="{{cloneUrl}}" title="Clone URL"><i class="icon-{% if remote.isLocal() %}home{% else %}globe{% endif %}"></i></a>
+   {% endif %}
+
    {% set webpage = remote.getWebURL() %}
    {% if webpage %}
     <a href="{{webpage}}">{{remote.getTitle()}}</a>
    {% else %}
     {{remote.getTitle()}}
-   {% endif %}
-
-   {% set cloneUrl = remote.getCloneUrl() %}
-   {% if cloneUrl %}
-   <a href="{{cloneUrl}}" title="Clone URL"><i class="icon-globe"></i></a>
    {% endif %}
   </li>
   {% endfor %}
