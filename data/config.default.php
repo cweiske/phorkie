@@ -149,6 +149,12 @@ $GLOBALS['phorkie']['languages'] = array(
         'mime'  => 'text/xml',
         'geshi' => 'xml'
     ),
+    'xsl' => array(
+        'title' => 'eXtensible Stylesheet Language',
+        'mime'  => 'text/xml',
+        'geshi' => 'xml',
+        'show'  => false
+    ),
 );
 
 //needed for UTF-8 characters in file names
