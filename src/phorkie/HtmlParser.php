@@ -44,9 +44,17 @@ class HtmlParser
         if ($scheme == 'https' && isset($arUrl['host'])
             && $arUrl['host'] == 'gist.github.com'
         ) {
+            //https://gist.github.com/maddy2101/5764473
+            $parts = explode('/', ltrim($arUrl['path'], '/'));
+            if (count($parts == 2)) {
+                //we only want the number, not the user name
+                $path = $parts[1];
+            } else {
+                $path = ltrim($arUrl['path'], '/');
+            }
             //FIXME: title
             $this->arGitUrls[][] = 'git://gist.github.com/'
-                . ltrim($arUrl['path'], '/') . '.git';
+                . $path . '.git';
             return true;
         }
 
