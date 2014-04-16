@@ -10,6 +10,7 @@ class HtmlHelper
         }
 
         $s = new \Services_Libravatar();
+        $s->detectHttps();
         return $s->url(
             $email,
             array(
