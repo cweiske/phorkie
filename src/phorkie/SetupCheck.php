@@ -77,7 +77,7 @@ class SetupCheck
         if ($retval !== 0) {
             $this->fail('Running git executable failed.');
         }
-        if (!preg_match('#^git version ([0-9.]+)$#', $line, $matches)) {
+        if (!preg_match('#^git version ([0-9.]+(rc[0-9]+)?)$#', $line, $matches)) {
             $this->fail('git version output format unexpected: ' . $line);
         }
         if (version_compare($matches[1], '1.7.5') < 0) {
