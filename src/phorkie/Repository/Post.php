@@ -228,7 +228,7 @@ class Repository_Post
         return $prefix . $num;
     }
 
-    protected function getType($content)
+    public function getType($content)
     {
         $tmp = tempnam(sys_get_temp_dir(), 'phorkie-autodetect-');
         file_put_contents($tmp, $content);

@@ -35,6 +35,7 @@ class SetupCheck
         $sc->checkDirs();
         $sc->checkGit();
         $sc->checkDatabase();
+        $sc->checkMimeTypeDetection();
     }
 
     public function checkDeps()
@@ -102,6 +103,14 @@ class SetupCheck
         }
         $dbs = new Database();
         $dbs->getSetup()->setup();
+    }
+
+    public function checkMimeTypeDetection()
+    {
+        $rp = new Repository_Post();
+        if ($rp->getType('<?php echo "foo"; ?>') != 'php') {
+            $this->fail('MIME type detection fails');
+        }
     }
 
     public function fail($msg)
