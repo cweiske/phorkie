@@ -11,6 +11,7 @@ class SetupCheck
         'pear.php.net/OpenID'              => 'OpenID',
         'pear.php.net/Pager'               => 'Pager',
         'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
+        'pear2.php.net/Services_Linkback'  => '\\PEAR2\\Services\\Linkback\\Client',
         'zustellzentrum.cweiske.de/MIME_Type_PlainDetect' => 'MIME_Type_PlainDetect',
     );
 
