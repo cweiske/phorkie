@@ -286,6 +286,8 @@ URLs
   Shows form for new paste
 ``/login``
   Login page for protecting site
+``/setup``
+  Check if everything is setup correctly and all dependencies are installed
 ``/user``
   Edit logged-in user information
 
@@ -331,5 +333,6 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/search/([0-9]+)$ /search.php?page=$1;
 
     rewrite ^/login$ /login.php;
+    rewrite ^/setup$ /setup.php;
     rewrite ^/user$ /user.php;
   }

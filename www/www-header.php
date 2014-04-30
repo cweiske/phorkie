@@ -27,6 +27,7 @@ set_exception_handler(
         if (!isset($GLOBALS['twig'])) {
             echo '<h1>Exception</h1>';
             echo '<p>' . $e->getMessage() . '</p>';
+            echo "\n";
             exit();
         }
 

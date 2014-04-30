@@ -30,4 +30,5 @@ RewriteRule ^search$ search.php
 RewriteRule ^search/([0-9]+)$ search.php?page=$1
 
 RewriteRule ^login$ login.php
+RewriteRule ^setup$ setup.php
 RewriteRule ^user$ user.php
