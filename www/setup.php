@@ -13,6 +13,8 @@ if (!$GLOBALS['phorkie']['cfg']['setupcheck']) {
     exit(1);
 }
 
+SetupCheck::run();
+
 header('Content-type: text/plain');
 echo "All fine\n";
 ?>

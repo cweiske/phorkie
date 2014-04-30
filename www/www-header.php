@@ -46,9 +46,6 @@ require_once __DIR__ . '/../data/config.default.php';
 if (file_exists(__DIR__ . '/../data/config.php')) {
     require_once __DIR__ . '/../data/config.php';
 }
-if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
-    SetupCheck::run();
-}
 
 // Set/Get git commit session variables
 $_SESSION['ipaddr'] = $_SERVER['REMOTE_ADDR'];

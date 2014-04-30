@@ -69,7 +69,10 @@ Installation
    must also set the ``RewriteBase`` in the ``.htaccess`` file or adjust
    the nginx configuration accordingly.
 
-6. Open phorkie in your web browser
+6. Open http://yourhost/setup in your web browser to see if everything
+   is working fine.
+
+7. Go to http://yourhost/
 
 
 Dependencies
@@ -103,6 +106,9 @@ on your machine:
 
   $ pear channel-discover pear.michelf.ca
   $ pear install michelf/Markdown
+
+  $ pear channel-discover pear2.php.net
+  $ pear install pear2/services_linkback-alpha
 
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
