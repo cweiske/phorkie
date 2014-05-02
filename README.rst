@@ -288,6 +288,10 @@ URLs
   Search for term, with optional page
 ``/list(/[0-9])?``
   List all pastes, with optional page
+``/fork-remote``
+  Fork a remote URL
+``/help``
+  Show help page
 ``/new``
   Shows form for new paste
 ``/login``
@@ -329,6 +333,8 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/rev-raw/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
     rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
 
+    rewrite ^/fork-remote$ /fork-remote.php;
+    rewrite ^/help$ /help.php;
     rewrite ^/new$ /new.php;
     rewrite ^/feed/new$ /feed-new.php;
     rewrite ^/feed/updated$ /feed-updated.php;

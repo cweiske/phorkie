@@ -5,7 +5,17 @@
  </div>
  <div class="span2 pull-right">
   <form method="post" action="{{repo.getLink('fork')}}">
-   <button type="submit" class="btn pull-right"><i class="icon-share"></i> fork</button>
+   <div class="btn-group pull-right">
+    <button type="submit" class="btn"><i class="icon-share"></i> fork</button>
+    <button class="btn dropdown-toggle" data-toggle="dropdown">
+     <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+     <li><a href="{{repo.getLink('remotefork')}}"><i class="icon-share"></i> Fork to remote system</a></li>
+     <li class="divider"></li>
+     <li><a href="help#remote-forking"><i class="icon-question-sign"></i> Help on remote forking</a></li>
+    </ul>
+   </div>
   </form>
  </div>
 </div>

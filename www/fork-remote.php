@@ -8,8 +8,12 @@ require_once 'www-header.php';
 
 $error = null;
 $urls  = null;
-if (isset($_POST['remote_url'])) {
-    $fr = new ForkRemote($_POST['remote_url']);
+if (isset($_REQUEST['remote_url'])) {
+    if (substr($_REQUEST['remote_url'], 0, 9) == 'web+fork:') {
+        $_REQUEST['remote_url'] = substr($_REQUEST['remote_url'], 9);
+    }
+
+    $fr = new ForkRemote($_REQUEST['remote_url']);
     if (false === $fr->parse()) {
         //no url found
         $error = $fr->error;
@@ -45,7 +49,7 @@ if (is_array($urls)) {
 render(
     'fork-remote',
     array(
-        'remote_url' => isset($_POST['remote_url']) ? $_POST['remote_url'] : '',
+        'remote_url' => isset($_REQUEST['remote_url']) ? $_REQUEST['remote_url'] : '',
         'error'      => $error,
         'urls'       => $urls,
         'urlselsize' => $selsize,

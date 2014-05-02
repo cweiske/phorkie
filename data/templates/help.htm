@@ -1,0 +1,49 @@
+{% extends "base.htm" %}
+{% block title %}phorkie help{% endblock %}
+
+{% block content %}
+<h1>Help on phorkie</h1>
+
+<h2 id="remote-forking">Remote forking</h2>
+<script type="text/javascript">
+function registerHandler() {
+    navigator.registerProtocolHandler(
+        "web+fork",
+        "{{htmlhelper.fullUrl('fork-remote?remote_url=%s')}}",
+        "phorkie@"
+        + "{{htmlhelper.fullUrl()}}"
+            .replace(/https?:\/\//, '')
+            .replace(/\/$/, '')
+    );
+}
+</script>
+
+<div class="row-fluid">
+ <div class="span8">
+  <p>
+   Phorkie allows cloning/forking of pastes on other servers
+   - other phorkie instances, github gists or simply any remote
+   git repository.
+  </p>
+  <p>
+   You can go to <a href="fork-remote">fork-remote</a> and enter the
+   URL of the paste on the other server.
+  </p>
+  <p>
+   It's way easier to simply click a "fork" button that automatically
+   takes you to this phorkie's remote paste page, prefilled with
+   the correct git URL.
+  </p>
+  <p>
+   To make this work, click the register button on the right.
+   It will register a "protocol handler" for "web+fork:"-URLs,
+   making phorkie chime in whenever a <tt>web+fork</tt> URL is clicked.
+  </p>
+ </div>
+ <div class="span4">
+  <a href="#" onclick="registerHandler(); return false;" class="btn">
+   register web+fork protocol handler
+  </a>
+ </div>
+</div>
+{% endblock %}

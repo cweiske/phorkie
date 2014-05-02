@@ -39,6 +39,11 @@ class HtmlHelper
         }
         return $html;
     }
+
+    public function fullUrl($path = '')
+    {
+        return Tools::fullUrl($path);
+    }
 }
 
 ?>

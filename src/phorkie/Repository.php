@@ -331,6 +331,8 @@ class Repository
             $link = $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
             $link = $this->id . '/delete/confirm';
+        } else if ($type == 'remotefork') {
+            return 'web+fork:' . $this->getLink('display', null, true);
         } else if ($type == 'revision') {
             $link = $this->id . '/rev/' . $option;
         } else if ($type == 'linkback') {
