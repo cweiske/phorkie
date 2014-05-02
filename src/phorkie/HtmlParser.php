@@ -52,9 +52,14 @@ class HtmlParser
             } else {
                 $path = ltrim($arUrl['path'], '/');
             }
-            //FIXME: title
-            $this->arGitUrls[][] = 'git://gist.github.com/'
-                . $path . '.git';
+            $title = $this->getHtmlTitle($url);
+            if ($title === null) {
+                $this->arGitUrls[][] = 'git://gist.github.com/'
+                    . $path . '.git';
+            } else {
+                $this->arGitUrls[$title][] = 'git://gist.github.com/'
+                    . $path . '.git';
+            }
             return true;
         }
 
@@ -157,5 +162,26 @@ class HtmlParser
             || $scheme == 'http' || $scheme == 'https';
     }
 
+    /**
+     * Extract the title from a HTML URL
+     *
+     * @param string $url URL to a HTML page
+     *
+     * @return string|null NULL on error, title otherwise
+     */
+    public function getHtmlTitle($url)
+    {
+        libxml_use_internal_errors(true);
+        $doc = \DOMDocument::loadHTMLFile($url);
+        if ($doc === false) {
+            return null;
+        }
+        $sx = simplexml_import_dom($doc);
+        $title = (string) $sx->head->title;
+        if ($title == '') {
+            return null;
+        }
+        return $title;
+    }
 }
 ?>
