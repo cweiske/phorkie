@@ -108,7 +108,7 @@ on your machine:
   $ pear install michelf/Markdown
 
   $ pear channel-discover pear2.php.net
-  $ pear install pear2/services_linkback-alpha
+  $ pear install pear2/pear2_services_linkback-alpha
 
 Note that this version of GeSHi is a bit outdated, but it's the fastest
 way to install it.
