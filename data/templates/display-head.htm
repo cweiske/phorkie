@@ -1,3 +1,10 @@
+{% if forksuccess %}
+<div class="alert alert-success">
+ <a href="#" class="close" data-dismiss="alert">×</a>
+ Paste has been successfully forked.
+</div>
+{% endif %}
+
 <h1>{{repo.getTitle}}</h1>
 <div class="row repo-info">
  <div class="span7">

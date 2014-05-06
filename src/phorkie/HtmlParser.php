@@ -44,7 +44,8 @@ class HtmlParser
         if ($scheme == 'https' && isset($arUrl['host'])
             && $arUrl['host'] == 'gist.github.com'
         ) {
-            //https://gist.github.com/maddy2101/5764473
+            //https://gist.github.com/cweiske/2400389
+            // clone URL: https://gist.github.com/2400389.git
             $parts = explode('/', ltrim($arUrl['path'], '/'));
             if (count($parts == 2)) {
                 //we only want the number, not the user name
@@ -54,10 +55,10 @@ class HtmlParser
             }
             $title = $this->getHtmlTitle($url);
             if ($title === null) {
-                $this->arGitUrls[][] = 'git://gist.github.com/'
+                $this->arGitUrls[][] = 'https://gist.github.com/'
                     . $path . '.git';
             } else {
-                $this->arGitUrls[$title][] = 'git://gist.github.com/'
+                $this->arGitUrls[$title][] = 'https://gist.github.com/'
                     . $path . '.git';
             }
             return true;

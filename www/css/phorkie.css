@@ -41,6 +41,10 @@ a.anchorlink {
     }
 }
 
+.navbar + .container {
+    margin-top: 2ex;
+}
+
 .footer {
     margin-top: 36px;
     margin-bottom: 0px;
@@ -50,6 +54,7 @@ a.anchorlink {
 }
 
 h1 {
+    margin-top: 0ex;
     margin-bottom: 0.5ex;
 }
 
