@@ -1,0 +1,6 @@
+{% for msgdata in flashmessages %}
+<div class="alert alert-{{msgdata.type}}">
+ <a href="#" class="close" data-dismiss="alert">×</a>
+ {{msgdata.msg}}
+</div>
+{% endfor %}

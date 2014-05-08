@@ -26,6 +26,7 @@ if (isset($_REQUEST['remote_url'])) {
             $new = $forker->forkRemote(
                 $gitUrl['url'], $fr->getUrl(), $gitUrl['title']
             );
+            FlashMessage::save('Remote paste has been forked');
             redirect($new->getLink('display', null, true));
         } catch (\Exception $e) {
             $error = $e->getMessage();

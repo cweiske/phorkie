@@ -16,6 +16,6 @@ $repo->loadFromRequest();
 $forker = new Forker();
 $new    = $forker->forkLocal($repo);
 
-//FIXME: where to put fork source link?
+FlashMessage::save('Paste has been forked');
 redirect($new->getLink('display', null, true));
 ?>
