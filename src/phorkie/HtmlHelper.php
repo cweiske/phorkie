@@ -40,6 +40,11 @@ class HtmlHelper
         return $html;
     }
 
+    public function getDomain($url)
+    {
+        return parse_url($url, PHP_URL_HOST);
+    }
+
     public function fullUrl($path = '')
     {
         return Tools::fullUrl($path);

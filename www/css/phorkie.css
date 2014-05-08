@@ -181,3 +181,7 @@ form label.inline {
 .avatar-tiny {
     border-radius: 2px;
 }
+
+.forkdomain {
+    margin-left: 2ex;
+}

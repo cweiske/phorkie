@@ -8,6 +8,10 @@
   {% set webpage = origin.getWebURL() %}
   {% if webpage %}
    <a href="{{webpage}}">{{origin.getTitle()}}</a>
+   {% set webpagedomain = htmlhelper.getDomain(webpage) %}
+   {% if webpagedomain and domain != webpagedomain %}
+   <br/><i class="forkdomain">{{webpagedomain}}</i>
+   {% endif %}
   {% else %}
    {{origin.getTitle()}}
   {% endif %}
@@ -26,6 +30,10 @@
    {% set webpage = remote.getWebURL() %}
    {% if webpage %}
     <a href="{{webpage}}">{{remote.getTitle()}}</a>
+    {% set webpagedomain = htmlhelper.getDomain(webpage) %}
+    {% if webpagedomain and domain != webpagedomain %}
+    <br/><i class="forkdomain">{{webpagedomain}}</i>
+    {% endif %}
    {% else %}
     {{remote.getTitle()}}
    {% endif %}

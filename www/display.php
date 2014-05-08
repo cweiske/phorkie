@@ -21,6 +21,7 @@ render(
         'repo' => $repo,
         'dh'   => new \Date_HumanDiff(),
         'htmlhelper' => new HtmlHelper(),
+        'domain'     => $_SERVER['HTTP_HOST'],
         'flashmessages' => FlashMessage::getAll(),
     )
 );
