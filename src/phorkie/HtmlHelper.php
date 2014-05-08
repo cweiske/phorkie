@@ -49,6 +49,28 @@ class HtmlHelper
     {
         return Tools::fullUrl($path);
     }
+
+    public function mayWriteLocally()
+    {
+        if ($GLOBALS['phorkie']['auth']['securityLevel'] == 0) {
+            //everyone may do everything
+            return true;
+        }
+
+        $logged_in = false;
+        if (!isset($_SESSION['identity'])) {
+            //not logged in
+        } else if ($GLOBALS['phorkie']['auth']['listedUsersOnly']) {
+            if (in_array($_SESSION['identity'], $GLOBALS['phorkie']['auth']['users'])) {
+                $logged_in = true;
+            }
+        } else {
+            //session identity exists, no special checks required
+            $logged_in = true;
+        }
+
+        return $logged_in;
+    }
 }
 
 ?>

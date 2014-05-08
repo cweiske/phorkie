@@ -8,13 +8,19 @@
  <div class="span2 pull-right">
   <form method="post" action="{{repo.getLink('fork')}}">
    <div class="btn-group pull-right">
+    {% if htmlhelper.mayWriteLocally %}
     <button type="submit" class="btn"><i class="icon-share"></i> fork</button>
+    {% else %}
+    <a class="btn" href="{{repo.getLink('remotefork')}}"><i class="icon-share"></i> Fork to remote system</a>
+    {% endif %}
     <button class="btn dropdown-toggle" data-toggle="dropdown">
      <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
+     {% if htmlhelper.mayWriteLocally %}
      <li><a href="{{repo.getLink('remotefork')}}"><i class="icon-share"></i> Fork to remote system</a></li>
      <li class="divider"></li>
+     {% endif %}
      <li><a href="help#remote-forking"><i class="icon-question-sign"></i> Help on remote forking</a></li>
     </ul>
    </div>
