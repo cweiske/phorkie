@@ -40,7 +40,7 @@ class Repositories
     /**
      * Get a list of repository objects
      *
-     * @param integer $page    Page number, beginning with 0
+     * @param integer $page    Page number, beginning with 0, or "last"
      * @param integer $perPage Number of repositories per page
      *
      * @return array Array of Repositories first, number of repositories second
@@ -50,15 +50,25 @@ class Repositories
         chdir($this->gitDir);
         $dirs = glob('*.git', GLOB_ONLYDIR);
         sort($dirs, SORT_NUMERIC);
+        if ($page === 'last') {
+            //always show the last 10
+            $page = intval(count($dirs) / $perPage);
+            $start = count($dirs) - $perPage;
+            if ($start < 0) {
+                $start = 0;
+            }
+            $some = array_slice($dirs, $start, $perPage);
+        } else {
+            $some = array_slice($dirs, $page * $perPage, $perPage);
+        }
 
-        $some = array_slice($dirs, $page * $perPage, $perPage);
         $repos = array();
         foreach ($some as $oneDir) {
             $r = new Repository();
             $r->loadById(substr($oneDir, 0, -4));
             $repos[] = $r;
         }
-        return array($repos, count($dirs));
+        return array($repos, count($dirs), $page);
     }
 }
 

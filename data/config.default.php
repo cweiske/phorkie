@@ -14,6 +14,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
     'index'         => 'new',//"new" or "list"
     'perPage'       => 10,
+    'defaultListPage' => 'last',//a number or "last"
     'notificator'   => array(
         /* send out pingback/webmentions when a remote paste is forked */
         'linkback'  => true,

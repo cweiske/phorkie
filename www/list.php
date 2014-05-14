@@ -7,7 +7,7 @@ $reqWritePermissions = false;
 require_once 'www-header.php';
 $rs = new Repositories();
 
-$page = 0;
+$page = $GLOBALS['phorkie']['cfg']['defaultListPage'];
 if (isset($_GET['page'])) {
     if (!is_numeric($_GET['page'])) {
         throw new Exception_Input('List page is not numeric');
@@ -16,7 +16,7 @@ if (isset($_GET['page'])) {
 }
 
 $perPage = $GLOBALS['phorkie']['cfg']['perPage'];
-list($repos, $repoCount) = $rs->getList($page, $perPage);
+list($repos, $repoCount, $page) = $rs->getList($page, $perPage);
 
 $pager = new Html_Pager(
     $repoCount, $perPage, $page + 1, 'list/%d'
