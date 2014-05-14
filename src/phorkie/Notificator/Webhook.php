@@ -52,4 +52,3 @@ class Notificator_Webhook
     }
 }
 ?>
-
