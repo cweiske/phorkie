@@ -9,9 +9,7 @@ set_include_path(
 spl_autoload_register(
     function ($class) {
         $file = str_replace(array('\\', '_'), '/', $class) . '.php';
-        $hdl = @fopen($file, 'r', true);
-        if ($hdl !== false) {
-            fclose($hdl);
+        if (stream_resolve_include_path($file)) {
             require $file;
         }
     }
