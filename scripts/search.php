@@ -2,18 +2,7 @@
 //search
 
 namespace phorkie;
-set_include_path(
-    __DIR__ . '/../src/'
-    . PATH_SEPARATOR . get_include_path()
-);
-spl_autoload_register(
-    function ($class) {
-        $file = str_replace(array('\\', '_'), '/', $class) . '.php';
-        if (stream_resolve_include_path($file)) {
-            require $file;
-        }
-    }
-);
+require_once __DIR__ . '/../src/phorkie/autoload.php';
 require_once __DIR__ . '/../data/config.default.php';
 if (file_exists(__DIR__ . '/../data/config.php')) {
     require_once __DIR__ . '/../data/config.php';
