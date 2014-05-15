@@ -46,11 +46,13 @@ class SetupCheck
             }
         }
 
-        $geshi = stream_resolve_include_path(
-            $GLOBALS['phorkie']['cfg']['geshi']
-        );
-        if ($geshi === false) {
-            $this->fail('GeSHi not available');
+        if (!class_exists('GeSHi', true)) {
+            $geshi = stream_resolve_include_path(
+                $GLOBALS['phorkie']['cfg']['geshi']
+            );
+            if ($geshi === false) {
+                $this->fail('GeSHi not available');
+            }
         }
 
         $markdown = stream_resolve_include_path('markdown.php');
