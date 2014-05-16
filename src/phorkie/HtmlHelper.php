@@ -5,7 +5,9 @@ class HtmlHelper
 {
     public function getIconUrl($email, $size = 32)
     {
-        if ($email == 'anonymous@phorkie') {
+        if ($email == 'anonymous@phorkie'
+            || !$GLOBALS['phorkie']['cfg']['avatars']
+        ) {
             return 'phorkie/anonymous.png';
         }
 
