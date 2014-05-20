@@ -1,0 +1,49 @@
+{
+    "name": "cweiske/phorkie",
+    "type": "project",
+    "license": "AGPL-3.0+",
+    "homepage": "http://sourceforge.net/p/phorkie/",
+    "authors": [
+        {
+            "name": "Christian Weiske",
+            "email": "cweiske@cweiske.de",
+            "homepage": "http://cweiske.de/"
+        }
+    ],
+    "repositories": [ 
+        {
+            "type": "pear", 
+            "url": "pear.php.net" 
+        },
+        { 
+            "type": "pear", 
+            "url": "zustellzentrum.cweiske.de" 
+        },
+        { 
+            "type": "pear", 
+            "url": "pear2.php.net" 
+        } 
+    ], 
+    "require": {
+        "pear-pear.php.net/Date_HumanDiff": "~0.5",
+        "pear-pear.php.net/HTTP_Request2": "~2.2",
+        "pear-pear.php.net/Pager": "~2.4",
+        "pear-pear.php.net/OpenID": "~0.3",
+        "pear-pear.php.net/Services_Libravatar": "~0.2",
+        "pear-pear.php.net/VersionControl_Git": "~0.4",
+
+        "pear-zustellzentrum.cweiske.de/MIME_Type_PlainDetect": ">=0.0.2",
+
+        "pear-pear2.php.net/PEAR2_Services_Linkback": "~0.2",
+
+        "geshi/geshi": "@dev",
+        "michelf/php-markdown": "~1.4",
+        "twig/twig": "~1.15"
+    },
+    "autoload": {
+        "psr-0": { "phorkie\\": "src/" }
+    },
+    "config": {
+        "vendor-dir": "lib/"
+    }
+}

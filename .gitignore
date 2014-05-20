@@ -3,3 +3,4 @@ repos
 data/config.php
 build.properties
 dist
+/lib/
