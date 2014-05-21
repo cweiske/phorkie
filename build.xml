@@ -8,8 +8,8 @@
   -->
   <property file="build.properties" />
 
-  <property name="version-m"  value="0.3" />
-  <property name="version"    value="0.3.1" />
+  <property name="version-m"  value="0.4" />
+  <property name="version"    value="0.4.0" />
   <property name="stability"  value="alpha" />
   <property name="releasenotes" value="
 Version 0.3.1 - 2012-09-27
@@ -36,6 +36,7 @@ Version 0.3.0 - 2012-09-27
 * Added nginx rewrite rules to README [skl]
 " />
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
+  <property name="pharfile"    value="${phing.dir}/dist/${phing.project.name}-${version}.phar" />
   <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
   <property name="distfile"    value="dist/${zipfile}" />
   <property name="distpkgfile" value="dist/pear/${pkgfile}" />
@@ -57,13 +58,53 @@ Version 0.3.0 - 2012-09-27
    <exclude name="data/config.php"/>
   </fileset>
 
+  <fileset id="fs.phar" dir="${phing.dir}">
+   <include name="data/**"/>
+   <include name="lib/**"/>
+   <include name="scripts/**"/>
+   <include name="src/**"/>
+   <include name="www/**"/>
+
+   <include name="ChangeLog"/>
+   <include name="README.rst"/>
+
+   <exclude name="data/config.php"/>
+   <exclude name="**/.gitignore/"/>
+   <exclude name="**/.git/"/>
+   <exclude name="lib/geshi/geshi/src/doc/"/>
+   <exclude name="lib/twig/twig/doc/"/>
+   <exclude name="lib/twig/twig/test/"/>
+   <exclude name="lib/pear-pear.php.net/PEAR/bin/"/>
+   <exclude name="lib/pear-pear.php.net/PEAR/PEAR/"/>
+  </fileset>
+
   <fileset id="fs.doc" dir=".">
    <include name="README.rst"/>
    <include name="NEWS.rst"/>
   </fileset>
 
-  <taskdef name="rST" classname="phing.tasks.ext.rSTTask" />
   <taskdef name="d51pearpkg2" classname="phing.tasks.ext.d51PearPkg2Task" />
+
+
+  <!-- FIXME: depends="collectdeps" -->
+  <target name="phar"
+          description="Create phar file for release"
+  >
+   <delete file="${pharfile}"/>
+   <pharpackage basedir="${phing.dir}"
+                destfile="${pharfile}"
+                stub="${phing.dir}/src/stub-phar.php"
+                alias="phorkie.phar"
+   >
+    <fileset refid="fs.phar"/>
+   </pharpackage>
+
+   <exec executable="bzip2" dir="${phing.dir}/dist">
+    <arg value="-kf"/>
+    <arg file="${pharfile}"/>
+   </exec>
+  </target>
+
 
   <target name="zip" depends="check"
    description="Create zip file for release"

@@ -1,6 +1,8 @@
-README.html
-repos
-data/config.php
-build.properties
-dist
+/README.html
+/repos
+/data/config.php
+/build.properties
+/dist
 /lib/
+/www/*.phar
+/www/*.phar.bz2
