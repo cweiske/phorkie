@@ -1,5 +1,6 @@
 <?php
 namespace phorkie;
+error_reporting(error_reporting() & ~E_STRICT);
 session_start();
 
 require_once __DIR__ . '/../src/phorkie/autoload.php';
