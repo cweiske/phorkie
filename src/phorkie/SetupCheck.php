@@ -47,11 +47,9 @@ class SetupCheck
         }
 
         if (!class_exists('GeSHi', true)) {
-            $geshi = stream_resolve_include_path(
-                $GLOBALS['phorkie']['cfg']['geshi']
-            );
-            if ($geshi === false) {
-                $this->fail('GeSHi not available');
+            @include_once 'geshi.php';
+            if (!class_exists('GeSHi', false)) {
+                $this->fail('PEAR package not installed: pear.geshi.org/geshi');
             }
         }
 

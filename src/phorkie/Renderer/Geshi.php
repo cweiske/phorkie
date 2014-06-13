@@ -13,12 +13,8 @@ class Renderer_Geshi
      */
     public function toHtml(File $file, Tool_Result $res = null)
     {
-        /**
-         * Yes, geshi needs to be in your include path
-         * We use the mediawiki geshi extension package.
-         */
         if (!class_exists('\\GeSHi', true)) {
-            require_once $GLOBALS['phorkie']['cfg']['geshi'];
+            require_once 'geshi.php';
         }
         $geshi = new \GeSHi($file->getContent(), $this->getType($file));
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);

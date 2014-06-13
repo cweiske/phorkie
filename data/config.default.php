@@ -12,7 +12,6 @@ $GLOBALS['phorkie']['cfg'] = array(
     'topbar'        => '',
     'setupcheck'    => true,
     'elasticsearch' => null,
-    'geshi'         => 'MediaWiki/geshi/geshi/geshi.php',
     'index'         => 'new',//"new" or "list"
     'perPage'       => 10,
     'defaultListPage' => 'last',//a number or "last"
