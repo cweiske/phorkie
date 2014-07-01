@@ -17,10 +17,10 @@ class Renderer_Geshi
          * Yes, geshi needs to be in your include path
          * We use the mediawiki geshi extension package.
          */
-        if (!class_exists('\\GeSHi', true)) {
+        if (!class_exists('\\geshi', true)) {
             require_once $GLOBALS['phorkie']['cfg']['geshi'];
         }
-        $geshi = new \GeSHi($file->getContent(), $this->getType($file));
+        $geshi = new \geshi($file->getContent(), $this->getType($file));
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
         $geshi->set_header_type(GESHI_HEADER_DIV);
 
