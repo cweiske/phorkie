@@ -4,5 +4,6 @@
 /build.properties
 /dist
 /lib/
+/src/gen-rewritemap.php
 /www/*.phar
 /www/*.phar.bz2
