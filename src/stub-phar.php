@@ -45,10 +45,38 @@ function rewritePath($path)
         return 'www/index.php';
     }
 
-    if (substr($path, -4) == '.css') {
+    $path = rewriteWithHtaccess($path);
+
+    if (substr($path, -4) == '.css' || substr($path, -3) == '.js') {
         header('Expires: ' . date('r', time() + 86400 * 7));
     }
-    return $path;
+    return 'www' . $path;
+}
+
+function rewriteWithHtaccess($path)
+{
+    //remove the trailing slash /
+    $cpath = substr($path, 1);
+    $bFoundMatch = false;
+    $map = include(__DIR__ . '/../src/gen-rewritemap.php');
+    foreach ($map as $pattern => $replace) {
+        if (preg_match($pattern, $cpath, $matches)) {
+            $bFoundMatch = true;
+            break;
+        }
+    }
+    if (!$bFoundMatch) {
+        return $path;
+    }
+    $newcpath = preg_replace($pattern, $replace, $cpath);
+    if (strpos($newcpath, '?') === false) {
+        return '/' . $newcpath;
+    }
+    list($cfile, $getParams) = explode('?', $newcpath, 2);
+    if ($getParams != '') {
+        parse_str($getParams, $_GET);
+    }
+    return '/' . $cfile;
 }
 
 //Phar::interceptFileFuncs();
