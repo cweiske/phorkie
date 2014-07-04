@@ -1,8 +1,16 @@
 <?php
+$pharFile = \Phar::running();
+if ($pharFile == '') {
+    $phorkieDir = __DIR__ . '/../';
+} else {
+    //remove phar:// from the path
+    $phorkieDir = dirname(substr($pharFile, 7)) . '/';
+}
+
 $GLOBALS['phorkie']['cfg'] = array(
     'debug'         => false,
-    'gitdir'        => __DIR__ . '/../repos/git/',
-    'workdir'       => __DIR__ . '/../repos/work/',
+    'gitdir'        => $phorkieDir . 'repos/git/',
+    'workdir'       => $phorkieDir . 'repos/work/',
     'tpl'           => __DIR__ . '/templates/',
     'baseurl'       => null,
     'avatars'       => true,
