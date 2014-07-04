@@ -40,9 +40,12 @@ if ($pharFile == '') {
     $cfgFilePath = substr($pharFile, 7) . '.config.php';
 }
 $GLOBALS['phorkie']['cfgfiles'][$cfgFilePath] = false;
+$GLOBALS['phorkie']['suggestSetupCheck'] = false;
 if (file_exists($cfgFilePath)) {
     $GLOBALS['phorkie']['cfgfiles'][$cfgFilePath] = true;
     require_once $cfgFilePath;
+} else if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
+    $GLOBALS['phorkie']['suggestSetupCheck'] = true;
 }
 
 if ($GLOBALS['phorkie']['cfg']['baseurl'] === null) {
@@ -101,6 +104,7 @@ function render($tplname, $vars = array())
     if (!isset($vars['htmlhelper'])) {
         $vars['htmlhelper'] = new HtmlHelper();
     }
+    $vars['suggestSetupCheck'] = $GLOBALS['phorkie']['suggestSetupCheck'];
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
     echo $template->render($vars);

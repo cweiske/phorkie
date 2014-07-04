@@ -74,6 +74,12 @@
   <div class="container">
    <div class="row">
     <div class="span9">
+     {% if suggestSetupCheck %}
+     <div class="alert alert-error">
+       It seems phorkie is not setup properly.
+       Visit the <a href="setup">setup check page</a> for more information.
+     </div>
+     {% endif %}
      {% block content %}{% endblock %}
     </div>
     <div class="span3">
