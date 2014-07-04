@@ -35,6 +35,7 @@ Version 0.3.0 - 2012-09-27
 * Markdown support [jnovack]
 * Added nginx rewrite rules to README [skl]
 " />
+  <property name="libdir"      value="${phing.dir}/lib"/>
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
   <property name="pharfile"    value="${phing.dir}/dist/${phing.project.name}-${version}.phar" />
   <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
@@ -71,11 +72,6 @@ Version 0.3.0 - 2012-09-27
    <exclude name="data/config.php"/>
    <exclude name="**/.gitignore/"/>
    <exclude name="**/.git/"/>
-   <exclude name="lib/geshi/geshi/src/doc/"/>
-   <exclude name="lib/twig/twig/doc/"/>
-   <exclude name="lib/twig/twig/test/"/>
-   <exclude name="lib/pear-pear.php.net/PEAR/bin/"/>
-   <exclude name="lib/pear-pear.php.net/PEAR/PEAR/"/>
   </fileset>
 
   <fileset id="fs.doc" dir=".">
@@ -86,11 +82,11 @@ Version 0.3.0 - 2012-09-27
   <taskdef name="d51pearpkg2" classname="phing.tasks.ext.d51PearPkg2Task" />
 
 
-  <!-- FIXME: depends="collectdeps" -->
-  <target name="phar"
+  <target name="phar" depends="collectdeps"
           description="Create phar file for release"
   >
    <delete file="${pharfile}"/>
+   <exec command="php scripts/build-rewritemap.php" dir="${phing.dir}"/>
    <pharpackage basedir="${phing.dir}"
                 destfile="${pharfile}"
                 stub="${phing.dir}/src/stub-phar.php"
@@ -103,6 +99,45 @@ Version 0.3.0 - 2012-09-27
     <arg value="-kf"/>
     <arg file="${pharfile}"/>
    </exec>
+  </target>
+
+
+  <target name="collectdeps" description="Copy package dependencies to lib/">
+   <delete dir="${libdir}"/>
+   <mkdir dir="${libdir}"/>
+
+   <!-- requires phing >= 2.8.0 -->
+   <copy todir="${libdir}">
+    <pearPackageFileset package="pear.php.net/Console_Getopt"/>
+    <pearPackageFileset package="pear.php.net/Date_HumanDiff"/>
+    <pearPackageFileset package="pear.geshi.org/geshi">
+     <!-- remove files that are probably not needed to save space in the .phar -->
+     <exclude name="geshi/arm.php"/>
+     <exclude name="geshi/autoit.php"/>
+     <exclude name="geshi/thinbasic.php"/>
+    </pearPackageFileset>
+    <pearPackageFileset package="pear.php.net/HTTP2"/>
+    <pearPackageFileset package="pear.php.net/HTTP_Request2"/>
+    <pearPackageFileset package="pear.php.net/MIME_Type"/>
+    <pearPackageFileset package="zustellzentrum.cweiske.de/MIME_Type_PlainDetect"/>
+    <pearPackageFileset package="zustellzentrum.cweiske.de/MIME_Type_PlainDetect" role="data"/>
+    <pearPackageFileset package="pear.michelf.com/Markdown"/>
+    <pearPackageFileset package="pear.php.net/Net_URL2"/>
+    <pearPackageFileset package="pear.php.net/OpenID"/>
+    <pearPackageFileset package="pear.php.net/Pager"/>
+    <pearPackageFileset package="pear.php.net/PEAR">
+     <include name="PEAR/Exception.php"/>
+     <include name="PEAR.php"/>
+     <include name="PEAR5.php"/>
+     <include name="OS/Guess.php"/>
+     <include name="System.php"/>
+    </pearPackageFileset>
+    <pearPackageFileset package="pear.php.net/Services_Libravatar"/>
+    <pearPackageFileset package="pear2.php.net/Services_Linkback"/>
+    <pearPackageFileset package="pear.php.net/System_Command"/>
+    <pearPackageFileset package="pear.twig-project.org/Twig"/>
+    <pearPackageFileset package="pear.php.net/VersionControl_Git"/>
+   </copy>
   </target>
 
 
@@ -176,11 +211,11 @@ Version 0.3.0 - 2012-09-27
                 />
 
        <package name="geshi"
-                channel="mediawiki.googlecode.com/svn"
+                channel="pear.geshi.org/geshi"
                 minimum_version="1.0.0"
                 />
        <package name="Markdown"
-                channel="pear.michelf.ca"
+                channel="pear.michelf.com"
                 minimum_version="0.0.2"
                 />
        <package name="MIME_Type_PlainDetect"
