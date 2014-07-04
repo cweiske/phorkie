@@ -33,5 +33,37 @@ class ToolsTest extends \PHPUnit_Framework_TestCase
         $_SERVER['SCRIPT_NAME'] = '/new.php';
         $this->assertEquals('/foo/', Tools::detectBaseUrl());
     }
+
+    public function testFoldPathParentSingle()
+    {
+        $this->assertEquals(
+            '/path/to/foo',
+            Tools::foldPath('/path/to/bar/../foo')
+        );
+    }
+
+    public function testFoldPathParentDouble()
+    {
+        $this->assertEquals(
+            '/path/to/foo',
+            Tools::foldPath('/path/to/foo/bar/../../foo')
+        );
+    }
+
+    public function testFoldPathCurrentSingle()
+    {
+        $this->assertEquals(
+            '/path/to/foo/',
+            Tools::foldPath('/path/to/foo/./')
+        );
+    }
+
+    public function testFoldPathCurrentThrice()
+    {
+        $this->assertEquals(
+            '/path/to/foo/',
+            Tools::foldPath('/path/././to/foo/./')
+        );
+    }
 }
 ?>

@@ -74,6 +74,7 @@ $out = <<<HTM
      <div class="page-header">
       <h1>phorkie setup check</h1>
      </div>
+     <h3>Check results</h3>
 
      <ul class="list-group">
 HTM;
@@ -91,6 +92,36 @@ foreach ($messages as $arMessage) {
 }
 $out .= <<<HTM
      </ul>
+HTM;
+
+if (array_sum($GLOBALS['phorkie']['cfgfiles']) == 0) {
+    //no config file loaded
+    reset($GLOBALS['phorkie']['cfgfiles']);
+    list($cfgFilePath, ) = each($GLOBALS['phorkie']['cfgfiles']);
+
+    $cfgFilePath = Tools::foldPath($cfgFilePath);
+    $cfgFileTemplate = htmlspecialchars(
+        file_get_contents(__DIR__ . '/../data/config.php.dist')
+    );
+
+    $out .= <<<HTM
+     <h3 id="configfile">Configuration file</h3>
+     <p>
+      Phorkie did not find a configuration file.
+      Please create one at
+     </p>
+     <pre>$cfgFilePath</pre>
+     <p>
+      from the following template:
+     </p>
+     <pre>$cfgFileTemplate</pre>
+     <p>
+      Remove the leading <tt>//</tt> from a line if you want to adjust it.
+     </p>
+HTM;
+}
+
+$out .= <<<HTM
      <p>
       <a href="./">back</a> to the index
      </p>

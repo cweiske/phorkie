@@ -96,5 +96,17 @@ class Tools
 
         return '/';
     }
+
+    /**
+     * Resolves "/../" and "/./" in file paths without validating them.
+     */
+    public static function foldPath($path)
+    {
+        $path = str_replace('/./', '/', $path);
+        $path = str_replace('/./', '/', $path);
+        $path = preg_replace('#/[^/]+/\.\./#', '/', $path);
+        $path = preg_replace('#/[^/]+/\.\./#', '/', $path);
+        return $path;
+    }
 }
 ?>

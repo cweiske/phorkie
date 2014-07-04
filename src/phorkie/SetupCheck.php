@@ -48,9 +48,12 @@ class SetupCheck
     {
         foreach ($GLOBALS['phorkie']['cfgfiles'] as $file => $loaded) {
             if ($loaded) {
-                $this->ok('Loaded config file: ' . $file);
+                $this->ok('Loaded config file: ' . Tools::foldPath($file));
             } else {
-                $this->info('Possible config file: ' . $file . ' (not loaded)');
+                $this->info(
+                    'Possible config file: ' . Tools::foldPath($file)
+                    . ' (not loaded)'
+                );
             }
         }
     }
