@@ -46,4 +46,19 @@ function registerHandler() {
   </a>
  </div>
 </div>
+
+<h3 id="fork-check">Setup check</h3>
+<p>
+ You need to activate public clone URLs in your config file.
+ Otherwise forking onto remote systems will not work.
+</p>
+{% if publicGitUrl %}
+<div class="alert alert-success">
+ OK! A public git URL prefix is configured: <tt>{{publicGitUrl}}</tt>
+</div>
+{% else %}
+<div class="alert alert-error">
+ Error! No public git URL prefix configured.
+</div>
+{% endif %}
 {% endblock %}

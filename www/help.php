@@ -10,6 +10,7 @@ render(
     'help',
     array(
         'htmlhelper' => new HtmlHelper(),
+        'publicGitUrl' => @$GLOBALS['phorkie']['cfg']['git']['public'],
     )
 );
 ?>

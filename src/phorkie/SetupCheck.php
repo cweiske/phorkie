@@ -39,6 +39,7 @@ class SetupCheck
         $sc->checkGit();
         $sc->checkDatabase();
         $sc->checkMimeTypeDetection();
+        $sc->checkRemoteForking();
 
         return $sc->messages;
     }
@@ -130,6 +131,18 @@ class SetupCheck
         $rp = new Repository_Post();
         if ($rp->getType('<?php echo "foo"; ?>') != 'php') {
             $this->fail('MIME type detection fails');
+        }
+    }
+
+    public function checkRemoteForking()
+    {
+        if (!isset($GLOBALS['phorkie']['cfg']['git']['public'])
+            || $GLOBALS['phorkie']['cfg']['git']['public'] == ''
+        ) {
+            $this->fail(
+                'No public git URL prefix configured.'
+                . ' Remote forking will not work'
+            );
         }
     }
 
