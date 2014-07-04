@@ -232,7 +232,7 @@ class Repository_Post
     {
         $tmp = tempnam(sys_get_temp_dir(), 'phorkie-autodetect-');
         file_put_contents($tmp, $content);
-        $type = \MIME_Type_PlainDetect::autoDetect($tmp);
+        $type = Tool_MIME_Type_PlainDetect::autoDetect($tmp);
         unlink($tmp);
 
         return $this->findExtForType($type);
