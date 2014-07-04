@@ -55,10 +55,10 @@ function rewritePath($path)
 
 function rewriteWithHtaccess($path)
 {
-    //remove the trailing slash /
+    //remove the leading slash /
     $cpath = substr($path, 1);
     $bFoundMatch = false;
-    $map = include(__DIR__ . '/../src/gen-rewritemap.php');
+    $map = include('phar://' . __FILE__ . '/src/gen-rewritemap.php');
     foreach ($map as $pattern => $replace) {
         if (preg_match($pattern, $cpath, $matches)) {
             $bFoundMatch = true;
