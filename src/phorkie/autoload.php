@@ -4,7 +4,14 @@
  *
  * @author Christian Weiske <cweiske@cweiske.de>
  */
-if (file_exists(__DIR__ . '/../../lib/autoload.php')) {
+if (file_exists(__DIR__ . '/../../lib/PEAR.php')) {
+    //phing-installed dependencies available ("phing collectdeps")
+    set_include_path(
+        __DIR__ . '/../'
+        . PATH_SEPARATOR . __DIR__ . '/../../lib/'
+        . PATH_SEPARATOR . '.'
+    );
+} else if (file_exists(__DIR__ . '/../../lib/autoload.php')) {
     //composer-installed dependencies available
     set_include_path(
         __DIR__ . '/../'
