@@ -98,8 +98,8 @@ on your machine:
   $ pear channel-discover pear.twig-project.org
   $ pear install twig/Twig
 
-  $ pear channel-discover mediawiki.googlecode.com/svn
-  $ pear install mediawiki/geshi
+  $ pear channel-discover pear.geshi.org
+  $ pear install geshi/geshi
 
   $ pear channel-discover zustellzentrum.cweiske.de
   $ pear install zz/mime_type_plaindetect-alpha
@@ -109,11 +109,6 @@ on your machine:
 
   $ pear channel-discover pear2.php.net
   $ pear install pear2/pear2_services_linkback-alpha
-
-Note that this version of GeSHi is a bit outdated, but it's the fastest
-way to install it.
-If you install it manually be sure to update the
-path from ``data/config.default.php``.
 
 
 ======

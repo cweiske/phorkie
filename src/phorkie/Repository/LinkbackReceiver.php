@@ -120,13 +120,19 @@ class Repository_LinkbackReceiver
      */
     protected function localizeGitUrls($arGitUrls)
     {
-        $pub = $GLOBALS['phorkie']['cfg']['git']['public'];
-        $pri = $GLOBALS['phorkie']['cfg']['git']['private'];
+        $pub = $pri = null;
+        if (isset($GLOBALS['phorkie']['cfg']['git']['public'])) {
+            $pub = $GLOBALS['phorkie']['cfg']['git']['public'];
+        }
+        if (isset($GLOBALS['phorkie']['cfg']['git']['private'])) {
+            $pri = $GLOBALS['phorkie']['cfg']['git']['private'];
+        }
 
         $arRemoteCloneUrls = array();
         foreach ($arGitUrls as $remoteTitle => $arUrls) {
             foreach ($arUrls as $remoteCloneUrl) {
-                if (substr($remoteCloneUrl, 0, strlen($pub)) == $pub
+                if ($pub !== null
+                    && substr($remoteCloneUrl, 0, strlen($pub)) == $pub
                     && substr($remoteCloneUrl, -4) == '.git'
                 ) {
                     $id = substr($remoteCloneUrl, strlen($pub), -4);
@@ -136,7 +142,8 @@ class Repository_LinkbackReceiver
                         $arRemoteCloneUrls[$repo->gitDir] = $remoteTitle;
                     } catch (Exception $e) {
                     }
-                } else if (substr($remoteCloneUrl, 0, strlen($pri)) == $pri
+                } else if ($pri !== null
+                    && substr($remoteCloneUrl, 0, strlen($pri)) == $pri
                     && substr($remoteCloneUrl, -4) == '.git'
                 ) {
                     $id = substr($remoteCloneUrl, strlen($pri), -4);

@@ -1,5 +1,7 @@
 <?php
 namespace phorkie;
+error_reporting(error_reporting() & ~E_STRICT);
+session_set_cookie_params(14 * 86400);//2 weeks session expiry time
 session_start();
 
 require_once __DIR__ . '/../src/phorkie/autoload.php';

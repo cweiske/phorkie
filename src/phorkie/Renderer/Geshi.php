@@ -15,7 +15,7 @@ class Renderer_Geshi
     {
         /**
          * Yes, geshi needs to be in your include path
-         * We use the mediawiki geshi extension package.
+         * We use the geshi pear package.
          */
         if (!class_exists('\\geshi', true)) {
             require_once $GLOBALS['phorkie']['cfg']['geshi'];
