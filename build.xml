@@ -82,7 +82,7 @@ Version 0.3.0 - 2012-09-27
   <taskdef name="d51pearpkg2" classname="phing.tasks.ext.d51PearPkg2Task" />
 
 
-  <target name="phar" depends="collectdeps"
+  <target name="phar" depends="preparedirs,collectdeps"
           description="Create phar file for release"
   >
    <delete file="${pharfile}"/>
@@ -133,7 +133,7 @@ Version 0.3.0 - 2012-09-27
      <include name="System.php"/>
     </pearPackageFileset>
     <pearPackageFileset package="pear.php.net/Services_Libravatar"/>
-    <pearPackageFileset package="pear2.php.net/Services_Linkback"/>
+    <pearPackageFileset package="pear2.php.net/PEAR2_Services_Linkback"/>
     <pearPackageFileset package="pear.php.net/System_Command"/>
     <pearPackageFileset package="pear.twig-project.org/Twig"/>
     <pearPackageFileset package="pear.php.net/VersionControl_Git"/>
@@ -141,7 +141,7 @@ Version 0.3.0 - 2012-09-27
   </target>
 
 
-  <target name="zip" depends="check"
+  <target name="zip" depends="preparedirs"
    description="Create zip file for release"
    >
     <!--
@@ -349,15 +349,17 @@ Version 0.3.0 - 2012-09-27
   </target>
 
 
-  <target name="check"
+  <target name="preparedirs">
+    <mkdir dir="dist" />
+  </target>
+
+  <target name="check" depends="preparedirs"
    description="Check variables"
    >
     <fail unless="version" message="Version not defined!" />
     <fail unless="sfuser" message="Sourceforge username not defined!" />
     <fail unless="sfproject" message="Sourceforge project name not defined!" />
     <fail unless="sffilepath" message="Sourceforge project file path not defined!" />
-
-    <mkdir dir="dist" />
   </target>
 
 </project>
