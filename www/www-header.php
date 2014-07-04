@@ -30,8 +30,21 @@ set_exception_handler(
 );
 
 require_once __DIR__ . '/../data/config.default.php';
-if (file_exists(__DIR__ . '/../data/config.php')) {
-    require_once __DIR__ . '/../data/config.php';
+$pharFile = \Phar::running();
+if ($pharFile == '') {
+    $cfgFilePath = __DIR__ . '/../data/config.php';
+} else {
+    //remove phar:// from the path
+    $cfgFilePath = substr($pharFile, 7) . '.config.php';
+}
+$GLOBALS['phorkie']['cfgfiles'][$cfgFilePath] = false;
+if (file_exists($cfgFilePath)) {
+    $GLOBALS['phorkie']['cfgfiles'][$cfgFilePath] = true;
+    require_once $cfgFilePath;
+}
+
+if ($GLOBALS['phorkie']['cfg']['baseurl'] === null) {
+    $GLOBALS['phorkie']['cfg']['baseurl'] = Tools::detectBaseUrl();
 }
 
 // Set/Get git commit session variables

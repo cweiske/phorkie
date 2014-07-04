@@ -70,6 +70,31 @@ class Tools
         return $file;
     }
 
-}
 
+    public static function detectBaseUrl()
+    {
+        if (!isset($_SERVER['REQUEST_URI'])
+            || !isset($_SERVER['SCRIPT_NAME'])
+        ) {
+            return '/';
+        }
+
+        $scriptName = $_SERVER['SCRIPT_NAME'];
+        $requestUri = $_SERVER['REQUEST_URI'];
+        if (substr($scriptName, -4) != '.php') {
+            //a phar
+            return $scriptName . '/';
+        }
+
+        if (substr($requestUri, -4) != '.php') {
+            $requestUri .= '.php';
+        }
+        $snl = strlen($scriptName);
+        if (substr($requestUri, -$snl) == $scriptName) {
+            return substr($requestUri, 0, -$snl) . '/';
+        }
+
+        return '/';
+    }
+}
 ?>
