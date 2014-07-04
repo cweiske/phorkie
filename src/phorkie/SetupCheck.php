@@ -18,6 +18,8 @@ class SetupCheck
     protected $writableDirs;
     protected $elasticsearch;
 
+    public $messages = array();
+
     public function __construct()
     {
         $cfg = $GLOBALS['phorkie']['cfg'];
@@ -31,11 +33,25 @@ class SetupCheck
     public static function run()
     {
         $sc = new self();
+        $sc->checkConfigFiles();
         $sc->checkDeps();
         $sc->checkDirs();
         $sc->checkGit();
         $sc->checkDatabase();
         $sc->checkMimeTypeDetection();
+
+        return $sc->messages;
+    }
+
+    public function checkConfigFiles()
+    {
+        foreach ($GLOBALS['phorkie']['cfgfiles'] as $file => $loaded) {
+            if ($loaded) {
+                $this->ok('Loaded config file: ' . $file);
+            } else {
+                $this->info('Possible config file: ' . $file . ' (not loaded)');
+            }
+        }
     }
 
     public function checkDeps()
@@ -69,8 +85,7 @@ class SetupCheck
         foreach ($this->writableDirs as $name => $dir) {
             if (!is_dir($dir)) {
                 $this->fail($name . ' directory does not exist at ' . $dir);
-            }
-            if (!is_writable($dir)) {
+            } else if (!is_writable($dir)) {
                 $this->fail($name . ' directory is not writable at ' . $dir);
             }
         }
@@ -120,7 +135,17 @@ class SetupCheck
 
     public function fail($msg)
     {
-        throw new Exception($msg);
+        $this->messages[] = array('error', $msg);
+    }
+
+    public function info($msg)
+    {
+        $this->messages[] = array('info', $msg);
+    }
+
+    public function ok($msg)
+    {
+        $this->messages[] = array('ok', $msg);
     }
 }
 
