@@ -108,7 +108,9 @@ Version 0.3.0 - 2012-09-27
 
    <!-- requires phing >= 2.8.0 -->
    <copy todir="${libdir}">
+    <pearPackageFileset package="pear.php.net/Cache_Lite"/><!-- OpenID -->
     <pearPackageFileset package="pear.php.net/Console_Getopt"/>
+    <pearPackageFileset package="pear.php.net/Crypt_DiffieHellman"/><!-- OpenID -->
     <pearPackageFileset package="pear.php.net/Date_HumanDiff"/>
     <pearPackageFileset package="pear.geshi.org/geshi">
      <!-- remove files that are probably not needed to save space in the .phar -->
@@ -134,8 +136,10 @@ Version 0.3.0 - 2012-09-27
     </pearPackageFileset>
     <pearPackageFileset package="pear.php.net/Services_Libravatar"/>
     <pearPackageFileset package="pear2.php.net/PEAR2_Services_Linkback"/>
+    <pearPackageFileset package="pear.php.net/Services_Yadis"/>
     <pearPackageFileset package="pear.php.net/System_Command"/>
     <pearPackageFileset package="pear.twig-project.org/Twig"/>
+    <pearPackageFileset package="pear.php.net/Validate"/>
     <pearPackageFileset package="pear.php.net/VersionControl_Git"/>
    </copy>
   </target>
