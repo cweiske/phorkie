@@ -103,6 +103,7 @@ if (array_sum($GLOBALS['phorkie']['cfgfiles']) == 0) {
     $cfgFileTemplate = htmlspecialchars(
         file_get_contents(__DIR__ . '/../data/config.php.dist')
     );
+    $cfgFileLines = count(explode("\n", $cfgFileTemplate));
 
     $out .= <<<HTM
      <h3 id="configfile">Configuration file</h3>
@@ -114,7 +115,7 @@ if (array_sum($GLOBALS['phorkie']['cfgfiles']) == 0) {
      <p>
       from the following template:
      </p>
-     <pre>$cfgFileTemplate</pre>
+     <textarea style="width:99%; background-color: #F5F5F5" rows="$cfgFileLines">$cfgFileTemplate</textarea>
      <p>
       Remove the leading <tt>//</tt> from a line if you want to adjust it.
      </p>
@@ -122,8 +123,8 @@ HTM;
 }
 
 $out .= <<<HTM
-     <p>
-      <a href="./">back</a> to the index
+     <p style="margin-top: 4ex">
+      <a href="./"><i class="icon-arrow-left"></i> back</a> to the index
      </p>
     </div>
    </div>
