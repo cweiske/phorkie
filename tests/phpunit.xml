@@ -1,0 +1,10 @@
+<phpunit strict="true" colors="true" bootstrap="../src/phorkie/autoload.php" backupGlobals="true">
+ <php>
+  <includePath>../src/</includePath>
+ </php>
+ <filter>
+  <whitelist addUncoveredFilesFromWhitelist="true">
+   <directory suffix=".php">../src/</directory>
+  </whitelist>
+ </filter>
+</phpunit>
