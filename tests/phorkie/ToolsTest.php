@@ -3,6 +3,11 @@ namespace phorkie;
 
 class ToolsTest extends \PHPUnit_Framework_TestCase
 {
+    public function setUp()
+    {
+        $_GET[] = array();
+    }
+
     public function testDetectBaseUrlPhar()
     {
         $_SERVER['REQUEST_URI'] = '/phar/phorkie-0.4.0.phar/list.php';
@@ -31,6 +36,22 @@ class ToolsTest extends \PHPUnit_Framework_TestCase
     {
         $_SERVER['REQUEST_URI'] = '/foo/new';
         $_SERVER['SCRIPT_NAME'] = '/new.php';
+        $this->assertEquals('/foo/', Tools::detectBaseUrl());
+    }
+
+    public function testDetectBaseUrlEdit()
+    {
+        $_GET['id'] = 82;
+        $_SERVER['REQUEST_URI'] = '/82/edit';
+        $_SERVER['SCRIPT_NAME'] = '/edit.php';
+        $this->assertEquals('/', Tools::detectBaseUrl());
+    }
+
+    public function testDetectBaseUrlEditSubdir()
+    {
+        $_GET['id'] = 82;
+        $_SERVER['REQUEST_URI'] = '/foo/82/edit';
+        $_SERVER['SCRIPT_NAME'] = '/edit.php';
         $this->assertEquals('/foo/', Tools::detectBaseUrl());
     }
 

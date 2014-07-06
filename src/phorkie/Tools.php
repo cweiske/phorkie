@@ -86,6 +86,13 @@ class Tools
             return $scriptName . '/';
         }
 
+        if (isset($_GET['id'])) {
+            $idp = strpos($requestUri, '/' . $_GET['id'] . '/');
+            if ($idp !== false) {
+                return substr($requestUri, 0, $idp) . '/';
+            }
+        }
+
         if (substr($requestUri, -4) != '.php') {
             $requestUri .= '.php';
         }
