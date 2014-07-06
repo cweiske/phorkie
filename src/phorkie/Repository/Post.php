@@ -151,6 +151,9 @@ class Repository_Post
                 ->setOption('force')
                 ->setOption('message', "$notes")
                 ->execute();
+            //update info for dumb git HTTP transport
+            $vc->getCommand('update-server-info')->execute();
+
             $bChanged = true;
         }
 
