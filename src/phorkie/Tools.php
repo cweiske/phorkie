@@ -49,6 +49,23 @@ class Tools
     }
 
     /**
+     * Get the full URL to a path, but remove the .phar file from
+     * the base URL if necessary
+     *
+     * @param string $path Path to the file
+     *
+     * @return string Full URL without .phar/
+     */
+    public static function fullUrlNoPhar($path = '')
+    {
+        $base = static::fullUrl();
+        if (substr($base, -6) == '.phar/') {
+            $base = dirname($base) . '/';
+        }
+        return $base . $path;
+    }
+
+    /**
      * Removes malicious parts from a file name
      *
      * @param string $file File name from the user

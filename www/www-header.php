@@ -50,6 +50,12 @@ if (file_exists($cfgFilePath)) {
 
 if ($GLOBALS['phorkie']['cfg']['baseurl'] === null) {
     $GLOBALS['phorkie']['cfg']['baseurl'] = Tools::detectBaseUrl();
+    if (substr($GLOBALS['phorkie']['cfg']['git']['public'], 0, 9) == '%BASEURL%') {
+        //make autoconfig work
+        $GLOBALS['phorkie']['cfg']['git']['public'] = Tools::fullUrlNoPhar(
+            substr($GLOBALS['phorkie']['cfg']['git']['public'], 9)
+        );
+    }
 }
 
 // Set/Get git commit session variables
