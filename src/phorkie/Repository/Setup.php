@@ -27,6 +27,19 @@ class Repository_Setup
 
         $vc = $this->repo->getVc();
 
+        file_put_contents(
+            $this->repo->gitDir . '/hooks/post-update',
+            <<<CDE
+#!/bin/sh
+# Hook script to prepare a packed repository for use over dumb transports.
+
+echo foo > /tmp/foo
+exec git update-server-info
+
+CDE
+        );
+        chmod($this->repo->gitDir . '/hooks/post-update', 0755);
+
         //keep track of owner
         $vc->getCommand('config')
             ->addArgument('owner.name')

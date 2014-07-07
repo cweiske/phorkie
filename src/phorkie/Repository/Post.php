@@ -152,6 +152,7 @@ class Repository_Post
                 ->setOption('message', "$notes")
                 ->execute();
             //update info for dumb git HTTP transport
+            //the post-update hook should do that IMO, but does not somehow
             $vc->getCommand('update-server-info')->execute();
 
             $bChanged = true;

@@ -81,6 +81,10 @@ class Forker
         $rs = new Repository_Setup($new);
         $rs->afterInit();
 
+        //update info for dumb git HTTP transport
+        //the post-update hook should do that IMO, but does not somehow
+        $vc->getCommand('update-server-info')->execute();
+
         return $new;
     }
 
