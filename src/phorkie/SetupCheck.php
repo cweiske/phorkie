@@ -24,8 +24,8 @@ class SetupCheck
     {
         $cfg = $GLOBALS['phorkie']['cfg'];
         $this->writableDirs = array(
-            'gitdir' => $cfg['gitdir'],
-            'workdir' => $cfg['workdir'],
+            'gitdir'  => Tools::foldPath($cfg['gitdir']),
+            'workdir' => Tools::foldPath($cfg['workdir']),
         );
         $this->elasticsearch = $cfg['elasticsearch'];
     }
