@@ -234,6 +234,12 @@ class Repository_Post
 
     public function getType($content, $returnError = false)
     {
+        if (getenv('PATH') == '') {
+            //php-fpm does not fill $PATH by default
+            // we have to work around that since System::which() uses it
+            putenv('PATH=/usr/local/bin:/usr/bin:/bin');
+        }
+
         $tmp = tempnam(sys_get_temp_dir(), 'phorkie-autodetect-');
         file_put_contents($tmp, $content);
         $type = Tool_MIME_Type_PlainDetect::autoDetect($tmp);
