@@ -232,12 +232,16 @@ class Repository_Post
         return $prefix . $num;
     }
 
-    public function getType($content)
+    public function getType($content, $returnError = false)
     {
         $tmp = tempnam(sys_get_temp_dir(), 'phorkie-autodetect-');
         file_put_contents($tmp, $content);
         $type = Tool_MIME_Type_PlainDetect::autoDetect($tmp);
         unlink($tmp);
+
+        if ($returnError && $type instanceof \PEAR_Error) {
+            return $type;
+        }
 
         return $this->findExtForType($type);
     }

@@ -133,8 +133,13 @@ class SetupCheck
     public function checkMimeTypeDetection()
     {
         $rp = new Repository_Post();
-        if ($rp->getType('<?php echo "foo"; ?>') != 'php') {
-            $this->fail('MIME type detection fails');
+        $type = $rp->getType('<?php echo "foo"; ?>', true);
+        if ($type != 'php') {
+            $msg = 'MIME type detection fails';
+            if ($type instanceof \PEAR_Error) {
+                $msg .= '. Error: ' . $type->getMessage();
+            }
+            $this->fail($msg);
         }
     }
 
