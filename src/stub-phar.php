@@ -47,7 +47,10 @@ function rewritePath($path)
 
     $path = rewriteWithHtaccess($path);
 
-    if (substr($path, -4) == '.css' || substr($path, -3) == '.js') {
+    if (substr($path, -4) == '.css'
+        || substr($path, -3) == '.js'
+        || substr($path, 0, 9) == '/phorkie/'
+    ) {
         header('Expires: ' . date('r', time() + 86400 * 7));
     }
     return 'www' . $path;
