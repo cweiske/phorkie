@@ -33,7 +33,6 @@ class Repository_Setup
 #!/bin/sh
 # Hook script to prepare a packed repository for use over dumb transports.
 
-echo foo > /tmp/foo
 exec git update-server-info
 
 CDE
