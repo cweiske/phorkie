@@ -1,3 +1,31 @@
+Version 0.4.0 - 2014-07-15
+--------------------------
+* Fix bug #27: Render .json files
+* Fix bug #31: Forked pastes cannot be remote forked
+* Fix bug #33: Do not index login page
+* Fix bug #41: AGPL link broken
+* Fix bug #43: github gist cloning does not work
+* Fix bug #44: Anchors of files with spaces in their name
+* Fix renaming of binary files
+* Implement request #6: Atom feed for new and updated pastes
+* Implement request #7: Track and display remote forks
+* Implement request #21: Send linkbacks when forking remote pastes
+* Implement request #32: Distribute phorkie as .phar file with all dependencies
+* Implement request #34: Store last OpenID in cookie and pre-fill login form
+* Implement request #35: Store author of a paste
+* Implement request #37: Show user icon in navbar and profile page
+* Implement request #42: Single click remote forking with web+fork: url handler
+* Add autoconfiguration for public git clone urls over http
+* Add baseurl setting to make phorkie run in a subdirectory of a domain
+* Add setupcheck page that checks dependencies and other things
+* Add support for file names with directories in pastes
+* Add support for UTF-8 characters in file names
+* Add support for web hooks
+* Add support for forking HTTP and HTTPS git URLs
+* Extract gist titles
+* Make it possible to install dependencies via composer
+
+
 Version 0.3.1 - 2012-09-27
 --------------------------
 * Check for OpenID package in SetupCheck

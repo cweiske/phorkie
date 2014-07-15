@@ -16,6 +16,7 @@ Features
   - repositories can be cloned
   - clone url can be displayed
   - remote pastes can be forked (rel="vcs-git" and gist.github.com)
+  - single click forking of forks on different servers to your own
 - paste editing
 
   - add new files
@@ -37,19 +38,41 @@ Features
 
   - options: quoting, logical and, or, not, partial words
 - webhook support - get notified when pastes are created, edited or deleted
+- atom feed for new and updated pastes
+- notifies remote instances via linkbacks when a paste has been forked
 
 
 ============
 Installation
 ============
+
+.phar
+=====
+Download ``phorkie-0.4.0.phar`` and put it in your web server's document root
+directory.
+
+No further setup needed.
+
+.. note:: Only valid if your webserver is configured to let
+   PHP handle ``.phar`` files.
+
+   Unfortunately, no Linux distribution has this activated by default.
+
+.. warning:: PHP has some bugs in its .phar handling code (e.g. with FPM).
+
+   So currently, the ``.phar`` option is considered experimental.
+
+
+Zip package
+===========
 1. Unzip the phorkie release file::
 
-   $ tar xjvf phorkie-0.3.0.tar.bz2
+   $ tar xjvf phorkie-0.4.0.tar.bz2
 
 2. Create the git directories::
 
-   $ mkdir -p repos/git repos/work
-   $ chmod og+w repos/git repos/work
+   $ mkdir -p www/repos/git www/repos/work
+   $ chmod og+w www/repos/git www/repos/work
 
 3. Install dependencies_
 
@@ -111,6 +134,13 @@ on your machine:
   $ pear install pear2/pear2_services_linkback-alpha
 
 
+You can use composer to install all dependencies automatically::
+
+  $ composer install
+
+Note that the ``.phar`` package already contains all dependencies.
+
+
 ======
 Search
 ======
@@ -160,8 +190,19 @@ HowTo
 
 Make git repositories clonable
 ==============================
-To make git repositories clonable, you need to install ``git-daemon``
-(``git-daemon-run`` package on Debian/Ubuntu).
+
+HTTP
+----
+By default, the pastes are clonable via ``http`` as long as the ``repos/git/``
+directory is within the ``www/`` directory.
+
+No further setup needed.
+
+
+git-daemon
+----------
+You may use ``git-daemon`` to provide public ``git://`` clone urls.
+Install the ``git-daemon-run`` package on Debian/Ubuntu.
 
 Make the repositories available by symlinking the paste repository
 directory (``$GLOBALS['phorkie']['cfg']['repos']`` setting) into
@@ -245,17 +286,6 @@ The event may be ``create``, ``edit`` or ``delete``.
 =================
 Technical details
 =================
-
-TODO
-====
-- filters (``xmllint --format``, ``rapper``)
-- document how to keep disk usage low (block size)
-- comments
-- when 2 people edit, merge changes
-- diff changes
-- configurable highlights
-- Atom feed for new pastes
-- Atom feed for paste changes
 
 
 URLs
