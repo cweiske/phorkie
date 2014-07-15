@@ -12,35 +12,43 @@
   <property name="version"    value="0.4.0" />
   <property name="stability"  value="alpha" />
   <property name="releasenotes" value="
-Version 0.3.1 - 2012-09-27
+Version 0.4.0 - 2014-07-15
 --------------------------
-* Check for OpenID package in SetupCheck
-* Fix bug #24: setupcheck: verify geshi installation
-* Fix bug #25: setupcheck: verify markdown
-
-Version 0.3.0 - 2012-09-27
---------------------------
-
-* Fix bug #10: error when nothing submitted [cweiske]
-* Fix bug #11: do not index edit, delete and tool pages [cweiske]
-* Fix bug #20: elasticsearch error on deletion [cweiske]
-* Fix bug #22: Edited pastes not in 'recently created' [cweiske]
-* Fix bug #23: 'work dir not found' on failed remote fork [cweiske]
-* Implement request #5: Add OpenID authentication [jnovack]
-* Implement request #9: autodetect file type [cweiske]
-* Implement request #12: DOAP and rel='vcs-git' support [cweiske]
-* Implement request #13: remote forking support [cweiske]
-* Hide additional file fields by default, button to toggle their visibility
-  [cweiske]
-* Markdown support [jnovack]
-* Added nginx rewrite rules to README [skl]
+* Fix bug #27: Render .json files
+* Fix bug #31: Forked pastes cannot be remote forked
+* Fix bug #33: Do not index login page
+* Fix bug #41: AGPL link broken
+* Fix bug #43: github gist cloning does not work
+* Fix bug #44: Anchors of files with spaces in their name
+* Fix renaming of binary files
+* Implement request #6: Atom feed for new and updated pastes
+* Implement request #7: Track and display remote forks
+* Implement request #21: Send linkbacks when forking remote pastes
+* Implement request #32: Distribute phorkie as .phar file with all dependencies
+* Implement request #34: Store last OpenID in cookie and pre-fill login form
+* Implement request #35: Store author of a paste
+* Implement request #37: Show user icon in navbar and profile page
+* Implement request #42: Single click remote forking with web+fork: url handler
+* Add autoconfiguration for public git clone urls over http
+* Add baseurl setting to make phorkie run in a subdirectory of a domain
+* Add setupcheck page that checks dependencies and other things
+* Add support for file names with directories in pastes
+* Add support for UTF-8 characters in file names
+* Add support for web hooks
+* Add support for forking HTTP and HTTPS git URLs
+* Extract gist titles
+* Make it possible to install dependencies via composer
 " />
   <property name="libdir"      value="${phing.dir}/lib"/>
+
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
-  <property name="pharfile"    value="${phing.dir}/dist/${phing.project.name}-${version}.phar" />
+  <property name="pharfile"    value="${phing.project.name}-${version}.phar" />
   <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
+
+  <property name="pharpath"    value="${phing.dir}/dist/${pharfile}" />
   <property name="distfile"    value="dist/${zipfile}" />
   <property name="distpkgfile" value="dist/pear/${pkgfile}" />
+
   <property name="sfproject"   value="phorkie" />
   <property name="sffilepath"  value="p/ph/phorkie/" />
 
@@ -90,10 +98,10 @@ Version 0.3.0 - 2012-09-27
   <target name="phar" depends="preparedirs,collectdeps"
           description="Create phar file for release"
   >
-   <delete file="${pharfile}"/>
+   <delete file="${pharpath}"/>
    <exec command="php scripts/build-rewritemap.php" dir="${phing.dir}"/>
    <pharpackage basedir="${phing.dir}"
-                destfile="${pharfile}"
+                destfile="${pharpath}"
                 stub="${phing.dir}/src/stub-phar.php"
                 alias="phorkie.phar"
    >
@@ -102,7 +110,7 @@ Version 0.3.0 - 2012-09-27
 
    <exec executable="bzip2" dir="${phing.dir}/dist">
     <arg value="-kf"/>
-    <arg file="${pharfile}"/>
+    <arg file="${pharpath}"/>
    </exec>
   </target>
 
@@ -170,7 +178,7 @@ Version 0.3.0 - 2012-09-27
 
 
 
-  <target name="package" depends="check"
+  <target name="pear" depends="check"
    description="Creates the pear package"
   >
    <d51pearpkg2 dir="." baseinstalldir="/">
@@ -330,7 +338,7 @@ Version 0.3.0 - 2012-09-27
   </target>
 
 
-  <target name="release" depends="check,zip,package,deploy-sf"
+  <target name="release" depends="check,zip,pear,deploy-sf"
    description="Release the version on sourceforge"
    >
    <!-- meta-target -->
@@ -343,13 +351,14 @@ Version 0.3.0 - 2012-09-27
   /home/frs/project/p/ph/phorkie/phorkie/v0.1/phorkie-v0.1.1.zip
   https://sourceforge.net/apps/trac/sourceforge/wiki/Release%20files%20for%20download
   -->
-  <target name="deploy-sf" depends="check,zip"
+  <target name="deploy-sf" depends="check,zip,phar"
    description="Upload release to sourceforge"
    >
     <delete dir="dist/deploy-sf" /><!-- make empty -->
     <mkdir dir="dist/deploy-sf" />
     <mkdir dir="dist/deploy-sf/v${version-m}" />
     <copy file="${distfile}" tofile="dist/deploy-sf/v${version-m}/${zipfile}"/>
+    <copy file="${pharpath}" tofile="dist/deploy-sf/v${version-m}/${pharfile}"/>
     <!-- test
     <exec command="rsync -av dist/deploy-sf/ /tmp/test/" escape="false" />
     -->
