@@ -97,6 +97,7 @@ class HtmlParser
         } else {
             $sx = simplexml_import_dom(\DOMDocument::loadHTML($html));
         }
+        //FIXME: handle network error
 
         $elems = $sx->xpath('//*[@rel="vcs-git"]');
         $titles = $sx->xpath('/html/head/title');
