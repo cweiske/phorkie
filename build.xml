@@ -55,8 +55,11 @@ Version 0.3.0 - 2012-09-27
    <include name="NEWS.rst"/>
    <include name="README.rst"/>
 
+   <exclude name="**/.git/"/>
    <exclude name="**/.gitignore/"/>
    <exclude name="data/config.php"/>
+   <exclude name="www/**/.phar"/>
+   <exclude name="www/repos"/>
   </fileset>
 
   <fileset id="fs.phar" dir="${phing.dir}">
@@ -70,8 +73,10 @@ Version 0.3.0 - 2012-09-27
    <include name="README.rst"/>
 
    <exclude name="data/config.php"/>
-   <exclude name="**/.gitignore/"/>
    <exclude name="**/.git/"/>
+   <exclude name="**/.gitignore/"/>
+   <exclude name="www/**/.phar"/>
+   <exclude name="www/repos"/>
   </fileset>
 
   <fileset id="fs.doc" dir=".">
