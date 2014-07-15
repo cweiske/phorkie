@@ -205,6 +205,10 @@ Version 0.3.0 - 2012-09-27
                 channel="pear.php.net"
                 minimum_version="2.4.8"
                 />
+       <package name="PEAR2_Services_Linkback"
+                channel="pear2.php.net"
+                minimum_version="0.2.1"
+                />
        <package name="Services_Libravatar"
                 channel="pear.php.net"
                 minimum_version="0.2.2"
