@@ -10,7 +10,10 @@ class Repository_ConnectionInfo
     public function __construct(Repository $repo)
     {
         $this->repo = $repo;
-        $this->arConfig = parse_ini_file($this->repo->gitDir . '/config', true);
+        //we need raw parsing; https://bugs.php.net/bug.php?id=68347
+        $this->arConfig = parse_ini_file(
+            $this->repo->gitDir . '/config', true, INI_SCANNER_RAW
+        );
     }
 
     public function isFork()
