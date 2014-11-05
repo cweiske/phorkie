@@ -13,6 +13,12 @@ if ($GLOBALS['phorkie']['cfg']['setupcheck']) {
 
 
 $db = new Database();
+
+if ($db->prefix == '\phorkie\Database_Adapter_Null') {
+    echo "Error: No search adapter configured.\n";
+    exit(1);
+}
+
 $idx = $db->getIndexer();
 
 //create mapping
