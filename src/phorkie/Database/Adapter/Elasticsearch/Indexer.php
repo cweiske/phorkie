@@ -117,29 +117,14 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
     public function deleteAllRepos()
     {
         $r = new Database_Adapter_Elasticsearch_HTTPRequest(
-            $this->searchInstance . 'repo/_query',
+            $this->searchInstance . 'repo',
             \HTTP_Request2::METHOD_DELETE
-        );
-        $r->allow404 = true;
-        $r->setBody(
-            json_encode(
-                (object)array(
-                    'match_all' => (object)array()
-                )
-            )
         );
         $r->send();
+
         $r = new Database_Adapter_Elasticsearch_HTTPRequest(
-            $this->searchInstance . 'file/_query',
+            $this->searchInstance . 'file',
             \HTTP_Request2::METHOD_DELETE
-        );
-        $r->allow404 = true;
-        $r->setBody(
-            json_encode(
-                (object)array(
-            'match_all' => (object)array()
-                )
-            )
         );
         $r->send();
     }
@@ -161,18 +146,9 @@ class Database_Adapter_Elasticsearch_Indexer implements Database_IIndexer
     {
         //delete files of that repository
         $r = new Database_Adapter_Elasticsearch_HTTPRequest(
-            $this->searchInstance . 'file/_query',
+            $this->searchInstance . 'file/_query'
+            . '?q=_parent:' . $repo->id,
             \HTTP_Request2::METHOD_DELETE
-        );
-        $r->allow404 = true;
-        $r->setBody(
-            json_encode(
-                (object)array(
-                    'field' => (object)array(
-                        '_parent' => $repo->id
-                    )
-                )
-            )
         );
         $r->send();
     }
