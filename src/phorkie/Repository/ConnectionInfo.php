@@ -38,21 +38,21 @@ class Repository_ConnectionInfo
      */
     public function getRemote($name)
     {
-        if (!isset($this->arConfig['remote ' . $name])) {
+        if (!isset($this->arConfig['remote "' . $name . '"'])) {
             return null;
         }
-        return new Repository_Remote($name, $this->arConfig['remote ' . $name]);
+        return new Repository_Remote($name, $this->arConfig['remote "' . $name . '"']);
     }
 
     public function getForks()
     {
         $arForks = array();
         foreach ($this->arConfig as $name => $data) {
-            if (substr($name, 0, 12) != 'remote fork-') {
+            if (substr($name, 0, 13) != 'remote "fork-') {
                 continue;
             }
-            $arForks[substr($name, 7)] = new Repository_Remote(
-                substr($name, 7), $data
+            $arForks[substr($name, 8, -1)] = new Repository_Remote(
+                substr($name, 8, -1), $data
             );
         }
         return $arForks;
