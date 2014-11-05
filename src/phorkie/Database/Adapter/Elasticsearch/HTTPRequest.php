@@ -22,9 +22,11 @@ class Database_Adapter_Elasticsearch_HTTPRequest extends \HTTP_Request2
         } else {
             $error = $res->getBody();
         }
+
         throw new Exception(
-            'Error in elasticsearch communication'
-            . '(status code ' . $res->getStatus() . '): '
+            'Error in elasticsearch communication at '
+            . $this->getMethod() . ' ' . (string) $this->getUrl()
+            . ' (status code ' . $res->getStatus() . '): '
             . $error
         );
     }
