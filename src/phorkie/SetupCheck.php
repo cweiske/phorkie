@@ -46,6 +46,13 @@ class SetupCheck
 
     public function checkConfigFiles()
     {
+        if (!isset($GLOBALS['phorkie']['cfgfiles'])
+            || count($GLOBALS['phorkie']['cfgfiles']) == 0
+        ) {
+            $this->info('No config files registered');
+            return;
+        }
+
         foreach ($GLOBALS['phorkie']['cfgfiles'] as $file => $loaded) {
             if ($loaded) {
                 $this->ok('Loaded config file: ' . Tools::foldPath($file));
