@@ -321,6 +321,9 @@ class Repository
     {
         if ($type == 'edit') {
             $link = $this->id . '/edit';
+            if ($option !== null) {
+                $link .= '/' . urlencode($option);
+            }
         } else if ($type == 'display') {
             $link = $this->id;
         } else if ($type == 'fork') {

@@ -23,6 +23,7 @@ Features
   - delete existing files
   - replace file with upload
 - multiple files in one paste
+  - option to edit single files in a multi-file paste
 - syntax highlighting with GeSHi
 - rST and Markdown rendering
 - image upload + display
@@ -297,6 +298,8 @@ URLs
   Display page for paste
 ``/[0-9]/edit``
   Edit the paste
+``/[0-9]/edit/(.+)``
+  Edit a single file of the paste
 ``/[0-9]+/raw/(.+)``
   Display raw file contents
 ``/[0-9]/tool/[a-zA-Z]+/(.+)``
@@ -352,6 +355,7 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1;
     rewrite ^/([0-9]+)/doap$ /doap.php?id=$1;
     rewrite ^/([0-9]+)/edit$ /edit.php?id=$1;
+    rewrite ^/([0-9]+)/edit/(.+)$ edit.php?id=$1&file=$2
     rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
     rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2;
@@ -361,8 +365,10 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/fork-remote$ /fork-remote.php;
     rewrite ^/help$ /help.php;
     rewrite ^/new$ /new.php;
+
     rewrite ^/feed/new$ /feed-new.php;
     rewrite ^/feed/updated$ /feed-updated.php;
+
     rewrite ^/list$ /list.php;
     rewrite ^/list/([0-9]+)$ /list.php?page=$1;
 

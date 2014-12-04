@@ -16,7 +16,9 @@
  </div>
 
  {% for fileid, file in repo.getFiles %}
-  {% include 'edit-file.htm' with {'file': file, 'fileid': fileid, 'newfile': false} %}
+  {% if not singlefile or file == singlefile %}
+    {% include 'edit-file.htm' with {'file': file, 'fileid': fileid, 'newfile': false} %}
+  {% endif %}
  {% endfor %}
 
  {% include 'edit-add.htm' %}

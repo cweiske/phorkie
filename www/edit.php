@@ -14,10 +14,16 @@ if ($repopo->process($_POST, $_SESSION)) {
     redirect($repo->getLink('display', null, true));
 }
 
+$file = null;
+if (isset($_GET['file'])) {
+    $file = $repo->getFileByName($_GET['file']);
+}
+
 render(
     'edit',
     array(
         'repo' => $repo,
+        'singlefile' => $file,
         'dh'   => new \Date_HumanDiff(),
         'htmlhelper' => new HtmlHelper(),
     )
