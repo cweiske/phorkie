@@ -1,0 +1,42 @@
+.phork-file {
+    border: 1px solid #DDD;
+    border-bottom: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 0px;
+    background-color: white;
+    margin-bottom: 2ex;
+    margin-top: 2ex;
+}
+.phork-content {
+    padding: 0.6ex;
+}
+.phork-file > .code {
+    overflow-x: auto;
+}
+.phork-file .code pre {
+    border: none;
+    background-color: inherit;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: pre;
+    color: black;
+    font: normal normal 1em/1.2em monospace;
+    padding: 0px;
+    margin: 0px;
+}
+.phork-file .code .ln pre {
+    margin-right: 1ex;
+    color: #DDD;
+}
+.phork-meta {
+    background-color: #EEE;
+    font-size: 75%;
+    padding: 0.5ex 1ex;
+    margin: none;
+}
+.phork-meta a {
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #888;
+    font-weight: bold;
+}

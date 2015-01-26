@@ -91,6 +91,29 @@ h1 {
 .file .image {
     margin-bottom: 2ex;
 }
+.file > .document {
+    margin-left: 1em;
+}
+
+.code pre {
+    border: none;
+    background-color: inherit;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: pre;
+    color: black;
+    font: normal normal 1em/1.2em monospace;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 2ex;
+}
+.code {
+    overflow-x: auto;
+}
+.code .ln pre {
+    margin-right: 1ex;
+    color: #DDD;
+}
 
 div.annotations div.alert {
     margin-bottom: 1ex;
@@ -154,6 +177,12 @@ form label.inline {
 
 .form-horizontal .controls {
     margin-left: 8em;
+}
+
+input.fullwidthtext {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
 }
 
 .btn [class^="icon-"], .btn [class*=" icon-"] {

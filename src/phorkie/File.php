@@ -96,27 +96,37 @@ class File
      * Get a link to the file
      *
      * @param string $type   Link type. Supported are:
+     *                       - "display"
      *                       - "raw"
      *                       - "tool"
      * @param string $option Additional option, e.g. tool name
+     * @param boolean $full   Return full URL or normal relative
      *
      * @return string
      */
-    public function getLink($type, $option = null)
+    public function getLink($type, $option = null, $full = false)
     {
         if ($type == 'raw') {
             if ($this->repo->hash === null) {
-                return $this->repo->id . '/raw/' . $this->getFilename();
+                $link = $this->repo->id . '/raw/' . $this->getFilename();
             } else {
-                return $this->repo->id . '/rev-raw/' . $this->repo->hash
+                $link = $this->repo->id . '/rev-raw/' . $this->repo->hash
                     . '/' . $this->getFilename();
             }
         } else if ($type == 'tool') {
-            return $this->repo->id
+            $link = $this->repo->id
                 . '/tool/' . $option
                 . '/' . $this->getFilename();
+        } else if ($type == 'display') {
+            $link = $this->repo->id . '#' . $this->getFilename();
+        } else {
+            throw new Exception('Unknown type');
         }
-        throw new Exception('Unknown type');
+
+        if ($full) {
+            $link = Tools::fullUrl($link);
+        }
+        return $link;
     }
 
     /**

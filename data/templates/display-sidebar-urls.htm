@@ -1,0 +1,12 @@
+<label id="url-embed" for="url-embed-input"><b>Embed</b> HTML code</label>
+<input id="url-embed-input" type="text" class="fullwidthtext" value='&lt;script src="{{repo.getLink('embed', null, true)}}" type="text/javascript"&gt;&lt;/script&gt;'/>
+
+{% if repo.getCloneURL(true) %}
+<label id="url-public" for="url-public-input"><b>Public</b> clone URL</label>
+<input id="url-public-input" type="text" class="fullwidthtext" value="{{repo.getCloneURL(true)}}"/>
+{% endif %}
+
+{% if repo.getCloneURL(false) %}
+<label id="url-private" for="url-private-input"><b>Private</b> clone URL</label>
+<input id="url-private-input" type="text" class="fullwidthtext" value="{{repo.getCloneURL(false)}}"/>
+{% endif %}

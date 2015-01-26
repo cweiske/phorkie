@@ -22,14 +22,18 @@ class Renderer_Geshi
         }
         $geshi = new \geshi($file->getContent(), $this->getType($file));
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-        $geshi->set_header_type(GESHI_HEADER_DIV);
+        $geshi->set_header_type(GESHI_HEADER_PRE_TABLE);
+        $geshi->enable_classes();
+        $geshi->set_line_style('color: #DDD;');
 
         if ($res !== null) {
             $geshi->highlight_lines_extra(array_keys($res->annotations));
             $geshi->set_highlight_lines_extra_style('background-color: #F2DEDE');
         }
 
-        return '<div class="code">'
+        return '<style type="text/css">'
+            . $geshi->get_stylesheet() . '</style>'
+            . '<div class="code">'
             . str_replace('&nbsp;', '&#160;', $geshi->parse_code())
             . '</div>';
     }

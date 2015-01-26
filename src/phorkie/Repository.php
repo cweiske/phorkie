@@ -310,6 +310,7 @@ class Repository
      *                        - "delete"
      *                        - "delete-confirm"
      *                        - "display"
+     *                        - "embed"
      *                        - "fork"
      *                        - "revision"
      * @param string  $option Additional link option, e.g. revision number
@@ -334,6 +335,8 @@ class Repository
             $link = $this->id . '/delete';
         } else if ($type == 'delete-confirm') {
             $link = $this->id . '/delete/confirm';
+        } else if ($type == 'embed') {
+            $link = $this->id . '/embed';
         } else if ($type == 'remotefork') {
             return 'web+fork:' . $this->getLink('display', null, true);
         } else if ($type == 'revision') {
