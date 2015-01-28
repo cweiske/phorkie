@@ -6,8 +6,25 @@ require_once 'www-header.php';
 if (isset($_REQUEST['logout'])) {
     unset($_SESSION);
     session_destroy();
+    //delete last openid cookie.
+    // if you deliberately log out, you do not want to be logged in
+    // automatically on the next page reload.
+    setcookie('lastopenid', '0', time() - 3600);
+
     header('Location: ' . Tools::fullUrl());
     exit();
+}
+
+$bAutologin = false;
+if (isset($_GET['autologin']) && $_GET['autologin']
+    && isset($_COOKIE['lastopenid'])
+) {
+    $bAutologin = true;
+    // autologin=1: start openid autologin
+    // autologin=2: response from openid server
+    if ($_GET['autologin'] == 1) {
+        $_POST['openid_url'] = $_COOKIE['lastopenid'];
+    }
 }
 
 if (!count($_GET) && !count($_POST)) {
@@ -36,10 +53,13 @@ if (isset($_POST['openid_url'])) {
 
 $realm    = Tools::fullUrl();
 $returnTo = Tools::fullUrl('login');
+if ($bAutologin) {
+    $returnTo = Tools::fullUrl('login?autologin=2');
+}
 
 try {
     $o = new \OpenID_RelyingParty($returnTo, $realm, $openid_url);
-} catch (OpenID_Exception $e) {
+} catch (\OpenID_Exception $e) {
     throw new Exception($e->getMessage());
 }
 
@@ -53,8 +73,23 @@ if (isset($_POST['openid_url'])) {
     $_SESSION['openid_url'] = $openid_url;
     try {
         $authRequest = $o->prepare();
-    } catch (OpenID_Exception $e) {
+        if ($bAutologin) {
+            $authRequest->setMode(\OpenID::MODE_CHECKID_IMMEDIATE);
+        }
+    } catch (\OpenID_Exception $e) {
+        if ($bAutologin) {
+            $alres = new Login_AutologinResponse('error', $e->getMessage());
+            $alres->send();
+            exit(0);
+        }
         throw new Exception($e->getMessage());
+    } catch (\Exception $e) {
+        if ($bAutologin) {
+            $alres = new Login_AutologinResponse('error', $e->getMessage());
+            $alres->send();
+            exit(0);
+        }
+        throw $e;
     }
 
     // SREG
@@ -100,17 +135,33 @@ $id      = $message->get('openid.claimed_id');
 $mode    = $message->get('openid.mode');
 
 try {
-    $result = $o->verify(new \Net_URL2($returnTo . '?' . $queryString), $message);
+    $sep = '?';
+    if (strpos($returnTo, '?') !== false) {
+        $sep = '&';
+    }
+    $result = $o->verify(new \Net_URL2($returnTo . $sep . $queryString), $message);
 
     if ($result->success()) {
         $status  = "<tr><td>Status:</td><td><font color='green'>SUCCESS!";
         $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
     } else {
+        if ($bAutologin) {
+            $alres = new Login_AutologinResponse(
+                'error', 'Error logging in: ' . $result->getAssertionMethod()
+            );
+            $alres->send();
+            exit(0);
+        }
         throw new Exception('Error logging in');
         $status  = "<tr><td>Status:</td><td><font color='red'>FAIL!";
         $status .= " ({$result->getAssertionMethod()})</font></td></tr>";
     }
-} catch (OpenID_Exception $e) {
+} catch (\OpenID_Exception $e) {
+    if ($bAutologin) {
+        $alres = new Login_AutologinResponse('error', $e->getMessage());
+        $alres->send();
+        exit(0);
+    }
     throw new Exception('Error logging in');
     $status  = "<tr><td>Status:</td><td><font color='red'>EXCEPTION!";
     $status .= " ({$e->getMessage()} : {$e->getCode()})</font></td></tr>";
@@ -156,7 +207,17 @@ $name = isset($openid['openid.ax.value.fullname'])
 $_SESSION['name'] = isset($name) ? $name : $_SERVER['REMOTE_ADDR'];
 $_SESSION['identity'] = $openid['openid.identity'];
 
-setcookie('lastopenid', $_SESSION['identity'], time() + 84600 * 60, '/login');
+setcookie('tried-autologin', '0', time() - 3600);//delete
+setcookie('lastopenid', $_SESSION['identity'], time() + 84600 * 60);
+
+if ($bAutologin) {
+    $alres = new Login_AutologinResponse('ok');
+    $alres->name     = $_SESSION['name'];
+    $alres->identity = $_SESSION['identity'];
+    $alres->send();
+    exit(0);
+}
+
 
 $url = '';
 if (isset($_SESSION['REQUEST_URI'])) {

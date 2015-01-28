@@ -105,6 +105,10 @@ function render($tplname, $vars = array())
         $vars['identity'] = $_SESSION['identity'];
         $vars['name'] = $_SESSION['name'];
         $vars['email'] = $_SESSION['email'];
+    } else if (isset($_COOKIE['lastopenid'])
+        && !isset($_COOKIE['tried-autologin'])
+    ) {
+        $vars['autologin'] = true;
     }
     $vars['db'] = new Database();
     if (!isset($vars['htmlhelper'])) {
