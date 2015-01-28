@@ -68,6 +68,9 @@ h1 {
     padding-bottom: 0px;
 }
 
+.file {
+    margin-top: 2ex;
+}
 .file .header {
     padding: 0ex 0ex 0ex 1ex;
     margin-bottom: 1em;
