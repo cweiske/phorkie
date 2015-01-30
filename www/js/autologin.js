@@ -2,7 +2,7 @@ jQuery(function($) {
     document.getElementsByTagName("body")[0]
         .insertAdjacentHTML(
             'beforeend',
-            '<iframe id="autologin" src="/login.php?autologin=1"'
+            '<iframe id="autologin" src="login.php?autologin=1"'
             + ' width="10" height="10" style="display: none"'
             + '></iframe>'
         );
