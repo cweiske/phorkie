@@ -1,3 +1,14 @@
+Version 0.5.0 - 2015-01-29
+--------------------------
+* Implement paste embedding
+* Implement single file editing
+* Implement automatic login
+* Implement Elasticsearch 1.3 compatibility
+* Work around PHP bug #68347 to parse ini files correctly
+* Move clone URLs to sidebar
+* Move additional button into text field
+
+
 Version 0.4.0 - 2014-07-15
 --------------------------
 * Fix bug #27: Render .json files

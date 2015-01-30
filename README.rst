@@ -22,6 +22,7 @@ Features
   - add new files
   - delete existing files
   - replace file with upload
+- embedding of pastes in your blog
 - multiple files in one paste
   - option to edit single files in a multi-file paste
 - syntax highlighting with GeSHi
@@ -49,7 +50,7 @@ Installation
 
 .phar
 =====
-Download ``phorkie-0.4.0.phar`` and put it in your web server's document root
+Download ``phorkie-0.5.0.phar`` and put it in your web server's document root
 directory.
 
 No further setup needed.
@@ -68,7 +69,7 @@ Zip package
 ===========
 1. Unzip the phorkie release file::
 
-   $ tar xjvf phorkie-0.4.0.tar.bz2
+   $ tar xjvf phorkie-0.5.0.tar.bz2
 
 2. Create the git directories::
 
@@ -149,6 +150,8 @@ Search
 phorkie makes use of an Elasticsearch__ installation, if you have one.
 
 It is used to provide search capabilities and the list of recent pastes.
+
+Elasticsearch version 1.3 is supported.
 
 __ http://www.elasticsearch.org/
 
@@ -296,25 +299,29 @@ URLs
   Index page.
 ``/[0-9]+``
   Display page for paste
-``/[0-9]/edit``
+``/[0-9]+/edit``
   Edit the paste
-``/[0-9]/edit/(.+)``
+``/[0-9]+/edit/(.+)``
   Edit a single file of the paste
+``/[0-9]+/embed``
+  JavaScript code that embeds the whole paste in a HTML page
+``/[0-9]+/embed/(.+)``
+  JavaScript code that embeds a single file in a HTML page
 ``/[0-9]+/raw/(.+)``
   Display raw file contents
-``/[0-9]/tool/[a-zA-Z]+/(.+)``
+``/[0-9]+/tool/[a-zA-Z]+/(.+)``
   Run a tool on the given file
-``/[0-9]/rev/[a-z0-9]+``
+``/[0-9]+/rev/[a-z0-9]+``
   Show specific revision of the paste
-``/[0-9]/delete``
+``/[0-9]+/delete``
   Delete the paste
-``/[0-9]/doap``
+``/[0-9]+/doap``
   Show DOAP document for paste
-``/[0-9]/fork``
+``/[0-9]+/fork``
   Create a fork of the paste
 ``/search?q=..(&page=[0-9]+)?``
   Search for term, with optional page
-``/list(/[0-9])?``
+``/list(/[0-9]+)?``
   List all pastes, with optional page
 ``/fork-remote``
   Fork a remote URL
@@ -356,6 +363,8 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/doap$ /doap.php?id=$1;
     rewrite ^/([0-9]+)/edit$ /edit.php?id=$1;
     rewrite ^/([0-9]+)/edit/(.+)$ edit.php?id=$1&file=$2
+    rewrite ^/([0-9]+)/embed$ /embed.php?id=$1;
+    rewrite ^/([0-9]+)/embed/(.+)$ embed.php?id=$1&file=$2
     rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
     rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2;
