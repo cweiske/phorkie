@@ -56,6 +56,12 @@ $GLOBALS['phorkie']['tools'] = array(
  * Key is the file extension
  */
 $GLOBALS['phorkie']['languages'] = array(
+    'conf' => array(
+        'title' => 'Configuration',
+        'mime'  => 'text/ini',
+        'geshi' => 'ini',
+        'show'  => false
+    ),
     'css' => array(
         'title' => 'CSS',
         'mime'  => 'text/css',
