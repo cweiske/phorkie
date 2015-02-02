@@ -1,0 +1,7 @@
+<!-- embedding all files of {{repo.getLink('display', null, true)}} -->
+<link rel="stylesheet" href="{{htmlhelper.fullUrl('css/embed.css')}}"/>
+<div class="phork" id="{{repo.id}}">
+{% for file in repo.getFiles %}
+    {% include 'embed-part-file.htm' %}
+{% endfor %}
+</div>

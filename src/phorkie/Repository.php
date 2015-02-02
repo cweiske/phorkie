@@ -337,6 +337,12 @@ class Repository
             $link = $this->id . '/delete/confirm';
         } else if ($type == 'embed') {
             $link = $this->id . '/embed';
+        } else if ($type == 'oembed-json') {
+            $link = 'oembed.php?format=json&url='
+                . urlencode($this->getLink('display', null, true));
+        } else if ($type == 'oembed-xml') {
+            $link = 'oembed.php?format=xml&url='
+                . urlencode($this->getLink('display', null, true));
         } else if ($type == 'remotefork') {
             return 'web+fork:' . $this->getLink('display', null, true);
         } else if ($type == 'revision') {

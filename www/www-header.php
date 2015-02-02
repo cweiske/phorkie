@@ -91,7 +91,7 @@ if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
     require __DIR__ . '/www-security.php';
 }
 
-function render($tplname, $vars = array())
+function render($tplname, $vars = array(), $return = false)
 {
     $vars['baseurl'] = '/';
     if (!empty($GLOBALS['phorkie']['cfg']['baseurl'])) {
@@ -117,8 +117,14 @@ function render($tplname, $vars = array())
     $vars['suggestSetupCheck'] = $GLOBALS['phorkie']['suggestSetupCheck'];
 
     $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
-    echo $template->render($vars);
+
+    if ($return) {
+        return $template->render($vars);
+    } else {
+        echo $template->render($vars);
+    }
 }
+
 function redirect($target)
 {
     header('Location: ' . $target);
