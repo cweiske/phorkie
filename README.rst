@@ -22,7 +22,7 @@ Features
   - add new files
   - delete existing files
   - replace file with upload
-- embedding of pastes in your blog via oEmbed
+- embedding of pastes in your blog (via JavaScript or oEmbed)
 - multiple files in one paste
   - option to edit single files in a multi-file paste
 - syntax highlighting with GeSHi
