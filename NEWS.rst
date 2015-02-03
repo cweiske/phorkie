@@ -1,6 +1,7 @@
 Version 0.5.0 - 2015-01-29
 --------------------------
-* Implement paste embedding
+* Implement paste embedding via JavaScript
+* Implement paste embedding via oEmbed
 * Implement single file editing
 * Implement automatic login
 * Implement Elasticsearch 1.3 compatibility

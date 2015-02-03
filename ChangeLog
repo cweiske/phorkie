@@ -1,13 +1,17 @@
+2015-02-03  Christian Weiske  <cweiske@cweiske.de>
+
+	* Implement paste embedding via oEmbed
+	* Release version 0.5
+
 2015-01-29  Christian Weiske  <cweiske@cweiske.de>
 
-	* Implement paste embedding
+	* Implement paste embedding via JavaScript
 	* Implement single file editing
 	* Implement automatic login
 	* Implement Elasticsearch 1.3 compatibility
 	* Work around PHP bug #68347 to parse ini files correctly
 	* Move clone URLs to sidebar
 	* Move additional button into text field
-	* Release version 0.5
 
 2014-07-15  Christian Weiske  <cweiske@cweiske.de>
 
