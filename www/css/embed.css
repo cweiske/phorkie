@@ -10,7 +10,7 @@
 .phork-content {
     padding: 0.6ex;
 }
-.phork-file > .code {
+.phork-content > .code {
     overflow-x: auto;
 }
 .phork-file .code pre {

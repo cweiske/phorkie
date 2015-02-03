@@ -1,8 +1,9 @@
 /* embedding all files of {{repo.getLink('display', null, true)}} */
 var me = document.getElementById('phork-script-{{repo.id}}');
-me.insertAdjacentHTML('afterend', '<link rel="stylesheet" href="{{htmlhelper.fullUrl('css/embed.css')}}"/>');
-me.insertAdjacentHTML('afterend',
-    '<div class="phork" id="{{repo.id}}">'
+me.insertAdjacentHTML(
+    'afterend',
+    '<link rel="stylesheet" href="{{htmlhelper.fullUrl('css/embed.css')}}"/>'
+    + '<div class="phork" id="{{repo.id}}">'
 {% for file in repo.getFiles %}
     + {% filter json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw -%}{% include 'embed-part-file.htm' %}{%- endfilter %}
 {% endfor %}
