@@ -74,6 +74,13 @@ class HtmlHelper
 
         return $logged_in;
     }
+
+    public function getRepositoryEmbedCode(Repository $repo)
+    {
+        return '<script src="' . $repo->getLink('embed', null, true) . '"'
+            . ' id="phork-script-' . $repo->id . '"'
+            . ' type="text/javascript"></script>';
+    }
 }
 
 ?>

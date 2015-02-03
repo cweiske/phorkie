@@ -1,5 +1,5 @@
 <label id="url-embed" for="url-embed-input"><b>Embed</b> HTML code</label>
-<input id="url-embed-input" type="text" class="fullwidthtext" value='&lt;script src="{{repo.getLink('embed', null, true)}}" type="text/javascript"&gt;&lt;/script&gt;'/>
+<input id="url-embed-input" type="text" class="fullwidthtext" value="{{htmlhelper.getRepositoryEmbedCode(repo)}}"/>
 
 {% if repo.getCloneURL(true) %}
 <label id="url-public" for="url-public-input"><b>Public</b> clone URL</label>
