@@ -99,6 +99,10 @@ Zip package
 
 7. Go to http://yourhost/
 
+8. If you like phorkie, send a mail to `cweiske+phorkie@cweiske.de`__
+
+__ mailto:cweiske+phorkie@cweiske.de
+
 
 Dependencies
 ============
