@@ -16,7 +16,7 @@
     <div class="row-fluid">
      <div class="span6">
       <input type="hidden" name="files[{{fileid}}][original_name]" value="{{file.getFilename}}"/>
-      <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}" placeholder="Filename (optional)" class="filename" onchange="filenameChange(this, {{fileid}})" onkeyup="filenameChange(this, {{fileid}})"/>
+      <input type="text" name="files[{{fileid}}][name]" id="filename_{{fileid}}" value="{{file.getFilename}}" placeholder="Filename (optional)" class="filename" onchange="filenameChange(this, '{{fileid}}')" onkeyup="filenameChange(this, '{{fileid}}')"/>
      </div>
      <div class="span6 typeselect" style="text-align: right" id="typeselect_{{fileid}}">
       <label for="type_{{fileid}}" class="inline">Type</label>
@@ -43,4 +43,3 @@
    </div><!-- /span12 -->
   </div><!-- /row-fluid -->
  </div>
-
