@@ -392,3 +392,41 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/setup$ /setup.php;
     rewrite ^/user$ /user.php;
   }
+
+Lighttpd rewrites
+=================
+
+::
+
+    url.rewrite-once += (
+        "^/([0-9]+)$" => "/display.php?id=$1",
+        "^/([0-9]+)/delete$" => "/delete.php?id=$1",
+        "^/([0-9]+)/delete/confirm" => "/delete.php?&id=$1&confirm=1",
+        "^/([0-9]+)/doap$" => "/doap.php?id=$1",
+        "^/([0-9]+)/edit$" => "/edit.php?id=$1",
+        "^/([0-9]+)/edit/(.+)" => "/edit.php?id=$1&file=$2",
+        "^/([0-9]+)/embed$" => "/embed.php?id=$1",
+        "^/([0-9]+)/embed/(.+)$" => "/embed.php?id=$1",
+        "^/([0-9]+)/fork$" => "/fork.php?id=$1",
+        "^/([0-9]+)/raw/(.+)$" => "/raw.php?id=$1&file=$2",
+        "^/([0-9]+)/rev/(.+)$" => "/revision.php?id=$1&rev=$2",
+        "^/([0-9]+)/rev-raw/(.+)/(.+)$" => "/raw.php?id=$1&rev=$2&file=$3",
+        "^/([0-9]+)/tool/([^/]+)/(.+)$" => "/tool.php?id=$1&tool=$2&file=$3",
+
+        "^/fork-remote$" => "/fork-remote.php",
+        "^/help$" => "/help.php",
+        "^/new$" => "/new.php",
+
+        "^/feed/new$" => "/feed-new.php",
+        "^/feed/updated$" => "/feed-updated.php",
+
+        "^/list$" => "/list.php",
+        "^/list/([0-9]+)$" => "/list.php?page=$1",
+
+        "^/search$" => "/search.php",
+        "^/search/([0-9]+)$" => "/search.php?page=$1",
+
+        "^/login$" => "/login.php",
+        "^/setup$" => "/setup.php",
+        "^/user$" => "/user.php"
+    )
