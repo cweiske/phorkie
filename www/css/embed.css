@@ -23,6 +23,7 @@
     font: normal normal 1em/1.2em monospace;
     padding: 0px;
     margin: 0px;
+    width: auto;
 }
 .phork-file .code .ln pre {
     margin-right: 1ex;
