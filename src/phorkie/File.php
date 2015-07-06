@@ -39,6 +39,16 @@ class File
     }
 
     /**
+     * Get the filename usable as HTML anchor.
+     *
+     * @return string
+     */
+    function getAnchorName()
+    {
+        return str_replace(' ', '-', $this->getFilename());
+    }
+
+    /**
      * Return the full path to the file
      *
      * @return string
