@@ -49,6 +49,6 @@ function toggleAdditional(elem, time)
     var jt = jQuery(elem);
     jt.children('i').toggleClass('icon-chevron-down')
         .toggleClass('icon-chevron-up');
-    jt.parents('.row-fluid').children('.additional').toggle(time);
+    jt.parents('.row-fluid').children('.additional').slideToggle(time);
     //jt.parents('.row-fluid').children('.additional').animate(time);
 }
