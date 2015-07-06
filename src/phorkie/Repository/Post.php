@@ -5,6 +5,16 @@ class Repository_Post
 {
     public $repo;
 
+    /**
+     * When a new file is created during processing, its name
+     * is stored here for later use.
+     *
+     * @var string
+     */
+    public $newfileName;
+
+
+
     public function __construct(Repository $repo = null)
     {
         $this->repo = $repo;
@@ -76,6 +86,7 @@ class Repository_Post
                     //automatically append file extension if none is there
                     $name .= '.' . $arFile['type'];
                 }
+                $this->newfileName = $name;
             } else if (!$this->repo->hasFile($orignalName)) {
                 //unknown file
                 //FIXME: Show error message
