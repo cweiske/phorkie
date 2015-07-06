@@ -6,6 +6,7 @@ RewriteBase /
 #RewriteCond %{REQUEST_FILENAME} -f
 
 RewriteRule ^([0-9]+)$ display.php?id=$1
+RewriteRule ^([0-9]+)/$ $1 [R]
 RewriteRule ^([0-9]+)/delete$ delete.php?id=$1
 RewriteRule ^([0-9]+)/delete/confirm$ delete.php?id=$1&confirm=1
 RewriteRule ^([0-9]+)/doap$ doap.php?id=$1
