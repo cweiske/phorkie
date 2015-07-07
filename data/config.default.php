@@ -15,6 +15,7 @@ $GLOBALS['phorkie']['cfg'] = array(
         'public'    => '%BASEURL%' . 'repos/git/',
         'private'   => null,
     ),
+    'cachedir'      => __DIR__ . '/cache/',
     'gitdir'        => $wwwDir . 'repos/git/',
     'workdir'       => $wwwDir . 'repos/work/',
     'tpl'           => __DIR__ . '/templates/',

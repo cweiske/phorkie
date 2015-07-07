@@ -36,6 +36,7 @@ $out = <<<HTM
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
  <head>
   <title>phorkie setup check</title>
+  <meta charset="utf-8" />
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/font-awesome.css"/>
   <link rel="stylesheet" href="css/phorkie.css"/>

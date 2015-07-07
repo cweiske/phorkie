@@ -96,7 +96,6 @@ class Repository
 
     public function loadHash()
     {
-        return;
         if ($this->hash !== null) {
             return;
         }

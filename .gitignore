@@ -8,3 +8,4 @@
 /src/gen-rewritemap.php
 /www/*.phar
 /www/*.phar.bz2
+/data/cache/

@@ -26,6 +26,7 @@ class SetupCheck
         $this->writableDirs = array(
             'gitdir'  => Tools::foldPath($cfg['gitdir']),
             'workdir' => Tools::foldPath($cfg['workdir']),
+            'cachedir' => Tools::foldPath($cfg['cachedir']),
         );
         $this->elasticsearch = $cfg['elasticsearch'];
     }
