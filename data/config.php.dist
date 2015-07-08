@@ -2,6 +2,7 @@
 //$GLOBALS['phorkie']['cfg']['baseurl']  = '/';
 //$GLOBALS['phorkie']['cfg']['gitdir']  = '/var/cache/git/paste/git/';
 //$GLOBALS['phorkie']['cfg']['workdir'] = '/var/cache/git/paste/work/';
+//$GLOBALS['phorkie']['cfg']['cachedir'] = '/var/cache/phorkie/';
 //$GLOBALS['phorkie']['cfg']['git']['public'] = 'git://bogo/git/paste/';
 //$GLOBALS['phorkie']['cfg']['git']['private'] = 'ssh://git@bogo:paste/';
 //$GLOBALS['phorkie']['cfg']['elasticsearch'] = 'http://localhost:9200/phorkie/';
