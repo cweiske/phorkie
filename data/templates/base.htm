@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="{{css}}"/>
   {% endif %}
   {% if iconpng %}
-  <link rel="shortcut icon" href="{{iconpng}}" type="image/png"/>
+  <link rel="icon" href="{{iconpng}}" type="image/png"/>
+  {% else %}
+  <link rel="icon" href="favicon.ico"/>
   {% endif %}
   <title>{% block title %}{% endblock %} - {{title}}</title>
   <script src="js/jquery.js"></script>
