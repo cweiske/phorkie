@@ -40,6 +40,7 @@ $out = <<<HTM
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/font-awesome.css"/>
   <link rel="stylesheet" href="css/phorkie.css"/>
+  <link rel="icon" href="favicon.ico"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <style type="text/css">
     /**/
