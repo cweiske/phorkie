@@ -29,7 +29,7 @@ function notifyAutologin(data)
             + ' style="display: none; position: fixed; top: 0px; left: 0px; width: 100%; text-align: center">'
             + 'Welcome, ' + data.name + '.'
             + ' You have been logged in - '
-            + '<a href="#" onclick="document.location.reload(); return false;">reload</a> to see it.'
+            + '<a href="' + document.location + '">reload</a> to see it.'
             + '</div>'
         );
     $('#autologinnotifier').click(function(event) {
