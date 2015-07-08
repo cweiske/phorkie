@@ -50,7 +50,7 @@ Installation
 
 .phar
 =====
-Download ``phorkie-0.5.0.phar`` and put it in your web server's document root
+Download ``phorkie-0.6.0.phar`` and put it in your web server's document root
 directory.
 
 No further setup needed.
@@ -69,7 +69,7 @@ Zip package
 ===========
 1. Unzip the phorkie release file::
 
-   $ tar xjvf phorkie-0.5.0.tar.bz2
+   $ tar xjvf phorkie-0.6.0.tar.bz2
 
 2. Create the git directories::
 
@@ -430,3 +430,25 @@ Lighttpd rewrites
         "^/setup$" => "/setup.php",
         "^/user$" => "/user.php"
     )
+
+
+===========
+Development
+===========
+
+Releasing a new version
+=======================
+
+#. Update ``ChangeLog``, ``NEWS.rst``, ``build.xml`` and ``README.rst``.
+#. Update local dependencies::
+
+    $ phing collectdeps
+#. Build ``.tar.bz2`` and ``.phar`` release files with::
+
+    $ phing zip
+    $ phing phar
+#. Test.
+#. Tag the release in git
+#. Upload release to sourceforge::
+
+    $ phing deploy-sf
