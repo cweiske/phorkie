@@ -14,13 +14,8 @@
 <fieldset>
   <legend>Sign-in</legend>
   <div id="openid_choice" style="display: block; ">
-    <p>Please choose your account provider</p>
-    <div id="openid_btns">
-      <a title="Google" href="login?openid_url=https://www.google.com/accounts/o8/id" class="google openid_large_btn"></a>
-      <a title="Yahoo" href="login?openid_url=http://yahoo.com/" class="yahoo openid_large_btn"></a>
-    </div>
     <div id="openid_input_area">
-      <p>or enter your OpenID URL.</p>
+      <p><label for="openid_url">Enter your OpenID URL:</label></p>
       <input id="openid_url" type="text" name="openid_url" value="{{openid}}" />
       <input class="btn btn-primary" id="openid_submit" type="submit" value="Sign in" />
     </div>
