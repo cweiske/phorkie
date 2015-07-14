@@ -22,7 +22,14 @@ $repopo = new Repository_Post($repo);
 if ($repopo->process($_POST, $_SESSION)) {
     $anchor = '';
     if ($file instanceof File) {
-        $anchor = '#' . $file->getAnchorName();
+        if (isset($repopo->renameMap[$file->getFilename()])) {
+            $anchor = '#'
+                . $repo->getFileByName(
+                    $repopo->renameMap[$file->getFilename()]
+                )->getAnchorName();
+        } else {
+            $anchor = '#' . $file->getAnchorName();
+        }
     } else if ($file === 'newfile' && $repopo->newfileName) {
         $anchor = '#' . $repo->getFileByName($repopo->newfileName)->getAnchorName();
     }

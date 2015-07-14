@@ -13,6 +13,12 @@ class Repository_Post
      */
     public $newfileName;
 
+    /**
+     * List of files that have been renamed.
+     *
+     * @var array
+     */
+    public $renameMap = array();
 
 
     public function __construct(Repository $repo = null)
@@ -47,6 +53,9 @@ class Repository_Post
             $this->repo->setDescription($postData['description']);
             $bChanged = true;
         }
+
+        $this->renameMap   = array();
+        $this->newfileName = null;
 
         foreach ($postData['files'] as $num => $arFile) {
             $bUpload = false;
@@ -102,6 +111,7 @@ class Repository_Post
                         ->addArgument($name)
                         ->execute();
                     $bCommit = true;
+                    $this->renameMap[$originalName] = $name;
                 } else {
                     $name = $originalName;
                 }
