@@ -113,6 +113,12 @@ class Repository
         $this->hash = $output;
     }
 
+    public function reloadHash()
+    {
+        $this->hash = null;
+        return $this->loadHash();
+    }
+
     /**
      * Populates $this->message
      *
