@@ -1,3 +1,9 @@
+Version 0.6.1 - 2015-07-15
+--------------------------
+* Fix crash when renaming file
+* Fix jumping to file anchor after file rename
+
+
 Version 0.6.0 - 2015-07-08
 --------------------------
 * Add simple cache for rendered files
