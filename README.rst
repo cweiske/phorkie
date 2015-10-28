@@ -366,9 +366,9 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/delete/confirm$ /delete.php?id=$1&confirm=1;
     rewrite ^/([0-9]+)/doap$ /doap.php?id=$1;
     rewrite ^/([0-9]+)/edit$ /edit.php?id=$1;
-    rewrite ^/([0-9]+)/edit/(.+)$ edit.php?id=$1&file=$2
+    rewrite ^/([0-9]+)/edit/(.+)$ /edit.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/embed$ /embed.php?id=$1;
-    rewrite ^/([0-9]+)/embed/(.+)$ embed.php?id=$1&file=$2
+    rewrite ^/([0-9]+)/embed/(.+)$ /embed.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
     rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2;
