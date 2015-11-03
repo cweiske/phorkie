@@ -18,7 +18,7 @@ class Database_Adapter_Elasticsearch_HTTPRequest extends \HTTP_Request2
         }
         $js = json_decode($res->getBody());
         if (isset($js->error)) {
-            $error = $js->error;
+            $error = json_encode($js->error);
         } else {
             $error = $res->getBody();
         }

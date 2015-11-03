@@ -155,9 +155,15 @@ phorkie makes use of an Elasticsearch__ installation, if you have one.
 
 It is used to provide search capabilities and the list of recent pastes.
 
-Elasticsearch version 1.3 is supported.
+Elasticsearch version 2.0 is supported.
+
+You have to install the `delete-by-query`__ plugin::
+
+    $ cd /usr/share/elasticsearch
+    $ bin/plugin install delete-by-query
 
 __ http://www.elasticsearch.org/
+__ https://www.elastic.co/guide/en/elasticsearch/plugins/2.0/plugins-delete-by-query.html
 
 
 Setup
