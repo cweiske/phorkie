@@ -59,10 +59,14 @@ No further setup needed.
    PHP handle ``.phar`` files.
 
    Unfortunately, no Linux distribution has this activated by default.
+   You can do it yourself, though - see
+   `Enable .phar handling in your web server`__.
 
 .. warning:: PHP has some bugs in its .phar handling code (e.g. with FPM).
 
    So currently, the ``.phar`` option is considered experimental.
+
+__ http://cweiske.de/tagebuch/phar-webserver.htm
 
 
 Zip package
