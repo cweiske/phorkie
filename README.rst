@@ -42,6 +42,7 @@ Features
 - webhook support - get notified when pastes are created, edited or deleted
 - atom feed for new and updated pastes
 - notifies remote instances via linkbacks when a paste has been forked
+- text file detection for unknown file types
 
 
 ============
@@ -117,6 +118,8 @@ on your machine:
 
 - Git v1.7.5 or later
 - PHP v5.3.0 or later
+
+  - optionally the ``mbstring`` extension
 - PEAR v1.9.2 or later
 
 ::

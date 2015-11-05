@@ -126,15 +126,21 @@ class File
     }
 
     /**
-     * @return string Mime type of file
+     * @return string Mime type of file, NULL if no type detected
      */
     public function getMimeType()
     {
         $ext = $this->getExt();
-        if (!isset($GLOBALS['phorkie']['languages'][$ext])) {
-            return null;
+        if (isset($GLOBALS['phorkie']['languages'][$ext])) {
+            return $GLOBALS['phorkie']['languages'][$ext]['mime'];
         }
-        return $GLOBALS['phorkie']['languages'][$ext]['mime'];
+
+        $mte = new \MIME_Type_Extension();
+        $type = $mte->getMIMEType($this->getFilename());
+        if (!\PEAR::isError($type)) {
+            return $type;
+        }
+        return null;
     }
 
     /**
@@ -159,21 +165,52 @@ class File
     {
         $ext = $this->getExt();
         if ($ext == '') {
-            //no file extension? then consider the size
-            $size = filesize($this->getFullPath());
-            //files <= 4kiB are considered to be text
-            return $size <= 4096;
+            return $this->isNonBinary();
         }
 
-        if (!isset($GLOBALS['phorkie']['languages'][$ext]['mime'])) {
-            return false;
+        $type = $this->getMimeType();
+        if ($type === null) {
+            return $this->isNonBinary();
         }
-
-        $type = $GLOBALS['phorkie']['languages'][$ext]['mime'];
         return substr($type, 0, 5) === 'text/'
             || $type == 'application/javascript'
             || substr($type, -4) == '+xml'
             || substr($type, -5) == '+json';
+    }
+
+    /**
+     * Look at the file's bytes and guess if it's binary or not.
+     *
+     * @return boolean True if it's most likely plain text
+     */
+    public function isNonBinary()
+    {
+        $fp = fopen($this->getFullPath(), 'r');
+        if (!$fp) {
+            return false;
+        }
+
+        //When multibyte extension is not installed,
+        // we only allow files with ASCII characters.
+        // Files with UTF-8 characters will not be detected as text.
+        $hasMb = function_exists('mb_detect_encoding');
+
+        $pos = 0;
+        $data = '';
+        while (false !== ($char = fgetc($fp)) && ++$pos < 100) {
+            $data .= $char;
+            if (!$hasMb && ord($char) > 128) {
+                return false;
+            }
+        }
+        if (!$hasMb) {
+            return true;
+        }
+
+        if (mb_detect_encoding($data) === false) {
+            return false;
+        }
+        return true;
     }
 }
 
