@@ -1,3 +1,9 @@
+2015-11-05  Christian Weiske  <cweiske@cweiske.de>
+
+	* Add support for elasticsearch 2.0
+	* Add text file detection for unknown file extensions
+	* Release version 0.7.0
+
 2015-07-15  Christian Weiske  <cweiske@cweiske.de>
 
 	* Fix crash when renaming file

@@ -8,14 +8,14 @@
   -->
   <property file="build.properties" />
 
-  <property name="version-m"  value="0.6" />
-  <property name="version"    value="0.6.1" />
+  <property name="version-m"  value="0.7" />
+  <property name="version"    value="0.7.0" />
   <property name="stability"  value="beta" />
   <property name="releasenotes" value="
-Version 0.6.1 - 2015-07-15
+Version 0.7.0 - 2015-11-05
 --------------------------
-* Fix crash when renaming file
-* Fix jumping to file anchor after file rename
+* Add support for elasticsearch 2.0
+* Add text file detection for unknown file extensions
 " />
   <property name="libdir"      value="${phing.dir}/lib"/>
 

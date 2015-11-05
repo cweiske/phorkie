@@ -1,3 +1,9 @@
+Version 0.7.0 - 2015-11-05
+--------------------------
+* Add support for elasticsearch 2.0
+* Add text file detection for unknown file extensions
+
+
 Version 0.6.1 - 2015-07-15
 --------------------------
 * Fix crash when renaming file
