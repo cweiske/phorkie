@@ -200,9 +200,12 @@ class File
         while (false !== ($char = fgetc($fp)) && ++$pos < 100) {
             $data .= $char;
             if (!$hasMb && ord($char) > 128) {
+                fclose($fp);
                 return false;
             }
         }
+        fclose($fp);
+
         if (!$hasMb) {
             return true;
         }
