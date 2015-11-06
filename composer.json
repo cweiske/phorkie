@@ -17,10 +17,6 @@
         },
         { 
             "type": "pear", 
-            "url": "zustellzentrum.cweiske.de" 
-        },
-        { 
-            "type": "pear", 
             "url": "pear2.php.net" 
         } 
     ], 
@@ -32,7 +28,7 @@
         "pear-pear.php.net/Services_Libravatar": "~0.2",
         "pear-pear.php.net/VersionControl_Git": "~0.4",
 
-        "pear-zustellzentrum.cweiske.de/MIME_Type_PlainDetect": ">=0.0.2",
+        "cweiske/mime_type_plaindetect": "^0.0.2",
 
         "pear-pear2.php.net/PEAR2_Services_Linkback": "~0.2",
 
