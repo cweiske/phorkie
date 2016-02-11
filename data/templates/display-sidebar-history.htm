@@ -8,7 +8,7 @@
   <img src="phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
   {% endfor %}
   {% endspaceless %}
-  <a class="hash" href="{{repo.getLink('revision', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
+  <a class="hash" rel="nofollow" href="{{repo.getLink('revision', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
   <img class="avatar-tiny" src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20" height="20"/>
   <span class="nobr" title="{{commit.committerTime|date('c')}}">
    <span class="indent visible-tablet"></span>

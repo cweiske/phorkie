@@ -4,7 +4,7 @@
   {% for toolinfo in file.getToolInfos %}
   <a class="btn btn-mini" href="{{toolinfo.getLink(file)}}" style="float: right;">{{toolinfo.getTitle}}</a>
   {% endfor %}
-  <a class="btn btn-mini" href="{{repo.getLink('edit', file.getFilename)}}" style="float: right;" title="edit"><i class="icon-edit"></i></a>
+  <a class="btn btn-mini" href="{{repo.getLink('edit', file.getFilename)}}" style="float: right;" title="edit" rel="nofollow"><i class="icon-edit"></i></a>
   <h3 id="{{file.getAnchorName}}">{{file.getFilename}}<a class="anchorlink" href="{{repo.getLink('display')}}#{{file.getAnchorName}}"></a></h3>
  </div>
   {{file.getRenderedContent(toolres)|raw}}
