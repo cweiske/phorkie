@@ -133,7 +133,7 @@ $out .= <<<HTM
   </div>
 
   <div class="container footer">
-   <a href="//sf.net/p/phorkie/">phorkie</a>,
+   <a href="https://cweiske.de/phorkie.htm">phorkie</a>,
    the self-hosted, git-based pastebin software is available under the
    <a href="http://www.gnu.org/licenses/agpl-3.0.html">
     <abbr title="GNU Affero General Public License">AGPL</abbr></a>.

@@ -1,10 +1,13 @@
-************************************
-phorkie - PHP and Git based pastebin
-************************************
+****************************
+phorkie - Git based pastebin
+****************************
 Self-hosted pastebin software written in PHP.
 Pastes are editable, may have multiple files and are stored in git repositories.
 
-Project page: http://sourceforge.net/p/phorkie/
+`Homepage <https://cweiske.de/phorkie.htm>`__
+| `Bug tracker <https://github.com/cweiske/phorkie/issues>`__
+| `Git repository <https://git.cweiske.de/phorkie.git>`__
+· `GitHub mirror <https://github.com/cweiske/phorkie/>`__
 
 .. contents:: Table of Contents
 
@@ -43,6 +46,18 @@ Features
 - atom feed for new and updated pastes
 - notifies remote instances via linkbacks when a paste has been forked
 - text file detection for unknown file types
+
+
+========
+Download
+========
+phorkie is released as self-contained ``.phar`` file that includes
+all dependencies, as well as a normal zip file.
+
+.. LATESTRELEASE
+
+See `phorkie downloads page <http://cweiske.de/phorkie-download.htm>`_
+for all released versions.
 
 
 ============
@@ -462,6 +477,7 @@ Releasing a new version
     $ phing phar
 #. Test.
 #. Tag the release in git
-#. Upload release to sourceforge::
+#. Run the script to update the homepage
 
-    $ phing deploy-sf
+    $ cd /home/cweiske/Dev/html/cweiske.de
+    $ ./scripts/update-phorkie.sh

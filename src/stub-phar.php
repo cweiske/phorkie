@@ -9,7 +9,7 @@
  * @author    Christian Weiske <cweiske@cweiske.de>
  * @copyright 2014 Christian Weiske
  * @license   http://www.gnu.org/licenses/agpl.html GNU AGPL v3
- * @link      http://phorkie.sf.net/
+ * @link      https://cweiske.de/phorkie.htm
  */
 if (!in_array('phar', stream_get_wrappers()) || !class_exists('Phar', false)) {
     echo "Phar extension not avaiable\n";

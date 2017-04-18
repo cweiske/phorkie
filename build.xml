@@ -6,9 +6,6 @@
     tasks around phorkie, like creating a release version,
     tagging a release
   -->
-  <property file="build.properties" />
-
-  <property name="version-m"  value="0.7" />
   <property name="version"    value="0.7.0" />
   <property name="stability"  value="beta" />
   <property name="releasenotes" value="
@@ -26,9 +23,6 @@ Version 0.7.0 - 2015-11-05
   <property name="pharpath"    value="${phing.dir}/dist/${pharfile}" />
   <property name="distfile"    value="dist/${zipfile}" />
   <property name="distpkgfile" value="dist/pear/${pkgfile}" />
-
-  <property name="sfproject"   value="phorkie" />
-  <property name="sffilepath"  value="p/ph/phorkie/" />
 
   <fileset id="fs.zip" dir=".">
    <include name="data/**"/>
@@ -306,7 +300,7 @@ Version 0.7.0 - 2015-11-05
   </target>
 
 
-  <target name="build-docs" description="render documentation">
+  <target name="docs" description="render documentation">
    <rST format="html" uptodate="true">
     <fileset refid="fs.doc"/>
     <mapper type="regexp" from="^(.+?).rst$" to="dist/docs/\1.html"/>
@@ -318,36 +312,10 @@ Version 0.7.0 - 2015-11-05
   </target>
 
 
-  <target name="release" depends="check,zip,pear,deploy-sf"
-   description="Release the version on sourceforge"
+  <target name="release" depends="check,zip,pear"
+   description="Package the new version"
    >
    <!-- meta-target -->
-  </target>
-
-
-  <!--
-  /home/frs/project/p/ph/phorkie/phorkie/v0.1/
-  /home/frs/project/p/ph/phorkie/phorkie/v0.1/phorkie-v0.1.0.zip
-  /home/frs/project/p/ph/phorkie/phorkie/v0.1/phorkie-v0.1.1.zip
-  https://sourceforge.net/apps/trac/sourceforge/wiki/Release%20files%20for%20download
-  -->
-  <target name="deploy-sf" depends="check,zip,phar"
-   description="Upload release to sourceforge"
-   >
-    <delete dir="dist/deploy-sf" /><!-- make empty -->
-    <mkdir dir="dist/deploy-sf" />
-    <mkdir dir="dist/deploy-sf/v${version-m}" />
-    <copy file="${distfile}" tofile="dist/deploy-sf/v${version-m}/${zipfile}"/>
-    <copy file="${pharpath}" tofile="dist/deploy-sf/v${version-m}/${pharfile}"/>
-    <!-- test
-    <exec command="rsync -av dist/deploy-sf/ /tmp/test/" escape="false" />
-    -->
-    <exec
-     command="rsync -av -e ssh dist/deploy-sf/ ${sfuser},${sfproject}@frs.sourceforge.net:/home/frs/project/${sffilepath}/${sfproject}/"
-     escape="false" checkreturn="false"
-     />
-    <!-- rsync always returns code 23 on sourceforge releases, so we
-         can't check return values -->
   </target>
 
 
@@ -359,9 +327,6 @@ Version 0.7.0 - 2015-11-05
    description="Check variables"
    >
     <fail unless="version" message="Version not defined!" />
-    <fail unless="sfuser" message="Sourceforge username not defined!" />
-    <fail unless="sfproject" message="Sourceforge project name not defined!" />
-    <fail unless="sffilepath" message="Sourceforge project file path not defined!" />
   </target>
 
 </project>
