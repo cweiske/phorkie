@@ -143,7 +143,7 @@ class Repository
 
     public function getVc()
     {
-        return new \VersionControl_Git($this->gitDir);
+        return new \VersionControl_Git($this->workDir);
     }
 
     /**
