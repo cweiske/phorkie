@@ -1,3 +1,13 @@
+Version 0.8.0 - 2017-04-19
+--------------------------
+* Add support for git 2.11
+* Fix 'Please tell me who you are' messages
+* Fix crash on /new when a paste has been deleted
+* Fix crash on broken git repositories
+* Fix memory leak
+* Move phorkie off sourceforge
+
+
 Version 0.7.0 - 2015-11-05
 --------------------------
 * Add support for elasticsearch 2.0
