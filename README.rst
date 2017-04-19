@@ -8,6 +8,7 @@ Pastes are editable, may have multiple files and are stored in git repositories.
 | `Bug tracker <https://github.com/cweiske/phorkie/issues>`__
 | `Git repository <https://git.cweiske.de/phorkie.git>`__
 · `GitHub mirror <https://github.com/cweiske/phorkie/>`__
+| `News <https://cweiske.de/phorkie-news.htm>`__
 
 .. contents:: Table of Contents
 
