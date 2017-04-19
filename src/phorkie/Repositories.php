@@ -65,7 +65,16 @@ class Repositories
         $repos = array();
         foreach ($some as $oneDir) {
             $r = new Repository();
-            $r->loadById(substr($oneDir, 0, -4));
+            try {
+                $r->loadById(substr($oneDir, 0, -4));
+            } catch (\VersionControl_Git_Exception $e) {
+                if (strpos($e->getMessage(), 'does not have any commits') !== false) {
+                    //the git repo is broken as the initial commit
+                    // has not been finished
+                    continue;
+                }
+                throw $e;
+            }
             $repos[] = $r;
         }
         return array($repos, count($dirs), $page);
