@@ -64,7 +64,11 @@ class Database_Adapter_Elasticsearch_Search implements Database_ISearch
 
         foreach ($jRes->hits->hits as $hit) {
             $r = new Repository();
-            $r->loadById($hit->_source->id);
+            try {
+                $r->loadById($hit->_source->id);
+            } catch (Exception_NotFound $e) {
+                continue;
+            }
             $r->crdate = strtotime($hit->_source->crdate);
             $r->modate = strtotime($hit->_source->modate);
             $sres->repos[] = $r;
