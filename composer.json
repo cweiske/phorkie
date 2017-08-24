@@ -10,31 +10,21 @@
             "homepage": "http://cweiske.de/"
         }
     ],
-    "repositories": [ 
-        {
-            "type": "pear", 
-            "url": "pear.php.net" 
-        },
-        { 
-            "type": "pear", 
-            "url": "pear2.php.net" 
-        } 
-    ], 
     "require": {
-        "pear-pear.php.net/Date_HumanDiff": "~0.5",
-        "pear-pear.php.net/HTTP_Request2": "~2.2",
-        "pear-pear.php.net/Pager": "~2.4",
-        "pear-pear.php.net/OpenID": "~0.3",
-        "pear-pear.php.net/Services_Libravatar": "~0.2",
-        "pear-pear.php.net/VersionControl_Git": "~0.4",
+        "pear/date_humandiff": "~0.5",
+        "pear/http_request2": "^2.2",
+        "pear/pager": "^2.4",
+        "pear/openid": "~0.4",
+        "pear/services_libravatar": "~0.2",
+        "pear/versioncontrol_git": "~0.5",
 
-        "cweiske/mime_type_plaindetect": "^0.0.2",
+        "cweiske/mime_type_plaindetect": "^0.0.4",
 
-        "pear-pear2.php.net/PEAR2_Services_Linkback": "~0.2",
+        "pear2/services_linkback": "~0.2",
 
-        "geshi/geshi": "@dev",
+        "geshi/geshi": "^1.0.9.0",
         "michelf/php-markdown": "~1.4",
-        "twig/twig": "~1.15"
+        "twig/twig": "^1.15"
     },
     "autoload": {
         "psr-0": { "phorkie\\": "src/" }
