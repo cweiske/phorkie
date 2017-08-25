@@ -17,10 +17,10 @@ class Renderer_Geshi
          * Yes, geshi needs to be in your include path
          * We use the geshi pear package.
          */
-        if (!class_exists('\\geshi', true)) {
+        if (!class_exists('\\GeSHi', true)) {
             require_once $GLOBALS['phorkie']['cfg']['geshi'];
         }
-        $geshi = new \geshi($file->getContent(), $this->getType($file));
+        $geshi = new \GeSHi($file->getContent(), $this->getType($file));
         $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
         $geshi->set_header_type(GESHI_HEADER_PRE_TABLE);
         $geshi->enable_classes();

@@ -43,6 +43,7 @@ $GLOBALS['phorkie']['cfg'] = array(
                a paste is created, edited or deleted */
         )
     ),
+    'geshi'         => 'geshi.php',
 );
 $GLOBALS['phorkie']['auth'] = array(
     // 0 = public, no authentication, 1 = protect adds/edits/deletes,

@@ -74,7 +74,7 @@ class SetupCheck
             }
         }
 
-        if (!class_exists('geshi', true)) {
+        if (!class_exists('GeSHi', true)) {
             $geshi = stream_resolve_include_path(
                 $GLOBALS['phorkie']['cfg']['geshi']
             );
