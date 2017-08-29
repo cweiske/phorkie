@@ -1,3 +1,11 @@
+Version 0.8.1 - 2017-08-29
+--------------------------
+* Fix owner name/email tracking
+* Fix gist title resolver on some PHP configurations
+* Make composer dependency installation work fine
+* New GeSHi version 1.0.9.0
+
+
 Version 0.8.0 - 2017-04-19
 --------------------------
 * Add support for git 2.11

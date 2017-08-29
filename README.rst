@@ -67,7 +67,7 @@ Installation
 
 .phar
 =====
-Download ``phorkie-0.8.0.phar`` and put it in your web server's document root
+Download ``phorkie-0.8.1.phar`` and put it in your web server's document root
 directory.
 
 No further setup needed.
@@ -90,7 +90,7 @@ Zip package
 ===========
 1. Unzip the phorkie release file::
 
-   $ tar xjvf phorkie-0.8.0.tar.bz2
+   $ tar xjvf phorkie-0.8.1.tar.bz2
 
 2. Create the git directories::
 
