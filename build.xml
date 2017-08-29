@@ -8,16 +8,7 @@
   -->
   <property name="version"    value="0.8.0" />
   <property name="stability"  value="beta" />
-  <property name="releasenotes" value="
-Version 0.8.0 - 2017-04-19
---------------------------
-* Add support for git 2.11
-* Fix 'Please tell me who you are' messages
-* Fix crash on /new when a paste has been deleted
-* Fix crash on broken git repositories
-* Fix memory leak
-* Move phorkie off sourceforge
-" />
+
   <property name="libdir"      value="${phing.dir}/lib"/>
 
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
