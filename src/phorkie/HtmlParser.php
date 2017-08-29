@@ -174,6 +174,8 @@ class HtmlParser
     public function getHtmlTitle($url)
     {
         libxml_use_internal_errors(true);
+        //allow loading URLs in DOMDocument
+        libxml_disable_entity_loader(false);
         $doc = \DOMDocument::loadHTMLFile($url);
         if ($doc === false) {
             return null;
