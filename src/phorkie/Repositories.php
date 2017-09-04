@@ -27,12 +27,12 @@ class Repositories
 
         chdir($this->workDir);
         $dir = $this->workDir . '/' . $n . '/';
-        mkdir($dir, 0777);//FIXME
+        mkdir($dir, fileperms($this->workDir) & 0777);
         $r = new Repository();
         $r->id = $n;
         $r->workDir = $dir;
         $r->gitDir = $this->gitDir . '/' . $n . '.git/';
-        mkdir($r->gitDir, 0777);//FIXME
+        mkdir($r->gitDir, fileperms($this->gitDir) & 0777);
 
         return $r;
     }
