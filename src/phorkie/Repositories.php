@@ -23,7 +23,7 @@ class Repositories
             }
         );
         sort($dirs, SORT_NUMERIC);
-        $n = end($dirs) + 1;
+        $n = end($dirs) + mt_rand(65536, 16777216);
 
         chdir($this->workDir);
         $dir = $this->workDir . '/' . $n . '/';
