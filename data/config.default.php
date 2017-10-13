@@ -34,6 +34,7 @@ $GLOBALS['phorkie']['cfg'] = array(
     'elasticsearch' => null,
     'index'         => 'new',//"new" or "list"
     'perPage'       => 10,
+    'randomIds'     => false,
     'defaultListPage' => 'last',//a number or "last"
     'notificator'   => array(
         /* send out pingback/webmentions when a remote paste is forked */

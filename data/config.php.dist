@@ -8,6 +8,7 @@
 //$GLOBALS['phorkie']['cfg']['elasticsearch'] = 'http://localhost:9200/phorkie/';
 //$GLOBALS['phorkie']['cfg']['setupcheck'] = false;
 //$GLOBALS['phorkie']['cfg']['perPage'] = 10;
+//$GLOBALS['phorkie']['cfg']['randomIds'] = false;
 
 //$GLOBALS['phorkie']['auth']['securityLevel'] = 0;
 //$GLOBALS['phorkie']['auth']['listedUsersOnly'] = false;

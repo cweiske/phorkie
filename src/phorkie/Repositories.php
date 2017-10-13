@@ -23,7 +23,11 @@ class Repositories
             }
         );
         sort($dirs, SORT_NUMERIC);
-        $n = end($dirs) + mt_rand(65536, 16777216);
+        if ($GLOBALS['phorkie']['cfg']['randomIds']) {
+            $n = end($dirs) + mt_rand(65536, 16777216);
+        } else {
+            $n = end($dirs) + 1;
+        }
 
         chdir($this->workDir);
         $dir = $this->workDir . '/' . $n . '/';
