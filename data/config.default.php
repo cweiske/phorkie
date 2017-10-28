@@ -161,7 +161,8 @@ $GLOBALS['phorkie']['languages'] = array(
     'txt' => array(
         'title' => 'Text (plain)',
         'mime'  => 'text/plain',
-        'geshi' => 'txt'
+        'geshi' => 'txt',
+        'renderer' => '\\phorkie\\Renderer_Plaintext'
     ),
     'ts' => array(
         'title' => 'TypoScript',

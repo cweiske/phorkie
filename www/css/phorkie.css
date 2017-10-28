@@ -110,6 +110,9 @@ h1 {
     margin: 0px;
     margin-bottom: 2ex;
 }
+.code pre.txt {
+    white-space: pre-wrap;
+}
 .code {
     overflow-x: auto;
 }
