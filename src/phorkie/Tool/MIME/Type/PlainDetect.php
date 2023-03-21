@@ -12,22 +12,18 @@ class Tool_MIME_Type_PlainDetect extends \MIME_Type_PlainDetect
     public static function getMagicFile()
     {
         $rootdir = __DIR__ . '/../../../../../';
-        if (file_exists($rootdir . '/lib/PEAR.php')) {
-            if (!\Phar::running()) {
-                return $rootdir . '/lib/data/programming.magic';
-            } else {
-                //magic file within a .phar does not work:
-                // https://bugs.php.net/bug.php?id=67556
-                //put it outside
-                $target = '/tmp/phorkie-programming.magic';
-                if (!file_exists($target)) {
-                    copy(
-                        $rootdir . '/lib/data/programming.magic',
-                        $target
-                    );
-                }
-                return $target;
+        $magicPath = $rootdir . '/lib/cweiske/mime_type_plaindetect/data/programming.magic';
+        if (!\Phar::running()) {
+            return $magicPath;
+        } else {
+            //magic file within a .phar does not work:
+            // https://bugs.php.net/bug.php?id=67556
+            //put it outside
+            $target = '/tmp/phorkie-programming.magic';
+            if (!file_exists($target)) {
+                copy($magicPath, $target);
             }
+            return $target;
         }
         return parent::getMagicFile();
     }
