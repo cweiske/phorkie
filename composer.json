@@ -11,6 +11,8 @@
         }
     ],
     "require": {
+        "ext-mbstring": "*",
+
         "pear/date_humandiff": "~0.5",
         "pear/http_request2": "^2.2",
         "pear/pager": "^2.4",
