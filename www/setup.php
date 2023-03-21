@@ -99,7 +99,7 @@ HTM;
 if (array_sum($GLOBALS['phorkie']['cfgfiles']) == 0) {
     //no config file loaded
     reset($GLOBALS['phorkie']['cfgfiles']);
-    list($cfgFilePath, ) = each($GLOBALS['phorkie']['cfgfiles']);
+    $cfgFilePath = key($GLOBALS['phorkie']['cfgfiles']);
 
     $cfgFilePath = Tools::foldPath($cfgFilePath);
     $cfgFileTemplate = htmlspecialchars(

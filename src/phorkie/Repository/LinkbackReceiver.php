@@ -46,7 +46,8 @@ class Repository_LinkbackReceiver
         $remoteCloneUrl = $remoteTitle = null;
         if (count($arRemoteCloneUrls)) {
             reset($arRemoteCloneUrls);
-            list($remoteCloneUrl, $remoteTitle) = each($arRemoteCloneUrls);
+            $remoteCloneUrl = key($arRemoteCloneUrls);
+            $remoteTitle    = current($arRemoteCloneUrls);
         }
         $remoteid = 'fork-' . uniqid();
         //check if we already know this remote
