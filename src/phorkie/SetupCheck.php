@@ -4,15 +4,15 @@ namespace phorkie;
 class SetupCheck
 {
     protected $deps = array(
-        'pear.php.net/VersionControl_Git'  => 'VersionControl_Git',
-        'pear.twig-project.org/Twig'       => 'Twig_Autoloader',
-        'pear.php.net/Date_HumanDiff'      => 'Date_HumanDiff',
-        'pear.php.net/HTTP_Request2'       => 'HTTP_Request2',
-        'pear.php.net/OpenID'              => 'OpenID',
-        'pear.php.net/Pager'               => 'Pager',
-        'pear.php.net/Services_Libravatar' => 'Services_Libravatar',
-        'pear2.php.net/PEAR2_Services_Linkback'  => '\\PEAR2\\Services\\Linkback\\Client',
-        'zustellzentrum.cweiske.de/MIME_Type_PlainDetect' => 'MIME_Type_PlainDetect',
+        'pear/versionControl_git'  => 'VersionControl_Git',
+        'twig/twig'                => 'Twig_Autoloader',
+        'pear/date_humanDiff'      => 'Date_HumanDiff',
+        'pear/http_request2'       => 'HTTP_Request2',
+        'pear/openid'              => 'OpenID',
+        'pear/pager'               => 'Pager',
+        'pear/services_libravatar' => 'Services_Libravatar',
+        'pear2/services_linkback'  => '\\PEAR2\\Services\\Linkback\\Client',
+        'cweiske/mime_type_plaindetect' => 'MIME_Type_PlainDetect',
     );
 
     protected $writableDirs;
@@ -70,7 +70,7 @@ class SetupCheck
     {
         foreach ($this->deps as $package => $class) {
             if (!class_exists($class, true)) {
-                $this->fail('PEAR package not installed: ' . $package);
+                $this->fail('Composer package not installed: ' . $package);
             }
         }
 
