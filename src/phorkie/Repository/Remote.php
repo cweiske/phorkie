@@ -73,7 +73,7 @@ class Repository_Remote
     public function isLocal()
     {
         return isset($this->arConfig['url'])
-            && $this->arConfig['url']{0} == '/';
+            && $this->arConfig['url'][0] == '/';
     }
 
     /**

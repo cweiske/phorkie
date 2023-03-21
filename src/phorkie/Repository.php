@@ -210,7 +210,7 @@ class Repository
             ->execute();
         $files = explode("\n", trim($output));
         foreach ($files as &$file) {
-            if ($file{0} == '"') {
+            if ($file[0] == '"') {
                 $file = $this->decodeFileName($file);
             }
         }
