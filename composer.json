@@ -23,7 +23,7 @@
 
         "cweiske/mime_type_plaindetect": "^0.0.4",
 
-        "pear2/services_linkback": "~0.2",
+        "pear2/services_linkback": "^0.4.0",
 
         "geshi/geshi": "^1.0.9.0",
         "michelf/php-markdown": "~1.4",

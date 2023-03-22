@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc3f72841ace1982e888561354b28d0a",
+    "content-hash": "2e5a8c8125e09999078e5c2b75041cda",
     "packages": [
         {
             "name": "cweiske/mime_type_plaindetect",
@@ -343,20 +343,20 @@
         },
         {
             "name": "pear/http2",
-            "version": "v1.1.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/HTTP2.git",
-                "reference": "b87527415aa1439d5abc2c620a37f0047c3b1568"
+                "reference": "72e15b4faa86f6109c6fc3aa82c5515b6453b3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/HTTP2/zipball/b87527415aa1439d5abc2c620a37f0047c3b1568",
-                "reference": "b87527415aa1439d5abc2c620a37f0047c3b1568",
+                "url": "https://api.github.com/repos/pear/HTTP2/zipball/72e15b4faa86f6109c6fc3aa82c5515b6453b3b5",
+                "reference": "72e15b4faa86f6109c6fc3aa82c5515b6453b3b5",
                 "shasum": ""
             },
             "require-dev": {
-                "pear/pear-core": "*"
+                "phpunit/phpunit": "^9"
             },
             "type": "library",
             "autoload": {
@@ -365,9 +365,6 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "./"
-            ],
             "license": [
                 "BSD-2-Clause"
             ],
@@ -389,7 +386,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTTP2",
                 "source": "https://github.com/pear/HTTP2"
             },
-            "time": "2016-08-10T19:11:15+00:00"
+            "time": "2023-03-22T20:22:11+00:00"
         },
         {
             "name": "pear/http_request2",
@@ -1057,25 +1054,27 @@
         },
         {
             "name": "pear2/services_linkback",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear2/Services_Linkback.git",
-                "reference": "afee0b32c171c999e20ac199361eb6df650f6483"
+                "reference": "61790889871cae0bc6e54adb2637b9e0ec93275f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear2/Services_Linkback/zipball/afee0b32c171c999e20ac199361eb6df650f6483",
-                "reference": "afee0b32c171c999e20ac199361eb6df650f6483",
+                "url": "https://api.github.com/repos/pear2/Services_Linkback/zipball/61790889871cae0bc6e54adb2637b9e0ec93275f",
+                "reference": "61790889871cae0bc6e54adb2637b9e0ec93275f",
                 "shasum": ""
             },
             "require": {
-                "pear/http2": "~1.1",
-                "pear/http_request2": "~2.2",
-                "pear/net_url2": "~2.2"
+                "ext-xmlrpc": "*",
+                "pear/http2": "^2.0",
+                "pear/http_request2": "^2.5",
+                "pear/net_url2": "^2.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "*",
+                "pear/stream_var": "^2.0",
+                "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "~2.6"
             },
             "type": "library",
@@ -1100,9 +1099,9 @@
             "support": {
                 "email": "pear-general@lists.php.net",
                 "issues": "https://github.com/pear2/Services_Linkback/issues/",
-                "source": "https://github.com/pear2/Services_Linkback/tree/v0.3.0"
+                "source": "https://github.com/pear2/Services_Linkback/tree/v0.4.0"
             },
-            "time": "2016-08-10T19:33:01+00:00"
+            "time": "2023-03-22T21:18:04+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
