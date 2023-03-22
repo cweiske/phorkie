@@ -16,13 +16,11 @@ class Repositories
     {
         chdir($this->gitDir);
         $dirs = glob('*.git', GLOB_ONLYDIR);
-        array_walk(
-            $dirs,
-            function ($dir) {
-                return substr($dir, 0, -4);
-            }
-        );
+        foreach ($dirs as $key => $dir) {
+            $dirs[$key] = substr($dir, 0, -4);
+        }
         sort($dirs, SORT_NUMERIC);
+
         if ($GLOBALS['phorkie']['cfg']['randomIds']) {
             $n = end($dirs) + mt_rand(65536, 16777216);
         } else {
