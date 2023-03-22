@@ -9,10 +9,7 @@ class Repositories
         $this->gitDir  = $GLOBALS['phorkie']['cfg']['gitdir'];
     }
 
-    /**
-     * @return Repository
-     */
-    public function createNew()
+    public function createNew(): Repository
     {
         chdir($this->gitDir);
         $dirs = glob('*.git', GLOB_ONLYDIR);
@@ -47,7 +44,7 @@ class Repositories
      *
      * @return array Array of Repositories first, number of repositories second
      */
-    public function getList($page = 0, $perPage = 10)
+    public function getList($page = 0, $perPage = 10): array
     {
         chdir($this->gitDir);
         $dirs = glob('*.git', GLOB_ONLYDIR);
