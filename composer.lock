@@ -1,0 +1,1279 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "dc3f72841ace1982e888561354b28d0a",
+    "packages": [
+        {
+            "name": "cweiske/mime_type_plaindetect",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.cweiske.de/MIME_Type_PlainDetect.git",
+                "reference": "689627d646f09f451405249d089768ee6df10078"
+            },
+            "require": {
+                "pear/mime_type": "~1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@cweiske.de",
+                    "homepage": "http://cweiske.de/"
+                }
+            ],
+            "description": "Detect MIME type of text files by their content",
+            "homepage": "http://git.cweiske.de/MIME_Type_PlainDetect.git/",
+            "support": {
+                "email": "cweiske@cweiske.de",
+                "issues": "https://github.com/cweiske/MIME_Type_PlainDetect/issues",
+                "source": "https://github.com/cweiske/MIME_Type_PlainDetect"
+            },
+            "time": "2015-11-06T10:54:38+00:00"
+        },
+        {
+            "name": "geshi/geshi",
+            "version": "v1.0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeSHi/geshi-1.0.git",
+                "reference": "fd22ab78481bf90337862b590e6f7517863926b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeSHi/geshi-1.0/zipball/fd22ab78481bf90337862b590e6f7517863926b8",
+                "reference": "fd22ab78481bf90337862b590e6f7517863926b8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/geshi/",
+                    "src/geshi.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Benny Baumann",
+                    "email": "BenBE@geshi.org",
+                    "homepage": "http://blog.benny-baumann.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generic Syntax Highlighter",
+            "homepage": "http://qbnz.com/highlighter/",
+            "support": {
+                "forum": "https://lists.sourceforge.net/lists/listinfo/geshi-users",
+                "irc": "irc://irc.freenode.org/geshi",
+                "issues": "https://sourceforge.net/p/geshi/feature-requests/",
+                "source": "https://github.com/GeSHi/geshi-1.0/tree/v1.0.9.1"
+            },
+            "time": "2019-10-20T20:54:46+00:00"
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "5024d623c1a057dcd2d076d25b7d270a1d0d55f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/5024d623c1a057dcd2d076d25b7d270a1d0d55f3",
+                "reference": "5024d623c1a057dcd2d076d25b7d270a1d0d55f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.3 <5.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Michelf\\": "Michelf/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "https://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "https://daringfireball.net/"
+                }
+            ],
+            "description": "PHP Markdown",
+            "homepage": "https://michelf.ca/projects/php-markdown/",
+            "keywords": [
+                "markdown"
+            ],
+            "support": {
+                "issues": "https://github.com/michelf/php-markdown/issues",
+                "source": "https://github.com/michelf/php-markdown/tree/1.9.1"
+            },
+            "time": "2021-11-24T02:52:38+00:00"
+        },
+        {
+            "name": "pear/cache_lite",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Cache_Lite.git",
+                "reference": "fc7c6703cfbddc55c80c5ae3926dcc80c1d993f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Cache_Lite/zipball/fc7c6703cfbddc55c80c5ae3926dcc80c1d993f9",
+                "reference": "fc7c6703cfbddc55c80c5ae3926dcc80c1d993f9",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "^1.10",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Cache/Lite.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Markus Tacker",
+                    "homepage": "http://pear.php.net/user/tacker"
+                },
+                {
+                    "name": "Fabien Marty",
+                    "homepage": "http://pear.php.net/user/fab"
+                }
+            ],
+            "description": "Fast and safe little cache system",
+            "homepage": "https://github.com/pear/Cache_Lite",
+            "keywords": [
+                "cache"
+            ],
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Cache_Lite",
+                "source": "https://github.com/pear/Cache_Lite"
+            },
+            "time": "2023-03-21T09:15:15+00:00"
+        },
+        {
+            "name": "pear/console_getopt",
+            "version": "v1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Console_Getopt.git",
+                "reference": "a41f8d3e668987609178c7c4a9fe48fecac53fa0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Console_Getopt/zipball/a41f8d3e668987609178c7c4a9fe48fecac53fa0",
+                "reference": "a41f8d3e668987609178c7c4a9fe48fecac53fa0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Console": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Zmievski",
+                    "email": "andrei@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Stig Bakken",
+                    "email": "stig@php.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Greg Beaver",
+                    "email": "cellog@php.net",
+                    "role": "Helper"
+                }
+            ],
+            "description": "More info available on: http://pear.php.net/package/Console_Getopt",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Console_Getopt",
+                "source": "https://github.com/pear/Console_Getopt"
+            },
+            "time": "2019-11-20T18:27:48+00:00"
+        },
+        {
+            "name": "pear/crypt_diffiehellman",
+            "version": "v0.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Crypt_DiffieHellman.git",
+                "reference": "506197b04bd06584aa1d307b538b1248ba841df9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Crypt_DiffieHellman/zipball/506197b04bd06584aa1d307b538b1248ba841df9",
+                "reference": "506197b04bd06584aa1d307b538b1248ba841df9",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "suggest": {
+                "ext-gmp": "May require the gmp PHP extension"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Crypt": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Bill Shupp",
+                    "email": "shupp@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Implementation of Diffie-Hellman Key Exchange cryptographic protocol for PHP5",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Crypt_DiffieHellman",
+                "source": "https://github.com/pear/Crypt_DiffieHellman"
+            },
+            "time": "2017-08-24T19:11:54+00:00"
+        },
+        {
+            "name": "pear/date_humandiff",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Date_HumanDiff.git",
+                "reference": "79a54479159ab19aedf2fc9437f1363eaa687d53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Date_HumanDiff/zipball/79a54479159ab19aedf2fc9437f1363eaa687d53",
+                "reference": "79a54479159ab19aedf2fc9437f1363eaa687d53",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear_exception": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Generate textual time differences that are easily understandable by humans.",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Date_HumanDiff",
+                "source": "https://github.com/pear/Date_HumanDiff"
+            },
+            "time": "2014-03-23T12:03:00+00:00"
+        },
+        {
+            "name": "pear/http2",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/HTTP2.git",
+                "reference": "b87527415aa1439d5abc2c620a37f0047c3b1568"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/HTTP2/zipball/b87527415aa1439d5abc2c620a37f0047c3b1568",
+                "reference": "b87527415aa1439d5abc2c620a37f0047c3b1568",
+                "shasum": ""
+            },
+            "require-dev": {
+                "pear/pear-core": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTTP2": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Wallner",
+                    "email": "mike@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Philippe Jausions",
+                    "email": "jausions@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Miscellaneous HTTP utilities",
+            "homepage": "http://pear.php.net/package/HTTP2",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTTP2",
+                "source": "https://github.com/pear/HTTP2"
+            },
+            "time": "2016-08-10T19:11:15+00:00"
+        },
+        {
+            "name": "pear/http_request2",
+            "version": "v2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/HTTP_Request2.git",
+                "reference": "db4ce7844f838d3adca0513a77420c0fec22ed2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/HTTP_Request2/zipball/db4ce7844f838d3adca0513a77420c0fec22ed2d",
+                "reference": "db4ce7844f838d3adca0513a77420c0fec22ed2d",
+                "shasum": ""
+            },
+            "require": {
+                "pear/net_url2": "^2.2.0",
+                "pear/pear_exception": "^1.0.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "yoast/phpunit-polyfills": "^1.0.0"
+            },
+            "suggest": {
+                "ext-curl": "Allows using cURL as a request backend.",
+                "ext-fileinfo": "Adds support for looking up mime-types using finfo.",
+                "ext-openssl": "Allows handling SSL requests when not using cURL.",
+                "ext-zlib": "Allows handling gzip compressed responses."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTTP_Request2": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Borzov",
+                    "email": "avb@php.net"
+                }
+            ],
+            "description": "Provides an easy way to perform HTTP requests.",
+            "homepage": "https://pear.php.net/package/HTTP_Request2",
+            "keywords": [
+                "PEAR",
+                "curl",
+                "http",
+                "request"
+            ],
+            "support": {
+                "docs": "https://pear.php.net/manual/en/package.http.http-request2.php",
+                "issues": "https://github.com/pear/HTTP_Request2/issues",
+                "source": "https://github.com/pear/HTTP_Request2"
+            },
+            "time": "2022-01-06T18:20:25+00:00"
+        },
+        {
+            "name": "pear/mime_type",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/MIME_Type.git",
+                "reference": "fcf331a1202dff64599342a6dee02bbe3ef145ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/MIME_Type/zipball/fcf331a1202dff64599342a6dee02bbe3ef145ac",
+                "reference": "fcf331a1202dff64599342a6dee02bbe3ef145ac",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "^1.9.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "suggest": {
+                "pear/system_command": "Install optionally via your project's composer.json"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MIME": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Ian Eure",
+                    "email": "ieure@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Detect the MIME Type of a file",
+            "homepage": "http://pear.php.net/package/MIME_Type",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=MIME_Type",
+                "source": "https://github.com/pear/MIME_Type"
+            },
+            "time": "2015-11-04T19:57:46+00:00"
+        },
+        {
+            "name": "pear/net_url2",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Net_URL2.git",
+                "reference": "07fd055820dbf466ee3990abe96d0e40a8791f9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Net_URL2/zipball/07fd055820dbf466ee3990abe96d0e40a8791f9d",
+                "reference": "07fd055820dbf466ee3990abe96d0e40a8791f9d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "Net/URL2.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Coallier",
+                    "email": "davidc@php.net"
+                },
+                {
+                    "name": "Tom Klingenberg",
+                    "email": "tkli@php.net"
+                },
+                {
+                    "name": "Christian Schmidt",
+                    "email": "chmidt@php.net"
+                }
+            ],
+            "description": "Class for parsing and handling URL. Provides parsing of URLs into their constituent parts (scheme, host, path etc.), URL generation, and resolving of relative URLs.",
+            "homepage": "https://github.com/pear/Net_URL2",
+            "keywords": [
+                "PEAR",
+                "net",
+                "networking",
+                "rfc3986",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "issues": "https://pear.php.net/bugs/search.php?cmd=display&package_name[]=Net_URL2",
+                "source": "https://github.com/pear/Net_URL2"
+            },
+            "time": "2017-08-25T06:16:11+00:00"
+        },
+        {
+            "name": "pear/openid",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/openid.git",
+                "reference": "8671994c80ff8fd7a488440f3920cf2bb3f49fed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/openid/zipball/8671994c80ff8fd7a488440f3920cf2bb3f49fed",
+                "reference": "8671994c80ff8fd7a488440f3920cf2bb3f49fed",
+                "shasum": ""
+            },
+            "require": {
+                "pear/cache_lite": "^2.0",
+                "pear/crypt_diffiehellman": "~0.2.5",
+                "pear/http_request2": "^2.3.0",
+                "pear/net_url2": "^2.2.0",
+                "pear/services_yadis": ">=0.6.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "pear/log": "^1.13",
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Bill Shupp",
+                    "email": "shupp@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP implementation of OpenID 1.1 and 2.0",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=OpenID",
+                "source": "https://github.com/pear/OpenID"
+            },
+            "time": "2023-03-21T14:02:46+00:00"
+        },
+        {
+            "name": "pear/pager",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Pager.git",
+                "reference": "c71b2b07e73f8afc998f9b1e90fd1c9777e5d345"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Pager/zipball/c71b2b07e73f8afc998f9b1e90fd1c9777e5d345",
+                "reference": "c71b2b07e73f8afc998f9b1e90fd1c9777e5d345",
+                "shasum": ""
+            },
+            "require-dev": {
+                "simpletest/simpletest": "~1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Pager": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Lorenzo Alberton",
+                    "email": "l.alberton@quipo.it",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Richard Heyes",
+                    "email": "richard@phpguru.org",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Data paging class",
+            "homepage": "http://pear.php.net/package/Pager",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Pager",
+                "source": "https://github.com/pear/Pager"
+            },
+            "time": "2017-06-19T15:45:20+00:00"
+        },
+        {
+            "name": "pear/pear-core-minimal",
+            "version": "v1.10.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/pear-core-minimal.git",
+                "reference": "68d0d32ada737153b7e93b8d3c710ebe70ac867d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/68d0d32ada737153b7e93b8d3c710ebe70ac867d",
+                "reference": "68d0d32ada737153b7e93b8d3c710ebe70ac867d",
+                "shasum": ""
+            },
+            "require": {
+                "pear/console_getopt": "~1.4",
+                "pear/pear_exception": "~1.0"
+            },
+            "replace": {
+                "rsky/pear-core-min": "self.version"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Minimal set of PEAR core files to be used as composer dependency",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=PEAR",
+                "source": "https://github.com/pear/pear-core-minimal"
+            },
+            "time": "2021-08-10T22:31:03+00:00"
+        },
+        {
+            "name": "pear/pear_exception",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/PEAR_Exception.git",
+                "reference": "b14fbe2ddb0b9f94f5b24cf08783d599f776fff0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/b14fbe2ddb0b9f94f5b24cf08783d599f776fff0",
+                "reference": "b14fbe2ddb0b9f94f5b24cf08783d599f776fff0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<9"
+            },
+            "type": "class",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PEAR/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "."
+            ],
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Helgi Thormar",
+                    "email": "dufuz@php.net"
+                },
+                {
+                    "name": "Greg Beaver",
+                    "email": "cellog@php.net"
+                }
+            ],
+            "description": "The PEAR Exception base class.",
+            "homepage": "https://github.com/pear/PEAR_Exception",
+            "keywords": [
+                "exception"
+            ],
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=PEAR_Exception",
+                "source": "https://github.com/pear/PEAR_Exception"
+            },
+            "time": "2021-03-21T15:43:46+00:00"
+        },
+        {
+            "name": "pear/services_libravatar",
+            "version": "v0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Services_Libravatar.git",
+                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Services_Libravatar/zipball/8b9fda8c896afb18fdedc60ead29ee305ea222e9",
+                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Services": "./Services/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Melissa Draper",
+                    "email": "melissa@meldraweb.com",
+                    "role": "Lead"
+                }
+            ],
+            "description": "API interfacing class for libravatar.org",
+            "homepage": "http://pear.php.net/package/Services_Libravatar",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Services_Libravatar",
+                "source": "https://github.com/pear/Services_Libravatar"
+            },
+            "time": "2017-08-23T20:23:02+00:00"
+        },
+        {
+            "name": "pear/services_yadis",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Services_Yadis.git",
+                "reference": "e4e1b560dc973cee384006776f54261e9ffedda3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Services_Yadis/zipball/e4e1b560dc973cee384006776f54261e9ffedda3",
+                "reference": "e4e1b560dc973cee384006776f54261e9ffedda3",
+                "shasum": ""
+            },
+            "require": {
+                "pear/http_request2": "^2.2.0",
+                "pear/net_url2": "^2.2.0",
+                "pear/validate": ">=0.8.7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Services": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Bill Shupp",
+                    "email": "shupp@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Implementation of the Yadis Specification 1.0 protocol",
+            "homepage": "http://pear.php.net/package/Services_Yadis",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Services_Yadis",
+                "source": "https://github.com/pear/Services_Yadis"
+            },
+            "time": "2023-03-21T13:08:05+00:00"
+        },
+        {
+            "name": "pear/system_command",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/System_Command.git",
+                "reference": "b0dfe33bbaff50c18bdc91f569d81ebfe195fed5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/System_Command/zipball/b0dfe33bbaff50c18bdc91f569d81ebfe195fed5",
+                "reference": "b0dfe33bbaff50c18bdc91f569d81ebfe195fed5",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "^1.10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "System/Command.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "PHP-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Constantine",
+                    "email": "cconstantine@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "PHP commandline execution interface",
+            "homepage": "http://pear.php.net/package/System_Command",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=System_Command",
+                "source": "https://github.com/pear/System_Command"
+            },
+            "time": "2023-03-21T16:37:05+00:00"
+        },
+        {
+            "name": "pear/validate",
+            "version": "v0.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Validate.git",
+                "reference": "38dde6fb2f407909c27d183dc35b579826591b2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Validate/zipball/38dde6fb2f407909c27d183dc35b579826591b2c",
+                "reference": "38dde6fb2f407909c27d183dc35b579826591b2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "suggest": {
+                "pear/date": "Install optionally via your project's composer.json"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Validate": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pierre-Alain Joye",
+                    "email": "pierre.php@gmail.com",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Thomas V.V.Cox",
+                    "email": "cox@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Helgi Þormar Þorbjörnsson",
+                    "email": "dufuz@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Amir Mohammad Saied",
+                    "email": "amirsaied@gmail.com",
+                    "role": "Lead"
+                },
+                {
+                    "name": "David Coallier",
+                    "email": "david@echolibre.com",
+                    "role": "Lead"
+                },
+                {
+                    "name": "bertrand Gugger",
+                    "email": "bertrand@toggg.com",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Stefan Neufeind",
+                    "email": "pear.neufeind@speedpartner.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Validate numbers, email, strings, dates, URIs and more",
+            "homepage": "http://pear.php.net/package/Validate",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Validate",
+                "source": "https://github.com/pear/Validate"
+            },
+            "time": "2023-03-21T11:28:53+00:00"
+        },
+        {
+            "name": "pear/versioncontrol_git",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/VersionControl_Git.git",
+                "reference": "c32d75d237974297f052ceb781dfc2eb817f7b59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/VersionControl_Git/zipball/c32d75d237974297f052ceb781dfc2eb817f7b59",
+                "reference": "c32d75d237974297f052ceb781dfc2eb817f7b59",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "^1.9",
+                "pear/pear_exception": "~1.0.0",
+                "php": "^7.3 || ^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "VersionControl": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Kousuke Ebihara",
+                    "email": "ebihara@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "VersionControl_Git is a library that provides OO interface to handle Git repository.",
+            "support": {
+                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=VersionControl_Git",
+                "source": "https://github.com/pear/VersionControl_Git"
+            },
+            "time": "2023-03-22T19:55:38+00:00"
+        },
+        {
+            "name": "pear2/services_linkback",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear2/Services_Linkback.git",
+                "reference": "afee0b32c171c999e20ac199361eb6df650f6483"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear2/Services_Linkback/zipball/afee0b32c171c999e20ac199361eb6df650f6483",
+                "reference": "afee0b32c171c999e20ac199361eb6df650f6483",
+                "shasum": ""
+            },
+            "require": {
+                "pear/http2": "~1.1",
+                "pear/http_request2": "~2.2",
+                "pear/net_url2": "~2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PEAR2\\Services\\Linkback\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "homepage": "http://cweiske.de/"
+                }
+            ],
+            "description": "Pingback+webmention client and server implementation ",
+            "homepage": "http://pear2.php.net/PEAR2_Services_Linkback",
+            "support": {
+                "email": "pear-general@lists.php.net",
+                "issues": "https://github.com/pear2/Services_Linkback/issues/",
+                "source": "https://github.com/pear2/Services_Linkback/tree/v0.3.0"
+            },
+            "time": "2016-08-10T19:33:01+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.27.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.27-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-11-03T14:55:06+00:00"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.44.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "0887422319889e442458e48e2f3d9add1a172ad5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/0887422319889e442458e48e2f3d9add1a172ad5",
+                "reference": "0887422319889e442458e48e2f3d9add1a172ad5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.44-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Twig Team",
+                    "role": "Contributors"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "support": {
+                "issues": "https://github.com/twigphp/Twig/issues",
+                "source": "https://github.com/twigphp/Twig/tree/v1.44.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-09-28T08:38:36+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-mbstring": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

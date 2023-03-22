@@ -1,6 +1,5 @@
 /build.properties
 /cache/
-/composer.lock
 /data/config.php
 /dist/
 /lib/

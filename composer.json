@@ -18,7 +18,7 @@
         "pear/pager": "^2.4",
         "pear/openid": "~0.5",
         "pear/services_libravatar": "~0.2",
-        "pear/versioncontrol_git": "~0.5",
+        "pear/versioncontrol_git": "^0.7.0",
         "pear/net_url2": "^2.2.2",
 
         "cweiske/mime_type_plaindetect": "^0.0.4",

@@ -167,13 +167,20 @@ class Repository_Post
                     'author',
                     $sessionData['name'] . ' <' . $sessionData['email'] . '>'
                 )
+                ->setEnvVar('GIT_AUTHOR_NAME', $sessionData['name'])
+                ->setEnvVar('GIT_AUTHOR_EMAIL', $sessionData['email'])
+                ->setEnvVar('GIT_COMMITTER_NAME', $sessionData['name'])
+                ->setEnvVar('GIT_COMMITTER_EMAIL', $sessionData['email'])
                 ->execute();
             //FIXME: git needs ref BEFORE add
             //quick hack until http://pear.php.net/bugs/bug.php?id=19605 is fixed
-            //also waiting for https://pear.php.net/bugs/bug.php?id=19623
             $vc->getCommand('notes --ref=identity add')
                 ->setOption('force')
                 ->setOption('message', "$notes")
+                ->setEnvVar('GIT_AUTHOR_NAME', $sessionData['name'])
+                ->setEnvVar('GIT_AUTHOR_EMAIL', $sessionData['email'])
+                ->setEnvVar('GIT_COMMITTER_NAME', $sessionData['name'])
+                ->setEnvVar('GIT_COMMITTER_EMAIL', $sessionData['email'])
                 ->execute();
             //update info for dumb git HTTP transport
             //the post-update hook should do that IMO, but does not somehow
