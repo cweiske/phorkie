@@ -92,11 +92,13 @@ class HtmlParser
         //$sx = simplexml_load_file($url);
 
         libxml_use_internal_errors(true);
+        $domDoc = new \DOMDocument();
         if ($html === null) {
-            $sx = simplexml_import_dom(\DOMDocument::loadHTMLFile($url));
+            $domDoc->loadHTMLFile($url);
         } else {
-            $sx = simplexml_import_dom(\DOMDocument::loadHTML($html));
+            $domDoc->loadHTML($html);
         }
+        $sx = simplexml_import_dom($domDoc);
         //FIXME: handle network error
 
         $elems = $sx->xpath('//*[@rel="vcs-git"]');
