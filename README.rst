@@ -133,39 +133,14 @@ It requires the following programs to be installed
 on your machine:
 
 - Git v1.7.5 or later
-- PHP v5.3.0 or later
+- PHP v8.0.0 or later
 
-  - optionally the ``mbstring`` extension
-- PEAR v1.9.2 or later
+  - with the ``mbstring`` extension
+- A dozen of libraries
 
-::
+Use composer to install all dependencies::
 
-  $ pear install versioncontrol_git-alpha
-  $ pear install services_libravatar-alpha
-  $ pear install http_request2
-  $ pear install pager
-  $ pear install date_humandiff-alpha
-  $ pear install openid-alpha
-
-  $ pear channel-discover pear.twig-project.org
-  $ pear install twig/Twig
-
-  $ pear channel-discover pear.geshi.org
-  $ pear install geshi/geshi
-
-  $ pear channel-discover zustellzentrum.cweiske.de
-  $ pear install zz/mime_type_plaindetect-alpha
-
-  $ pear channel-discover pear.michelf.ca
-  $ pear install michelf/Markdown
-
-  $ pear channel-discover pear2.php.net
-  $ pear install pear2/pear2_services_linkback-alpha
-
-
-You can use composer to install all dependencies automatically::
-
-  $ composer install
+  $ composer install --no-dev
 
 Note that the ``.phar`` package already contains all dependencies.
 

@@ -6,18 +6,16 @@
     tasks around phorkie, like creating a release version,
     tagging a release
   -->
-  <property name="version"    value="0.8.1" />
+  <property name="version"    value="0.9.0" />
   <property name="stability"  value="beta" />
 
   <property name="libdir"      value="${phing.dir}/lib"/>
 
   <property name="zipfile"     value="${phing.project.name}-${version}.tar.bz2" />
   <property name="pharfile"    value="${phing.project.name}-${version}.phar" />
-  <property name="pkgfile"     value="${phing.project.name}-${version}.tgz" />
 
   <property name="pharpath"    value="${phing.dir}/dist/${pharfile}" />
   <property name="distfile"    value="dist/${zipfile}" />
-  <property name="distpkgfile" value="dist/pear/${pkgfile}" />
 
   <fileset id="fs.zip" dir=".">
    <include name="data/**"/>
@@ -53,15 +51,31 @@
    <exclude name="data/cache/**"/>
    <exclude name="data/config.php"/>
    <exclude name="www/**/.phar"/>
-   <exclude name="www/repos"/>
+   <exclude name="www/repos/**"/>
+
+   <exclude name="lib/*/*/.github/**"/>
+   <exclude name="lib/*/*/doc/**"/>
+   <exclude name="lib/*/*/docs/**"/>
+   <exclude name="lib/*/*/examples/**"/>
+   <exclude name="lib/*/*/test/**"/>
+   <exclude name="lib/*/*/tests/**"/>
+   <exclude name="lib/*/*/.editorconfig"/>
+   <exclude name="lib/*/*/.travis.yml"/>
+   <exclude name="lib/*/*/build.properties*"/>
+   <exclude name="lib/*/*/build.xml"/>
+   <exclude name="lib/*/*/BUGS"/>
+   <exclude name="lib/*/*/CHANGELOG"/>
+   <exclude name="lib/*/*/LICENSE"/>
+   <exclude name="lib/*/*/README*"/>
+   <exclude name="lib/*/*/package.xml"/>
+   <exclude name="lib/*/*/phpunit.xml*"/>
+   <exclude name="lib/*/*/TODO"/>
   </fileset>
 
   <fileset id="fs.doc" dir=".">
    <include name="README.rst"/>
    <include name="NEWS.rst"/>
   </fileset>
-
-  <taskdef name="d51pearpkg2" classname="phing.tasks.ext.d51PearPkg2Task" />
 
 
   <target name="phar" depends="preparedirs,collectdeps"
@@ -87,43 +101,10 @@
   <target name="collectdeps" description="Copy package dependencies to lib/">
    <delete dir="${libdir}"/>
    <mkdir dir="${libdir}"/>
-
-   <!-- requires phing >= 2.8.0 -->
-   <copy todir="${libdir}">
-    <pearPackageFileset package="pear.php.net/Cache_Lite"/><!-- OpenID -->
-    <pearPackageFileset package="pear.php.net/Console_Getopt"/>
-    <pearPackageFileset package="pear.php.net/Crypt_DiffieHellman"/><!-- OpenID -->
-    <pearPackageFileset package="pear.php.net/Date_HumanDiff"/>
-    <pearPackageFileset package="pear.geshi.org/geshi">
-     <!-- remove files that are probably not needed to save space in the .phar -->
-     <exclude name="geshi/arm.php"/>
-     <exclude name="geshi/autoit.php"/>
-     <exclude name="geshi/thinbasic.php"/>
-    </pearPackageFileset>
-    <pearPackageFileset package="pear.php.net/HTTP2"/>
-    <pearPackageFileset package="pear.php.net/HTTP_Request2"/>
-    <pearPackageFileset package="pear.php.net/MIME_Type"/>
-    <pearPackageFileset package="zustellzentrum.cweiske.de/MIME_Type_PlainDetect"/>
-    <pearPackageFileset package="zustellzentrum.cweiske.de/MIME_Type_PlainDetect" role="data"/>
-    <pearPackageFileset package="pear.michelf.com/Markdown"/>
-    <pearPackageFileset package="pear.php.net/Net_URL2"/>
-    <pearPackageFileset package="pear.php.net/OpenID"/>
-    <pearPackageFileset package="pear.php.net/Pager"/>
-    <pearPackageFileset package="pear.php.net/PEAR">
-     <include name="PEAR/Exception.php"/>
-     <include name="PEAR.php"/>
-     <include name="PEAR5.php"/>
-     <include name="OS/Guess.php"/>
-     <include name="System.php"/>
-    </pearPackageFileset>
-    <pearPackageFileset package="pear.php.net/Services_Libravatar"/>
-    <pearPackageFileset package="pear2.php.net/PEAR2_Services_Linkback"/>
-    <pearPackageFileset package="pear.php.net/Services_Yadis"/>
-    <pearPackageFileset package="pear.php.net/System_Command"/>
-    <pearPackageFileset package="pear.twig-project.org/Twig"/>
-    <pearPackageFileset package="pear.php.net/Validate"/>
-    <pearPackageFileset package="pear.php.net/VersionControl_Git"/>
-   </copy>
+   <exec executable="composer">
+    <arg value="install"/>
+    <arg value="--no-dev"/>
+   </exec>
   </target>
 
 
