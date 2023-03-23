@@ -1,3 +1,8 @@
+Version 0.9.0 - 2023-03-23
+--------------------------
+* Make phorkie and all dependencies compatible with PHP 8.2
+
+
 Version 0.8.1 - 2017-08-29
 --------------------------
 * Fix owner name/email tracking
