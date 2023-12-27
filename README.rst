@@ -376,7 +376,7 @@ If you use nginx, place the following lines into your ``server`` block:
     rewrite ^/([0-9]+)/fork$ /fork.php?id=$1;
     rewrite ^/([0-9]+)/raw/(.+)$ /raw.php?id=$1&file=$2;
     rewrite ^/([0-9]+)/rev/(.+)$ /revision.php?id=$1&rev=$2;
-    rewrite ^/([0-9]+)/rev-raw/(.+)/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
+    rewrite ^/([0-9]+)/rev-raw/([^/]+)/(.+)$ /raw.php?id=$1&rev=$2&file=$3;
     rewrite ^/([0-9]+)/tool/([^/]+)/(.+)$ /tool.php?id=$1&tool=$2&file=$3;
 
     rewrite ^/fork-remote$ /fork-remote.php;
@@ -414,7 +414,7 @@ Lighttpd rewrites
         "^/([0-9]+)/fork$" => "/fork.php?id=$1",
         "^/([0-9]+)/raw/(.+)$" => "/raw.php?id=$1&file=$2",
         "^/([0-9]+)/rev/(.+)$" => "/revision.php?id=$1&rev=$2",
-        "^/([0-9]+)/rev-raw/(.+)/(.+)$" => "/raw.php?id=$1&rev=$2&file=$3",
+        "^/([0-9]+)/rev-raw/([^/]+)/(.+)$" => "/raw.php?id=$1&rev=$2&file=$3",
         "^/([0-9]+)/tool/([^/]+)/(.+)$" => "/tool.php?id=$1&tool=$2&file=$3",
 
         "^/fork-remote$" => "/fork-remote.php",
