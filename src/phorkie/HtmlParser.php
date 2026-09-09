@@ -176,13 +176,12 @@ class HtmlParser
     public function getHtmlTitle($url)
     {
         libxml_use_internal_errors(true);
-        //allow loading URLs in DOMDocument
-        libxml_disable_entity_loader(false);
         $domDoc = new \DOMDocument();
         $domDoc->loadHTMLFile($url);
         if ($domDoc === false) {
             return null;
         }
+
         $sx = simplexml_import_dom($domDoc);
         $title = (string) $sx->head->title;
         if ($title == '') {
