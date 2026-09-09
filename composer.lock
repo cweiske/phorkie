@@ -192,6 +192,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Cache_Lite",
                 "source": "https://github.com/pear/Cache_Lite"
             },
+            "abandoned": true,
             "time": "2023-03-21T09:15:15+00:00"
         },
         {
@@ -295,6 +296,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Crypt_DiffieHellman",
                 "source": "https://github.com/pear/Crypt_DiffieHellman"
             },
+            "abandoned": true,
             "time": "2017-08-24T19:11:54+00:00"
         },
         {
@@ -339,6 +341,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Date_HumanDiff",
                 "source": "https://github.com/pear/Date_HumanDiff"
             },
+            "abandoned": true,
             "time": "2014-03-23T12:03:00+00:00"
         },
         {
@@ -390,25 +393,26 @@
         },
         {
             "name": "pear/http_request2",
-            "version": "v2.5.1",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/HTTP_Request2.git",
-                "reference": "db4ce7844f838d3adca0513a77420c0fec22ed2d"
+                "reference": "ccb06dd1e71aceb96f7cde7994976e02a46c7d5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/HTTP_Request2/zipball/db4ce7844f838d3adca0513a77420c0fec22ed2d",
-                "reference": "db4ce7844f838d3adca0513a77420c0fec22ed2d",
+                "url": "https://api.github.com/repos/pear/HTTP_Request2/zipball/ccb06dd1e71aceb96f7cde7994976e02a46c7d5f",
+                "reference": "ccb06dd1e71aceb96f7cde7994976e02a46c7d5f",
                 "shasum": ""
             },
             "require": {
                 "pear/net_url2": "^2.2.0",
                 "pear/pear_exception": "^1.0.0",
-                "php": ">=5.6.0"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "yoast/phpunit-polyfills": "^1.0.0"
+                "pear/log": "^1",
+                "yoast/phpunit-polyfills": "^4.0"
             },
             "suggest": {
                 "ext-curl": "Allows using cURL as a request backend.",
@@ -445,7 +449,7 @@
                 "issues": "https://github.com/pear/HTTP_Request2/issues",
                 "source": "https://github.com/pear/HTTP_Request2"
             },
-            "time": "2022-01-06T18:20:25+00:00"
+            "time": "2026-09-04T10:44:42+00:00"
         },
         {
             "name": "pear/mime_type",
@@ -501,20 +505,21 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=MIME_Type",
                 "source": "https://github.com/pear/MIME_Type"
             },
+            "abandoned": true,
             "time": "2015-11-04T19:57:46+00:00"
         },
         {
             "name": "pear/net_url2",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Net_URL2.git",
-                "reference": "07fd055820dbf466ee3990abe96d0e40a8791f9d"
+                "reference": "c1f2b316ed9b05e881cdb494f7550ddf817c76c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Net_URL2/zipball/07fd055820dbf466ee3990abe96d0e40a8791f9d",
-                "reference": "07fd055820dbf466ee3990abe96d0e40a8791f9d",
+                "url": "https://api.github.com/repos/pear/Net_URL2/zipball/c1f2b316ed9b05e881cdb494f7550ddf817c76c8",
+                "reference": "c1f2b316ed9b05e881cdb494f7550ddf817c76c8",
                 "shasum": ""
             },
             "require": {
@@ -543,12 +548,12 @@
             ],
             "authors": [
                 {
-                    "name": "David Coallier",
-                    "email": "davidc@php.net"
-                },
-                {
                     "name": "Tom Klingenberg",
                     "email": "tkli@php.net"
+                },
+                {
+                    "name": "David Coallier",
+                    "email": "davidc@php.net"
                 },
                 {
                     "name": "Christian Schmidt",
@@ -569,7 +574,7 @@
                 "issues": "https://pear.php.net/bugs/search.php?cmd=display&package_name[]=Net_URL2",
                 "source": "https://github.com/pear/Net_URL2"
             },
-            "time": "2017-08-25T06:16:11+00:00"
+            "time": "2025-03-24T08:03:00+00:00"
         },
         {
             "name": "pear/openid",
@@ -624,6 +629,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=OpenID",
                 "source": "https://github.com/pear/OpenID"
             },
+            "abandoned": true,
             "time": "2023-03-21T14:02:46+00:00"
         },
         {
@@ -674,34 +680,36 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Pager",
                 "source": "https://github.com/pear/Pager"
             },
+            "abandoned": true,
             "time": "2017-06-19T15:45:20+00:00"
         },
         {
             "name": "pear/pear-core-minimal",
-            "version": "v1.10.11",
+            "version": "v1.10.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/pear-core-minimal.git",
-                "reference": "68d0d32ada737153b7e93b8d3c710ebe70ac867d"
+                "reference": "c7b55789d01de0ce090d289b73f1bbd6a2f113b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/68d0d32ada737153b7e93b8d3c710ebe70ac867d",
-                "reference": "68d0d32ada737153b7e93b8d3c710ebe70ac867d",
+                "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/c7b55789d01de0ce090d289b73f1bbd6a2f113b1",
+                "reference": "c7b55789d01de0ce090d289b73f1bbd6a2f113b1",
                 "shasum": ""
             },
             "require": {
                 "pear/console_getopt": "~1.4",
-                "pear/pear_exception": "~1.0"
+                "pear/pear_exception": "~1.0",
+                "php": ">=5.4"
             },
             "replace": {
                 "rsky/pear-core-min": "self.version"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "": "src/"
-                }
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
@@ -722,7 +730,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=PEAR",
                 "source": "https://github.com/pear/pear-core-minimal"
             },
-            "time": "2021-08-10T22:31:03+00:00"
+            "time": "2025-12-14T20:37:07+00:00"
         },
         {
             "name": "pear/pear_exception",
@@ -785,20 +793,23 @@
         },
         {
             "name": "pear/services_libravatar",
-            "version": "v0.2.4",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Services_Libravatar.git",
-                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9"
+                "reference": "e709a039fc1e3e2f42e85e01c940bffbf34444b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Services_Libravatar/zipball/8b9fda8c896afb18fdedc60ead29ee305ea222e9",
-                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9",
+                "url": "https://api.github.com/repos/pear/Services_Libravatar/zipball/e709a039fc1e3e2f42e85e01c940bffbf34444b4",
+                "reference": "e709a039fc1e3e2f42e85e01c940bffbf34444b4",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=7.1"
+            },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.0"
+                "phpunit/phpunit": "^7 || ^8"
             },
             "type": "library",
             "autoload": {
@@ -815,14 +826,14 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Weiske",
-                    "email": "cweiske@php.net",
-                    "role": "Developer"
-                },
-                {
                     "name": "Melissa Draper",
                     "email": "melissa@meldraweb.com",
                     "role": "Lead"
+                },
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@php.net",
+                    "role": "Developer"
                 }
             ],
             "description": "API interfacing class for libravatar.org",
@@ -831,7 +842,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Services_Libravatar",
                 "source": "https://github.com/pear/Services_Libravatar"
             },
-            "time": "2017-08-23T20:23:02+00:00"
+            "time": "2026-02-07T18:48:49+00:00"
         },
         {
             "name": "pear/services_yadis",
@@ -920,6 +931,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=System_Command",
                 "source": "https://github.com/pear/System_Command"
             },
+            "abandoned": true,
             "time": "2023-03-21T16:37:05+00:00"
         },
         {
@@ -1001,6 +1013,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Validate",
                 "source": "https://github.com/pear/Validate"
             },
+            "abandoned": true,
             "time": "2023-03-21T11:28:53+00:00"
         },
         {
@@ -1050,6 +1063,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=VersionControl_Git",
                 "source": "https://github.com/pear/VersionControl_Git"
             },
+            "abandoned": true,
             "time": "2023-03-22T19:55:38+00:00"
         },
         {
@@ -1176,20 +1190,20 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.27.0",
+            "version": "v1.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+                "reference": "141046a8f9477948ff284fa65be2095baafb94f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2",
+                "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "provide": {
                 "ext-ctype": "*"
@@ -1199,12 +1213,9 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.27-dev"
-                },
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -1238,7 +1249,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.37.0"
             },
             "funding": [
                 {
@@ -1250,11 +1261,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2026-04-10T16:19:22+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
