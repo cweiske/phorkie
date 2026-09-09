@@ -83,12 +83,8 @@ class SetupCheck
             }
         }
 
-        if (!class_exists('\\Michelf\\Markdown', true)) {
-            //PEAR-installed version 1.0.2 has a different API
-            $markdown = stream_resolve_include_path('markdown.php');
-            if ($markdown === false) {
-                $this->fail('Markdown renderer not available');
-            }
+        if (!class_exists('\\Michelf\\MarkdownExtra', true)) {
+            $this->fail('Markdown renderer not available');
         }
     }
 
