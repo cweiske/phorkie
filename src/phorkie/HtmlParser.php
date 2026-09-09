@@ -47,7 +47,7 @@ class HtmlParser
             //https://gist.github.com/cweiske/2400389
             // clone URL: https://gist.github.com/2400389.git
             $parts = explode('/', ltrim($arUrl['path'], '/'));
-            if (count($parts == 2)) {
+            if (count($parts) == 2) {
                 //we only want the number, not the user name
                 $path = $parts[1];
             } else {
@@ -178,11 +178,12 @@ class HtmlParser
         libxml_use_internal_errors(true);
         //allow loading URLs in DOMDocument
         libxml_disable_entity_loader(false);
-        $doc = \DOMDocument::loadHTMLFile($url);
-        if ($doc === false) {
+        $domDoc = new \DOMDocument();
+        $domDoc->loadHTMLFile($url);
+        if ($domDoc === false) {
             return null;
         }
-        $sx = simplexml_import_dom($doc);
+        $sx = simplexml_import_dom($domDoc);
         $title = (string) $sx->head->title;
         if ($title == '') {
             return null;
