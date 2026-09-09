@@ -5,7 +5,7 @@ class SetupCheck
 {
     protected $deps = array(
         'pear/versionControl_git'  => 'VersionControl_Git',
-        'twig/twig'                => 'Twig_Autoloader',
+        'twig/twig'                => '\\Twig\\Environment',
         'pear/date_humanDiff'      => 'Date_HumanDiff',
         'pear/http_request2'       => 'HTTP_Request2',
         'pear/openid'              => 'OpenID',

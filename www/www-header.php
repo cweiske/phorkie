@@ -67,17 +67,15 @@ if (!isset($_SESSION['email'])) {
     $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail'];
 }
 
-\Twig_Autoloader::register();
-
-$loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
-$twig = new \Twig_Environment(
+$loader = new \Twig\Loader\FilesystemLoader($GLOBALS['phorkie']['cfg']['tpl']);
+$twig = new \Twig\Environment(
     $loader,
     array(
         //'cache' => '/path/to/compilation_cache',
         'debug' => true
     )
 );
-$twig->addFunction('ntext', new \Twig_Function_Function('\phorkie\ntext'));
+$twig->addFunction(new \Twig\TwigFunction('ntext', '\phorkie\ntext'));
 function ntext($value, $singular, $plural)
 {
     if (abs($value) == 1) {
@@ -85,7 +83,7 @@ function ntext($value, $singular, $plural)
     }
     return sprintf($plural, $value);
 }
-//$twig->addExtension(new \Twig_Extension_Debug());
+//$twig->addExtension(new \Twig\Extension\Debug());
 
 if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
     require __DIR__ . '/www-security.php';
@@ -116,7 +114,7 @@ function render($tplname, $vars = array(), $return = false)
     }
     $vars['suggestSetupCheck'] = $GLOBALS['phorkie']['suggestSetupCheck'];
 
-    $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
+    $template = $GLOBALS['twig']->load($tplname . '.htm');
 
     if ($return) {
         return $template->render($vars);

@@ -27,7 +27,7 @@
 
         "geshi/geshi": "^1.0.9.0",
         "michelf/php-markdown": "~1.4",
-        "twig/twig": "^1.15",
+        "twig/twig": "^3",
         "pear/system_command": "^1.1.1"
     },
     "autoload": {

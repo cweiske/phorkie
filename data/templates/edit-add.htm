@@ -5,9 +5,9 @@ $(document).ready(function() {
     $('#add-button').show();
     $('#filegroupnew').hide();
     $('#add-button').bind('click', function() {
-        $('.filegroup:last').before("{% filter escape('js') %}
+        $('.filegroup:last').before("{% apply escape('js') %}
             {% include 'edit-file.htm' with {'file': null, 'fileid': '###', 'newfile': true} %}
-            {% endfilter %}"
+            {% endapply %}"
             .replace(/###/g, $('.filegroup').length)
         );
         toggleAdditional($('.filegroup:visible .additional-btn:last')[0], 0);

@@ -5,7 +5,7 @@ me.insertAdjacentHTML(
     '<link rel="stylesheet" href="{{htmlhelper.fullUrl('css/embed.css')}}"/>'
     + '<div class="phork" id="{{repo.id}}">'
 {% for file in repo.getFiles %}
-    + {% filter json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw -%}{% include 'embed-part-file.htm' %}{%- endfilter %}
+    + {% apply json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw -%}{% include 'embed-part-file.htm' %}{%- endapply %}
 {% endfor %}
     + '</div>'
 );

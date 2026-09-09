@@ -19,7 +19,7 @@
    <name>{{commit.committerName}}</name>
    <email>{{commit.committerEmail}}</email>
   </author>
-  <summary>{% spaceless %}
+  <summary>{% apply spaceless %}
    {% if commit.filesChanged %}
      {{ntext(commit.filesChanged, "%d file", "%d files")}} changed{% if commit.linesAdded %},{% endif %}
    {% endif %}
@@ -29,7 +29,7 @@
    {% if commit.linesDeleted %}
      {{ntext(commit.linesDeleted, "%d line", "%d lines")}} deleted
    {% endif %}
-  {% endspaceless %}</summary>
+  {% endapply %}</summary>
  </entry>
 {% endfor %}
 </feed>
