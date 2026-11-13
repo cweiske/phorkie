@@ -56,6 +56,11 @@ class Repository
             throw new Exception_Input('Paste ID not numeric');
         }
         if (isset($_GET['rev'])) {
+            // Must be a git object name (commit hash). Reject anything else so a value such as
+            // "--output=/path" cannot be handed to git as an option (argument injection -> write).
+            if (!preg_match('/^[0-9a-f]{4,40}$/i', (string) $_GET['rev'])) {
+                throw new Exception_Input('Invalid revision');
+            }
             $this->hash = $_GET['rev'];
         }
 
