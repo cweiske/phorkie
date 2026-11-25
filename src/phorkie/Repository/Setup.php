@@ -41,10 +41,12 @@ CDE
 
         //keep track of owner
         $vc->getCommand('config')
+            ->addArgument('--')
             ->addArgument('owner.name')
             ->addArgument($_SESSION['name'])
             ->execute();
         $vc->getCommand('config')
+            ->addArgument('--')
             ->addArgument('owner.email')
             ->addArgument($_SESSION['email'])
             ->execute();

@@ -66,18 +66,21 @@ class Repository_LinkbackReceiver
         if (!$this->isLocalWebUrl($source)) {
             //only add remote homepage; we can calculate local ones ourselves
             $vc->getCommand('config')
+                ->addArgument('--')
                 ->addArgument('remote.' . $remoteid . '.homepage')
                 ->addArgument($source)
                 ->execute();
         }
         if ($remoteTitle !== null) {
             $vc->getCommand('config')
+                ->addArgument('--')
                 ->addArgument('remote.' . $remoteid . '.title')
                 ->addArgument($remoteTitle)
                 ->execute();
         }
         if ($remoteCloneUrl !== null) {
             $vc->getCommand('config')
+                ->addArgument('--')
                 ->addArgument('remote.' . $remoteid . '.url')
                 ->addArgument($remoteCloneUrl)
                 ->execute();

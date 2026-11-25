@@ -107,6 +107,7 @@ class Repository_Post
                     //ignore names with a slash in it, would be new directory
                     //FIXME: what to do with overwrites?
                     $vc->getCommand('mv')
+                        ->addArgument('--')
                         ->addArgument($originalName)
                         ->addArgument($name)
                         ->execute();
@@ -123,6 +124,7 @@ class Repository_Post
             }
             if ($bDelete) {
                 $command = $vc->getCommand('rm')
+                    ->addArgument('--')
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bCommit = true;
@@ -132,6 +134,7 @@ class Repository_Post
                     $file->getFullPath()
                 );
                 $command = $vc->getCommand('add')
+                    ->addArgument('--')
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bCommit = true;
@@ -146,6 +149,7 @@ class Repository_Post
                 }
                 file_put_contents($file->getFullPath(), $arFile['content']);
                 $command = $vc->getCommand('add')
+                    ->addArgument('--')
                     ->addArgument($file->getFilename())
                     ->execute();
                 $bCommit = true;
@@ -246,6 +250,7 @@ class Repository_Post
             ->addArgument(
                 $GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $repo->id . '.git'
             )
+            ->addArgument('--')
             ->addArgument($repo->workDir)
             ->execute();
 

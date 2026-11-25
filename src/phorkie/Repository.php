@@ -56,6 +56,9 @@ class Repository
             throw new Exception_Input('Paste ID not numeric');
         }
         if (isset($_GET['rev'])) {
+            if (!preg_match('#^[0-9a-f]+$#', $_GET['rev'])) {
+                throw new Exception_Input('Commit hash invalid');
+            }
             $this->hash = $_GET['rev'];
         }
 
@@ -130,6 +133,7 @@ class Repository
         $output = $this->getVc()->getCommand('log')
             ->setOption('oneline')
             ->addArgument('-1')
+            ->addArgument('--')
             ->addArgument($rev)
             ->execute();
         $output = trim($output);
@@ -206,6 +210,7 @@ class Repository
         $output = $this->getVc()->getCommand('ls-tree')
             ->setOption('r')
             ->setOption('name-only')
+            ->addArgument('--')
             ->addArgument($hash)
             ->execute();
         $files = explode("\n", trim($output));

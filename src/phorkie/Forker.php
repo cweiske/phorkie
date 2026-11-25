@@ -10,6 +10,7 @@ class Forker
         \copy($repo->gitDir . '/description', $new->gitDir . '/description');
         $new->getVc()
             ->getCommand('config')
+            ->addArgument('--')
             ->addArgument('remote.origin.title')
             ->addArgument(file_get_contents($repo->gitDir . '/description'))
             ->execute();
@@ -28,12 +29,14 @@ class Forker
 
         $new->getVc()
             ->getCommand('config')
+            ->addArgument('--')
             ->addArgument('remote.origin.title')
             ->addArgument($title)
             ->execute();
         if ($originalUrl != $cloneUrl) {
             $new->getVc()
                 ->getCommand('config')
+                ->addArgument('--')
                 ->addArgument('remote.origin.homepage')
                 ->addArgument($originalUrl)
                 ->execute();
@@ -68,6 +71,7 @@ class Forker
             ->addArgument(
                 $GLOBALS['phorkie']['cfg']['gitdir'] . '/' . $new->id . '.git'
             )
+            ->addArgument('--')
             ->addArgument($pathOrUrl)
             ->addArgument($new->workDir);
         try {
